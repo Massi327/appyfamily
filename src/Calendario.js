@@ -175,35 +175,38 @@ export default function Calendario(){
                                 <Link to={"/sintesi"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>SINTESI PRENOTAZIONE</span></Link>
                             </Button> : null}
                     </Row>
+                </Col>
 
-                    <Row>
-                        {
-                            <Button variant={"dark"} style={{marginTop: "5px", marginBottom: "5px"}}>
-                                <Link to={"/home"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>Home</span></Link>
-                            </Button> }
-                    </Row>
+                    <Row className="justify-content-md-center">
+                        <Col xs={12} sm={12} md={3}>
+                            {
+                                <Button variant={"dark"} style={{marginTop: "5px", marginBottom: "5px"}}>
+                                    <Link to={"/home"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>Home</span></Link>
+                                </Button>
+                            }
+                        </Col>
 
-                    <Row>
+                        <Col xs={12} sm={12} md={3}>
                         {
                             <Button variant={"danger"} style={{marginTop: "5px", marginBottom: "5px"}}>
                                 <Link to={"/calendar"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>CALENDAR</span></Link>
                             </Button> }
-                    </Row>
+                        </Col>
 
-                    <Row>
+                            <Col xs={12} sm={12} md={3}>
                         {
                             <Button variant={"dark"} style={{marginTop: "5px", marginBottom: "5px"}}>
                                 <Link to={"/profile"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>PROFILE</span></Link>
                             </Button> }
-                    </Row>
+                            </Col>
 
-                    <Row>
+                                <Col xs={12} sm={12} md={3}>
                         {
                             <Button variant={"dark"} style={{marginTop: "5px", marginBottom: "5px"}}>
                                 <Link to={"/settings"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>SETTINGS</span></Link>
                             </Button> }
+                                </Col>
                     </Row>
-                </Col>
 
             </Row>
 

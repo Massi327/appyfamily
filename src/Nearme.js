@@ -11,7 +11,7 @@ export default function Home(){
         <Container fluid styile={{height:"79vh"}}>
             <Row className="justify-content-md-center">
                 <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
+                    <Button variant={"danger"} style={{marginBottom:"1em"}}>
                         <Link to={"/home"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>EVENTS</span></Link>
                     </Button>
                 </Col>
@@ -21,13 +21,26 @@ export default function Home(){
                     </Button>
                 </Col>
                 <Col xs={12} sm={12} md={3}>
-                    <Button variant={"danger"} style={{marginBottom:"1em"}}>
+                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
                         <Link to={"/blogs"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>BLOGS</span></Link>
                     </Button>
                 </Col>
                 <Col xs={12} sm={12} md={3}>
                     <Button variant={"dark"} style={{marginBottom:"1em"}}>
                         <Link to={"/hashtags"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>HASHTAGS</span></Link>
+                    </Button>
+                </Col>
+            </Row>
+
+            <Row className="justify-content-md-center">
+                <Col xs={12} sm={12} md={3}>
+                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
+                        <Link to={"/home"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>RECOMMENDED</span></Link>
+                    </Button>
+                </Col>
+                <Col xs={12} sm={12} md={3}>
+                    <Button variant={"danger"} style={{marginBottom:"1em"}}>
+                        <Link to={"/nearme"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>NEAR ME</span></Link>
                     </Button>
                 </Col>
             </Row>

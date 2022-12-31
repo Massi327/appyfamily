@@ -6,9 +6,12 @@ import Calendario from "./Calendario";
 import Profile from "./Profile"
 import Home from "./Home";
 import Settings from "./Settings";
+import Nearme from "./Nearme";
 import People from "./People";
 import Blogs from "./Blogs";
 import Hashtags from "./Hashtags";
+import Tutorial from "./Tutorial";
+import Messaggi from "./Messaggi";
 import {Image} from "react-bootstrap";
 import './App.css';
 
@@ -28,10 +31,13 @@ function App() {
                 <Route path={"/calendar"} element={<Calendario/>}/>
                 <Route path={"/profile"} element={<Profile/>}/>
                 <Route path={"/settings"} element={<Settings/>}/>
+                <Route path={"/tutorial"} element={<Tutorial/>}/>
+                <Route path={"/messages"} element={<Messaggi/>}/>
 
                 <Route path={"/people"} element={<People/>}/>
                 <Route path={"/blogs"} element={<Blogs/>}/>
                 <Route path={"/hashtags"} element={<Hashtags/>}/>
+                <Route path={"/nearme"} element={<Nearme/>}/>
             </Routes>
           </BrowserRouter>
         </div>
