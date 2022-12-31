@@ -1,7 +1,7 @@
 import {useContext, useState} from "react";
 import {StateContext} from "./App";
 import {Link} from "react-router-dom";
-import {Button, Col, Container, Row} from "react-bootstrap";
+import {Button, Col, Container, Form, Nav, Navbar, Row} from "react-bootstrap";
 
 export default function Blogs(){
 
@@ -9,6 +9,23 @@ export default function Blogs(){
 
     return(
         <Container fluid styile={{height:"79vh"}}>
+
+            <Navbar style={{overflow: "hidden", top: "0px", width: "100%"}} bg="dark" variant="dark">
+                <Container>
+                    <Navbar.Brand href="/home">APPy Family</Navbar.Brand>
+                    <Nav>
+                        <Nav.Link style={{textAlign: "right"}} href="/notifications">Notifications</Nav.Link>
+                        <Nav.Link style={{textAlign: "right"}} href="/messages">Messages</Nav.Link>
+                        <Nav.Link style={{textAlign: "right"}} href="/tutorial">Tutorial</Nav.Link>
+                    </Nav>
+                </Container>
+            </Navbar>
+
+            <Form className="d-flex">
+                <Form.Control type="search" placeholder="Search" aria-label="Search"/>
+                <Button variant="outline-success">Search</Button>
+            </Form>
+
             <Row className="justify-content-md-center">
                 <Col xs={12} sm={12} md={3}>
                     <Button variant={"dark"} style={{marginBottom:"1em"}}>

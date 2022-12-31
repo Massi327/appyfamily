@@ -3,7 +3,20 @@ import moment from 'moment'
 import 'moment/locale/it';
 import {useContext, useState} from "react";
 import {StateContext} from "./App";
-import {Alert, Button, Card, CloseButton, Col, Container, FormControl, FormGroup, FormLabel, FormSelect, Row} from "react-bootstrap";
+import {
+    Alert,
+    Button,
+    Card,
+    CloseButton,
+    Col,
+    Container,
+    FormControl,
+    FormGroup,
+    FormLabel,
+    FormSelect, Nav,
+    Navbar,
+    Row
+} from "react-bootstrap";
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import {addBooking, selected} from "./Action";
 import {Link} from "react-router-dom";
@@ -61,8 +74,20 @@ export default function Calendario(){
 
     return(
         <Container fluid>
+
+            <Navbar style={{overflow: "hidden", top: "0px", width: "100%"}} bg="dark" variant="dark">
+                <Container>
+                    <Navbar.Brand href="/home">APPy Family</Navbar.Brand>
+                    <Nav>
+                        <Nav.Link style={{textAlign: "right"}} href="/notifications">Notifications</Nav.Link>
+                        <Nav.Link style={{textAlign: "right"}} href="/messages">Messages</Nav.Link>
+                        <Nav.Link style={{textAlign: "right"}} href="/tutorial">Tutorial</Nav.Link>
+                    </Nav>
+                </Container>
+            </Navbar>
+
             <Row>
-                <Col xl={8} lg={8} md={8} sm={12}>
+                <Col xl={8} lg={8} md={8} sm={12} xs={12}>
                     <Calendar
                         selectable
                         startAccessor='start'
@@ -81,7 +106,7 @@ export default function Calendario(){
                     />
                 </Col>
 
-                <Col xl={4} lg={4} md={4} sm={12}>
+                <Col xl={4} lg={4} md={4} sm={12} xs={12}>
                     <Row>
 
                         <Card className='form' border='dark' style={{background: 'linear-gradient(to top, red 10%, black 100%)', color: "white"}}>
@@ -178,7 +203,7 @@ export default function Calendario(){
                 </Col>
 
                     <Row className="justify-content-md-center">
-                        <Col xs={12} sm={12} md={3}>
+                        <Col xs={3} sm={12} md={3}>
                             {
                                 <Button variant={"dark"} style={{marginTop: "5px", marginBottom: "5px"}}>
                                     <Link to={"/home"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>Home</span></Link>
@@ -186,21 +211,21 @@ export default function Calendario(){
                             }
                         </Col>
 
-                        <Col xs={12} sm={12} md={3}>
+                        <Col xs={3} sm={12} md={3}>
                         {
                             <Button variant={"danger"} style={{marginTop: "5px", marginBottom: "5px"}}>
                                 <Link to={"/calendar"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>CALENDAR</span></Link>
                             </Button> }
                         </Col>
 
-                            <Col xs={12} sm={12} md={3}>
+                            <Col xs={3} sm={12} md={3}>
                         {
                             <Button variant={"dark"} style={{marginTop: "5px", marginBottom: "5px"}}>
                                 <Link to={"/profile"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>PROFILE</span></Link>
                             </Button> }
                             </Col>
 
-                                <Col xs={12} sm={12} md={3}>
+                                <Col xs={3} sm={12} md={3}>
                         {
                             <Button variant={"dark"} style={{marginTop: "5px", marginBottom: "5px"}}>
                                 <Link to={"/settings"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>SETTINGS</span></Link>

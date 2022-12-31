@@ -1,7 +1,7 @@
 import {useContext, useState} from "react";
 import {StateContext} from "./App";
 import {Link} from "react-router-dom";
-import {Button, Col, Container, Row} from "react-bootstrap";
+import {Button, Col, Container, Nav, Navbar, Row} from "react-bootstrap";
 
 export default function Settings(){
 
@@ -9,6 +9,18 @@ export default function Settings(){
 
     return(
         <Container fluid styile={{height:"79vh"}}>
+
+            <Navbar style={{overflow: "hidden", top: "0px", width: "100%"}} bg="dark" variant="dark">
+                <Container>
+                    <Navbar.Brand href="/home">APPy Family</Navbar.Brand>
+                    <Nav>
+                        <Nav.Link style={{textAlign: "right"}} href="/notifications">Notifications</Nav.Link>
+                        <Nav.Link style={{textAlign: "right"}} href="/messages">Messages</Nav.Link>
+                        <Nav.Link style={{textAlign: "right"}} href="/tutorial">Tutorial</Nav.Link>
+                    </Nav>
+                </Container>
+            </Navbar>
+
             <Row className="justify-content-md-center">
                 <Col xs={12} sm={12} md={3}>
                     <Button variant={"dark"} style={{marginBottom:"1em"}}>
