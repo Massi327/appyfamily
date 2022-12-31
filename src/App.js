@@ -12,7 +12,8 @@ import Blogs from "./Blogs";
 import Hashtags from "./Hashtags";
 import Tutorial from "./Tutorial";
 import Messaggi from "./Messaggi";
-import {Image} from "react-bootstrap";
+import Notifiche from "./Notifiche";
+import Add from "./Add";
 import './App.css';
 
 export const StateContext = createContext()
@@ -21,9 +22,6 @@ function App() {
   return (
       <StateContext.Provider value={useReducer(Reducer, initialState, A=>A)}>
         <div className="App">
-          <header>
-            <Image src={img_1} alt={"Immagine del logo"} fluid style={{blockSize: "100px", marginBottom: "15px"}}/>
-          </header>
           <BrowserRouter>
             <Routes>
                 <Route path={"/home"} element={<Home/>}/>
@@ -33,6 +31,9 @@ function App() {
                 <Route path={"/settings"} element={<Settings/>}/>
                 <Route path={"/tutorial"} element={<Tutorial/>}/>
                 <Route path={"/messages"} element={<Messaggi/>}/>
+                <Route path={"/notifications"} element={<Notifiche/>}/>
+
+                <Route path={"/add"} element={<Add/>}/>
 
                 <Route path={"/people"} element={<People/>}/>
                 <Route path={"/blogs"} element={<Blogs/>}/>

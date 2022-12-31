@@ -3,7 +3,7 @@ import {StateContext} from "./App";
 import {Link} from "react-router-dom";
 import {Button, Col, Container, Row} from "react-bootstrap";
 
-export default function Home(){
+export default function Nearme(){
 
     const [state,dispatch] = useContext(StateContext)
 

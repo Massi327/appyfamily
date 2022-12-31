@@ -1,7 +1,8 @@
 import {useContext, useState} from "react";
 import {StateContext} from "./App";
 import {Link} from "react-router-dom";
-import {Button, Col, Container, Row} from "react-bootstrap";
+import {Button, Col, Container, Image, Row} from "react-bootstrap";
+import img_1 from "./img_1.png";
 
 export default function Home(){
 
@@ -9,6 +10,20 @@ export default function Home(){
 
     return(
         <Container fluid styile={{height:"79vh"}}>
+            <header>
+                    <Row>
+                        <Col style={{textAlign: "left"}}><Button variant={"light"}><Image src={img_1} alt={"Immagine del logo"} fluid style={{blockSize: "100px", marginBottom: "15px"}}/></Button></Col>
+                        <Col xs={12} sm={12} md={1}>
+                            <Button variant={"dark"} style={{marginBottom:"1em"}}><Link to={"/notifications"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>noti</span></Link></Button>
+                        </Col>
+                        <Col xs={1} sm={1} md={1}>
+                            <Button variant={"dark"} style={{marginBottom:"1em"}}><Link to={"/messages"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>mess</span></Link></Button>
+                        </Col>
+                        <Col xs={1} sm={1} md={1}>
+                            <Button variant={"dark"} style={{marginBottom:"1em"}}><Link to={"/tutorial"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>tuto</span></Link></Button>
+                        </Col>
+                    </Row>
+            </header>
             <Row className="justify-content-md-center">
                 <Col xs={12} sm={12} md={3}>
                     <Button variant={"danger"} style={{marginBottom:"1em"}}>
