@@ -15,6 +15,7 @@ import Messaggi from "./Messaggi";
 import Notifiche from "./Notifiche";
 import Add from "./Add";
 import './App.css';
+import Sintesi from "./Sintesi";
 
 export const StateContext = createContext()
 
@@ -39,6 +40,8 @@ function App() {
                 <Route path={"/blogs"} element={<Blogs/>}/>
                 <Route path={"/hashtags"} element={<Hashtags/>}/>
                 <Route path={"/nearme"} element={<Nearme/>}/>
+
+                <Route path={"/sintesi"} element={<Sintesi/>}/>
             </Routes>
           </BrowserRouter>
         </div>

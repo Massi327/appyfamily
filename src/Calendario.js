@@ -1,22 +1,9 @@
 import {Calendar, momentLocalizer} from "react-big-calendar";
 import moment from 'moment'
-import 'moment/locale/it';
+import 'moment/locale/en-gb';
 import {useContext, useState} from "react";
 import {StateContext} from "./App";
-import {
-    Alert,
-    Button,
-    Card,
-    CloseButton,
-    Col,
-    Container,
-    FormControl,
-    FormGroup,
-    FormLabel,
-    FormSelect, Nav,
-    Navbar,
-    Row
-} from "react-bootstrap";
+import {Alert, Button, Card, CloseButton, Col, Container, FormControl, FormGroup, FormLabel, FormSelect, Nav, Navbar, Row} from "react-bootstrap";
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import {addBooking, selected} from "./Action";
 import {Link} from "react-router-dom";
@@ -27,8 +14,9 @@ export default function Calendario(){
 
     const [state,dispatch] = useContext(StateContext)
 
-    const [nome,setNome] = useState('')
-    const [scopo,setScopo] = useState('')
+    const [address,setAddress] = useState('')
+    const [titolo,setTitolo] = useState('')
+    const [about,setAbout] = useState('')
     const [date,setDate] = useState(new Date())
     const [oraI,setOraI] = useState('')
     const [oraF,setOraF] = useState('')
@@ -41,7 +29,7 @@ export default function Calendario(){
         s.prenotazioni.map(p=> {
             let event={
                 id: p.key,
-                title: p.scopo,
+                title: p.titolo,
                 start: p.dataStart.toDate(),
                 end: p.dataEnd.toDate(),
                 resourceId: s.id
@@ -50,13 +38,7 @@ export default function Calendario(){
         })
     })
 
-    const resourceMap = [
-        {resourceId: 1, resourceTitle: 'Sala 1'},
-        {resourceId: 2, resourceTitle: 'Sala 2'},
-        {resourceId: 3, resourceTitle: 'Sala 3'},
-        {resourceId: 4, resourceTitle: 'Sala 4'},
-        {resourceId: 5, resourceTitle: 'Sala 5'}
-    ]
+    const resourceMap = [{resourceId: 1, resourceTitle: ''},]
 
     let handleSelect = (range) => {
         setSel('true')
@@ -112,45 +94,47 @@ export default function Calendario(){
                         <Card className='form' border='dark' style={{background: 'linear-gradient(to top, red 10%, black 100%)', color: "white"}}>
                             <Card.Body>
                                 <Card.Title style={{fontSize: "30px"}}>PRENOTAZIONE STANZE</Card.Title>
+
+                                <FormGroup style={{marginBottom: "10px"}}>
+                                    <FormLabel><b>Title*</b></FormLabel>
+                                    <FormControl type='text' value={titolo} style={{textAlign:"left"}} placeholder='Title' onChange={e=> setTitolo(e.target.value)}/>
+                                </FormGroup>
+
+                                <FormGroup style={{marginBottom: "10px"}}>
+                                    <FormLabel><b>Address*</b></FormLabel>
+                                    <FormControl type='text' value={address} style={{textAlign:"left"}} placeholder='Address' onChange={e=> setAddress(e.target.value)}/>
+                                </FormGroup>
+
+                                <FormGroup style={{marginBottom: "10px"}}>
+                                    <FormLabel><b>About</b></FormLabel>
+                                    <FormControl type='text' value={about} style={{textAlign:"left"}} placeholder='About' onChange={e=> setAbout(e.target.value)}/>
+                                </FormGroup>
+
                                 <FormGroup style={{marginBottom: "10px"}}>
                                     <Row className={"justify-content-center"}>
-                                        <Col lg={3} md={4} s={12} xs={12}>
-                                            <FormLabel><b>Stanza</b></FormLabel>
-                                            <FormSelect value={sala} style={{textAlign:"center"}} onChange={e=> setSala(e.target.value)}>
-                                                <option id={0}>---</option>
-                                                <option id={1}>1</option>
-                                                <option id={2}>2</option>
-                                                <option id={3}>3</option>
-                                                <option id={4}>4</option>
-                                                <option id={5}>5</option>
-                                            </FormSelect>
-                                        </Col>
-                                        <Col lg={7} md={8} xs={12} s={12}>
-                                            <FormLabel><b>Giorno</b></FormLabel>
+                                        <Col md={12} xs={12}>
+                                            <FormLabel><b>Day</b></FormLabel>
                                             <FormControl type='date' value={date} style={{textAlign:"center"}} onChange={e => setDate(e.target.value)}/>
                                         </Col>
                                     </Row>
                                 </FormGroup>
+
                                 <FormGroup style={{marginBottom: "10px"}}>
                                     <Row className={"justify-content-center"}>
                                         <Col lg={5} md={5} xs={12}>
-                                            <FormLabel><b>Inizio</b></FormLabel>
+                                            <FormLabel><b>Start</b></FormLabel>
                                             <FormControl type='time' value={oraI} style={{textAlign:"center"}} onChange={e => setOraI(e.target.value)}/>
                                         </Col>
                                         <Col lg={5} md={5} xs={12}>
-                                            <FormLabel><b>Fine</b></FormLabel>
+                                            <FormLabel><b>End</b></FormLabel>
                                             <FormControl type='time' value={oraF} style={{textAlign:"center"}} onChange={e => setOraF(e.target.value)}/>
                                         </Col>
                                     </Row>
                                 </FormGroup>
-                                <FormGroup style={{marginBottom: "10px"}}>
-                                    <FormLabel><b>Scopo e Referente</b></FormLabel>
-                                    <FormControl type='text' value={scopo} style={{textAlign:"center"}} placeholder='Conquistare il mondo è sempre il nostro scopo!' onChange={e=> setScopo(e.target.value)}/>
-                                    <br/>
-                                    <FormControl type='text' value={nome} style={{textAlign:"center"}} placeholder='Nome Referente' onChange={e=> setNome(e.target.value)}/>
-                                </FormGroup>
 
-                                <Button className='submit' variant='dark' onClick={() => {
+
+
+                                <Button className='submit' disabled={bottoneDisabilitato(address, titolo, oraI, oraF, date)} variant='dark' onClick={() => {
 
                                     let calendarDate = moment(date).format('YYYY-MM-DD')
                                     let dataS=moment(calendarDate+', '+oraI,'YYYY-MM-DD, hh:mm a')
@@ -158,7 +142,7 @@ export default function Calendario(){
 
                                     let oraISan=moment(oraI, 'hh:mm a').subtract(30, 'minutes')
 
-                                    if(nome==='' || scopo==='' || oraI===null || oraF==='' || sala==='---' || date===''){
+                                    if(address==='' || titolo==='' || oraI===null || oraF==='' || sala==='---' || date===''){
                                         setBadge('form')
                                     }else if(state.sale[Number(sala)-1].prenotazioni.filter(p=> p.dataStart.isSame(dataS)).length!==0 ||
                                         state.sale[Number(sala)-1].prenotazioni.filter(p=> p.dataEnd.isSame(dataF)).length!==0 ||
@@ -169,15 +153,13 @@ export default function Calendario(){
                                         setBadge('occupata')
                                     }else if(dataS.isBefore(moment()) || dataF.isBefore(moment())) {
                                         setBadge('precedente')
-                                    }else if(state.sale[Number(sala)-1].prenotazioni.filter(p=> p.dataEnd.isSame(oraISan)).length!==0 ||
-                                        state.sale[Number(sala)-1].prenotazioni.filter(p=> oraISan.isBefore(p.dataEnd)).length!==0){
-                                        setBadge('sanitaria')
-                                    }else {
-                                        dispatch(addBooking(Number(sala),dataS,dataF,nome,scopo))
+                                    }else{
+                                        dispatch(addBooking(Number(sala),dataS,dataF,address,titolo,about))
                                         setBadge('conferma')
                                         setSala('')
-                                        setNome('')
-                                        setScopo('')
+                                        setAddress('')
+                                        setTitolo('')
+                                        setAbout('')
                                         setDate(moment())
                                         setOraI('')
                                         setOraF('')
@@ -189,7 +171,6 @@ export default function Calendario(){
                     </Row>
 
                     {badge=='conferma' ? <Alert variant={"success"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>PRENOTAZIONE AVVENUTA CON SUCCESSO!</Alert> : null}
-                    {badge=='sanitaria'? <Alert variant={"danger"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>ASPETTA 30 MIN PRIMA DI PRENOTARE! QUESTIONI SANITARIE</Alert> : null}
                     {badge=='form' ? <Alert variant={"danger"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>FORM COMPLETAMENTE/PARZIALMENTE VUOTO!</Alert> : null}
                     {badge=='occupata' ? <Alert variant={"danger"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>STANZA OCCUPPATA!</Alert> : null}
                     {badge=='precedente' ? <Alert variant={"danger"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>DATA PRECEDENTE!</Alert> : null}
@@ -201,6 +182,14 @@ export default function Calendario(){
                             </Button> : null}
                     </Row>
                 </Col>
+
+                <Row className="justify-content-sm-center">
+                    <Col xs={1} md={1}>
+                        <Button variant={"dark"} style={{marginBottom:"1em"}}>
+                            <Link to={"/add"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>+</span></Link>
+                        </Button>
+                    </Col>
+                </Row>
 
                     <Row className="justify-content-md-center">
                         <Col xs={3} sm={12} md={3}>
@@ -237,4 +226,17 @@ export default function Calendario(){
 
         </Container>
     )
+}
+
+function bottoneDisabilitato(address, titolo, oraI, oraF, date) {
+    let disabilitato;
+
+    if (address!='' && titolo!='' && oraI!=null && oraF!='' && date!='')
+    {
+        disabilitato= false;
+    }else {
+        disabilitato= true;
+    }
+
+    return(disabilitato)
 }

@@ -4,19 +4,20 @@ import 'moment/locale/it';
 
 export const initialState = {
     sale: [
-        {id:1, prenotazioni:[]},
-        {id:2, prenotazioni:[
+        {id:1,  prenotazioni:[
                 {   key:Math.random(),
-                    nome:'Giovanni',
-                    dataStart:moment('2022-02-14, 10:00','YYYY-MM-DD, hh:mm'),
-                    dataEnd:moment('2022-02-14, 11:30','YYYY-MM-DD, hh:mm'),
-                    scopo:'Conquistare il mondo'}]},
+                    titolo:'Giovanni',
+                    dataStart:moment('2023-01-03, 10:00','YYYY-MM-DD, hh:mm'),
+                    dataEnd:moment('2023-01-03, 11:30','YYYY-MM-DD, hh:mm'),
+                    address:'Via giordani 78',
+                    about:'Gita al parco'}]},
+        {id:2, prenotazioni:[]},
         {id:3, prenotazioni:[
                 {   key:Math.random(),
-                    nome:'Mario',
-                    dataStart:moment('2022-02-10, 10:00','YYYY-MM-DD, hh:mm'),
-                    dataEnd:moment('2022-02-10, 11:30','YYYY-MM-DD, hh:mm'),
-                    scopo:'Come mangiare bene'}]},
+                    titolo:'Mario',
+                    dataStart:moment('2023-01-04, 10:00','YYYY-MM-DD, hh:mm'),
+                    dataEnd:moment('2023-01-04, 11:30','YYYY-MM-DD, hh:mm'),
+                    address:'Come mangiare bene'}]},
         {id:4, prenotazioni:[]},
         {id:5, prenotazioni:[]},
     ],
@@ -33,10 +34,11 @@ export function Reducer(state,action){
             newArray[sIndex] = {...newArray[sIndex],
                 prenotazioni:[...newArray[sIndex].prenotazioni,
                     {   key: Math.random(),
-                        nome:action.nome,
+                        address:action.address,
                         dataStart:action.dataStart,
                         dataEnd:action.dataEnd,
-                        scopo:action.scopo
+                        titolo:action.titolo,
+                        about: action.about
                     }
                 ]}
 

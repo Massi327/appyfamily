@@ -115,18 +115,7 @@ export default function Add(){
                                 <Card.Title style={{fontSize: "30px"}}>PRENOTAZIONE STANZE</Card.Title>
                                 <FormGroup style={{marginBottom: "10px"}}>
                                     <Row className={"justify-content-center"}>
-                                        <Col lg={3} md={4} s={12} xs={12}>
-                                            <FormLabel><b>Stanza</b></FormLabel>
-                                            <FormSelect value={sala} style={{textAlign:"center"}} onChange={e=> setSala(e.target.value)}>
-                                                <option id={0}>---</option>
-                                                <option id={1}>1</option>
-                                                <option id={2}>2</option>
-                                                <option id={3}>3</option>
-                                                <option id={4}>4</option>
-                                                <option id={5}>5</option>
-                                            </FormSelect>
-                                        </Col>
-                                        <Col lg={7} md={8} xs={12} s={12}>
+                                        <Col md={12} xs={12}>
                                             <FormLabel><b>Giorno</b></FormLabel>
                                             <FormControl type='date' value={date} style={{textAlign:"center"}} onChange={e => setDate(e.target.value)}/>
                                         </Col>
@@ -211,7 +200,15 @@ export default function Add(){
                             </Button>
                         }
                     </Col>
+
+                    <Col xs={3} sm={12} md={3}>
+                        {
+                            <Button variant={"danger"} style={{marginTop: "5px", marginBottom: "5px"}}>
+                                <Link to={"/calendar"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>CALENDAR</span></Link>
+                            </Button> }
+                    </Col>
                 </Row>
+
 
             </Row>
 
