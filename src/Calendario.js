@@ -52,6 +52,7 @@ export default function Calendario(){
                 start: p.dataStart.toDate(),
                 end: p.dataEnd.toDate(),
                 resourceId: s.id,
+                prov: p.prova
             }
             events.push(event)
         })
@@ -124,8 +125,8 @@ export default function Calendario(){
                                     border: "none"
                                 };
 
-                            if (events.prov === 'Sport'){
-                                newStyle.backgroundColor = "red"
+                            if (events.prov === 'Park'){
+                                newStyle.backgroundColor = "green"
                             }
 
                                 return {
