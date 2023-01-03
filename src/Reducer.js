@@ -6,7 +6,7 @@ export const initialState = {
     sale: [
         {id:1,  prenotazioni:[
                 {   key:Math.random(),
-                    titolo:'Giovanni',
+                    titolo:'Park Hamill',
                     dataStart:moment('2023-01-03, 10:00','YYYY-MM-DD, hh:mm'),
                     dataEnd:moment('2023-01-03, 11:30','YYYY-MM-DD, hh:mm'),
                     address:'Via giordani 78',
@@ -14,7 +14,7 @@ export const initialState = {
         {id:2, prenotazioni:[]},
         {id:3, prenotazioni:[
                 {   key:Math.random(),
-                    titolo:'Mario',
+                    titolo:'Mario Draghi',
                     dataStart:moment('2023-01-04, 10:00','YYYY-MM-DD, hh:mm'),
                     dataEnd:moment('2023-01-04, 11:30','YYYY-MM-DD, hh:mm'),
                     address:'Come mangiare bene'}]},

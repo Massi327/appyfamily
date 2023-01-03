@@ -3,7 +3,7 @@ import moment from 'moment'
 import 'moment/locale/en-gb';
 import {useContext, useState} from "react";
 import {StateContext} from "./App";
-import {Alert, Button, Card, CloseButton, Col, Container, FormControl, FormGroup, FormLabel, FormSelect, Nav, Navbar, Row} from "react-bootstrap";
+import {Alert, Button, ButtonGroup, Card, CloseButton, Col, Container, DropdownButton, Dropdown, FormControl, FormGroup, FormLabel, FormSelect, Nav, Navbar, Row} from "react-bootstrap";
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import {addBooking, selected} from "./Action";
 import {Link} from "react-router-dom";
@@ -68,6 +68,17 @@ export default function Calendario(){
                 </Container>
             </Navbar>
 
+            <Row style={{textAlign: "center"}}>
+                <Col md={12} xs={12}>
+                    <ButtonGroup>
+                        <DropdownButton title="Category" id="bg-nested-dropdown">
+                            <Dropdown.Item eventKey="1">Sport</Dropdown.Item>
+                            <Dropdown.Item eventKey="2">Park</Dropdown.Item>
+                        </DropdownButton>
+                    </ButtonGroup>
+                </Col>
+            </Row>
+
             <Row>
                 <Col xl={8} lg={8} md={8} sm={12} xs={12}>
                     <Calendar
@@ -93,7 +104,7 @@ export default function Calendario(){
 
                         <Card className='form' border='dark' style={{background: 'linear-gradient(to top, red 10%, black 100%)', color: "white"}}>
                             <Card.Body>
-                                <Card.Title style={{fontSize: "30px"}}>PRENOTAZIONE STANZE</Card.Title>
+                                <Card.Title style={{fontSize: "30px"}}>Add Event</Card.Title>
 
                                 <FormGroup style={{marginBottom: "10px"}}>
                                     <FormLabel><b>Title*</b></FormLabel>
@@ -142,9 +153,7 @@ export default function Calendario(){
 
                                     let oraISan=moment(oraI, 'hh:mm a').subtract(30, 'minutes')
 
-                                    if(address==='' || titolo==='' || oraI===null || oraF==='' || sala==='---' || date===''){
-                                        setBadge('form')
-                                    }else if(state.sale[Number(sala)-1].prenotazioni.filter(p=> p.dataStart.isSame(dataS)).length!==0 ||
+                                    if(state.sale[Number(sala)-1].prenotazioni.filter(p=> p.dataStart.isSame(dataS)).length!==0 ||
                                         state.sale[Number(sala)-1].prenotazioni.filter(p=> p.dataEnd.isSame(dataF)).length!==0 ||
                                         state.sale[Number(sala)-1].prenotazioni.filter(p=> dataS.isBetween(p.dataStart,p.dataEnd)).length!==0 ||
                                         state.sale[Number(sala)-1].prenotazioni.filter(p=> dataF.isBetween(p.dataStart,p.dataEnd)).length!==0 ||
@@ -171,7 +180,6 @@ export default function Calendario(){
                     </Row>
 
                     {badge=='conferma' ? <Alert variant={"success"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>PRENOTAZIONE AVVENUTA CON SUCCESSO!</Alert> : null}
-                    {badge=='form' ? <Alert variant={"danger"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>FORM COMPLETAMENTE/PARZIALMENTE VUOTO!</Alert> : null}
                     {badge=='occupata' ? <Alert variant={"danger"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>STANZA OCCUPPATA!</Alert> : null}
                     {badge=='precedente' ? <Alert variant={"danger"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>DATA PRECEDENTE!</Alert> : null}
 
