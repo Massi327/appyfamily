@@ -3,8 +3,26 @@ import moment from 'moment'
 import 'moment/locale/en-gb';
 import {useContext, useState} from "react";
 import {StateContext} from "./App";
-import {Alert, Button, ButtonGroup, Card, CloseButton, Col, Container, DropdownButton, Dropdown, FormControl, FormGroup, FormLabel, FormSelect, Nav, Navbar, Row} from "react-bootstrap";
-import 'react-big-calendar/lib/css/react-big-calendar.css'
+import {
+    Alert,
+    Button,
+    ButtonGroup,
+    Card,
+    CloseButton,
+    Col,
+    Container,
+    DropdownButton,
+    Dropdown,
+    FormControl,
+    FormGroup,
+    FormLabel,
+    FormSelect,
+    Nav,
+    Navbar,
+    Row,
+    FormCheck
+} from "react-bootstrap";
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 import {addBooking, selected} from "./Action";
 import {Link} from "react-router-dom";
 
@@ -23,6 +41,7 @@ export default function Calendario(){
     const [sala,setSala] = useState('')
     const [badge,setBadge] = useState('')
     const [sel,setSel] = useState('')
+    const [prova,setProva] = useState('')
 
     let events =[]
     state.sale.map(s =>{
@@ -32,7 +51,7 @@ export default function Calendario(){
                 title: p.titolo,
                 start: p.dataStart.toDate(),
                 end: p.dataEnd.toDate(),
-                resourceId: s.id
+                resourceId: s.id,
             }
             events.push(event)
         })
@@ -96,6 +115,25 @@ export default function Calendario(){
                         resourceTitleAccessor='resourceTitle'
                         onSelectEvent={e => {dispatch(selected(e.id, e.resourceId))}}
                         onSelecting={range => handleSelect(range)}
+                        eventPropGetter= {
+                        (events) => {
+                                let newStyle = {
+                                    backgroundColor: "orange",
+                                    color: 'black',
+                                    borderRadius: "5px",
+                                    border: "none"
+                                };
+
+                            if (events.prov === 'Sport'){
+                                newStyle.backgroundColor = "red"
+                            }
+
+                                return {
+                                    className: "",
+                                    style: newStyle
+                                };
+                            }
+                        }
                     />
                 </Col>
 
@@ -122,9 +160,18 @@ export default function Calendario(){
                                 </FormGroup>
 
                                 <FormGroup style={{marginBottom: "10px"}}>
+                                    <FormLabel><b>Prova</b></FormLabel>
+                                    <FormSelect value={prova} style={{textAlign:"center"}} onChange={e=> setProva(e.target.value)}>
+                                        <option id={0}>---</option>
+                                        <option id={1}>Sport</option>
+                                        <option id={2}>Park</option>
+                                    </FormSelect>
+                                </FormGroup>
+
+                                <FormGroup style={{marginBottom: "10px"}}>
                                     <Row className={"justify-content-center"}>
                                         <Col md={12} xs={12}>
-                                            <FormLabel><b>Day</b></FormLabel>
+                                            <FormLabel><b>Day*</b></FormLabel>
                                             <FormControl type='date' value={date} style={{textAlign:"center"}} onChange={e => setDate(e.target.value)}/>
                                         </Col>
                                     </Row>
@@ -133,11 +180,11 @@ export default function Calendario(){
                                 <FormGroup style={{marginBottom: "10px"}}>
                                     <Row className={"justify-content-center"}>
                                         <Col lg={5} md={5} xs={12}>
-                                            <FormLabel><b>Start</b></FormLabel>
+                                            <FormLabel><b>Start*</b></FormLabel>
                                             <FormControl type='time' value={oraI} style={{textAlign:"center"}} onChange={e => setOraI(e.target.value)}/>
                                         </Col>
                                         <Col lg={5} md={5} xs={12}>
-                                            <FormLabel><b>End</b></FormLabel>
+                                            <FormLabel><b>End*</b></FormLabel>
                                             <FormControl type='time' value={oraF} style={{textAlign:"center"}} onChange={e => setOraF(e.target.value)}/>
                                         </Col>
                                     </Row>
@@ -163,7 +210,7 @@ export default function Calendario(){
                                     }else if(dataS.isBefore(moment()) || dataF.isBefore(moment())) {
                                         setBadge('precedente')
                                     }else{
-                                        dispatch(addBooking(Number(sala),dataS,dataF,address,titolo,about))
+                                        dispatch(addBooking(Number(sala),dataS,dataF,address,titolo,about,prova))
                                         setBadge('conferma')
                                         setSala('')
                                         setAddress('')
@@ -173,6 +220,7 @@ export default function Calendario(){
                                         setOraI('')
                                         setOraF('')
                                         setSel('')
+                                        setProva('')
                                     }
                                 }}>CONFERMA PRENOTAZIONE</Button>
                             </Card.Body>

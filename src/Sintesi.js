@@ -2,7 +2,7 @@ import {useContext} from "react";
 import {StateContext} from "./App";
 import {Button, Card, Col, Container, FormLabel, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
-import 'moment/locale/it';
+import 'moment/locale/en-gb';
 
 
 export default function Sintesi(){
@@ -36,6 +36,9 @@ export default function Sintesi(){
                                 </FormLabel>
                                 <FormLabel><b>About:</b>
                                     <div>{state.sale.filter(s=>s.id===state.rid)[0].prenotazioni.filter(p=>p.key===state.id)[0].about.toUpperCase()}</div>
+                                </FormLabel>
+                                <FormLabel><b>Prova:</b>
+                                    <div>{state.sale.filter(s=>s.id===state.rid)[0].prenotazioni.filter(p=>p.key===state.id)[0].prova}</div>
                                 </FormLabel>
                             </Row>
 
