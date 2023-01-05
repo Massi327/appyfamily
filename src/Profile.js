@@ -1,7 +1,7 @@
 import {useContext, useState} from "react";
 import {StateContext} from "./App";
 import {Link} from "react-router-dom";
-import {Button, Col, Container, Nav, Navbar, Row} from "react-bootstrap";
+import {Button, Col, Container, Nav, Navbar, Row, Card} from "react-bootstrap";
 
 export default function Profile(){
 
@@ -20,6 +20,22 @@ export default function Profile(){
                     </Nav>
                 </Container>
             </Navbar>
+
+            <Row>
+                <Card border='none' style={{ width: '18rem' }}>
+                    <Card.Img variant="top" src="holder.js/100px180" />
+                    <Card.Body>
+                        <Card.Title>Profile name</Card.Title>
+                        <Card.Text>
+                            Rank, Number of connections
+                        </Card.Text>
+                        <Button variant="primary">Connect</Button>
+                        <Button variant="primary">Message</Button>
+                    </Card.Body>
+                </Card>
+            </Row>
+
+            {/*TODO: card eventi*/}
 
             <Row className="justify-content-md-center">
                 <Col xs={12} sm={12} md={3}>
