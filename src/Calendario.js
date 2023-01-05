@@ -161,6 +161,11 @@ export default function Calendario(){
                                 </FormGroup>
 
                                 <FormGroup style={{marginBottom: "10px"}}>
+                                    <FormLabel><b>ProvaLuca</b></FormLabel>
+                                    <FormControl type='text' value={about} style={{textAlign:"left"}} placeholder='About' onChange={e=> setAbout(e.target.value)}/>
+                                </FormGroup>
+
+                                <FormGroup style={{marginBottom: "10px"}}>
                                     <FormLabel><b>Categoria</b></FormLabel>
                                     <FormSelect value={categoria} style={{textAlign:"center"}} onChange={e=> setCategoria(e.target.value)}>
                                         <option id={0}>---</option>
