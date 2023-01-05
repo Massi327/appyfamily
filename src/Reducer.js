@@ -11,7 +11,7 @@ export const initialState = {
                     dataEnd:moment('2023-01-03, 11:30','YYYY-MM-DD, hh:mm'),
                     address:'Via giordani 78',
                     about:'Gita al parco',
-                    prova: 'Park'
+                    categoria: 'Park'
                 }]},
         {id:1, prenotazioni:[]},
         {id:1, prenotazioni:[
@@ -40,7 +40,7 @@ export function Reducer(state,action){
                         dataEnd:action.dataEnd,
                         titolo:action.titolo,
                         about: action.about,
-                        prova: action.prova
+                        categoria: action.categoria
                     }
                 ]}
 

@@ -41,7 +41,7 @@ export default function Calendario(){
     const [sala,setSala] = useState('')
     const [badge,setBadge] = useState('')
     const [sel,setSel] = useState('')
-    const [prova,setProva] = useState('')
+    const [categoria,setCategoria] = useState('')
 
     let events =[]
     state.sale.map(s =>{
@@ -52,7 +52,7 @@ export default function Calendario(){
                 start: p.dataStart.toDate(),
                 end: p.dataEnd.toDate(),
                 resourceId: s.id,
-                prov: p.prova
+                categoria: p.categoria
             }
             events.push(event)
         })
@@ -125,7 +125,7 @@ export default function Calendario(){
                                     border: "none"
                                 };
 
-                            if (events.prov === 'Park'){
+                            if (events.categoria === 'Park'){
                                 newStyle.backgroundColor = "green"
                             }
 
@@ -161,8 +161,8 @@ export default function Calendario(){
                                 </FormGroup>
 
                                 <FormGroup style={{marginBottom: "10px"}}>
-                                    <FormLabel><b>Prova</b></FormLabel>
-                                    <FormSelect value={prova} style={{textAlign:"center"}} onChange={e=> setProva(e.target.value)}>
+                                    <FormLabel><b>Categoria</b></FormLabel>
+                                    <FormSelect value={categoria} style={{textAlign:"center"}} onChange={e=> setCategoria(e.target.value)}>
                                         <option id={0}>---</option>
                                         <option id={1}>Sport</option>
                                         <option id={2}>Park</option>
@@ -211,7 +211,7 @@ export default function Calendario(){
                                     }else if(dataS.isBefore(moment()) || dataF.isBefore(moment())) {
                                         setBadge('precedente')
                                     }else{
-                                        dispatch(addBooking(Number(sala),dataS,dataF,address,titolo,about,prova))
+                                        dispatch(addBooking(Number(sala),dataS,dataF,address,titolo,about,categoria))
                                         setBadge('conferma')
                                         setSala('')
                                         setAddress('')
@@ -221,7 +221,7 @@ export default function Calendario(){
                                         setOraI('')
                                         setOraF('')
                                         setSel('')
-                                        setProva('')
+                                        setCategoria('')
                                     }
                                 }}>CONFERMA PRENOTAZIONE</Button>
                             </Card.Body>

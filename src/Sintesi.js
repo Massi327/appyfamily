@@ -37,8 +37,8 @@ export default function Sintesi(){
                                 <FormLabel><b>About:</b>
                                     <div>{state.sale.filter(s=>s.id===state.rid)[0].prenotazioni.filter(p=>p.key===state.id)[0].about.toUpperCase()}</div>
                                 </FormLabel>
-                                <FormLabel><b>Prova:</b>
-                                    <div>{state.sale.filter(s=>s.id===state.rid)[0].prenotazioni.filter(p=>p.key===state.id)[0].prova}</div>
+                                <FormLabel><b>Categoria:</b>
+                                    <div>{state.sale.filter(s=>s.id===state.rid)[0].prenotazioni.filter(p=>p.key===state.id)[0].categoria}</div>
                                 </FormLabel>
                             </Row>
 

@@ -27,14 +27,16 @@ export default function Add(){
 
     const [state,dispatch] = useContext(StateContext)
 
-    const [nome,setNome] = useState('')
-    const [scopo,setScopo] = useState('')
+    const [address,setAddress] = useState('')
+    const [titolo,setTitolo] = useState('')
+    const [about,setAbout] = useState('')
     const [date,setDate] = useState(new Date())
     const [oraI,setOraI] = useState('')
     const [oraF,setOraF] = useState('')
     const [sala,setSala] = useState('')
     const [badge,setBadge] = useState('')
     const [sel,setSel] = useState('')
+    const [categoria,setCategoria] = useState('')
     const calendariohidden = 'false';
 
     let events =[]
@@ -112,35 +114,57 @@ export default function Add(){
 
                         <Card className='form' border='dark' style={{background: 'linear-gradient(to top, red 10%, black 100%)', color: "white"}}>
                             <Card.Body>
-                                <Card.Title style={{fontSize: "30px"}}>PRENOTAZIONE STANZE</Card.Title>
+                                <Card.Title style={{fontSize: "30px"}}>Add Event</Card.Title>
+
+                                <FormGroup style={{marginBottom: "10px"}}>
+                                    <FormLabel><b>Title*</b></FormLabel>
+                                    <FormControl type='text' value={titolo} style={{textAlign:"left"}} placeholder='Title' onChange={e=> setTitolo(e.target.value)}/>
+                                </FormGroup>
+
+                                <FormGroup style={{marginBottom: "10px"}}>
+                                    <FormLabel><b>Address*</b></FormLabel>
+                                    <FormControl type='text' value={address} style={{textAlign:"left"}} placeholder='Address' onChange={e=> setAddress(e.target.value)}/>
+                                </FormGroup>
+
+                                <FormGroup style={{marginBottom: "10px"}}>
+                                    <FormLabel><b>About</b></FormLabel>
+                                    <FormControl type='text' value={about} style={{textAlign:"left"}} placeholder='About' onChange={e=> setAbout(e.target.value)}/>
+                                </FormGroup>
+
+                                <FormGroup style={{marginBottom: "10px"}}>
+                                    <FormLabel><b>Categoria</b></FormLabel>
+                                    <FormSelect value={categoria} style={{textAlign:"center"}} onChange={e=> setCategoria(e.target.value)}>
+                                        <option id={0}>---</option>
+                                        <option id={1}>Sport</option>
+                                        <option id={2}>Park</option>
+                                    </FormSelect>
+                                </FormGroup>
+
                                 <FormGroup style={{marginBottom: "10px"}}>
                                     <Row className={"justify-content-center"}>
                                         <Col md={12} xs={12}>
-                                            <FormLabel><b>Giorno</b></FormLabel>
+                                            <FormLabel><b>Day*</b></FormLabel>
                                             <FormControl type='date' value={date} style={{textAlign:"center"}} onChange={e => setDate(e.target.value)}/>
                                         </Col>
                                     </Row>
                                 </FormGroup>
+
                                 <FormGroup style={{marginBottom: "10px"}}>
                                     <Row className={"justify-content-center"}>
                                         <Col lg={5} md={5} xs={12}>
-                                            <FormLabel><b>Inizio</b></FormLabel>
+                                            <FormLabel><b>Start*</b></FormLabel>
                                             <FormControl type='time' value={oraI} style={{textAlign:"center"}} onChange={e => setOraI(e.target.value)}/>
                                         </Col>
                                         <Col lg={5} md={5} xs={12}>
-                                            <FormLabel><b>Fine</b></FormLabel>
+                                            <FormLabel><b>End*</b></FormLabel>
                                             <FormControl type='time' value={oraF} style={{textAlign:"center"}} onChange={e => setOraF(e.target.value)}/>
                                         </Col>
                                     </Row>
                                 </FormGroup>
-                                <FormGroup style={{marginBottom: "10px"}}>
-                                    <FormLabel><b>Scopo e Referente</b></FormLabel>
-                                    <FormControl type='text' value={scopo} style={{textAlign:"center"}} placeholder='Conquistare il mondo è sempre il nostro scopo!' onChange={e=> setScopo(e.target.value)}/>
-                                    <br/>
-                                    <FormControl type='text' value={nome} style={{textAlign:"center"}} placeholder='Nome Referente' onChange={e=> setNome(e.target.value)}/>
-                                </FormGroup>
 
-                                <Button className='submit' variant='dark' onClick={() => {
+
+
+                                <Button className='submit' disabled={bottoneDisabilitato(address, titolo, oraI, oraF, date)} variant='dark' onClick={() => {
 
                                     let calendarDate = moment(date).format('YYYY-MM-DD')
                                     let dataS=moment(calendarDate+', '+oraI,'YYYY-MM-DD, hh:mm a')
@@ -148,9 +172,7 @@ export default function Add(){
 
                                     let oraISan=moment(oraI, 'hh:mm a').subtract(30, 'minutes')
 
-                                    if(nome==='' || scopo==='' || oraI===null || oraF==='' || sala==='---' || date===''){
-                                        setBadge('form')
-                                    }else if(state.sale[Number(sala)-1].prenotazioni.filter(p=> p.dataStart.isSame(dataS)).length!==0 ||
+                                    if(state.sale[Number(sala)-1].prenotazioni.filter(p=> p.dataStart.isSame(dataS)).length!==0 ||
                                         state.sale[Number(sala)-1].prenotazioni.filter(p=> p.dataEnd.isSame(dataF)).length!==0 ||
                                         state.sale[Number(sala)-1].prenotazioni.filter(p=> dataS.isBetween(p.dataStart,p.dataEnd)).length!==0 ||
                                         state.sale[Number(sala)-1].prenotazioni.filter(p=> dataF.isBetween(p.dataStart,p.dataEnd)).length!==0 ||
@@ -159,19 +181,18 @@ export default function Add(){
                                         setBadge('occupata')
                                     }else if(dataS.isBefore(moment()) || dataF.isBefore(moment())) {
                                         setBadge('precedente')
-                                    }else if(state.sale[Number(sala)-1].prenotazioni.filter(p=> p.dataEnd.isSame(oraISan)).length!==0 ||
-                                        state.sale[Number(sala)-1].prenotazioni.filter(p=> oraISan.isBefore(p.dataEnd)).length!==0){
-                                        setBadge('sanitaria')
-                                    }else {
-                                        dispatch(addBooking(Number(sala),dataS,dataF,nome,scopo))
+                                    }else{
+                                        dispatch(addBooking(Number(sala),dataS,dataF,address,titolo,about,categoria))
                                         setBadge('conferma')
                                         setSala('')
-                                        setNome('')
-                                        setScopo('')
+                                        setAddress('')
+                                        setTitolo('')
+                                        setAbout('')
                                         setDate(moment())
                                         setOraI('')
                                         setOraF('')
                                         setSel('')
+                                        setCategoria('')
                                     }
                                 }}>CONFERMA PRENOTAZIONE</Button>
                             </Card.Body>
@@ -214,4 +235,17 @@ export default function Add(){
 
         </Container>
     )
+}
+
+function bottoneDisabilitato(address, titolo, oraI, oraF, date) {
+    let disabilitato;
+
+    if (address!='' && titolo!='' && oraI!=null && oraF!='' && date!='')
+    {
+        disabilitato= false;
+    }else {
+        disabilitato= true;
+    }
+
+    return(disabilitato)
 }
