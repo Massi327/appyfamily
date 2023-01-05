@@ -75,6 +75,7 @@ export default function Add(){
         setSala(range.resourceId)
     }
 
+
     return(
         <Container fluid>
 
@@ -109,7 +110,7 @@ export default function Add(){
                     />
                 </Col> : null}
 
-                <Col xl={4} lg={4} md={4} sm={12} xs={12}>
+                <Col md={6} sm={12} xs={12}>
                     <Row>
 
                         <Card className='form' border='dark' style={{background: 'linear-gradient(to top, red 10%, black 100%)', color: "white"}}>

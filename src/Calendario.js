@@ -1,7 +1,7 @@
 import {Calendar, momentLocalizer} from "react-big-calendar";
 import moment from 'moment'
 import 'moment/locale/en-gb';
-import {useContext, useState} from "react";
+import {useCallback, useContext, useState} from "react";
 import {StateContext} from "./App";
 import {
     Alert,
@@ -23,8 +23,8 @@ import {
     FormCheck
 } from "react-bootstrap";
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import {addBooking, selected} from "./Action";
-import {Link} from "react-router-dom";
+import {addBooking, selected, selectedSlot} from "./Action";
+import {Link, useNavigate} from "react-router-dom";
 
 const localizer = momentLocalizer(moment)
 
@@ -42,6 +42,8 @@ export default function Calendario(){
     const [badge,setBadge] = useState('')
     const [sel,setSel] = useState('')
     const [categoria,setCategoria] = useState('')
+
+    const navigate = useNavigate();
 
     let events =[]
     state.sale.map(s =>{
@@ -72,6 +74,20 @@ export default function Calendario(){
         setOraF(end)
         setDate(giorno)
         setSala(range.resourceId)
+    }
+
+    let selectSlot = (slotInfo) => {
+        setSel('true')
+        let giorno= moment(slotInfo.start)
+        let start= moment(slotInfo.start, 'LT')
+        giorno= moment(giorno).format('yyyy-MM-DD')
+        start= moment(start).format('LT')
+        setOraI(slotInfo.start)
+        setDate(slotInfo.giorno)
+        dispatch(selectedSlot(giorno, start, 'true'))
+        setSala(1)
+
+        navigate('/add', {replace: true})
     }
 
     return(
@@ -116,8 +132,7 @@ export default function Calendario(){
                         resourceTitleAccessor='resourceTitle'
                         onSelectEvent={e => {dispatch(selected(e.id, e.resourceId))}}
                         onSelecting={range => handleSelect(range)}
-                        eventPropGetter= {
-                        (events) => {
+                        eventPropGetter= {(events) => {
                                 let newStyle = {
                                     backgroundColor: "orange",
                                     color: 'black',
@@ -133,8 +148,8 @@ export default function Calendario(){
                                     className: "",
                                     style: newStyle
                                 };
-                            }
-                        }
+                            }}
+                        onSelectSlot={ slotInfo => selectSlot(slotInfo)}
                     />
                 </Col>
 

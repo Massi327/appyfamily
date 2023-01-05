@@ -1,4 +1,4 @@
-import {ADD_BOOKNG, SELECTED} from "./Action";
+import {ADD_BOOKNG, SELECTED, SELECTEDSLOT} from "./Action";
 import moment from 'moment'
 import 'moment/locale/it';
 
@@ -23,7 +23,9 @@ export const initialState = {
     ],
     id:0,
     rid:0,
-    categoria: []
+    giorno: moment('').format('yyyy-MM-DD'),
+    start: moment('','yyyy-MM-DD').format('LT'),
+    c: 'false',
 }
 
 export function Reducer(state,action){
@@ -35,10 +37,10 @@ export function Reducer(state,action){
             newArray[sIndex] = {...newArray[sIndex],
                 prenotazioni:[...newArray[sIndex].prenotazioni,
                     {   key: Math.random(),
-                        address:action.address,
-                        dataStart:action.dataStart,
-                        dataEnd:action.dataEnd,
-                        titolo:action.titolo,
+                        address: action.address,
+                        dataStart: action.dataStart,
+                        dataEnd: action.dataEnd,
+                        titolo: action.titolo,
                         about: action.about,
                         categoria: action.categoria
                     }
@@ -52,9 +54,18 @@ export function Reducer(state,action){
         case SELECTED:
             return {
                 ...state,
-                id:action.id,
+                id: action.id,
                 rid: action.rid
             }
+
+        case SELECTEDSLOT:
+            return {
+                ...state,
+                giorno: action.giorno,
+                start: action.start,
+                c: action.c
+            }
+
 
 
         default:
