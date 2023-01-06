@@ -34,6 +34,65 @@
         margin-right: 8px;
     }
 
+    .d-flex{
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
+    .search-button{
+        margin-left: 10px;
+    }
+
+    .search-icons{
+        margin-top:10px;
+        margin-bottom:10px;
+
+    }
+
+
+    .justify-content-sm-center{
+        justify-content: center;
+
+    }
+
+    .cont-menu-rec-nearme{
+        align-content:center;
+        justify-content:center;
+
+
+    }
+
+    .menu-rec-nearme{
+        background-color:#2d325a;
+        border-radius:10px;
+        height:39px;
+        width:290px;
+        margin-bottom:30px;
+
+
+
+    }
+
+    .button-recommended{
+        background-color:#181d3d;
+        border-color: #181d3d;
+        border-radius:5px;
+        height:28px;
+        width:122px;
+        margin-top:5px;
+
+
+    }
+
+    .button.text{
+        color:white;
+    }
+
+    .navigbar-bottom{
+        background-image: url("./images/Ellipse-bottom-menu.svg");
+        margin:0px;
+    }
+
 
 }
 
