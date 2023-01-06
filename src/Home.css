@@ -1,0 +1,39 @@
+
+@import url("https://fonts.googleapis.com/css?family=Inter:400,300,500,600|Josefin+Sans:400");
+
+
+@media screen and (min-width:280px) and (max-width:650px) {
+
+    .container{
+        background-image: url(./images/rectangle-56.svg);
+        background-repeat: no-repeat;
+        margin-right:0em;
+    }
+
+    .notifications{
+
+        background-repeat: no-repeat;
+    }
+
+    .title{
+
+        font-family: 'Josefin Sans';
+        color: white;
+        font-size: 24;
+        font-weight: 400;
+        letter-spacing: -0.41px;
+        line-height: 22px;
+        min-height: 31px;
+        text-align: center;
+        width: 145px;
+
+    }
+
+    .logo{
+        height: 44px;
+        margin-right: 8px;
+    }
+
+
+}
+

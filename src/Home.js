@@ -3,21 +3,27 @@ import {StateContext} from "./App";
 import {Link} from "react-router-dom";
 import {Button, Card, Col, Container, Form, Image, Nav, Navbar, Row} from "react-bootstrap";
 import img_1 from "./img_1.png";
+import "./Home.css";
+import logo from './images/APPy family-logo.png';
+import notif from './images/notifications-icon.svg';
+import message from './images/messages-icon.svg';
+import help from './images/help-icon.svg'
 
 export default function Home(){
 
     const [state,dispatch] = useContext(StateContext)
 
     return(
-        <Container fluid style={{height:"79vh"}}>
+        <Container className="container">
 
-            <Navbar style={{overflow: "hidden", top: "0px", width: "100%"}} bg="dark" variant="dark">
+            <Navbar className="navigbar" style={{overflow: "hidden", top: "0px", width: "100%"}}>
                 <Container>
-                    <Navbar.Brand href="/home">APPy Family</Navbar.Brand>
+                    <span><img src={logo} className="logo"/></span>
+                    <Navbar.Brand className="title"  style={{color:"white"}} href="/home"> APPy Family</Navbar.Brand>
                     <Nav>
-                        <Nav.Link style={{textAlign: "right"}} href="/notifications">Notifications</Nav.Link>
-                        <Nav.Link style={{textAlign: "right"}} href="/messages">Messages</Nav.Link>
-                        <Nav.Link style={{textAlign: "right"}} href="/tutorial">Tutorial</Nav.Link>
+                        <Nav.Link className="notifications" style={{textAlign: "right"}} href="/notifications"><img src={notif} alt="Notifications" className="icon"/></Nav.Link>
+                        <Nav.Link style={{textAlign: "right"}} href="/messages"><img src={message} alt="Messages" className="icon"/></Nav.Link>
+                        <Nav.Link style={{textAlign: "right"}} href="/tutorial"><img src={help} alt="Help" className="icon"/></Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
