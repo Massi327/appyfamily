@@ -18,8 +18,9 @@ import {
     Row
 } from "react-bootstrap";
 import 'react-big-calendar/lib/css/react-big-calendar.css'
-import {addBooking, selected} from "./Action";
+import {addBooking, selected, selectedSlot} from "./Action";
 import {Link} from "react-router-dom";
+import {initialState} from "./Reducer";
 
 const localizer = momentLocalizer(moment)
 
@@ -33,7 +34,7 @@ export default function Add(){
     const [date,setDate] = useState(new Date())
     const [oraI,setOraI] = useState('')
     const [oraF,setOraF] = useState('')
-    const [sala,setSala] = useState('')
+    const [sala,setSala] = useState(1)
     const [badge,setBadge] = useState('')
     const [sel,setSel] = useState('')
     const [categoria,setCategoria] = useState('')
@@ -53,13 +54,7 @@ export default function Add(){
         })
     })
 
-    const resourceMap = [
-        {resourceId: 1, resourceTitle: 'Sala 1'},
-        {resourceId: 2, resourceTitle: 'Sala 2'},
-        {resourceId: 3, resourceTitle: 'Sala 3'},
-        {resourceId: 4, resourceTitle: 'Sala 4'},
-        {resourceId: 5, resourceTitle: 'Sala 5'}
-    ]
+    const resourceMap = [{resourceId: 1, resourceTitle: ''},]
 
     let handleSelect = (range) => {
         setSel('true')
@@ -135,22 +130,34 @@ export default function Add(){
                                 <FormGroup style={{marginBottom: "10px"}}>
                                     <FormLabel><b>Categoria</b></FormLabel>
                                     <FormSelect value={categoria} style={{textAlign:"center"}} onChange={e=> setCategoria(e.target.value)}>
-                                        <option id={0}>---</option>
-                                        <option id={1}>Sport</option>
-                                        <option id={2}>Park</option>
+
+                                        {state.categoriav.map(cat => (
+                                            <option value={cat.value}>{cat}</option>
+                                        ))}
+
                                     </FormSelect>
                                 </FormGroup>
 
-                                <FormGroup style={{marginBottom: "10px"}}>
+                                {state.c == 'false' ? <FormGroup style={{marginBottom: "10px"}}>
                                     <Row className={"justify-content-center"}>
                                         <Col md={12} xs={12}>
                                             <FormLabel><b>Day*</b></FormLabel>
                                             <FormControl type='date' value={date} style={{textAlign:"center"}} onChange={e => setDate(e.target.value)}/>
                                         </Col>
                                     </Row>
-                                </FormGroup>
+                                </FormGroup> :
+                                    <FormGroup style={{marginBottom: "10px"}}>
+                                        <Row className={"justify-content-center"}>
+                                            <Col md={12} xs={12}>
+                                                <FormLabel><b>Day*</b></FormLabel>
+                                                <FormControl type='date' value={state.giorno} style={{textAlign:"center"}} onChange={e => {setDate(e.target.value)
+                                                    dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), state.start, 'false'))
+                                                    setOraI(state.start)}}/>
+                                            </Col>
+                                        </Row>
+                                    </FormGroup>}
 
-                                <FormGroup style={{marginBottom: "10px"}}>
+                                {state.c == 'false' ? <FormGroup style={{marginBottom: "10px"}}>
                                     <Row className={"justify-content-center"}>
                                         <Col lg={5} md={5} xs={12}>
                                             <FormLabel><b>Start*</b></FormLabel>
@@ -161,7 +168,20 @@ export default function Add(){
                                             <FormControl type='time' value={oraF} style={{textAlign:"center"}} onChange={e => setOraF(e.target.value)}/>
                                         </Col>
                                     </Row>
-                                </FormGroup>
+                                </FormGroup> : <FormGroup style={{marginBottom: "10px"}}>
+                                        <Row className={"justify-content-center"}>
+                                            <Col lg={5} md={5} xs={12}>
+                                                <FormLabel><b>Start*</b></FormLabel>
+                                                <FormControl type='time' value={state.start} style={{textAlign:"center"}} onChange={e => {setOraI(e.target.value)
+                                                    dispatch(selectedSlot(state.giorno, moment('','yyyy-MM-DD').format('LT'), 'false'))
+                                                    setDate(state.giorno)}}/>
+                                            </Col>
+                                            <Col lg={5} md={5} xs={12}>
+                                                <FormLabel><b>End*</b></FormLabel>
+                                                <FormControl type='time' value={oraF} style={{textAlign:"center"}} onChange={e => setOraF(e.target.value)}/>
+                                            </Col>
+                                        </Row>
+                                    </FormGroup>}
 
 
 
@@ -184,8 +204,6 @@ export default function Add(){
                                         setBadge('precedente')
                                     }else{
                                         dispatch(addBooking(Number(sala),dataS,dataF,address,titolo,about,categoria))
-                                        setBadge('conferma')
-                                        setSala('')
                                         setAddress('')
                                         setTitolo('')
                                         setAbout('')
@@ -194,6 +212,7 @@ export default function Add(){
                                         setOraF('')
                                         setSel('')
                                         setCategoria('')
+                                        dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('','yyyy-MM-DD').format('LT'), 'false'))
                                     }
                                 }}>CONFERMA PRENOTAZIONE</Button>
                             </Card.Body>
@@ -225,7 +244,7 @@ export default function Add(){
 
                     <Col xs={3} sm={12} md={3}>
                         {
-                            <Button variant={"danger"} style={{marginTop: "5px", marginBottom: "5px"}}>
+                            <Button variant={"danger"} style={{marginTop: "5px", marginBottom: "5px"}} onClick={() => dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('','yyyy-MM-DD').format('LT'), 'false'))}>
                                 <Link to={"/calendar"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>CALENDAR</span></Link>
                             </Button> }
                     </Col>

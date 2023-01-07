@@ -26,6 +26,7 @@ export const initialState = {
     giorno: moment('').format('yyyy-MM-DD'),
     start: moment('','yyyy-MM-DD').format('LT'),
     c: 'false',
+    categoriav: ['---', 'Sport', 'Park']
 }
 
 export function Reducer(state,action){

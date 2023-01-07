@@ -38,10 +38,12 @@ export default function Calendario(){
     const [date,setDate] = useState(new Date())
     const [oraI,setOraI] = useState('')
     const [oraF,setOraF] = useState('')
-    const [sala,setSala] = useState('')
+    const [sala,setSala] = useState(1)
     const [badge,setBadge] = useState('')
     const [sel,setSel] = useState('')
     const [categoria,setCategoria] = useState('')
+
+    const addHidden = 'false';
 
     const navigate = useNavigate();
 
@@ -82,10 +84,9 @@ export default function Calendario(){
         let start= moment(slotInfo.start, 'LT')
         giorno= moment(giorno).format('yyyy-MM-DD')
         start= moment(start).format('LT')
-        setOraI(slotInfo.start)
-        setDate(slotInfo.giorno)
+        setOraI(start)
+        setDate(giorno)
         dispatch(selectedSlot(giorno, start, 'true'))
-        setSala(1)
 
         navigate('/add', {replace: true})
     }
@@ -153,7 +154,7 @@ export default function Calendario(){
                     />
                 </Col>
 
-                <Col xl={4} lg={4} md={4} sm={12} xs={12}>
+                {addHidden=="true" ? <Col xl={4} lg={4} md={4} sm={12} xs={12}>
                     <Row>
 
                         <Card className='form' border='dark' style={{background: 'linear-gradient(to top, red 10%, black 100%)', color: "white"}}>
@@ -172,11 +173,6 @@ export default function Calendario(){
 
                                 <FormGroup style={{marginBottom: "10px"}}>
                                     <FormLabel><b>About</b></FormLabel>
-                                    <FormControl type='text' value={about} style={{textAlign:"left"}} placeholder='About' onChange={e=> setAbout(e.target.value)}/>
-                                </FormGroup>
-
-                                <FormGroup style={{marginBottom: "10px"}}>
-                                    <FormLabel><b>Prova Eli</b></FormLabel>
                                     <FormControl type='text' value={about} style={{textAlign:"left"}} placeholder='About' onChange={e=> setAbout(e.target.value)}/>
                                 </FormGroup>
 
@@ -233,7 +229,6 @@ export default function Calendario(){
                                     }else{
                                         dispatch(addBooking(Number(sala),dataS,dataF,address,titolo,about,categoria))
                                         setBadge('conferma')
-                                        setSala('')
                                         setAddress('')
                                         setTitolo('')
                                         setAbout('')
@@ -258,7 +253,7 @@ export default function Calendario(){
                                 <Link to={"/sintesi"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>SINTESI PRENOTAZIONE</span></Link>
                             </Button> : null}
                     </Row>
-                </Col>
+                </Col> : null}
 
                 <Row className="justify-content-sm-center">
                     <Col xs={1} md={1}>
