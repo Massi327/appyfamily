@@ -23,12 +23,12 @@ export default function Home(){
     const [state,dispatch] = useContext(StateContext)
 
     return(
-        <Container>
+        <Container className="background">
         <Container className="container">
 
             <Navbar className="navigbar" style={{overflow: "hidden", top: "0px", width: "100%"}}>
                 <Container>
-                    <span><img src={logo} className="logo"/></span>
+                    <span> <img src={logo} className="logo"/></span>
                     <Navbar.Brand className="title"  style={{color:"white"}} href="/home"> APPy Family</Navbar.Brand>
                     <Nav>
                         <Nav.Link className="notifications" style={{textAlign: "right"}} href="/notifications"><img src={notif} alt="Notifications" className="icon"/></Nav.Link>
@@ -83,8 +83,8 @@ export default function Home(){
             </Container>
 
         </Container>
-
-            <Card style={{ width: '18rem' }}>
+            <Container className="background2">
+            <Card className= "post">
                 <Card.Img variant="top" src="holder.js/100px180" />
                 <Card.Body>
                     <Card.Title>Card Title</Card.Title>
@@ -95,7 +95,7 @@ export default function Home(){
                     <Button variant="primary">Go somewhere</Button>
                 </Card.Body>
             </Card>
-            <Card style={{ width: '18rem' }}>
+            <Card className= "post">
                 <Card.Img variant="top" src="holder.js/100px180" />
                 <Card.Body>
                     <Card.Title>Card Title</Card.Title>
@@ -106,7 +106,7 @@ export default function Home(){
                     <Button variant="primary">Go somewhere</Button>
                 </Card.Body>
             </Card>
-            <Card style={{ width: '18rem' }}>
+            <Card className= "post">
                 <Card.Img variant="top" src="holder.js/100px180" />
                 <Card.Body>
                     <Card.Title>Card Title</Card.Title>
@@ -117,7 +117,7 @@ export default function Home(){
                     <Button variant="primary">Go somewhere</Button>
                 </Card.Body>
             </Card>
-            <Card style={{ width: '18rem' }}>
+            <Card className= "post">
                 <Card.Img variant="top" src="holder.js/100px180" />
                 <Card.Body>
                     <Card.Title>Card Title</Card.Title>
@@ -128,7 +128,7 @@ export default function Home(){
                     <Button variant="primary">Go somewhere</Button>
                 </Card.Body>
             </Card>
-            <Card style={{ width: '18rem' }}>
+            <Card className= "post">
                 <Card.Img variant="top" src="holder.js/100px180" />
                 <Card.Body>
                     <Card.Title>Card Title</Card.Title>
@@ -145,7 +145,7 @@ export default function Home(){
                     <Link to={"/add"} style={{color: "white", textDecoration: "none"}}><span><img src={add} alt="Add" className="search-icon"/></span></Link>
                 </Col>
             </Row>
-
+            </Container>
 
             <Container className="navigbar-bottom">
                 <Row className="justify-content-sm-center">
