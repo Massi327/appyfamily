@@ -21,14 +21,18 @@ import addicon from './images/Add-icon.svg'
 import calendar from './images/Calendar.svg'
 import profile from './images/Profile.svg'
 import settings from './images/Settings.svg'
-import imgcard1 from './images/Event-card-1.png'
+import clock from './images/Clock.svg'
+import map from './images/Map.svg'
+import imgcard2 from './images/Image-event-2.svg'
+import imgcard1 from './images/Image-event-1.svg'
 
 export default function Home(){
 
     const [state,dispatch] = useContext(StateContext)
 
     return(
-        <Container>
+        <Container className="background">
+
         <Container className="container">
 
             <Navbar className="navigbar" style={{overflow: "hidden", top: "0px", width: "100%"}}>
@@ -89,9 +93,13 @@ export default function Home(){
 
         </Container>
 
-            <Card style={{ width: '22rem', height: '8rem', marginBottom: '1em' , borderRadius: '10px', flexDirection: 'row'}}>
+            <Container className="background2">
+
+
+            <Card className="post" style={{ width: '21rem', height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                 <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem'}} />
                 <Card.Body>
+                    <Card.Text className="event-time-1" style={{textAlign: 'left'}}>JAN 7 • 10AM</Card.Text>
                     <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Play in the Park</Card.Title>
                     <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
                         Hosted by the Muse Th.
@@ -99,9 +107,36 @@ export default function Home(){
                     <Card.Text className="event-subsubtitle-1" style={{textAlign: 'left'}}>
                         Public
                     </Card.Text>
-                    <Button variant="primary">Participate</Button>
+                    <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                        <img src={clock} alt="Near me" className="icon"/> 7 Jan 2023, 10AM - 11AM
+                    </Card.Text>
+                    <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                        <img src={map} alt="Near me" className="icon"/> 112 Barrack Street, NR3 1TX, UK
+                    </Card.Text>
                 </Card.Body>
             </Card>
+
+                <Card className="post" style={{ width: '21rem', height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img className="cardimg" src={imgcard2} style={{height: '8em', width: '10rem'}} />
+                    <Card.Body>
+                        <Card.Text className="event-time-1" style={{textAlign: 'left'}}>JAN 7 • 5PM</Card.Text>
+                        <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Music therapy</Card.Title>
+                        <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
+                            Hosted by Color Notes
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-1" style={{textAlign: 'left'}}>
+                            Public
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                            <img src={clock} alt="Near me" className="icon"/> 7 Jan 2023, 10AM - 11AM
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                            <img src={map} alt="Near me" className="icon"/> 112 Barrack Street, NR3 1TX, UK
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+
             <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src="holder.js/100px180" />
                 <Card.Body>
@@ -154,27 +189,32 @@ export default function Home(){
             </Row>
 
 
-            <Container className="navigbar-bottom">
-                <Row className="justify-content-sm-center">
-                    <Col xs={3} sm={12} md={3}>
-                        <Link to={"/home"} style={{color: "white", textDecoration: "none"}}><span><img src={home} alt="Home" className="bottom-bar-icon"/></span></Link>
-
-                    </Col>
-                    <Col xs={3} sm={12} md={3}>
-                        <Link to={"/calendar"} style={{color: "white", textDecoration: "none"}}><span><img src={calendar} alt="Calendar" className="bottom-bar-icon"/></span></Link>
-                    </Col>
-                    <Col xs={3} sm={12} md={3}>
-                        <Link to={"/profile"} style={{color: "white", textDecoration: "none"}}><span><img src={profile} alt="Profile" className="bottom-bar-icon"/></span></Link>
-                    </Col>
-                    <Col xs={3} sm={12} md={3}>
-                        <Link to={"/settings"} style={{color: "white", textDecoration: "none"}}><span><img src={settings} alt="Settings" className="bottom-bar-icon"/></span></Link>
-
-                    </Col>
-                </Row>
-            </Container>
-
 
         </Container>
+
+
+
+    <Container className="navigbar-bottom" style={{width: "100vw"}}>
+        <Row className="justify-content-sm-center">
+            <Col xs={3} sm={12} md={3}>
+                <Link to={"/home"} style={{color: "white", textDecoration: "none"}}><span><img src={home} alt="Home" className="bottom-bar-icon"/></span></Link>
+
+            </Col>
+            <Col xs={3} sm={12} md={3}>
+                <Link to={"/calendar"} style={{color: "white", textDecoration: "none"}}><span><img src={calendar} alt="Calendar" className="bottom-bar-icon"/></span></Link>
+            </Col>
+            <Col xs={3} sm={12} md={3}>
+                <Link to={"/profile"} style={{color: "white", textDecoration: "none"}}><span><img src={profile} alt="Profile" className="bottom-bar-icon"/></span></Link>
+            </Col>
+            <Col xs={3} sm={12} md={3}>
+                <Link to={"/settings"} style={{color: "white", textDecoration: "none"}}><span><img src={settings} alt="Settings" className="bottom-bar-icon"/></span></Link>
+
+            </Col>
+        </Row>
+    </Container>
+
+
+    </Container>
     )
 
 }

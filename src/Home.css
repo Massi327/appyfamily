@@ -4,6 +4,10 @@
 
 @media screen and (min-width:280px) and (max-width:650px) {
 
+    .background{
+        background-color: #f4f4f4;
+    }
+
     .container{
         background-image: url(./images/rectangle-56.svg);
         background-repeat: no-repeat;
@@ -11,7 +15,6 @@
     }
 
     .notifications{
-
         background-repeat: no-repeat;
     }
 
@@ -88,10 +91,38 @@
         color:white;
     }
 
+    .background2{
+        postion:center;
+        justify-content: center;
+        align-content: start;
+        width:100vw;
+
+        height:100%;
+        overflow-y: scroll;
+        background: #ffffff;
+        z-index: -1;
+        margin:0;
+        padding:0;
+    }
+
+    .post{
+        position:absolute;
+    }
+
     .event-title-1{
         font-family: 'Inter';
         font-size:18;
         letter-spacing: -0.41px;
+    }
+
+    .event-time-1{
+        font-family: 'Inter';
+        font-size:19px;
+        letter-spacing: -0.41px;
+        margin-bottom: -0.2em;
+        margin-top: -0.5em;
+        font-weight:600;
+        color:#3634a0;
     }
 
     .event-subtitle-1{
@@ -102,7 +133,7 @@
         letter-spacing: -0.41px;
         line-height: 15px;
         min-height: 31px;
-        margin-top:-1em;
+        margin-top:-0.5em;
     }
 
     .event-subsubtitle-1{
@@ -117,6 +148,18 @@
         margin-top:-2.5em;
     }
 
+    .event-subsubtitle-2{
+        font-family: 'Inter';
+        font-size:11px;
+        letter-spacing: -0.41px;
+        font-weight: 400;
+        letter-spacing: -0.41px;
+        line-height: 15px;
+        min-height: 31px;
+        color:grey;
+        margin-top:-3em;
+    }
+
     .justify-content-sm-right{
         justify-content: right;
     }
@@ -128,6 +171,9 @@
     .navigbar-bottom{
         background-image: url("./images/Ellipse-bottom-menu.svg");
         background-repeat: no-repeat;
+        width: 100%;
+        margin-right:0em;
+        padding-right:0em;
     }
 
 
