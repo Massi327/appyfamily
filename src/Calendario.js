@@ -109,9 +109,11 @@ export default function Calendario(){
                 <Col md={12} xs={12}>
                     <ButtonGroup>
                         <DropdownButton title="Category" id="bg-nested-dropdown">
-                            <Dropdown.Item eventKey="1">Sport</Dropdown.Item>
-                            <Dropdown.Item eventKey="2">Park</Dropdown.Item>
+                            {state.categoriav.map(cat => (
+                            <Dropdown.Item eventKey={cat.value}>{cat}</Dropdown.Item>
+                            ))}
                         </DropdownButton>
+                        <Button>+</Button>
                     </ButtonGroup>
                 </Col>
             </Row>

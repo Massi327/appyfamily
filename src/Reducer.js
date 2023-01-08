@@ -1,4 +1,4 @@
-import {ADD_BOOKNG, SELECTED, SELECTEDSLOT} from "./Action";
+import {ADD_BOOKNG, ADD_CATEGORY, SELECTED, SELECTEDSLOT} from "./Action";
 import moment from 'moment'
 import 'moment/locale/it';
 
@@ -66,7 +66,6 @@ export function Reducer(state,action){
                 start: action.start,
                 c: action.c
             }
-
 
 
         default:
