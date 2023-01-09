@@ -132,7 +132,7 @@ export default function Add(){
                                     <FormSelect value={categoria} style={{textAlign:"center"}} onChange={e=> setCategoria(e.target.value)}>
 
                                         {state.categoriav.map(cat => (
-                                            <option value={cat.value}>{cat}</option>
+                                            <option key={Math.random()} value={cat.value}>{cat}</option>
                                         ))}
 
                                     </FormSelect>
@@ -203,7 +203,7 @@ export default function Add(){
                                     }else if(dataS.isBefore(moment()) || dataF.isBefore(moment())) {
                                         setBadge('precedente')
                                     }else{
-                                        dispatch(addBooking(Number(sala),dataS,dataF,address,titolo,about,categoria))
+                                        dispatch(addBooking(sala,dataS,dataF,address,titolo,about,categoria))
                                         setAddress('')
                                         setTitolo('')
                                         setAbout('')

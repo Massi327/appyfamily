@@ -156,7 +156,23 @@ export default function Calendario(){
                     />
                 </Col>
 
-                {addHidden=="true" ? <Col xl={4} lg={4} md={4} sm={12} xs={12}>
+                <Col>
+                    <FormGroup style={{marginBottom: "10px"}}>
+                        <FormLabel><b>Prova</b></FormLabel>
+                        <FormSelect style={{textAlign:"center"}}>
+
+                            {state.sale.map(s => {
+                                s.prenotazioni.map(p => {
+                                <option key={Math.random()} value={p.titolo}>{p.titolo}</option>
+                            })})}
+
+                        </FormSelect>
+                    </FormGroup>
+                </Col>
+
+
+
+                {addHidden==="true" ? <Col xl={4} lg={4} md={4} sm={12} xs={12}>
                     <Row>
 
                         <Card className='form' border='dark' style={{background: 'linear-gradient(to top, red 10%, black 100%)', color: "white"}}>
