@@ -10,9 +10,14 @@ import hashtags from "../../images/Hashtags.svg";
 import recbut from "../../images/recommended-button.svg";
 import nearme from "../../images/near-me.svg";
 import {Link} from "react-router-dom";
+import eventsselected from "../../images/Events-selezionato.svg";
+import peopleselected from "../../images/People-selezionato.svg";
+import blogsselectd from "../../images/Blogs-selezionato.svg";
+import hashtagsselected from "../../images/Hashtags-selezionato.svg";
 
-const Navigbar = (props) => {
-    const {value} = props
+
+const Navigbar = ({ vevents, vblogs, vpeople, vhashtags }) => {
+
 
 
 return  <Container className="cont">
@@ -41,22 +46,22 @@ return  <Container className="cont">
             <Row className="justify-content-sm-center">
                 <Col xs={3} sm={12} md={3}>
 
-                    <Link to={"/home"}><span><img src={events} alt="Events" className="search-icon" style={{border: '2px solid white', borderRadius:'10px'}}/></span></Link>
+                    <Link to={"/home"}><span><img src={vevents} alt="Events" className="search-icon"/></span></Link>
 
                 </Col>
                 <Col xs={3} sm={12} md={3}>
 
-                    <Link to={"/people"} style={{color: "white", textDecoration: "none"}}><span><img src={people} alt="People" className="search-icon"/></span></Link>
+                    <Link to={"/people"} style={{color: "white", textDecoration: "none"}}><span><img src={vpeople} alt="People" className="search-icon"/></span></Link>
 
                 </Col>
                 <Col xs={3} sm={12} md={3}>
 
-                    <Link to={value} style={{color: "white", textDecoration: "none"}}><span><img src={blogs} alt="Blogs" className="search-icon"/></span></Link>
+                    <Link to={"/blogs"} style={{color: "white", textDecoration: "none"}}><span><img src={vblogs} alt="Blogs" className="search-icon"/></span></Link>
 
                 </Col>
                 <Col xs={3} sm={12} md={3}>
 
-                    <Link to={"/hashtags"} style={{color: "white", textDecoration: "none"}}><span><img src={hashtags} alt="Hashtags" className="search-icon"/></span></Link>
+                    <Link to={"/hashtags"} style={{color: "white", textDecoration: "none"}}><span><img src={vhashtags} alt="Hashtags" className="search-icon"/></span></Link>
 
                 </Col>
             </Row>

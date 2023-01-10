@@ -11,7 +11,13 @@ import people2 from "./images/People_2.svg"
 import people3 from "./images/People_3.svg"
 import people4 from "./images/People_4.svg"
 import people5 from "./images/People_5.svg"
-import people from "./images/People_frame.svg"
+
+import events from "./images/Events.svg";
+import blogs from "./images/Blogs.svg";
+import hashtags from "./images/Hashtags.svg";
+import peopleselected from "./images/People-selezionato.svg";
+import people from "./images/People.svg";
+
 
 export default function People(){
 
@@ -20,7 +26,10 @@ export default function People(){
     return(
         <Container style={{backgroundColor:"#f5f5f5"}}>
 
-            <Navigbar value="/blogs"/>
+            <Navigbar vevents={events}
+                      vblogs={blogs}
+                      vpeople={peopleselected}
+                      vhashtags={hashtags}/>
             <NavigbarBottom value="Home"/>
             <Container style={{marginTop:'15em'}}>
                 <img src={people} alt="Person" className="icon"/>

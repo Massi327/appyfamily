@@ -5,6 +5,13 @@ import {Button, Col, Container, Form, Nav, Navbar, Row} from "react-bootstrap";
 import Navigbar from "./components/navbar-search";
 import NavigbarBottom from "./components/navbar-bottom";
 import AddButton from "./components/add-button";
+import events from "./images/Events.svg";
+
+import people from "./images/People.svg";
+import hashtags from "./images/Hashtags.svg";
+
+import blogsselectd from "./images/Blogs-selezionato.svg";
+
 
 export default function Blogs(){
 
@@ -13,7 +20,10 @@ export default function Blogs(){
     return(
 
         <Container fluid styile={{height:"79vh"}}>
-            <Navigbar value="/blogs"/>
+            <Navigbar vevents={events}
+                      vblogs={blogsselectd}
+                      vpeople={people}
+                      vhashtags={hashtags}/>
             <AddButton/>
             <NavigbarBottom value="Home"/>
 

@@ -8,7 +8,7 @@ import logo from './images/APPy family-logo.png';
 import notif from './images/notifications-icon.svg';
 import message from './images/messages-icon.svg';
 import help from './images/help-icon.svg'
-import events from './images/Events.svg'
+
 import people from './images/People.svg'
 import blogs from './images/Blogs.svg'
 import hashtags from './images/Hashtags.svg'
@@ -28,6 +28,8 @@ import imgcard1 from './images/Image-event-1.svg'
 import Navigbar from "./components/navbar-search";
 import NavigbarBottom from "./components/navbar-bottom";
 import AddButton from "./components/add-button";
+import eventsselected from "./images/Events-selezionato.svg";
+
 
 export default function Home(){
 
@@ -35,7 +37,10 @@ export default function Home(){
 
     return(
         <Container className="background">
-            <Navigbar value="/blogs"/>
+            <Navigbar vevents={eventsselected}
+                      vblogs={blogs}
+                      vpeople={people}
+                      vhashtags={hashtags}/>
 
             <Container className="background2">
 

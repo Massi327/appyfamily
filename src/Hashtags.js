@@ -5,6 +5,10 @@ import {Button, Col, Container, Form, Nav, Navbar, Row} from "react-bootstrap";
 import Navigbar from "./components/navbar-search";
 import AddButton from "./components/add-button";
 import NavigbarBottom from "./components/navbar-bottom";
+import events from "./images/Events.svg";
+import blogs from "./images/Blogs.svg";
+import people from "./images/People.svg";
+import hashtagsselected from "./images/Hashtags-selezionato.svg";
 
 export default function Hashtags(){
 
@@ -12,7 +16,10 @@ export default function Hashtags(){
 
     return(
         <Container fluid styile={{height:"79vh"}}>
-            <Navigbar value="/blogs"/>
+            <Navigbar vevents={events}
+                      vblogs={blogs}
+                      vpeople={people}
+                      vhashtags={hashtagsselected}/>
             <AddButton/>
             <NavigbarBottom value="Home"/>
 
