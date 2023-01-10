@@ -2,6 +2,7 @@ import {useContext, useState} from "react";
 import {StateContext} from "./App";
 import {Link} from "react-router-dom";
 import {Button, Col, Container, Nav, Navbar, Row, Card} from "react-bootstrap";
+import NavigbarBottom from "./components/navbar-bottom";
 
 export default function Profile(){
 
@@ -9,7 +10,7 @@ export default function Profile(){
 
     return(
         <Container fluid styile={{height:"79vh"}}>
-
+            <NavigbarBottom value="Home"/>
             <Navbar style={{overflow: "hidden", top: "0px", width: "100%"}} bg="dark" variant="dark">
                 <Container>
                     <Navbar.Brand href="/home">APPy Family</Navbar.Brand>

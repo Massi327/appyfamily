@@ -25,6 +25,9 @@ import clock from './images/Clock.svg'
 import map from './images/Map.svg'
 import imgcard2 from './images/Image-event-2.svg'
 import imgcard1 from './images/Image-event-1.svg'
+import Navigbar from "./components/navbar-search";
+import NavigbarBottom from "./components/navbar-bottom";
+import AddButton from "./components/add-button";
 
 export default function Home(){
 
@@ -32,66 +35,7 @@ export default function Home(){
 
     return(
         <Container className="background">
-
-        <Container className="container">
-
-            <Navbar className="navigbar" style={{overflow: "hidden", top: "0px", width: "100%"}}>
-                <Container>
-                    <span><img src={logo} className="logo"/></span>
-                    <Navbar.Brand className="title"  style={{color:"white"}} href="/home"> APPy Family</Navbar.Brand>
-                    <Nav>
-                        <Nav.Link className="notifications" style={{textAlign: "right"}} href="/notifications"><img src={notif} alt="Notifications" className="icon"/></Nav.Link>
-                        <Nav.Link style={{textAlign: "right"}} href="/messages"><img src={message} alt="Messages" className="icon"/></Nav.Link>
-                        <Nav.Link style={{textAlign: "right"}} href="/tutorial"><img src={help} alt="Help" className="icon"/></Nav.Link>
-                    </Nav>
-                </Container>
-            </Navbar>
-
-            <Form className="d-flex">
-                <Form.Control type="search" placeholder="Search" aria-label="Search"/>
-                <Button className="search-button" variant="outline-success">Search</Button>
-            </Form>
-
-            <Container className="search-icons">
-                <Row className="justify-content-sm-center">
-                    <Col xs={3} sm={12} md={3}>
-
-                        <Link to={"/home"} style={{color: "white", textDecoration: "none"}}><span><img src={events} alt="Events" className="search-icon"/></span></Link>
-
-                    </Col>
-                    <Col xs={3} sm={12} md={3}>
-
-                        <Link to={"/people"} style={{color: "white", textDecoration: "none"}}><span><img src={people} alt="People" className="search-icon"/></span></Link>
-
-                    </Col>
-                    <Col xs={3} sm={12} md={3}>
-
-                        <Link to={"/blogs"} style={{color: "white", textDecoration: "none"}}><span><img src={blogs} alt="Blogs" className="search-icon"/></span></Link>
-
-                    </Col>
-                    <Col xs={3} sm={12} md={3}>
-
-                        <Link to={"/hashtags"} style={{color: "white", textDecoration: "none"}}><span><img src={hashtags} alt="Hashtags" className="search-icon"/></span></Link>
-
-                    </Col>
-                </Row>
-            </Container>
-
-            <Container className="cont-menu-rec-nearme">
-                <Row className="menu-rec-nearme">
-
-                    <Col xs={6} sm={12} md={3}>
-                            <Link to={"/home"} ><img src={recbut} alt="Recommended" className="icon" style={{marginTop:"5px"}}/></Link>
-                    </Col>
-                    <Col xs={6} sm={12} md={3}>
-                            <Link to={"/nearme"}><img src={nearme} alt="Near me" className="icon" style={{marginTop:"10px"}}/></Link>
-                    </Col>
-
-
-                </Row>
-            </Container>
-
-        </Container>
+            <Navigbar value="Home"/>
 
             <Container className="background2">
 
@@ -182,36 +126,12 @@ export default function Home(){
                 </Card.Body>
             </Card>
 
-            <Row className="justify-content-sm-right">
-                <Col xs={3} md={1}>
-                    <Link to={"/add"} style={{color: "white", textDecoration: "none"}}><span><img src={addicon} alt="Add" className="search-icon"/></span></Link>
-                </Col>
-            </Row>
-
 
 
         </Container>
 
-
-
-    <Container className="navigbar-bottom" style={{width: "100vw"}}>
-        <Row className="justify-content-sm-center">
-            <Col xs={3} sm={12} md={3}>
-                <Link to={"/home"} style={{color: "white", textDecoration: "none"}}><span><img src={home} alt="Home" className="bottom-bar-icon"/></span></Link>
-
-            </Col>
-            <Col xs={3} sm={12} md={3}>
-                <Link to={"/calendar"} style={{color: "white", textDecoration: "none"}}><span><img src={calendar} alt="Calendar" className="bottom-bar-icon"/></span></Link>
-            </Col>
-            <Col xs={3} sm={12} md={3}>
-                <Link to={"/profile"} style={{color: "white", textDecoration: "none"}}><span><img src={profile} alt="Profile" className="bottom-bar-icon"/></span></Link>
-            </Col>
-            <Col xs={3} sm={12} md={3}>
-                <Link to={"/settings"} style={{color: "white", textDecoration: "none"}}><span><img src={settings} alt="Settings" className="bottom-bar-icon"/></span></Link>
-
-            </Col>
-        </Row>
-    </Container>
+            <AddButton/>
+            <NavigbarBottom value="Home"/>
 
 
     </Container>

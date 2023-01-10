@@ -2,13 +2,20 @@ import {useContext, useState} from "react";
 import {StateContext} from "./App";
 import {Link} from "react-router-dom";
 import {Button, Col, Container, Form, Nav, Navbar, Row} from "react-bootstrap";
+import Navigbar from "./components/navbar-search";
+import NavigbarBottom from "./components/navbar-bottom";
+import AddButton from "./components/add-button";
 
 export default function Blogs(){
 
     const [state,dispatch] = useContext(StateContext)
 
     return(
+
         <Container fluid styile={{height:"79vh"}}>
+            <Navigbar value="visible"/>
+            <AddButton/>
+            <NavigbarBottom value="Home"/>
 
             <Navbar style={{overflow: "hidden", top: "0px", width: "100%"}} bg="dark" variant="dark">
                 <Container>

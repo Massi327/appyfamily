@@ -25,6 +25,7 @@ import {
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import {addBooking, selected, selectedSlot} from "./Action";
 import {Link, useNavigate} from "react-router-dom";
+import NavigbarBottom from "./components/navbar-bottom";
 
 const localizer = momentLocalizer(moment)
 
@@ -92,7 +93,8 @@ export default function Calendario(){
     }
 
     return(
-        <Container fluid>
+        <Container>
+            <NavigbarBottom value="Home"/>
 
             <Navbar style={{overflow: "hidden", top: "0px", width: "100%"}} bg="dark" variant="dark">
                 <Container>

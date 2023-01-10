@@ -9,9 +9,20 @@
     }
 
     .container{
+
+
+    }
+
+    .cont{
+        position:fixed;
+        z-index: 1000;
+        height:50%;
         background-image: url(./images/rectangle-56.svg);
         background-repeat: no-repeat;
-        margin-right:0em;
+        width:100%;
+        margin-left:0px;
+        padding-left:0px;
+        top:0em;
     }
 
     .notifications{
@@ -94,7 +105,7 @@
     .background2{
         postion:center;
         justify-content: center;
-        align-content: start;
+
         width:100vw;
 
         height:100%;
@@ -103,6 +114,7 @@
         z-index: -1;
         margin:0;
         padding:0;
+        margin-top:15.5em;
     }
 
     .post{
@@ -161,8 +173,11 @@
     }
 
     .justify-content-sm-right{
-        justify-content: right;
+        position:fixed;
+        bottom:4em;
+        right:1em;
     }
+
 
     .bottom-bar-icon{
         margin-top:1em;
@@ -174,6 +189,8 @@
         width: 100%;
         margin-right:0em;
         padding-right:0em;
+        bottom:0px;
+        position:fixed;
     }
 
 
