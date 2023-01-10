@@ -46,6 +46,14 @@ export default function Calendario(){
     const [sel,setSel] = useState('')
     const [categoria,setCategoria] = useState('')
 
+    const [eventi, setEventi] = useState(() => {
+        const eventi = JSON.parse(localStorage.getItem('eventi'));
+        return eventi || []; } )
+
+    useEffect(() => {
+        localStorage.setItem('eventi', JSON.stringify(eventi))
+    }, [eventi])
+
     const addHidden = 'false';
 
     const navigate = useNavigate();
@@ -99,13 +107,23 @@ export default function Calendario(){
             <NavigbarP/>
             <NavigbarBottom value="Home"/>
 
+
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
             <Row style={{textAlign: "center", marginTop:'6em'}}>
                 <Col md={12} xs={12}>
                     <ButtonGroup>
-                        <Button>+</Button>
+                        <Button onClick={()=> console.log(events)}>+</Button>
                     </ButtonGroup>
                 </Col>
             </Row>
+
+            <br/>
+            <br/>
 
             <Row style={{zIndex:'-5'}}>
                 <Col xl={8} lg={8} md={8} sm={12} xs={12}>
@@ -117,7 +135,7 @@ export default function Calendario(){
                         defaultDate={new Date()}
                         defaultView={'month'}
                         views={['month','week','day']}
-                        events={events}
+                        events={eventi}
                         style={{height:'81vh', backgroundColor: 'white', marginBottom: "5px", zIndex:'-1000'}}
                         resources={resourceMap}
                         resourceIdAccessor='resourceId'
