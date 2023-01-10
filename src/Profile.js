@@ -3,38 +3,42 @@ import {StateContext} from "./App";
 import {Link} from "react-router-dom";
 import {Button, Col, Container, Nav, Navbar, Row, Card} from "react-bootstrap";
 import NavigbarBottom from "./components/navbar-bottom";
+import NavigbarP from "./components/navbar-profile";
+import eventsselected from "./images/Events-selezionato.svg";
+import blogs from "./images/Blogs.svg";
+import people from "./images/People.svg";
+import hashtags from "./images/Hashtags.svg";
+import "./Profile.css";
+import imgcard1 from "./images/Image-event-1.svg";
+import clock from "./images/Clock.svg";
+import map from "./images/Map.svg";
+import profile from './images/Sophia.svg'
+import ribbon from './images/ribbon_icon.png'
 
 export default function Profile(){
 
     const [state,dispatch] = useContext(StateContext)
 
     return(
-        <Container fluid styile={{height:"79vh"}}>
-            <NavigbarBottom value="Home"/>
-            <Navbar style={{overflow: "hidden", top: "0px", width: "100%"}} bg="dark" variant="dark">
-                <Container>
-                    <Navbar.Brand href="/home">APPy Family</Navbar.Brand>
-                    <Nav>
-                        <Nav.Link style={{textAlign: "right"}} href="/notifications">Notifications</Nav.Link>
-                        <Nav.Link style={{textAlign: "right"}} href="/messages">Messages</Nav.Link>
-                        <Nav.Link style={{textAlign: "right"}} href="/tutorial">Tutorial</Nav.Link>
-                    </Nav>
-                </Container>
-            </Navbar>
+        <Container className="background">
 
-            <Row>
-                <Card border='none' style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="holder.js/100px180" />
-                    <Card.Body>
-                        <Card.Title>Profile name</Card.Title>
-                        <Card.Text>
-                            Rank, Number of connections
-                        </Card.Text>
-                        <Button variant="primary">Connect</Button>
-                        <Button variant="primary">Message</Button>
-                    </Card.Body>
-                </Card>
-            </Row>
+            <NavigbarP />
+                <Container className="background2">
+                    <Card className="post" style={{ width: '21rem', height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                        <Card.Img  src={profile} style={{height: '8em', width: '10rem'}} />
+                        {/*<Card.Img  src={ribbon} className="ribbon" />*/}
+                        <Card.Body>
+                            <Card.Title className="name" style={{textAlign: 'left'}}>Sophia_Wilkinson</Card.Title>
+                            <Card.Text className="connections" style={{textAlign: 'left'}}>
+                                Silver, 356 connections
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+
+                </Container>
+
+
+
 
             {/*TODO: card eventi*/}
 
@@ -63,6 +67,7 @@ export default function Profile(){
                     </Button>
                 </Col>
             </Row>
+            <NavigbarBottom value="Profile"/>
         </Container>
     )
 
