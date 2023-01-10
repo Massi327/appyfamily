@@ -1,4 +1,4 @@
-import {ADD_BOOKNG, SELECTED, SELECTEDSLOT} from "./Action";
+import {ADD_BOOKNG, ADD_CATEGORY, SELECTED, SELECTEDSLOT} from "./Action";
 import moment from 'moment'
 import 'moment/locale/it';
 
@@ -26,6 +26,7 @@ export const initialState = {
     giorno: moment('').format('yyyy-MM-DD'),
     start: moment('','yyyy-MM-DD').format('LT'),
     c: 'false',
+    categoriav: ['---', 'Sport', 'Park']
 }
 
 export function Reducer(state,action){
@@ -65,7 +66,6 @@ export function Reducer(state,action){
                 start: action.start,
                 c: action.c
             }
-
 
 
         default:

@@ -2,6 +2,13 @@ import {useContext, useState} from "react";
 import {StateContext} from "./App";
 import {Link} from "react-router-dom";
 import {Button, Col, Container, Form, Nav, Navbar, Row} from "react-bootstrap";
+import Navigbar from "./components/navbar-search";
+import AddButton from "./components/add-button";
+import NavigbarBottom from "./components/navbar-bottom";
+import events from "./images/Events.svg";
+import blogs from "./images/Blogs.svg";
+import people from "./images/People.svg";
+import hashtagsselected from "./images/Hashtags-selezionato.svg";
 
 export default function Hashtags(){
 
@@ -9,6 +16,12 @@ export default function Hashtags(){
 
     return(
         <Container fluid styile={{height:"79vh"}}>
+            <Navigbar vevents={events}
+                      vblogs={blogs}
+                      vpeople={people}
+                      vhashtags={hashtagsselected}/>
+            <AddButton/>
+            <NavigbarBottom value="Home"/>
 
             <Navbar style={{overflow: "hidden", top: "0px", width: "100%"}} bg="dark" variant="dark">
                 <Container>

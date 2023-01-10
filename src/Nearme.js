@@ -2,6 +2,9 @@ import {useContext, useState} from "react";
 import {StateContext} from "./App";
 import {Link} from "react-router-dom";
 import {Button, Col, Container, Row} from "react-bootstrap";
+import Navigbar from "./components/navbar-search";
+import AddButton from "./components/add-button";
+import NavigbarBottom from "./components/navbar-bottom";
 
 export default function Nearme(){
 
@@ -9,6 +12,10 @@ export default function Nearme(){
 
     return(
         <Container fluid styile={{height:"79vh"}}>
+            <Navigbar value="visible"/>
+            <AddButton/>
+            <NavigbarBottom value="Home"/>
+
             <Row className="justify-content-md-center">
                 <Col xs={12} sm={12} md={3}>
                     <Button variant={"danger"} style={{marginBottom:"1em"}}>

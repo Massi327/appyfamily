@@ -5,15 +5,24 @@
 @media screen and (min-width:280px) and (max-width:650px) {
 
     .background{
-    background-color: #F4F4F4;
-
+        background-color: #f4f4f4;
     }
 
     .container{
+
+
+    }
+
+    .cont{
+        position:fixed;
+        z-index: 1000;
+        height:50%;
         background-image: url(./images/rectangle-56.svg);
         background-repeat: no-repeat;
-        margin-right:0em;
-
+        width:100%;
+        margin-left:0px;
+        padding-left:0px;
+        top:0em;
     }
 
     .notifications{
@@ -24,7 +33,7 @@
 
         font-family: 'Josefin Sans';
         color: white;
-        font-size: 24px;
+        font-size: 24;
         font-weight: 400;
         letter-spacing: -0.41px;
         line-height: 22px;
@@ -93,29 +102,96 @@
         color:white;
     }
 
-    .navigbar-bottom{
-        background-image: url("./images/Ellipse-bottom-menu.svg");
-        margin:0px;
+    .background2{
+        postion:center;
+        justify-content: center;
+
+        width:100vw;
+
+        overflow-y: scroll;
+        background: #ffffff;
+        z-index: -1;
+        margin:0;
+        padding:0;
+        margin-top:15.5em;
     }
 
-    .background2{
-        position: center;
-        justify-content: center;
-        align-content: start;
-        width: 24.25em;
-        height: 100%;
-        overflow-y: scroll;
-        background: #FFFFFF;
-        z-index: -1;
-        margin: 0;
-        padding: 0;
-    }
     .post{
-        position: absolute;
-        width: 23em;
-        height: 4em;
-        top: 32px;
+        position:absolute;
     }
+
+    .event-title-1{
+        font-family: 'Inter';
+        font-size:18;
+        letter-spacing: -0.41px;
+    }
+
+    .event-time-1{
+        font-family: 'Inter';
+        font-size:19px;
+        letter-spacing: -0.41px;
+        margin-bottom: -0.2em;
+        margin-top: -0.5em;
+        font-weight:600;
+        color:#3634a0;
+    }
+
+    .event-subtitle-1{
+        font-family: 'Inter';
+        font-size:13px;
+        letter-spacing: -0.41px;
+        font-weight: 500;
+        letter-spacing: -0.41px;
+        line-height: 15px;
+        min-height: 31px;
+        margin-top:-0.5em;
+    }
+
+    .event-subsubtitle-1{
+        font-family: 'Inter';
+        font-size:13px;
+        letter-spacing: -0.41px;
+        font-weight: 500;
+        letter-spacing: -0.41px;
+        line-height: 15px;
+        min-height: 31px;
+        color:dimgrey;
+        margin-top:-2.5em;
+    }
+
+    .event-subsubtitle-2{
+        font-family: 'Inter';
+        font-size:11px;
+        letter-spacing: -0.41px;
+        font-weight: 400;
+        letter-spacing: -0.41px;
+        line-height: 15px;
+        min-height: 31px;
+        color:grey;
+        margin-top:-3em;
+    }
+
+    .justify-content-sm-right{
+        position:fixed;
+        bottom:4em;
+        right:1em;
+    }
+
+
+    .bottom-bar-icon{
+        margin-top:1em;
+    }
+
+    .navigbar-bottom{
+        background-image: url("./images/Ellipse-bottom-menu.svg");
+        background-repeat: no-repeat;
+        width: 100%;
+        margin-right:0em;
+        padding-right:0em;
+        bottom:0px;
+        position:fixed;
+    }
+
 
 }
 

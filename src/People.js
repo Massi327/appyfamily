@@ -2,75 +2,39 @@ import {useContext, useState} from "react";
 import {StateContext} from "./App";
 import {Link} from "react-router-dom";
 import {Button, Col, Container, Form, Nav, Navbar, Row} from "react-bootstrap";
+import Navigbar from "./components/navbar-search";
+import AddButton from "./components/add-button";
+import NavigbarBottom from "./components/navbar-bottom";
+import clock from "./images/Clock.svg";
+import people1 from "./images/People_1.svg"
+import people2 from "./images/People_2.svg"
+import people3 from "./images/People_3.svg"
+import people4 from "./images/People_4.svg"
+import people5 from "./images/People_5.svg"
+
+import events from "./images/Events.svg";
+import blogs from "./images/Blogs.svg";
+import hashtags from "./images/Hashtags.svg";
+import peopleselected from "./images/People-selezionato.svg";
+import peopleFrame from "./images/People_frame.svg";
+
 
 export default function People(){
 
     const [state,dispatch] = useContext(StateContext)
 
     return(
-        <Container fluid styile={{height:"79vh"}}>
+        <Container style={{backgroundColor:"#f5f5f5"}}>
 
-            <Navbar style={{overflow: "hidden", top: "0px", width: "100%"}} bg="dark" variant="dark">
-                <Container>
-                    <Navbar.Brand href="/home">APPy Family</Navbar.Brand>
-                    <Nav>
-                        <Nav.Link style={{textAlign: "right"}} href="/notifications">Notifications</Nav.Link>
-                        <Nav.Link style={{textAlign: "right"}} href="/messages">Messages</Nav.Link>
-                        <Nav.Link style={{textAlign: "right"}} href="/tutorial">Tutorial</Nav.Link>
-                    </Nav>
-                </Container>
-            </Navbar>
+            <Navigbar vevents={events}
+                      vblogs={blogs}
+                      vpeople={peopleselected}
+                      vhashtags={hashtags}/>
+            <NavigbarBottom value="Home"/>
+            <Container style={{marginTop:'15em'}}>
+                <img src={peopleFrame} alt="Person" className="icon"/>
+            </Container>
 
-            <Form className="d-flex">
-                <Form.Control type="search" placeholder="Search" aria-label="Search"/>
-                <Button variant="outline-success">Search</Button>
-            </Form>
-
-            <Row className="justify-content-md-center">
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
-                        <Link to={"/home"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>EVENTS</span></Link>
-                    </Button>
-                </Col>
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"danger"} style={{marginBottom:"1em"}}>
-                        <Link to={"/people"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>PEOPLE</span></Link>
-                    </Button>
-                </Col>
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
-                        <Link to={"/blogs"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>BLOGS</span></Link>
-                    </Button>
-                </Col>
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
-                        <Link to={"/hashtags"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>HASHTAGS</span></Link>
-                    </Button>
-                </Col>
-            </Row>
-
-            <Row className="justify-content-md-center">
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"danger"} style={{marginBottom:"1em"}}>
-                        <Link to={"/home"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>HOME</span></Link>
-                    </Button>
-                </Col>
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
-                        <Link to={"/calendar"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>CALENDAR</span></Link>
-                    </Button>
-                </Col>
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
-                        <Link to={"/profile"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>PROFILE</span></Link>
-                    </Button>
-                </Col>
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
-                        <Link to={"/settings"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>SETTINGS</span></Link>
-                    </Button>
-                </Col>
-            </Row>
         </Container>
     )
 

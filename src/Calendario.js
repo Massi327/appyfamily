@@ -25,6 +25,7 @@ import {
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import {addBooking, selected, selectedSlot} from "./Action";
 import {Link, useNavigate} from "react-router-dom";
+import NavigbarBottom from "./components/navbar-bottom";
 
 const localizer = momentLocalizer(moment)
 
@@ -38,10 +39,12 @@ export default function Calendario(){
     const [date,setDate] = useState(new Date())
     const [oraI,setOraI] = useState('')
     const [oraF,setOraF] = useState('')
-    const [sala,setSala] = useState('')
+    const [sala,setSala] = useState(1)
     const [badge,setBadge] = useState('')
     const [sel,setSel] = useState('')
     const [categoria,setCategoria] = useState('')
+
+    const addHidden = 'false';
 
     const navigate = useNavigate();
 
@@ -82,16 +85,16 @@ export default function Calendario(){
         let start= moment(slotInfo.start, 'LT')
         giorno= moment(giorno).format('yyyy-MM-DD')
         start= moment(start).format('LT')
-        setOraI(slotInfo.start)
-        setDate(slotInfo.giorno)
+        setOraI(start)
+        setDate(giorno)
         dispatch(selectedSlot(giorno, start, 'true'))
-        setSala(1)
 
         navigate('/add', {replace: true})
     }
 
     return(
-        <Container fluid>
+        <Container>
+            <NavigbarBottom value="Home"/>
 
             <Navbar style={{overflow: "hidden", top: "0px", width: "100%"}} bg="dark" variant="dark">
                 <Container>
@@ -108,9 +111,11 @@ export default function Calendario(){
                 <Col md={12} xs={12}>
                     <ButtonGroup>
                         <DropdownButton title="Category" id="bg-nested-dropdown">
-                            <Dropdown.Item eventKey="1">Sport</Dropdown.Item>
-                            <Dropdown.Item eventKey="2">Park</Dropdown.Item>
+                            {state.categoriav.map(cat => (
+                            <Dropdown.Item eventKey={cat.value}>{cat}</Dropdown.Item>
+                            ))}
                         </DropdownButton>
+                        <Button>+</Button>
                     </ButtonGroup>
                 </Col>
             </Row>
@@ -153,7 +158,23 @@ export default function Calendario(){
                     />
                 </Col>
 
-                <Col xl={4} lg={4} md={4} sm={12} xs={12}>
+                <Col>
+                    <FormGroup style={{marginBottom: "10px"}}>
+                        <FormLabel><b>Prova</b></FormLabel>
+                        <FormSelect style={{textAlign:"center"}}>
+
+                            {state.sale.map(s => {
+                                s.prenotazioni.map(p => {
+                                <option key={Math.random()} value={p.titolo}>{p.titolo}</option>
+                            })})}
+
+                        </FormSelect>
+                    </FormGroup>
+                </Col>
+
+
+
+                {addHidden==="true" ? <Col xl={4} lg={4} md={4} sm={12} xs={12}>
                     <Row>
 
                         <Card className='form' border='dark' style={{background: 'linear-gradient(to top, red 10%, black 100%)', color: "white"}}>
@@ -172,11 +193,6 @@ export default function Calendario(){
 
                                 <FormGroup style={{marginBottom: "10px"}}>
                                     <FormLabel><b>About</b></FormLabel>
-                                    <FormControl type='text' value={about} style={{textAlign:"left"}} placeholder='About' onChange={e=> setAbout(e.target.value)}/>
-                                </FormGroup>
-
-                                <FormGroup style={{marginBottom: "10px"}}>
-                                    <FormLabel><b>Prova Eli</b></FormLabel>
                                     <FormControl type='text' value={about} style={{textAlign:"left"}} placeholder='About' onChange={e=> setAbout(e.target.value)}/>
                                 </FormGroup>
 
@@ -233,7 +249,6 @@ export default function Calendario(){
                                     }else{
                                         dispatch(addBooking(Number(sala),dataS,dataF,address,titolo,about,categoria))
                                         setBadge('conferma')
-                                        setSala('')
                                         setAddress('')
                                         setTitolo('')
                                         setAbout('')
@@ -258,7 +273,7 @@ export default function Calendario(){
                                 <Link to={"/sintesi"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>SINTESI PRENOTAZIONE</span></Link>
                             </Button> : null}
                     </Row>
-                </Col>
+                </Col> : null}
 
                 <Row className="justify-content-sm-center">
                     <Col xs={1} md={1}>

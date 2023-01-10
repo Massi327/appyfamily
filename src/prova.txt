@@ -1,33 +1,4 @@
-import {useContext, useState} from "react";
-import {StateContext} from "./App";
-import {Link} from "react-router-dom";
-import {Button, Col, Container, Form, Nav, Navbar, Row} from "react-bootstrap";
-import Navigbar from "./components/navbar-search";
-import NavigbarBottom from "./components/navbar-bottom";
-import AddButton from "./components/add-button";
-import events from "./images/Events.svg";
-
-import people from "./images/People.svg";
-import hashtags from "./images/Hashtags.svg";
-
-import blogsselectd from "./images/Blogs-selezionato.svg";
-
-
-export default function Blogs(){
-
-    const [state,dispatch] = useContext(StateContext)
-
-    return(
-
-        <Container fluid styile={{height:"79vh"}}>
-            <Navigbar vevents={events}
-                      vblogs={blogsselectd}
-                      vpeople={people}
-                      vhashtags={hashtags}/>
-            <AddButton/>
-            <NavigbarBottom value="Home"/>
-
-            <Navbar style={{overflow: "hidden", top: "0px", width: "100%"}} bg="dark" variant="dark">
+<Navbar style={{overflow: "hidden", top: "0px", width: "100%"}} bg="dark" variant="dark">
                 <Container>
                     <Navbar.Brand href="/home">APPy Family</Navbar.Brand>
                     <Nav>
@@ -50,12 +21,12 @@ export default function Blogs(){
                     </Button>
                 </Col>
                 <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
+                    <Button variant={"danger"} style={{marginBottom:"1em"}}>
                         <Link to={"/people"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>PEOPLE</span></Link>
                     </Button>
                 </Col>
                 <Col xs={12} sm={12} md={3}>
-                    <Button variant={"danger"} style={{marginBottom:"1em"}}>
+                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
                         <Link to={"/blogs"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>BLOGS</span></Link>
                     </Button>
                 </Col>
@@ -88,7 +59,3 @@ export default function Blogs(){
                     </Button>
                 </Col>
             </Row>
-        </Container>
-    )
-
-}
