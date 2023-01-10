@@ -1,0 +1,23 @@
+ <Col>
+                    <Row sm={1}>
+                        <img src={people1} alt="Person" className="icon"/>
+                    </Row>
+                    <Row sm={1}>
+                        <img src={people2} alt="Person" className="icon"/>
+                    </Row>
+                    <Row sm={1}>
+                        <img src={people3} alt="Person" className="icon"/>
+                    </Row>
+                    <Row sm={1}>
+                        <img src={people4} alt="Person" className="icon"/>
+                    </Row>
+                    <Row sm={1}>
+                        <img src={people5} alt="Person" className="icon"/>
+                    </Row>
+
+                </Col>
+                <img src={people1} alt="Person" className="icon"/>
+                <img src={people2} alt="Person" className="icon"/>
+                <img src={people3} alt="Person" className="icon"/>
+                <img src={people4} alt="Person" className="icon"/>
+                <img src={people5} alt="Person" className="icon"/>

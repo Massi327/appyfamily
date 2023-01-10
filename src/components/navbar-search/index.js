@@ -41,7 +41,7 @@ return  <Container className="cont">
             <Row className="justify-content-sm-center">
                 <Col xs={3} sm={12} md={3}>
 
-                    <Link to={"/home"} style={{color: "white", textDecoration: "none"}}><span><img src={events} alt="Events" className="search-icon"/></span></Link>
+                    <Link to={"/home"}><span><img src={events} alt="Events" className="search-icon" style={{border: '2px solid white', borderRadius:'10px'}}/></span></Link>
 
                 </Col>
                 <Col xs={3} sm={12} md={3}>
@@ -51,7 +51,7 @@ return  <Container className="cont">
                 </Col>
                 <Col xs={3} sm={12} md={3}>
 
-                    <Link to={"/blogs"} style={{color: "white", textDecoration: "none"}}><span><img src={blogs} alt="Blogs" className="search-icon"/></span></Link>
+                    <Link to={value} style={{color: "white", textDecoration: "none"}}><span><img src={blogs} alt="Blogs" className="search-icon"/></span></Link>
 
                 </Col>
                 <Col xs={3} sm={12} md={3}>

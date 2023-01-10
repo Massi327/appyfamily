@@ -35,7 +35,7 @@ export default function Home(){
 
     return(
         <Container className="background">
-            <Navigbar value="Home"/>
+            <Navigbar value="/blogs"/>
 
             <Container className="background2">
 

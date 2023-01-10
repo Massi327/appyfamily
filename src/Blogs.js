@@ -13,7 +13,7 @@ export default function Blogs(){
     return(
 
         <Container fluid styile={{height:"79vh"}}>
-            <Navigbar value="visible"/>
+            <Navigbar value="/blogs"/>
             <AddButton/>
             <NavigbarBottom value="Home"/>
 
