@@ -36,7 +36,7 @@ const NavigbarP =  () => {
 
 
 
-
+            
         </Container>
 
     </Container>

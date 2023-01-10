@@ -20,11 +20,13 @@ export default function Profile(){
     const [state,dispatch] = useContext(StateContext)
 
     return(
-        <Container className="background">
+        <Container className="bg">
 
             <NavigbarP />
-                <Container className="background2">
-                    <Card className="post" style={{ width: '21rem', height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+
+                <Container className="bg2">
+
+                    <Card className="post" style={{ width: '100%', height: '8rem',  marginTop: '0em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                         <Card.Img  src={profile} style={{height: '8em', width: '10rem'}} />
                         {/*<Card.Img  src={ribbon} className="ribbon" />*/}
                         <Card.Body>
@@ -34,6 +36,7 @@ export default function Profile(){
                             </Card.Text>
                         </Card.Body>
                     </Card>
+
 
                 </Container>
 
