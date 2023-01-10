@@ -12,10 +12,7 @@ export const initialState = {
                     address:'Via giordani 78',
                     about:'Gita al parco',
                     categoria: 'Park'
-                }]},
-        {id:1, prenotazioni:[]},
-        {id:1, prenotazioni:[
-                {   key:Math.random(),
+                }, {   key:Math.random(),
                     titolo:'Mario Draghi',
                     dataStart:moment('2023-01-04, 10:00','YYYY-MM-DD, hh:mm'),
                     dataEnd:moment('2023-01-04, 11:30','YYYY-MM-DD, hh:mm'),

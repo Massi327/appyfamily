@@ -1,7 +1,7 @@
 import {Calendar, momentLocalizer} from "react-big-calendar";
 import moment from 'moment'
 import 'moment/locale/it';
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {StateContext} from "./App";
 import {
     Alert,
@@ -29,7 +29,9 @@ export default function Add(){
     const [state,dispatch] = useContext(StateContext)
 
     const [address,setAddress] = useState('')
-    const [titolo,setTitolo] = useState('')
+    const [titolo,setTitolo] = useState(() => {
+        const titolo = JSON.parse(localStorage.getItem('titolo'));
+       return titolo || ""; } )
     const [about,setAbout] = useState('')
     const [date,setDate] = useState(new Date())
     const [oraI,setOraI] = useState('')
@@ -70,6 +72,9 @@ export default function Add(){
         setSala(range.resourceId)
     }
 
+    useEffect(() => {
+        localStorage.setItem('titolo', JSON.stringify(titolo))
+    }, [titolo])
 
     return(
         <Container fluid>

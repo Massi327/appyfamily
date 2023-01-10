@@ -1,7 +1,7 @@
 import {Calendar, momentLocalizer} from "react-big-calendar";
 import moment from 'moment'
 import 'moment/locale/en-gb';
-import {useCallback, useContext, useState} from "react";
+import {useCallback, useContext, useEffect, useState} from "react";
 import {StateContext} from "./App";
 import "./Calendario.css"
 import {
@@ -102,11 +102,6 @@ export default function Calendario(){
             <Row style={{textAlign: "center", marginTop:'6em'}}>
                 <Col md={12} xs={12}>
                     <ButtonGroup>
-                        <DropdownButton title="Category" id="bg-nested-dropdown" className="button">
-                            {state.categoriav.map(cat => (
-                            <Dropdown.Item eventKey={cat.value}>{cat}</Dropdown.Item>
-                            ))}
-                        </DropdownButton>
                         <Button>+</Button>
                     </ButtonGroup>
                 </Col>
@@ -149,22 +144,6 @@ export default function Calendario(){
                         onSelectSlot={ slotInfo => selectSlot(slotInfo)}
                     />
                 </Col>
-
-                <Col>
-                    <FormGroup style={{marginBottom: "10px"}}>
-                        <FormLabel><b>Prova</b></FormLabel>
-                        <FormSelect style={{textAlign:"center"}}>
-
-                            {state.sale.map(s => {
-                                s.prenotazioni.map(p => {
-                                <option key={Math.random()} value={p.titolo}>{p.titolo}</option>
-                            })})}
-
-                        </FormSelect>
-                    </FormGroup>
-                </Col>
-
-
 
                 {addHidden==="true" ? <Col xl={4} lg={4} md={4} sm={12} xs={12}>
                     <Row>

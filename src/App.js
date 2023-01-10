@@ -20,6 +20,7 @@ import Sintesi from "./Sintesi";
 export const StateContext = createContext()
 
 function App() {
+
   return (
       <StateContext.Provider value={useReducer(Reducer, initialState, A=>A)}>
         <div className="App">
