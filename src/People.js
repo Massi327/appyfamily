@@ -16,7 +16,7 @@ import events from "./images/Events.svg";
 import blogs from "./images/Blogs.svg";
 import hashtags from "./images/Hashtags.svg";
 import peopleselected from "./images/People-selezionato.svg";
-import people from "./images/People.svg";
+import peopleFrame from "./images/People_frame.svg";
 
 
 export default function People(){
@@ -32,7 +32,7 @@ export default function People(){
                       vhashtags={hashtags}/>
             <NavigbarBottom value="Home"/>
             <Container style={{marginTop:'15em'}}>
-                <img src={people} alt="Person" className="icon"/>
+                <img src={peopleFrame} alt="Person" className="icon"/>
             </Container>
 
         </Container>
