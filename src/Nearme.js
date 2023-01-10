@@ -1,10 +1,19 @@
 import {useContext, useState} from "react";
 import {StateContext} from "./App";
 import {Link} from "react-router-dom";
-import {Button, Col, Container, Row} from "react-bootstrap";
+import {Button, Card, Col, Container, Row} from "react-bootstrap";
 import Navigbar from "./components/navbar-search";
 import AddButton from "./components/add-button";
 import NavigbarBottom from "./components/navbar-bottom";
+import eventsselected from "./images/Events-selezionato.svg";
+import blogs from "./images/Blogs.svg";
+import people from "./images/People.svg";
+import hashtags from "./images/Hashtags.svg";
+import imgcard1 from "./images/Image-event-1.svg";
+import clock from "./images/Clock.svg";
+import map from "./images/Map.svg";
+import imgcard2 from "./images/Image-event-2.svg";
+
 
 export default function Nearme(){
 
@@ -12,68 +21,124 @@ export default function Nearme(){
 
     return(
         <Container fluid styile={{height:"79vh"}}>
-            <Navigbar value="visible"/>
+            <Navigbar vevents={eventsselected}
+                      vblogs={blogs}
+                      vpeople={people}
+                      vhashtags={hashtags}/>
             <AddButton/>
             <NavigbarBottom value="Home"/>
 
-            <Row className="justify-content-md-center">
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"danger"} style={{marginBottom:"1em"}}>
-                        <Link to={"/home"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>EVENTS</span></Link>
-                    </Button>
-                </Col>
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
-                        <Link to={"/people"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>PEOPLE</span></Link>
-                    </Button>
-                </Col>
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
-                        <Link to={"/blogs"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>BLOGS</span></Link>
-                    </Button>
-                </Col>
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
-                        <Link to={"/hashtags"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>HASHTAGS</span></Link>
-                    </Button>
-                </Col>
-            </Row>
 
-            <Row className="justify-content-md-center">
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
-                        <Link to={"/home"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>RECOMMENDED</span></Link>
-                    </Button>
-                </Col>
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"danger"} style={{marginBottom:"1em"}}>
-                        <Link to={"/nearme"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>NEAR ME</span></Link>
-                    </Button>
-                </Col>
-            </Row>
+            <Container className="background2">
 
-            <Row className="justify-content-md-center">
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"danger"} style={{marginBottom:"1em"}}>
-                        <Link to={"/home"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>HOME</span></Link>
-                    </Button>
-                </Col>
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
-                        <Link to={"/calendar"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>CALENDAR</span></Link>
-                    </Button>
-                </Col>
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
-                        <Link to={"/profile"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>PROFILE</span></Link>
-                    </Button>
-                </Col>
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
-                        <Link to={"/settings"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>SETTINGS</span></Link>
-                    </Button>
-                </Col>
-            </Row>
+
+                <Card className="post" style={{ width: '21rem', height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem'}} />
+                    <Card.Body>
+                        <Card.Text className="event-time-1" style={{textAlign: 'left'}}>JAN 7 • 10AM</Card.Text>
+                        <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Play in the Park</Card.Title>
+                        <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
+                            Hosted by the Muse Th.
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-1" style={{textAlign: 'left'}}>
+                            Public
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                            <img src={clock} alt="Near me" className="icon"/> 7 Jan 2023, 10AM - 11AM
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                            <img src={map} alt="Near me" className="icon"/> 112 Barrack Street, NR3 1TX, UK
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+                <Card className="post" style={{ width: '21rem', height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img className="cardimg" src={imgcard2} style={{height: '8em', width: '10rem'}} />
+                    <Card.Body>
+                        <Card.Text className="event-time-1" style={{textAlign: 'left'}}>JAN 7 • 5PM</Card.Text>
+                        <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Music therapy</Card.Title>
+                        <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
+                            Hosted by Color Notes
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-1" style={{textAlign: 'left'}}>
+                            Public
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                            <img src={clock} alt="Near me" className="icon"/> 7 Jan 2023, 10AM - 11AM
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                            <img src={map} alt="Near me" className="icon"/> 112 Barrack Street, NR3 1TX, UK
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+
+                <Card className="post" style={{ width: '21rem', height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem'}} />
+                    <Card.Body>
+                        <Card.Text className="event-time-1" style={{textAlign: 'left'}}>JAN 7 • 10AM</Card.Text>
+                        <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Play in the Park</Card.Title>
+                        <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
+                            Hosted by the Muse Th.
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-1" style={{textAlign: 'left'}}>
+                            Public
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                            <img src={clock} alt="Near me" className="icon"/> 7 Jan 2023, 10AM - 11AM
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                            <img src={map} alt="Near me" className="icon"/> 112 Barrack Street, NR3 1TX, UK
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+
+                <Card className="post" style={{ width: '21rem', height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem'}} />
+                    <Card.Body>
+                        <Card.Text className="event-time-1" style={{textAlign: 'left'}}>JAN 7 • 10AM</Card.Text>
+                        <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Play in the Park</Card.Title>
+                        <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
+                            Hosted by the Muse Th.
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-1" style={{textAlign: 'left'}}>
+                            Public
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                            <img src={clock} alt="Near me" className="icon"/> 7 Jan 2023, 10AM - 11AM
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                            <img src={map} alt="Near me" className="icon"/> 112 Barrack Street, NR3 1TX, UK
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+
+                <Card className="post" style={{ width: '21rem', height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem'}} />
+                    <Card.Body>
+                        <Card.Text className="event-time-1" style={{textAlign: 'left'}}>JAN 7 • 10AM</Card.Text>
+                        <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Play in the Park</Card.Title>
+                        <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
+                            Hosted by the Muse Th.
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-1" style={{textAlign: 'left'}}>
+                            Public
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                            <img src={clock} alt="Near me" className="icon"/> 7 Jan 2023, 10AM - 11AM
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                            <img src={map} alt="Near me" className="icon"/> 112 Barrack Street, NR3 1TX, UK
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+
+
+            </Container>
+
         </Container>
     )
 

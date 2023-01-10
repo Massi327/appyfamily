@@ -67,13 +67,13 @@ return  <Container className="cont">
             </Row>
         </Container>
 
-        <Container className="cont-menu-rec-nearme">
+        <Container className="cont-menu-rec-nearme" >
             <Row className="menu-rec-nearme">
 
-                <Col xs={6} sm={12} md={3}>
+                <Col>
                     <Link to={"/home"} ><img src={recbut} alt="Recommended" className="icon" style={{marginTop:"5px"}}/></Link>
                 </Col>
-                <Col xs={6} sm={12} md={3}>
+                <Col>
                     <Link to={"/nearme"}><img src={nearme} alt="Near me" className="icon" style={{marginTop:"10px"}}/></Link>
                 </Col>
 

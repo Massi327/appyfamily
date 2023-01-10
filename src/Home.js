@@ -86,6 +86,69 @@ export default function Home(){
                 </Card>
 
 
+                <Card className="post" style={{ width: '21rem', height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem'}} />
+                    <Card.Body>
+                        <Card.Text className="event-time-1" style={{textAlign: 'left'}}>JAN 7 • 10AM</Card.Text>
+                        <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Play in the Park</Card.Title>
+                        <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
+                            Hosted by the Muse Th.
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-1" style={{textAlign: 'left'}}>
+                            Public
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                            <img src={clock} alt="Near me" className="icon"/> 7 Jan 2023, 10AM - 11AM
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                            <img src={map} alt="Near me" className="icon"/> 112 Barrack Street, NR3 1TX, UK
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+
+                <Card className="post" style={{ width: '21rem', height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem'}} />
+                    <Card.Body>
+                        <Card.Text className="event-time-1" style={{textAlign: 'left'}}>JAN 7 • 10AM</Card.Text>
+                        <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Play in the Park</Card.Title>
+                        <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
+                            Hosted by the Muse Th.
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-1" style={{textAlign: 'left'}}>
+                            Public
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                            <img src={clock} alt="Near me" className="icon"/> 7 Jan 2023, 10AM - 11AM
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                            <img src={map} alt="Near me" className="icon"/> 112 Barrack Street, NR3 1TX, UK
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+
+                <Card className="post" style={{ width: '21rem', height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem'}} />
+                    <Card.Body>
+                        <Card.Text className="event-time-1" style={{textAlign: 'left'}}>JAN 7 • 10AM</Card.Text>
+                        <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Play in the Park</Card.Title>
+                        <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
+                            Hosted by the Muse Th.
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-1" style={{textAlign: 'left'}}>
+                            Public
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                            <img src={clock} alt="Near me" className="icon"/> 7 Jan 2023, 10AM - 11AM
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                            <img src={map} alt="Near me" className="icon"/> 112 Barrack Street, NR3 1TX, UK
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+
 
         </Container>
 

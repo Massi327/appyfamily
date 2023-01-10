@@ -1,7 +1,7 @@
 import {useContext, useState} from "react";
 import {StateContext} from "./App";
 import {Link} from "react-router-dom";
-import {Button, Col, Container, Form, Nav, Navbar, Row} from "react-bootstrap";
+import {Button, Card, Col, Container, Form, Nav, Navbar, Row} from "react-bootstrap";
 import Navigbar from "./components/navbar-search";
 import AddButton from "./components/add-button";
 import NavigbarBottom from "./components/navbar-bottom";
@@ -9,13 +9,15 @@ import events from "./images/Events.svg";
 import blogs from "./images/Blogs.svg";
 import people from "./images/People.svg";
 import hashtagsselected from "./images/Hashtags-selezionato.svg";
+import profile4 from "./images/profile4.svg";
+import hashtag from "./images/hashtag.svg"
 
 export default function Hashtags(){
 
     const [state,dispatch] = useContext(StateContext)
 
     return(
-        <Container fluid styile={{height:"79vh"}}>
+        <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'70vh', top:'5em'}}>
             <Navigbar vevents={events}
                       vblogs={blogs}
                       vpeople={people}
@@ -23,67 +25,91 @@ export default function Hashtags(){
             <AddButton/>
             <NavigbarBottom value="Home"/>
 
-            <Navbar style={{overflow: "hidden", top: "0px", width: "100%"}} bg="dark" variant="dark">
-                <Container>
-                    <Navbar.Brand href="/home">APPy Family</Navbar.Brand>
-                    <Nav>
-                        <Nav.Link style={{textAlign: "right"}} href="/notifications">Notifications</Nav.Link>
-                        <Nav.Link style={{textAlign: "right"}} href="/messages">Messages</Nav.Link>
-                        <Nav.Link style={{textAlign: "right"}} href="/tutorial">Tutorial</Nav.Link>
-                    </Nav>
-                </Container>
-            </Navbar>
+            <Container style={{marginTop:'13em'}}>
 
-            <Form className="d-flex">
-                <Form.Control type="search" placeholder="Search" aria-label="Search"/>
-                <Button variant="outline-success">Search</Button>
-            </Form>
+                <Card className="people" style={{ width: '21rem', height: '5rem', top: '2em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img  src={hashtag} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                    <Card.Body>
+                        <Card.Text className="name-people" style={{textAlign: 'left'}}>#crying_baby</Card.Text>
+                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
+                            7.5K posts
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
 
-            <Row className="justify-content-md-center">
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
-                        <Link to={"/home"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>EVENTS</span></Link>
-                    </Button>
-                </Col>
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
-                        <Link to={"/people"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>PEOPLE</span></Link>
-                    </Button>
-                </Col>
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
-                        <Link to={"/blogs"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>BLOGS</span></Link>
-                    </Button>
-                </Col>
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"danger"} style={{marginBottom:"1em"}}>
-                        <Link to={"/hashtags"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>HASHTAGS</span></Link>
-                    </Button>
-                </Col>
-            </Row>
 
-            <Row className="justify-content-md-center">
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"danger"} style={{marginBottom:"1em"}}>
-                        <Link to={"/home"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>HOME</span></Link>
-                    </Button>
-                </Col>
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
-                        <Link to={"/calendar"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>CALENDAR</span></Link>
-                    </Button>
-                </Col>
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
-                        <Link to={"/profile"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>PROFILE</span></Link>
-                    </Button>
-                </Col>
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
-                        <Link to={"/settings"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>SETTINGS</span></Link>
-                    </Button>
-                </Col>
-            </Row>
+                <Card className="people" style={{ width: '21rem', height: '5rem', top: '2em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img  src={hashtag} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                    <Card.Body>
+                        <Card.Text className="name-people" style={{textAlign: 'left'}}>#jumpingontrampoline</Card.Text>
+                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
+                            45.7K posts
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+
+                <Card className="people" style={{ width: '21rem', height: '5rem', top: '2em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img  src={hashtag} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                    <Card.Body>
+                        <Card.Text className="name-people" style={{textAlign: 'left'}}>#babies_at_weddings</Card.Text>
+                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
+                            1.5K posts
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+
+                <Card className="people" style={{ width: '21rem', height: '5rem', top: '2em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img  src={hashtag} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                    <Card.Body>
+                        <Card.Text className="name-people" style={{textAlign: 'left'}}>#happy_baby</Card.Text>
+                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
+                            20K posts
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+
+
+                <Card className="people" style={{ width: '21rem', height: '5rem', top: '2em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img  src={hashtag} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                    <Card.Body>
+                        <Card.Text className="name-people" style={{textAlign: 'left'}}>#kids_safety</Card.Text>
+                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
+                            2K posts
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+
+
+                <Card className="people" style={{ width: '21rem', height: '5rem', top: '2em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img  src={hashtag} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                    <Card.Body>
+                        <Card.Text className="name-people" style={{textAlign: 'left'}}>#breastfeeding</Card.Text>
+                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
+                            7.8K posts
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+
+
+                <Card className="people" style={{ width: '21rem', height: '5rem', top: '2em', marginBottom: '5em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img  src={hashtag} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                    <Card.Body>
+                        <Card.Text className="name-people" style={{textAlign: 'left'}}>#sleepless_nights</Card.Text>
+                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
+                            0.7K posts
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+
+            </Container>
+
+
         </Container>
     )
 

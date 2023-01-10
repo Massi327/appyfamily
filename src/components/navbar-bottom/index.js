@@ -10,7 +10,7 @@ import settings from "../../images/Settings.svg";
 const NavigbarBottom = (props) => {
     const {value} = props
 
-    return <Container className="navigbar-bottom" style={{width: "100vw"}}>
+    return <Container className="navigbar-bottom" style={{width: "100vw", zIndex: '1000'}}>
         <Row className="justify-content-sm-center">
             <Col xs={3} sm={12} md={3}>
                 <Link to={"/home"} style={{color: "white", textDecoration: "none"}}><span><img src={home} alt="Home" className="bottom-bar-icon"/></span></Link>

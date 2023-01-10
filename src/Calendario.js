@@ -3,6 +3,7 @@ import moment from 'moment'
 import 'moment/locale/en-gb';
 import {useCallback, useContext, useState} from "react";
 import {StateContext} from "./App";
+import "./Calendario.css"
 import {
     Alert,
     Button,
@@ -26,6 +27,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import {addBooking, selected, selectedSlot} from "./Action";
 import {Link, useNavigate} from "react-router-dom";
 import NavigbarBottom from "./components/navbar-bottom";
+import NavigbarP from "./components/navbar-profile";
 
 const localizer = momentLocalizer(moment)
 
@@ -94,23 +96,13 @@ export default function Calendario(){
 
     return(
         <Container>
+            <NavigbarP/>
             <NavigbarBottom value="Home"/>
 
-            <Navbar style={{overflow: "hidden", top: "0px", width: "100%"}} bg="dark" variant="dark">
-                <Container>
-                    <Navbar.Brand href="/home">APPy Family</Navbar.Brand>
-                    <Nav>
-                        <Nav.Link style={{textAlign: "right"}} href="/notifications">Notifications</Nav.Link>
-                        <Nav.Link style={{textAlign: "right"}} href="/messages">Messages</Nav.Link>
-                        <Nav.Link style={{textAlign: "right"}} href="/tutorial">Tutorial</Nav.Link>
-                    </Nav>
-                </Container>
-            </Navbar>
-
-            <Row style={{textAlign: "center"}}>
+            <Row style={{textAlign: "center", marginTop:'6em'}}>
                 <Col md={12} xs={12}>
                     <ButtonGroup>
-                        <DropdownButton title="Category" id="bg-nested-dropdown">
+                        <DropdownButton title="Category" id="bg-nested-dropdown" className="button">
                             {state.categoriav.map(cat => (
                             <Dropdown.Item eventKey={cat.value}>{cat}</Dropdown.Item>
                             ))}
@@ -120,7 +112,7 @@ export default function Calendario(){
                 </Col>
             </Row>
 
-            <Row>
+            <Row style={{zIndex:'-5'}}>
                 <Col xl={8} lg={8} md={8} sm={12} xs={12}>
                     <Calendar
                         selectable
@@ -131,7 +123,7 @@ export default function Calendario(){
                         defaultView={'month'}
                         views={['month','week','day']}
                         events={events}
-                        style={{height:'81vh', backgroundColor: 'white', marginBottom: "5px"}}
+                        style={{height:'81vh', backgroundColor: 'white', marginBottom: "5px", zIndex:'-1000'}}
                         resources={resourceMap}
                         resourceIdAccessor='resourceId'
                         resourceTitleAccessor='resourceTitle'
