@@ -16,7 +16,7 @@ import blogsselectd from "../../images/Blogs-selezionato.svg";
 import hashtagsselected from "../../images/Hashtags-selezionato.svg";
 
 
-const Navigbar = ({ vevents, vblogs, vpeople, vhashtags }) => {
+const Navigbar = ({ vevents, vblogs, vpeople, vhashtags, vrec, vnearme, value }) => {
 
 
 
@@ -71,10 +71,10 @@ return  <Container className="cont">
             <Row className="menu-rec-nearme">
 
                 <Col>
-                    <Link to={"/home"} ><img src={recbut} alt="Recommended" className="icon" style={{marginTop:"5px"}}/></Link>
+                    <Link to={"/home"} ><img src={vrec} alt="Recommended" className="icon" style={{marginTop:"5px"}}/></Link>
                 </Col>
                 <Col>
-                    <Link to={"/nearme"}><img src={nearme} alt="Near me" className="icon" style={{marginTop:"10px"}}/></Link>
+                    <Link to={"/nearme"}><img src={vnearme} alt="Near me" className="icon" style={{marginTop:"10px"}}/></Link>
                 </Col>
 
 

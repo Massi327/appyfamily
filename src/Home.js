@@ -40,7 +40,8 @@ export default function Home(){
             <Navigbar vevents={eventsselected}
                       vblogs={blogs}
                       vpeople={people}
-                      vhashtags={hashtags}/>
+                      vhashtags={hashtags}
+            />
 
             <Container className="background2">
 

@@ -29,55 +29,132 @@ export default function Blogs(){
             <Navigbar vevents={events}
                       vblogs={blogsselectd}
                       vpeople={people}
-                      vhashtags={hashtags}/>
+                      vhashtags={hashtags}
+                      vrecbar={}
+            />
             <AddButton/>
             <NavigbarBottom value="Home"/>
 
             <Container className="background2">
 
-                <Container style={{backgroudColor:"white", width:"85vw", top:"14em"}}>
+                <Container style={{backgroudColor:"grey", width:"85vw", top:"14em"}}>
                     <Card className="people" style={{ width: '21rem', height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                         <Card.Body>
                             <Card.Text className="blog-title" style={{textAlign: 'left'}}>Activity ideas for my 6 months old child during long car trips?</Card.Text>
-                            <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
-                                2 weeks ago • Sophia Wilkinson
+
+                            <Card.Text>
+                                <Row style={{height:"1em"}}>
+                                    <Col  xs={9} className="subtitle-connections" style={{textAlign:"left"}}>
+                                        2 weeks ago • Sophia Wilkinson
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col xs={4}>
+
+                                    </Col>
+                                    <Col xs={3}>
+                                        <Link className="reply">Reply</Link>
+                                    </Col>
+                                    <Col xs={5}>
+                                        <Link className="reply">View 7 replies</Link>
+                                    </Col>
+                                </Row>
                             </Card.Text>
+
                         </Card.Body>
                     </Card>
 
                     <Card className="people" style={{ width: '21rem', height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                         <Card.Body>
-                            <Card.Text className="name-people" style={{textAlign: 'left', width: '18rem'}}>Activity ideas for my 6 months old child during long car trips?</Card.Text>
-                            <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
-                                2 weeks ago • Sophia Wilkinson
+                            <Card.Text className="blog-title" style={{textAlign: 'left'}}>Activity ideas for my 6 months old child during long car trips?</Card.Text>
+
+                            <Card.Text>
+                                <Row>
+                                    <Col  xs={9} className="subtitle-connections" style={{textAlign:"left"}}>
+                                        2 weeks ago • Sophia Wilkinson
+                                    </Col>
+                                    <Col>
+                                        <Link className="reply"> Reply</Link>
+                                    </Col>
+                                </Row>
                             </Card.Text>
+
                         </Card.Body>
                     </Card>
 
-                    <Card className="people" style={{ width: '21rem', height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                        <Card.Body>
-                            <Card.Text className="name-people" style={{textAlign: 'left', width: '18rem'}}>Activity ideas for my 6 months old child during long car trips?</Card.Text>
-                            <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
-                                2 weeks ago • Sophia Wilkinson
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
 
                     <Card className="people" style={{ width: '21rem', height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                         <Card.Body>
-                            <Card.Text className="name-people" style={{textAlign: 'left', width: '18rem'}}>Activity ideas for my 6 months old child during long car trips?</Card.Text>
-                            <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
-                                2 weeks ago • Sophia Wilkinson
+                            <Card.Text className="blog-title" style={{textAlign: 'left'}}>Activity ideas for my 6 months old child during long car trips?</Card.Text>
+
+                            <Card.Text>
+                                <Row>
+                                    <Col  xs={9} className="subtitle-connections" style={{textAlign:"left"}}>
+                                        2 weeks ago • Sophia Wilkinson
+                                    </Col>
+                                    <Col>
+                                        <Link className="reply"> Reply</Link>
+                                    </Col>
+                                </Row>
                             </Card.Text>
+
                         </Card.Body>
                     </Card>
 
+
                     <Card className="people" style={{ width: '21rem', height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                         <Card.Body>
-                            <Card.Text className="name-people" style={{textAlign: 'left', width: '18rem'}}>Activity ideas for my 6 months old child during long car trips?</Card.Text>
-                            <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
-                                2 weeks ago • Sophia Wilkinson
+                            <Card.Text className="blog-title" style={{textAlign: 'left'}}>Activity ideas for my 6 months old child during long car trips?</Card.Text>
+
+                            <Card.Text>
+                                <Row>
+                                    <Col  xs={9} className="subtitle-connections" style={{textAlign:"left"}}>
+                                        2 weeks ago • Sophia Wilkinson
+                                    </Col>
+                                    <Col>
+                                        <Link className="reply"> Reply</Link>
+                                    </Col>
+                                </Row>
                             </Card.Text>
+
+                        </Card.Body>
+                    </Card>
+
+
+                    <Card className="people" style={{ width: '21rem', height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                        <Card.Body>
+                            <Card.Text className="blog-title" style={{textAlign: 'left'}}>Activity ideas for my 6 months old child during long car trips?</Card.Text>
+
+                            <Card.Text>
+                                <Row>
+                                    <Col  xs={9} className="subtitle-connections" style={{textAlign:"left"}}>
+                                        2 weeks ago • Sophia Wilkinson
+                                    </Col>
+                                    <Col>
+                                        <Link className="reply"> Reply</Link>
+                                    </Col>
+                                </Row>
+                            </Card.Text>
+
+                        </Card.Body>
+                    </Card>
+
+
+                    <Card className="people" style={{ width: '21rem', height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                        <Card.Body>
+                            <Card.Text className="blog-title" style={{textAlign: 'left'}}>Activity ideas for my 6 months old child during long car trips?</Card.Text>
+
+                            <Card.Text>
+                                <Row>
+                                    <Col  xs={9} className="subtitle-connections" style={{textAlign:"left"}}>
+                                        2 weeks ago • Sophia Wilkinson
+                                    </Col>
+                                    <Col>
+                                        <Link className="reply"> Reply</Link>
+                                    </Col>
+                                </Row>
+                            </Card.Text>
+
                         </Card.Body>
                     </Card>
 
