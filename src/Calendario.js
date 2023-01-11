@@ -47,21 +47,15 @@ export default function Calendario(){
     const [categoria,setCategoria] = useState('')
 
     const [eventi, setEventi] = useState(() => {
-        const eventi = JSON.parse(localStorage.getItem('eventi'));
-        return eventi || []; } )
-
-    useEffect(() => {
-
-        localStorage.setItem('eventi', JSON.stringify(eventi));
-    }, [eventi])
+        const eventi = JSON.parse(localStorage.getItem('arrayLS'));
+        return eventi || state.arrayLS; } )
 
     const addHidden = 'false';
 
     const navigate = useNavigate();
 
-    let events = [];
+    {/*let events = [];
 
-    let mario = [];
     state.prenotazioni.map(p => {
         let event={
             id: p.key,
@@ -70,9 +64,8 @@ export default function Calendario(){
             end: p.dataEnd.toDate(),
             categoria: p.categoria
         }
-        mario.push(event)
         events.push(event)
-    })
+    })*/}
 
 
     //const resourceMap = [{resourceId: 1, resourceTitle: ''},]
@@ -131,7 +124,7 @@ export default function Calendario(){
             <Row style={{textAlign: "center", marginTop:'6em'}}>
                 <Col md={12} xs={12}>
                     <ButtonGroup>
-                        <Button onClick={()=> console.log(state.sale)}>+</Button>
+                        <Button onClick={()=> localStorage.clear()}>+</Button>
                     </ButtonGroup>
                 </Col>
             </Row>
@@ -149,11 +142,11 @@ export default function Calendario(){
                         defaultDate={new Date()}
                         defaultView={'month'}
                         views={['month','week','day']}
-                        events={events}
+                        events={eventi}
                         style={{height:'81vh', backgroundColor: 'white', marginBottom: "5px", zIndex:'-1000'}}
                         onSelectEvent={e => {dispatch(selected(e.id, e.resourceId))}}
                         onSelecting={range => handleSelect(range)}
-                        eventPropGetter= {(events) => {
+                        eventPropGetter= {(eventi) => {
                                 let newStyle = {
                                     backgroundColor: "orange",
                                     color: 'black',
@@ -161,7 +154,7 @@ export default function Calendario(){
                                     border: "none"
                                 };
 
-                            if (events.categoria === 'Park'){
+                            if (eventi.categoria === 'Park'){
                                 newStyle.backgroundColor = "green"
                             }
 

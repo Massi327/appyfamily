@@ -5,7 +5,7 @@ import {useContext, useEffect, useState} from "react";
 import {StateContext} from "./App";
 import {
     Alert,
-    Button,
+    Button, ButtonGroup,
     Card,
     CloseButton,
     Col,
@@ -42,35 +42,18 @@ export default function Add(){
     const [categoria,setCategoria] = useState('')
     const calendariohidden = 'false';
 
+    const [ls,setLS] = useState('false')
+
     let events =[]
-    state.sale.map(s =>{
-        s.prenotazioni.map(p=> {
+    state.prenotazioni.map(p=> {
             let event={
                 id: p.key,
-                title: p.scopo,
+                title: p.titolo,
                 start: p.dataStart.toDate(),
                 end: p.dataEnd.toDate(),
-                resourceId: s.id
             }
             events.push(event)
         })
-    })
-
-    const resourceMap = [{resourceId: 1, resourceTitle: ''},]
-
-    let handleSelect = (range) => {
-        setSel('true')
-        let start= moment(range.start, 'LT')
-        let end=  moment(range.end, 'LT')
-        let giorno= moment(range.start)
-        start=moment(start).format('LT')
-        end=moment(end).format('LT')
-        giorno= moment(giorno).format('yyyy-MM-DD')
-        setOraI(start)
-        setOraF(end)
-        setDate(giorno)
-        setSala(range.resourceId)
-    }
 
     useEffect(() => {
         localStorage.setItem('titolo', JSON.stringify(titolo))
@@ -102,11 +85,7 @@ export default function Add(){
                         views={['month','week','day']}
                         events={events}
                         style={{height:'81vh', backgroundColor: 'white', marginBottom: "5px"}}
-                        resources={resourceMap}
-                        resourceIdAccessor='resourceId'
-                        resourceTitleAccessor='resourceTitle'
                         onSelectEvent={e => {dispatch(selected(e.id, e.resourceId))}}
-                        onSelecting={range => handleSelect(range)}
                     />
                 </Col> : null}
 
@@ -198,17 +177,10 @@ export default function Add(){
 
                                     let oraISan=moment(oraI, 'hh:mm a').subtract(30, 'minutes')
 
-                                    if(state.sale[Number(sala)-1].prenotazioni.filter(p=> p.dataStart.isSame(dataS)).length!==0 ||
-                                        state.sale[Number(sala)-1].prenotazioni.filter(p=> p.dataEnd.isSame(dataF)).length!==0 ||
-                                        state.sale[Number(sala)-1].prenotazioni.filter(p=> dataS.isBetween(p.dataStart,p.dataEnd)).length!==0 ||
-                                        state.sale[Number(sala)-1].prenotazioni.filter(p=> dataF.isBetween(p.dataStart,p.dataEnd)).length!==0 ||
-                                        state.sale[Number(sala)-1].prenotazioni.filter(p=> p.dataStart.isBetween(dataS,dataF)).length!==0 ||
-                                        state.sale[Number(sala)-1].prenotazioni.filter(p=> p.dataEnd.isBetween(dataS,dataF)).length!==0 ){
-                                        setBadge('occupata')
-                                    }else if(dataS.isBefore(moment()) || dataF.isBefore(moment())) {
+                                    if(dataS.isBefore(moment()) || dataF.isBefore(moment())) {
                                         setBadge('precedente')
                                     }else{
-                                        dispatch(addBooking(sala,dataS,dataF,address,titolo,about,categoria))
+                                        dispatch(addBooking(dataS,dataF,address,titolo,about,categoria))
                                         setAddress('')
                                         setTitolo('')
                                         setAbout('')
@@ -217,6 +189,7 @@ export default function Add(){
                                         setOraF('')
                                         setSel('')
                                         setCategoria('')
+                                        setLS('true')
                                         dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('','yyyy-MM-DD').format('LT'), 'false'))
                                     }
                                 }}>CONFERMA PRENOTAZIONE</Button>
@@ -224,8 +197,9 @@ export default function Add(){
                         </Card>
                     </Row>
 
+                    {ls=='true' ? localStorage.setItem('arrayLS', JSON.stringify(state.arrayLS)) : null}
+
                     {badge=='conferma' ? <Alert variant={"success"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>PRENOTAZIONE AVVENUTA CON SUCCESSO!</Alert> : null}
-                    {badge=='sanitaria'? <Alert variant={"danger"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>ASPETTA 30 MIN PRIMA DI PRENOTARE! QUESTIONI SANITARIE</Alert> : null}
                     {badge=='form' ? <Alert variant={"danger"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>FORM COMPLETAMENTE/PARZIALMENTE VUOTO!</Alert> : null}
                     {badge=='occupata' ? <Alert variant={"danger"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>STANZA OCCUPPATA!</Alert> : null}
                     {badge=='precedente' ? <Alert variant={"danger"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>DATA PRECEDENTE!</Alert> : null}
@@ -252,6 +226,12 @@ export default function Add(){
                             <Button variant={"danger"} style={{marginTop: "5px", marginBottom: "5px"}} onClick={() => dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('','yyyy-MM-DD').format('LT'), 'false'))}>
                                 <Link to={"/calendar"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>CALENDAR</span></Link>
                             </Button> }
+                        <ButtonGroup>
+                            <Button onClick={()=> console.log(state.arrayLS)}>+</Button>
+                        </ButtonGroup>
+                        <ButtonGroup>
+                            <Button onClick={()=> console.log(state.prenotazioni)}>+</Button>
+                        </ButtonGroup>
                     </Col>
                 </Row>
 

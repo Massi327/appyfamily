@@ -3,8 +3,8 @@ export const SELECTED= 'selected'
 export const SELECTEDSLOT= 'selectedSlot'
 export const ADD_CATEGORY = 'addCategory'
 
-export function addBooking(sala, dataStart, dataEnd, address, titolo, about, categoria){
-    return {type:ADD_BOOKNG, sala, dataStart, dataEnd, address, titolo, about, categoria}
+export function addBooking( dataStart, dataEnd, address, titolo, about, categoria){
+    return {type:ADD_BOOKNG, dataStart, dataEnd, address, titolo, about, categoria}
 }
 
 export function selected(id, rid){
