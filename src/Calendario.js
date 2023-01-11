@@ -51,27 +51,16 @@ export default function Calendario(){
         return eventi || []; } )
 
     useEffect(() => {
-        localStorage.setItem('eventi', JSON.stringify(eventi))
+        setEventi(events)
+        localStorage.setItem('eventi', JSON.stringify(eventi));
     }, [eventi])
 
     const addHidden = 'false';
 
     const navigate = useNavigate();
 
-    let events =[]
-    state.sale.map(s =>{
-        s.prenotazioni.map(p=> {
-            let event={
-                id: p.key,
-                title: p.titolo,
-                start: p.dataStart.toDate(),
-                end: p.dataEnd.toDate(),
-                resourceId: s.id,
-                categoria: p.categoria
-            }
-            events.push(event)
-        })
-    })
+    let events = state.arrayLS;
+
 
     const resourceMap = [{resourceId: 1, resourceTitle: ''},]
 
@@ -117,7 +106,7 @@ export default function Calendario(){
             <Row style={{textAlign: "center", marginTop:'6em'}}>
                 <Col md={12} xs={12}>
                     <ButtonGroup>
-                        <Button onClick={()=> console.log(events)}>+</Button>
+                        <Button onClick={()=> console.log(state.sale)}>+</Button>
                     </ButtonGroup>
                 </Col>
             </Row>

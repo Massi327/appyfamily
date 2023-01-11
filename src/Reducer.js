@@ -5,7 +5,7 @@ import 'moment/locale/it';
 export const initialState = {
     sale: [
         {id:1,  prenotazioni:[
-                {   key:Math.random(),
+                {   key: 789,
                     titolo:'Park Hamill',
                     dataStart:moment('2023-01-03, 10:00','YYYY-MM-DD, hh:mm'),
                     dataEnd:moment('2023-01-03, 11:30','YYYY-MM-DD, hh:mm'),
@@ -23,7 +23,16 @@ export const initialState = {
     giorno: moment('').format('yyyy-MM-DD'),
     start: moment('','yyyy-MM-DD').format('LT'),
     c: 'false',
-    categoriav: ['---', 'Sport', 'Park']
+    categoriav: ['---', 'Sport', 'Park'],
+
+    arrayLS:[
+        {   ids: 789,
+            title:'Park Hamill',
+            start: moment('2023-01-03, 10:00','YYYY-MM-DD, hh:mm'),
+            end: moment('2023-01-03, 11:30','YYYY-MM-DD, hh:mm'),
+            resurceId: 0,
+            categoria: 'Park'
+        }]
 }
 
 export function Reducer(state,action){
@@ -32,21 +41,14 @@ export function Reducer(state,action){
 
             const sIndex = state.sale.findIndex(s=>s.id===action.sala)
             let newArray = [...state.sale]
-            newArray[sIndex] = {...newArray[sIndex],
-                prenotazioni:[...newArray[sIndex].prenotazioni,
-                    {   key: Math.random(),
-                        address: action.address,
-                        dataStart: action.dataStart,
-                        dataEnd: action.dataEnd,
-                        titolo: action.titolo,
-                        about: action.about,
-                        categoria: action.categoria
-                    }
-                ]}
-
+            let evento = {   key: Math.random(), address: action.address, dataStart: action.dataStart, dataEnd: action.dataEnd, titolo: action.titolo, about: action.about, categoria: action.categoria}
+            let eventoLS = { ids: evento.key, title: action.titolo, start: action.dataStart, end: action.dataEnd, resurceId: sIndex, categoria: action.categoria}
+            newArray[sIndex] = {...newArray[sIndex], prenotazioni:[...newArray[sIndex].prenotazioni, evento]}
+            let newArrayLS = [...state.arrayLS, eventoLS]
             return{
                 ...state,
-                sale: newArray
+                sale: newArray,
+                arrayLS: newArrayLS
             }
 
         case SELECTED:
@@ -57,6 +59,7 @@ export function Reducer(state,action){
             }
 
         case SELECTEDSLOT:
+
             return {
                 ...state,
                 giorno: action.giorno,
