@@ -41,7 +41,7 @@ export default function Calendario(){
     const [date,setDate] = useState(new Date())
     const [oraI,setOraI] = useState('')
     const [oraF,setOraF] = useState('')
-    const [sala,setSala] = useState(1)
+    //const [sala,setSala] = useState(1)
     const [badge,setBadge] = useState('')
     const [sel,setSel] = useState('')
     const [categoria,setCategoria] = useState('')
@@ -51,7 +51,7 @@ export default function Calendario(){
         return eventi || []; } )
 
     useEffect(() => {
-        setEventi(events)
+
         localStorage.setItem('eventi', JSON.stringify(eventi));
     }, [eventi])
 
@@ -59,10 +59,23 @@ export default function Calendario(){
 
     const navigate = useNavigate();
 
-    let events = state.arrayLS;
+    let events = [];
+
+    let mario = [];
+    state.prenotazioni.map(p => {
+        let event={
+            id: p.key,
+            title: p.titolo,
+            start: p.dataStart.toDate(),
+            end: p.dataEnd.toDate(),
+            categoria: p.categoria
+        }
+        mario.push(event)
+        events.push(event)
+    })
 
 
-    const resourceMap = [{resourceId: 1, resourceTitle: ''},]
+    //const resourceMap = [{resourceId: 1, resourceTitle: ''},]
 
     let handleSelect = (range) => {
         setSel('true')
@@ -75,8 +88,20 @@ export default function Calendario(){
         setOraI(start)
         setOraF(end)
         setDate(giorno)
-        setSala(range.resourceId)
     }
+    {/*let handleSelect = (range) => {
+        setSel('true')
+        let start= moment(range.start, 'LT')
+        let end=  moment(range.end, 'LT')
+        let giorno= moment(range.start)
+        start=moment(start).format('LT')
+        end=moment(end).format('LT')
+        giorno= moment(giorno).format('yyyy-MM-DD')
+        setOraI(start)
+        setOraF(end)
+        setDate(giorno)
+        setSala(range.resourceId)
+    }*/}
 
     let selectSlot = (slotInfo) => {
         setSel('true')
@@ -124,11 +149,8 @@ export default function Calendario(){
                         defaultDate={new Date()}
                         defaultView={'month'}
                         views={['month','week','day']}
-                        events={eventi}
+                        events={events}
                         style={{height:'81vh', backgroundColor: 'white', marginBottom: "5px", zIndex:'-1000'}}
-                        resources={resourceMap}
-                        resourceIdAccessor='resourceId'
-                        resourceTitleAccessor='resourceTitle'
                         onSelectEvent={e => {dispatch(selected(e.id, e.resourceId))}}
                         onSelecting={range => handleSelect(range)}
                         eventPropGetter= {(events) => {
@@ -204,39 +226,6 @@ export default function Calendario(){
                                         </Col>
                                     </Row>
                                 </FormGroup>
-
-
-
-                                <Button className='submit' disabled={bottoneDisabilitato(address, titolo, oraI, oraF, date)} variant='dark' onClick={() => {
-
-                                    let calendarDate = moment(date).format('YYYY-MM-DD')
-                                    let dataS=moment(calendarDate+', '+oraI,'YYYY-MM-DD, hh:mm a')
-                                    let dataF=moment(calendarDate+', '+oraF,'YYYY-MM-DD, hh:mm a')
-
-                                    let oraISan=moment(oraI, 'hh:mm a').subtract(30, 'minutes')
-
-                                    if(state.sale[Number(sala)-1].prenotazioni.filter(p=> p.dataStart.isSame(dataS)).length!==0 ||
-                                        state.sale[Number(sala)-1].prenotazioni.filter(p=> p.dataEnd.isSame(dataF)).length!==0 ||
-                                        state.sale[Number(sala)-1].prenotazioni.filter(p=> dataS.isBetween(p.dataStart,p.dataEnd)).length!==0 ||
-                                        state.sale[Number(sala)-1].prenotazioni.filter(p=> dataF.isBetween(p.dataStart,p.dataEnd)).length!==0 ||
-                                        state.sale[Number(sala)-1].prenotazioni.filter(p=> p.dataStart.isBetween(dataS,dataF)).length!==0 ||
-                                        state.sale[Number(sala)-1].prenotazioni.filter(p=> p.dataEnd.isBetween(dataS,dataF)).length!==0 ){
-                                        setBadge('occupata')
-                                    }else if(dataS.isBefore(moment()) || dataF.isBefore(moment())) {
-                                        setBadge('precedente')
-                                    }else{
-                                        dispatch(addBooking(Number(sala),dataS,dataF,address,titolo,about,categoria))
-                                        setBadge('conferma')
-                                        setAddress('')
-                                        setTitolo('')
-                                        setAbout('')
-                                        setDate(moment())
-                                        setOraI('')
-                                        setOraF('')
-                                        setSel('')
-                                        setCategoria('')
-                                    }
-                                }}>CONFERMA PRENOTAZIONE</Button>
                             </Card.Body>
                         </Card>
                     </Row>
