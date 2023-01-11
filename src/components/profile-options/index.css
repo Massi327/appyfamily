@@ -1,0 +1,19 @@
+.base{
+    position:fixed;
+    z-index: 1;
+    height:20%;
+    width:100%;
+    margin-left:0px;
+    padding-left:0px;
+    top:0em;
+    bottom:0px;
+}
+
+.row{
+    justify-content: center;
+}
+.search{
+    margin-top:10px;
+    margin-bottom:10px;
+
+}

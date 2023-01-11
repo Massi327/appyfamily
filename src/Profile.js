@@ -12,22 +12,24 @@ import "./Profile.css";
 import imgcard1 from "./images/Image-event-1.svg";
 import clock from "./images/Clock.svg";
 import map from "./images/Map.svg";
-import profile from './images/Sophia.svg'
+import profile from './images/sophia+ribbon.png'
 import ribbon from './images/ribbon_icon.png'
-
+import NavbarProfile from "./components/navbar-profile";
+import eventsp from "./images/Events-selezionato.svg";
+import blogsp from './images/Blogs.svg'
 export default function Profile(){
 
     const [state,dispatch] = useContext(StateContext)
 
     return(
-        <Container className="bg">
+        <Container className="bg" style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', top:'5em'}}>
 
             <NavigbarP />
 
                 <Container className="bg2">
 
                     <Card className="post" style={{ width: '100%', height: '8rem',  marginTop: '0em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                        <Card.Img  src={profile} style={{height: '8em', width: '10rem'}} />
+                        <Card.Img  src={profile} style={{height: '8em', width: '8rem'}} />
                         {/*<Card.Img  src={ribbon} className="ribbon" />*/}
                         <Card.Body>
                             <Card.Title className="name" style={{textAlign: 'left'}}>Sophia_Wilkinson</Card.Title>
@@ -39,13 +41,17 @@ export default function Profile(){
 
 
                 </Container>
-
+            <Container style={{marginTop:"15em"}}>
+                <NavbarProfile events={eventsp}
+                               blogs={blogsp}/>
+            </Container>
 
 
 
             {/*TODO: card eventi*/}
 
-            <Row className="justify-content-md-center">
+            {/*  <Row className="justify-content-md-center">
+
                 <Col xs={12} sm={12} md={3}>
                     <Button variant={"dark"} style={{marginBottom:"1em"}}>
                         <Link to={"/home"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>HOME</span></Link>
@@ -69,7 +75,7 @@ export default function Profile(){
                         <Link to={"/settings"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>SETTINGS</span></Link>
                     </Button>
                 </Col>
-            </Row>
+            </Row>*/}
             <NavigbarBottom value="Profile"/>
         </Container>
     )
