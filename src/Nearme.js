@@ -13,6 +13,8 @@ import imgcard1 from "./images/Image-event-1.svg";
 import clock from "./images/Clock.svg";
 import map from "./images/Map.svg";
 import imgcard2 from "./images/Image-event-2.svg";
+import nearmebut from "./images/nearme-button.svg";
+import rec from "./images/Recommendedn.svg"
 
 
 export default function Nearme(){
@@ -24,7 +26,10 @@ export default function Nearme(){
             <Navigbar vevents={eventsselected}
                       vblogs={blogs}
                       vpeople={people}
-                      vhashtags={hashtags}/>
+                      vhashtags={hashtags}
+                      vrec={rec}
+                      vnearme={nearmebut}
+            />
             <AddButton/>
             <NavigbarBottom value="Home"/>
 

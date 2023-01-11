@@ -16,7 +16,8 @@ import blogsselectd from "../../images/Blogs-selezionato.svg";
 import hashtagsselected from "../../images/Hashtags-selezionato.svg";
 
 
-const Navigbar = ({ vevents, vblogs, vpeople, vhashtags, vrec, vnearme, value }) => {
+
+const Navigbar = ({ vevents, vblogs, vpeople, vhashtags, vrec, vnearme }) => {
 
 
 

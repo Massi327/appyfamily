@@ -41,6 +41,8 @@ export default function Home(){
                       vblogs={blogs}
                       vpeople={people}
                       vhashtags={hashtags}
+                      vrec={recbut}
+                      vnearme={nearme}
             />
 
             <Container className="background2">

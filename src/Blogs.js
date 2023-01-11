@@ -17,6 +17,8 @@ import clock from "./images/Clock.svg";
 import map from "./images/Map.svg";
 import imgcard2 from "./images/Image-event-2.svg";
 import profile1 from "./images/profile1.svg";
+import recbut from './images/recommended-button.svg'
+import nearme from './images/near-me.svg'
 
 
 export default function Blogs(){
@@ -30,7 +32,8 @@ export default function Blogs(){
                       vblogs={blogsselectd}
                       vpeople={people}
                       vhashtags={hashtags}
-                      vrecbar={}
+                      vrec={recbut}
+                      vnearme={nearme}
             />
             <AddButton/>
             <NavigbarBottom value="Home"/>
