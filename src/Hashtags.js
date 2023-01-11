@@ -21,7 +21,10 @@ export default function Hashtags(){
             <Navigbar vevents={events}
                       vblogs={blogs}
                       vpeople={people}
-                      vhashtags={hashtagsselected}/>
+                      vhashtags={hashtagsselected}
+                      value={"none"}
+            />
+
             <AddButton/>
             <NavigbarBottom value="Home"/>
 

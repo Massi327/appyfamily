@@ -36,16 +36,17 @@ export default function Home(){
     const [state,dispatch] = useContext(StateContext)
 
     return(
-        <Container className="background">
+        <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', top:'5em'}}>
             <Navigbar vevents={eventsselected}
                       vblogs={blogs}
                       vpeople={people}
                       vhashtags={hashtags}
                       vrec={recbut}
                       vnearme={nearme}
+                      value={"cont-menu-rec-nearme"}
             />
 
-            <Container className="background2">
+            <Container style={{marginTop:"15em"}}>
 
 
             <Card className="post" style={{ width: '21rem', height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>

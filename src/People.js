@@ -11,7 +11,9 @@ import people2 from "./images/People_2.svg"
 import people3 from "./images/People_3.svg"
 import people4 from "./images/People_4.svg"
 import people5 from "./images/People_5.svg"
-import "./People.css"
+import "./People.css";
+import recbut from './images/recommended-button.svg'
+import nearme from './images/near-me.svg'
 
 import events from "./images/Events.svg";
 import blogs from "./images/Blogs.svg";
@@ -36,7 +38,9 @@ export default function People(){
             <Navigbar vevents={events}
                       vblogs={blogs}
                       vpeople={peopleselected}
-                      vhashtags={hashtags}/>
+                      vhashtags={hashtags}
+                      value={"none"}
+            />
             <NavigbarBottom value="Home"/>
             <Container style={{marginTop:'15em'}}>
 
