@@ -1,21 +1,100 @@
 import {useContext, useState} from "react";
 import {StateContext} from "./App";
 import {Link} from "react-router-dom";
-import {Button, Col, Container, Row} from "react-bootstrap";
-
+import {Button, Card, Col, Container, Row} from "react-bootstrap";
+import profile1 from "./images/profile1.svg";
+import profile2 from "./images/profile2.svg";
+import profile3 from "./images/profile3.svg";
+import profile4 from "./images/profile4.svg";
+import profile5 from "./images/profile5.svg";
+import profile6 from "./images/profile6.png";
+import follow from "./images/follow.svg";
+import NavigbarP from "./components/navbar-profile";
+import NavigbarBottom from "./components/navbar-bottom";
+import "./Notifiche.css";
 export default function Notifiche(){
 
     const [state,dispatch] = useContext(StateContext)
 
     return(
-        <Container fluid styile={{height:"79vh"}}>
-            <Row className="justify-content-md-center">
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
-                        <Link to={"/home"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>home</span></Link>
-                    </Button>
-                </Col>
-            </Row>
+        <Container className="bg-n">
+            <NavigbarP />
+            <Container >
+                <Card className="notif" style={{ width: '22.8rem', height: '5rem', marginBottom: '1em' ,marginTop: '7em',  borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img  src={profile6} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                    <Card.Body>
+                        <Card.Text className="name-people" style={{textAlign: 'left'}}>Jeremy_Clarks</Card.Text>
+                        <span> <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
+                            started following you.
+                        </Card.Text>
+                       <Link to={"/follower"}> <img src={follow} alt="Follower" /></Link></span>
+                    </Card.Body>
+                </Card>
+
+                <Card className="notif" style={{ width: '22.8rem', height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img  src={profile3} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                    <Card.Body>
+                        <Card.Text className="name-people" style={{textAlign: 'left'}}>Gina_Martin</Card.Text>
+                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
+                            will partecipate in your event.                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+
+                <Card className="notif" style={{ width: '22.8rem', height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img  src={profile4} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                    <Card.Body>
+                        <Card.Text className="name-people" style={{textAlign: 'left'}}>Clara_May_92</Card.Text>
+                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
+                            is interested in your event.
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+                <Card className="notif" style={{ width: '22.8rem', height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img  src={profile1} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                    <Card.Body>
+                        <Card.Text className="name-people" style={{textAlign: 'left'}}>Jane_Austen</Card.Text>
+                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
+                            invited you to her event.
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+                <Card className="notif" style={{ width: '22.8rem', height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row', boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px;'}}>
+                    <Card.Img  src={profile5} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                    <Card.Body>
+                        <Card.Text className="name-people" style={{textAlign: 'left'}}>Santy_Chanty_Maybe</Card.Text>
+                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
+                            replied to your question.
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+                <Card className="notif" style={{ width: '22.8rem', height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img  src={profile3} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                    <Card.Body>
+                        <Card.Text className="name-people" style={{textAlign: 'left'}}>Gina_Martin</Card.Text>
+                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
+                            started following you.
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+
+                <Card className="notif" style={{ width: '22.8rem', height: '5rem', marginBottom: '5em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img  src={profile2} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                    <Card.Body>
+                        <Card.Text className="name-people" style={{textAlign: 'left'}}>Doctor_Sally</Card.Text>
+                        <Card.Text className="d-inline-block card-title" style={{textAlign: 'left'}}>
+                            replied to your question.
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+
+            </Container>
+            <NavigbarBottom value=" "/>
         </Container>
     )
 
