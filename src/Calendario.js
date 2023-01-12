@@ -111,8 +111,8 @@ export default function Calendario(){
 
     return(
         <Container>
-            <NavigbarP/>
-            <NavigbarBottom value="Home"/>
+            {/*}  <NavigbarP/>
+            <NavigbarBottom value="Home"/>*/}
 
 
             <br/>

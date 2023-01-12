@@ -36,24 +36,14 @@ export default function Add(){
     const [date,setDate] = useState(new Date())
     const [oraI,setOraI] = useState('')
     const [oraF,setOraF] = useState('')
-    const [sala,setSala] = useState(1)
+    //const [sala,setSala] = useState(1)
     const [badge,setBadge] = useState('')
     const [sel,setSel] = useState('')
     const [categoria,setCategoria] = useState('')
     const calendariohidden = 'false';
 
     const [ls,setLS] = useState('false')
-
-    let events =[]
-    state.prenotazioni.map(p=> {
-            let event={
-                id: p.key,
-                title: p.titolo,
-                start: p.dataStart.toDate(),
-                end: p.dataEnd.toDate(),
-            }
-            events.push(event)
-        })
+    const [pr,setPR] = useState('false')
 
     useEffect(() => {
         localStorage.setItem('titolo', JSON.stringify(titolo))
@@ -83,7 +73,7 @@ export default function Add(){
                         defaultDate={new Date()}
                         defaultView={'month'}
                         views={['month','week','day']}
-                        events={events}
+                        events={''}
                         style={{height:'81vh', backgroundColor: 'white', marginBottom: "5px"}}
                         onSelectEvent={e => {dispatch(selected(e.id, e.resourceId))}}
                     />
@@ -190,6 +180,7 @@ export default function Add(){
                                         setSel('')
                                         setCategoria('')
                                         setLS('true')
+                                        setPR('true')
                                         dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('','yyyy-MM-DD').format('LT'), 'false'))
                                     }
                                 }}>CONFERMA PRENOTAZIONE</Button>
@@ -198,6 +189,7 @@ export default function Add(){
                     </Row>
 
                     {ls=='true' ? localStorage.setItem('arrayLS', JSON.stringify(state.arrayLS)) : null}
+                    {pr=='true' ? localStorage.setItem('prenotazioni', JSON.stringify(state.prenotazioni)) : null}
 
                     {badge=='conferma' ? <Alert variant={"success"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>PRENOTAZIONE AVVENUTA CON SUCCESSO!</Alert> : null}
                     {badge=='form' ? <Alert variant={"danger"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>FORM COMPLETAMENTE/PARZIALMENTE VUOTO!</Alert> : null}

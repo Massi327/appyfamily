@@ -11,7 +11,7 @@ export const initialState = {
                     address:'Via giordani 78',
                     about:'Gita al parco',
                     categoria: 'Park'
-                }, {   key:Math.random(),
+                }, {   key:788,
                     titolo:'Mario Draghi',
                     dataStart:moment('2023-01-04, 10:00','YYYY-MM-DD, hh:mm'),
                     dataEnd:moment('2023-01-04, 11:30','YYYY-MM-DD, hh:mm'),
@@ -46,14 +46,23 @@ export function Reducer(state,action){
             let evento = { key: Math.random(), address: action.address, dataStart: action.dataStart, dataEnd: action.dataEnd, titolo: action.titolo, about: action.about, categoria: action.categoria}
             let eventoLS = { ids: evento.key, title: action.titolo, start: action.dataStart, end: action.dataEnd, categoria: action.categoria}
             let newArrayLS = [...state.arrayLS]
-
+            let newArray = [...state.prenotazioni]
 
             let eventi = JSON.parse(localStorage.getItem('arrayLS'))
-            if(state.arrayLS.length<3 && eventi.length<3){
-                newArrayLS = [...state.arrayLS, eventoLS]
+            let preno = JSON.parse(localStorage.getItem('prenotazioni'))
+
+            if(eventi == null) {
+                if (state.arrayLS.length<3){
+                    newArrayLS = [...state.arrayLS, eventoLS]
+                }
             }else {newArrayLS = [...eventi, eventoLS]}
 
-            let newArray = [...state.prenotazioni, evento]
+            if(preno == null){
+                if (state.prenotazioni.length<3 ){
+                    newArray = [...state.prenotazioni, evento]
+                }
+            }else{newArray = [...preno, evento]}
+
 
             return{
                 ...state,
