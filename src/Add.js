@@ -13,14 +13,15 @@ import {
     FormControl,
     FormGroup,
     FormLabel,
-    FormSelect, Nav,
+    FormSelect, Modal, Nav,
     Navbar,
     Row
 } from "react-bootstrap";
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import {addBooking, selected, selectedSlot} from "./Action";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {initialState} from "./Reducer";
+import { useHistory } from "react-router-dom";
 
 const localizer = momentLocalizer(moment)
 
@@ -29,25 +30,30 @@ export default function Add(){
     const [state,dispatch] = useContext(StateContext)
 
     const [address,setAddress] = useState('')
-    const [titolo,setTitolo] = useState(() => {
-        const titolo = JSON.parse(localStorage.getItem('titolo'));
-       return titolo || ""; } )
+    const [titolo,setTitolo] = useState('')
+       // () => {const titolo = JSON.parse(localStorage.getItem('titolo'));return titolo || ""; } )
     const [about,setAbout] = useState('')
     const [date,setDate] = useState(new Date())
     const [oraI,setOraI] = useState('')
     const [oraF,setOraF] = useState('')
     //const [sala,setSala] = useState(1)
     const [badge,setBadge] = useState('')
-    const [sel,setSel] = useState('')
     const [categoria,setCategoria] = useState('')
     const calendariohidden = 'false';
 
     const [ls,setLS] = useState('false')
     const [pr,setPR] = useState('false')
 
-    useEffect(() => {
+    const navigate = useNavigate()
+
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+
+    {/*useEffect(() => {
         localStorage.setItem('titolo', JSON.stringify(titolo))
-    }, [titolo])
+    }, [titolo])*/}
 
     return(
         <Container fluid>
@@ -84,6 +90,7 @@ export default function Add(){
 
                         <Card className='form' border='dark' style={{background: 'linear-gradient(to top, red 10%, black 100%)', color: "white"}}>
                             <Card.Body>
+                                <CloseButton variant={'white'} onClick={() => navigate(-1)}/>
                                 <Card.Title style={{fontSize: "30px"}}>Add Event</Card.Title>
 
                                 <FormGroup style={{marginBottom: "10px"}}>
@@ -157,7 +164,18 @@ export default function Add(){
                                         </Row>
                                     </FormGroup>}
 
+                                <Button onClick={() =>{
+                                    setTitolo('')
+                                    setAddress('')
+                                    setAbout('')
+                                    setCategoria('')
+                                    setDate(moment())
+                                    setOraI('')
+                                    setOraF('')
 
+                                }}>
+                                    Cancel
+                                </Button>
 
                                 <Button className='submit' disabled={bottoneDisabilitato(address, titolo, oraI, oraF, date)} variant='dark' onClick={() => {
 
@@ -165,11 +183,15 @@ export default function Add(){
                                     let dataS=moment(calendarDate+', '+oraI,'YYYY-MM-DD, hh:mm a')
                                     let dataF=moment(calendarDate+', '+oraF,'YYYY-MM-DD, hh:mm a')
 
-                                    let oraISan=moment(oraI, 'hh:mm a').subtract(30, 'minutes')
+                                    let giorno = moment(state.giorno+', '+state.start, 'YYYY-MM-DD, hh:mm a')
 
-                                    if(dataS.isBefore(moment()) || dataF.isBefore(moment())) {
-                                        setBadge('precedente')
-                                    }else{
+                                    if(state.c == 'false'){
+                                        if(dataS.isBefore(moment()) || dataF.isBefore(moment())) {
+                                            setBadge('precedente')
+                                    }}else if(state.c == 'true'){
+                                        if(giorno.isBefore(moment()) || dataF.isBefore(moment())){
+                                            setBadge('precedente')
+                                        }}else{
                                         dispatch(addBooking(dataS,dataF,address,titolo,about,categoria))
                                         setAddress('')
                                         setTitolo('')
@@ -177,15 +199,30 @@ export default function Add(){
                                         setDate(moment())
                                         setOraI('')
                                         setOraF('')
-                                        setSel('')
                                         setCategoria('')
                                         setLS('true')
                                         setPR('true')
                                         dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('','yyyy-MM-DD').format('LT'), 'false'))
+                                        handleShow()
                                     }
-                                }}>CONFERMA PRENOTAZIONE</Button>
+                                }}>Publish</Button>
                             </Card.Body>
                         </Card>
+
+                        <Modal show={show} onHide={handleClose}>
+                            <Modal.Header closeButton>
+                                <Modal.Title>Modal heading</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                            <Modal.Footer>
+                                <Button variant="secondary" onClick={handleClose}>
+                                    Close
+                                </Button>
+                                <Button variant="primary" onClick={handleClose}>
+                                    Save Changes
+                                </Button>
+                            </Modal.Footer>
+                        </Modal>
                     </Row>
 
                     {ls=='true' ? localStorage.setItem('arrayLS', JSON.stringify(state.arrayLS)) : null}

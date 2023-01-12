@@ -82,19 +82,6 @@ export default function Calendario(){
         setOraF(end)
         setDate(giorno)
     }
-    {/*let handleSelect = (range) => {
-        setSel('true')
-        let start= moment(range.start, 'LT')
-        let end=  moment(range.end, 'LT')
-        let giorno= moment(range.start)
-        start=moment(start).format('LT')
-        end=moment(end).format('LT')
-        giorno= moment(giorno).format('yyyy-MM-DD')
-        setOraI(start)
-        setOraF(end)
-        setDate(giorno)
-        setSala(range.resourceId)
-    }*/}
 
     let selectSlot = (slotInfo) => {
         setSel('true')
