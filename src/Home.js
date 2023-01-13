@@ -31,6 +31,7 @@ import AddButton from "./components/add-button";
 import eventsselected from "./images/Events-selezionato.svg";
 
 
+
 export default function Home(){
 
     const [state,dispatch] = useContext(StateContext)
@@ -157,7 +158,7 @@ export default function Home(){
         </Container>
 
             <AddButton/>
-            <NavigbarBottom value="Home"/>
+            <NavigbarBottom home={home} calendar={calendar} profile={profile} settings={settings}/>
 
 
     </Container>

@@ -7,8 +7,8 @@ import settings from "../../images/Settings.svg";
 
 
 
-const NavigbarBottom = (props) => {
-    const {value} = props
+const NavigbarBottom = ({home, calendar, profile, settings}) => {
+
 
     return <Container className="navigbar-bottom" style={{width: "100vw", zIndex: '1000'}}>
         <Row className="justify-content-sm-center">

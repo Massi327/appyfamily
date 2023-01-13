@@ -15,6 +15,10 @@ import map from "./images/Map.svg";
 import imgcard2 from "./images/Image-event-2.svg";
 import nearmebut from "./images/nearme-button.svg";
 import rec from "./images/Recommendedn.svg"
+import home from "./images/Home-icon.svg";
+import calendar from "./images/Calendar.svg";
+import profile from "./images/Profile.svg";
+import settings from "./images/Settings.svg";
 
 
 export default function Nearme(){
@@ -31,7 +35,7 @@ export default function Nearme(){
                       vnearme={nearmebut}
             />
             <AddButton/>
-            <NavigbarBottom value="Home"/>
+            <NavigbarBottom home={home} calendar={calendar} profile={profile} settings={settings}/>
 
 
             <Container className="background2">

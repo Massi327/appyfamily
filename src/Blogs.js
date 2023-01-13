@@ -19,6 +19,10 @@ import imgcard2 from "./images/Image-event-2.svg";
 import profile1 from "./images/profile1.svg";
 import recbut from './images/recommended-button.svg'
 import nearme from './images/near-me.svg'
+import home from "./images/Home-icon.svg";
+import calendar from "./images/Calendar.svg";
+import profile from "./images/Profile.svg";
+import settings from "./images/Settings.svg";
 
 
 export default function Blogs(){
@@ -35,7 +39,7 @@ export default function Blogs(){
                       value={"none"}
             />
             <AddButton/>
-            <NavigbarBottom value="Home"/>
+            <NavigbarBottom home={home} calendar={calendar} profile={profile} settings={settings}/>
 
             <Container style={{marginTop:'13em'}}>
 

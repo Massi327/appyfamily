@@ -11,6 +11,10 @@ import people from "./images/People.svg";
 import hashtagsselected from "./images/Hashtags-selezionato.svg";
 import profile4 from "./images/profile4.svg";
 import hashtag from "./images/hashtag.svg"
+import home from "./images/Home-icon.svg";
+import calendar from "./images/Calendar.svg";
+import profile from "./images/Profile.svg";
+import settings from "./images/Settings.svg";
 
 export default function Hashtags(){
 
@@ -26,7 +30,7 @@ export default function Hashtags(){
             />
 
             <AddButton/>
-            <NavigbarBottom value="Home"/>
+            <NavigbarBottom home={home} calendar={calendar} profile={profile} settings={settings}/>
 
             <Container style={{marginTop:'13em'}}>
 

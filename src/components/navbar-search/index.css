@@ -6,6 +6,9 @@
         margin: 0;
     }
 
+    .body{
+        padding:0;
+    }
 
     .navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
         margin-left: 0;
@@ -61,8 +64,7 @@
     }
 
     .d-flex{
-        margin-left: 30px;
-        margin-right: 30px;
+
     }
 
     .search-button{

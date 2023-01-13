@@ -17,6 +17,12 @@ import ribbon from './images/ribbon_icon.png'
 import NavbarProfile from "./components/navbar-profile";
 import eventsp from "./images/Events-selezionato.svg";
 import blogsp from './images/Blogs.svg'
+import profileselected from './images/Profile-selected.svg'
+import home from "./images/Home-icon.svg";
+import calendar from "./images/Calendar.svg";
+import settings from "./images/Settings.svg";
+import homeunselected from "./images/home-unselected.svg"
+
 export default function Profile(){
 
     const [state,dispatch] = useContext(StateContext)
@@ -76,7 +82,7 @@ export default function Profile(){
                     </Button>
                 </Col>
             </Row>*/}
-            <NavigbarBottom value="Profile"/>
+            <NavigbarBottom home={homeunselected} calendar={calendar} profile={profileselected} settings={settings}/>
         </Container>
     )
 

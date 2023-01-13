@@ -14,18 +14,22 @@ import people5 from "./images/People_5.svg"
 import "./People.css";
 import recbut from './images/recommended-button.svg'
 import nearme from './images/near-me.svg'
+import profile from './images/Profile.svg'
 
 import events from "./images/Events.svg";
 import blogs from "./images/Blogs.svg";
 import hashtags from "./images/Hashtags.svg";
 import peopleselected from "./images/People-selezionato.svg";
 import peopleFrame from "./images/People_frame.svg";
-import profile from "./images/Sophia.svg";
+
 import profile1 from "./images/profile1.svg"
 import profile2 from "./images/profile2.svg"
 import profile3 from "./images/profile3.svg"
 import profile4 from "./images/profile4.svg"
 import profile5 from "./images/profile5.svg"
+import home from "./images/Home-icon.svg";
+import calendar from "./images/Calendar.svg";
+import settings from "./images/Settings.svg";
 
 
 export default function People(){
@@ -41,7 +45,7 @@ export default function People(){
                       vhashtags={hashtags}
                       value={"none"}
             />
-            <NavigbarBottom value="Home"/>
+            <NavigbarBottom home={home} calendar={calendar} profile={profile} settings={settings}/>
             <Container style={{marginTop:'15em'}}>
 
 
