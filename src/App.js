@@ -16,6 +16,7 @@ import Notifiche from "./Notifiche";
 import Add from "./Add";
 import './App.css';
 import Sintesi from "./Sintesi";
+import Follower from "./Follower";
 
 export const StateContext = createContext()
 
@@ -43,6 +44,7 @@ function App() {
                 <Route path={"/nearme"} element={<Nearme/>}/>
 
                 <Route path={"/sintesi"} element={<Sintesi/>}/>
+                <Route path={"/follower"} element={<Follower/>}/>
             </Routes>
           </BrowserRouter>
         </div>
