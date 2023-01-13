@@ -87,11 +87,14 @@ export default function Calendario(){
         setSel('true')
         let giorno= moment(slotInfo.start)
         let start= moment(slotInfo.start, 'LT')
+        let end= moment(slotInfo.end, 'LT')
         giorno= moment(giorno).format('yyyy-MM-DD')
         start= moment(start).format('LT')
+        end= moment(end).format('LT')
         setOraI(start)
+        setOraF(end)
         setDate(giorno)
-        dispatch(selectedSlot(giorno, start, 'true'))
+        dispatch(selectedSlot(giorno, start, end, 'true'))
 
         navigate('/add', {replace: true})
     }

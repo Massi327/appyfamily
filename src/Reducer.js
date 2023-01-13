@@ -21,6 +21,7 @@ export const initialState = {
     rid:0,
     giorno: moment('').format('yyyy-MM-DD'),
     start: moment('','yyyy-MM-DD').format('LT'),
+    end: moment('','yyyy-MM-DD').format('LT'),
     c: 'false',
     categoriav: ['---', 'Sport', 'Park'],
 
@@ -83,6 +84,7 @@ export function Reducer(state,action){
                 ...state,
                 giorno: action.giorno,
                 start: action.start,
+                end: action.end,
                 c: action.c
             }
 

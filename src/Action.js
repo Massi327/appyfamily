@@ -11,8 +11,8 @@ export function selected(id, rid){
     return {type: SELECTED, id, rid}
 }
 
-export function selectedSlot(giorno, start, c){
-    return {type: SELECTEDSLOT, giorno, start, c}
+export function selectedSlot(giorno, start, end, c){
+    return {type: SELECTEDSLOT, giorno, start, end, c}
 }
 
 export function addCategory(category){

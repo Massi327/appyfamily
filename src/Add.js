@@ -132,8 +132,9 @@ export default function Add(){
                                             <Col md={12} xs={12}>
                                                 <FormLabel><b>Day*</b></FormLabel>
                                                 <FormControl type='date' value={state.giorno} style={{textAlign:"center"}} onChange={e => {setDate(e.target.value)
-                                                    dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), state.start, 'false'))
-                                                    setOraI(state.start)}}/>
+                                                    dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), state.start, state.end, 'false'))
+                                                    setOraI(state.start)
+                                                    setOraF(state.end)}}/>
                                             </Col>
                                         </Row>
                                     </FormGroup>}
@@ -154,12 +155,16 @@ export default function Add(){
                                             <Col lg={5} md={5} xs={12}>
                                                 <FormLabel><b>Start*</b></FormLabel>
                                                 <FormControl type='time' value={state.start} style={{textAlign:"center"}} onChange={e => {setOraI(e.target.value)
-                                                    dispatch(selectedSlot(state.giorno, moment('','yyyy-MM-DD').format('LT'), 'false'))
-                                                    setDate(state.giorno)}}/>
+                                                    dispatch(selectedSlot(state.giorno, moment('','yyyy-MM-DD').format('LT'), state.end, 'false'))
+                                                    setDate(state.giorno)
+                                                    setOraF(state.end)}}/>
                                             </Col>
                                             <Col lg={5} md={5} xs={12}>
                                                 <FormLabel><b>End*</b></FormLabel>
-                                                <FormControl type='time' value={oraF} style={{textAlign:"center"}} onChange={e => setOraF(e.target.value)}/>
+                                                <FormControl type='time' value={state.end} style={{textAlign:"center"}} onChange={e => {setOraF(e.target.value)
+                                                    dispatch(selectedSlot(state.giorno, state.start, moment('','yyyy-MM-DD').format('LT'), 'false'))
+                                                    setDate(state.giorno)
+                                                    setOraI(state.start)}}/>
                                             </Col>
                                         </Row>
                                     </FormGroup>}
@@ -177,33 +182,49 @@ export default function Add(){
                                     Cancel
                                 </Button>
 
-                                <Button className='submit' disabled={bottoneDisabilitato(address, titolo, oraI, oraF, date)} variant='dark' onClick={() => {
+                                <Button className='submit' disabled={bottoneDisabilitato(address, titolo, oraI, oraF, date, state.giorno, state.start, state.end, state.c)} variant='dark' onClick={() => {
 
                                     let calendarDate = moment(date).format('YYYY-MM-DD')
                                     let dataS=moment(calendarDate+', '+oraI,'YYYY-MM-DD, hh:mm a')
                                     let dataF=moment(calendarDate+', '+oraF,'YYYY-MM-DD, hh:mm a')
 
-                                    let giorno = moment(state.giorno+', '+state.start, 'YYYY-MM-DD, hh:mm a')
+                                    let giornoI = moment(state.giorno+', '+state.start, 'YYYY-MM-DD, hh:mm a')
+                                    let giornoF = moment(state.giorno+', '+state.end, 'YYYY-MM-DD, hh:mm a')
 
                                     if(state.c == 'false'){
                                         if(dataS.isBefore(moment()) || dataF.isBefore(moment())) {
                                             setBadge('precedente')
-                                    }}else if(state.c == 'true'){
-                                        if(giorno.isBefore(moment()) || dataF.isBefore(moment())){
+                                        }else{
+                                            dispatch(addBooking(dataS,dataF,address,titolo,about,categoria))
+                                            setAddress('')
+                                            setTitolo('')
+                                            setAbout('')
+                                            setDate(moment())
+                                            setOraI('')
+                                            setOraF('')
+                                            setCategoria('')
+                                            setLS('true')
+                                            setPR('true')
+                                            dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('','yyyy-MM-DD').format('LT'), moment('','yyyy-MM-DD').format('LT'), 'false'))
+                                            handleShow()
+                                        }
+                                    }else if(state.c == 'true'){
+                                        if(giornoI.isBefore(moment()) || giornoF.isBefore(moment())){
                                             setBadge('precedente')
-                                        }}else{
-                                        dispatch(addBooking(dataS,dataF,address,titolo,about,categoria))
-                                        setAddress('')
-                                        setTitolo('')
-                                        setAbout('')
-                                        setDate(moment())
-                                        setOraI('')
-                                        setOraF('')
-                                        setCategoria('')
-                                        setLS('true')
-                                        setPR('true')
-                                        dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('','yyyy-MM-DD').format('LT'), 'false'))
-                                        handleShow()
+                                        }else{
+                                            dispatch(addBooking(dataS,dataF,address,titolo,about,categoria))
+                                            setAddress('')
+                                            setTitolo('')
+                                            setAbout('')
+                                            setDate(moment())
+                                            setOraI('')
+                                            setOraF('')
+                                            setCategoria('')
+                                            setLS('true')
+                                            setPR('true')
+                                            dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('','yyyy-MM-DD').format('LT'), moment('','yyyy-MM-DD').format('LT'), 'false'))
+                                            handleShow()
+                                        }
                                     }
                                 }}>Publish</Button>
                             </Card.Body>
@@ -229,8 +250,6 @@ export default function Add(){
                     {pr=='true' ? localStorage.setItem('prenotazioni', JSON.stringify(state.prenotazioni)) : null}
 
                     {badge=='conferma' ? <Alert variant={"success"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>PRENOTAZIONE AVVENUTA CON SUCCESSO!</Alert> : null}
-                    {badge=='form' ? <Alert variant={"danger"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>FORM COMPLETAMENTE/PARZIALMENTE VUOTO!</Alert> : null}
-                    {badge=='occupata' ? <Alert variant={"danger"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>STANZA OCCUPPATA!</Alert> : null}
                     {badge=='precedente' ? <Alert variant={"danger"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>DATA PRECEDENTE!</Alert> : null}
 
                     <Row>
@@ -252,15 +271,11 @@ export default function Add(){
 
                     <Col xs={3} sm={12} md={3}>
                         {
-                            <Button variant={"danger"} style={{marginTop: "5px", marginBottom: "5px"}} onClick={() => dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('','yyyy-MM-DD').format('LT'), 'false'))}>
+                            <Button variant={"danger"} style={{marginTop: "5px", marginBottom: "5px"}} onClick={() => dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('','yyyy-MM-DD').format('LT'), moment('','yyyy-MM-DD').format('LT'),'false'))}>
                                 <Link to={"/calendar"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>CALENDAR</span></Link>
                             </Button> }
-                        <ButtonGroup>
-                            <Button onClick={()=> console.log(state.arrayLS)}>+</Button>
-                        </ButtonGroup>
-                        <ButtonGroup>
-                            <Button onClick={()=> console.log(state.prenotazioni)}>+</Button>
-                        </ButtonGroup>
+                            <Button onClick={()=> console.log(state.c)}>+</Button>
+
                     </Col>
                 </Row>
 
@@ -271,14 +286,23 @@ export default function Add(){
     )
 }
 
-function bottoneDisabilitato(address, titolo, oraI, oraF, date) {
+function bottoneDisabilitato(address, titolo, oraI, oraF, date, oraIV, oraFV, dateV, c) {
     let disabilitato;
 
-    if (address!='' && titolo!='' && oraI!=null && oraF!='' && date!='')
-    {
-        disabilitato= false;
-    }else {
-        disabilitato= true;
+    if(c == 'true'){
+        if (address!='' && titolo!='' && oraIV!=null && oraFV!='' && dateV!='')
+        {
+            disabilitato= false;
+        }else {
+            disabilitato= true;
+        }
+    }else if (c == 'false'){
+        if (address!='' && titolo!='' && oraI!=null && oraF!='' && date!='')
+        {
+            disabilitato= false;
+        }else {
+            disabilitato= true;
+        }
     }
 
     return(disabilitato)
