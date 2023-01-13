@@ -21,8 +21,6 @@ import {
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import {addBooking, selected, selectedSlot} from "./Action";
 import {Link, useNavigate} from "react-router-dom";
-import {initialState} from "./Reducer";
-import { useHistory } from "react-router-dom";
 import NavigbarP from "./components/navbar-profile";
 
 const localizer = momentLocalizer(moment)
@@ -60,7 +58,7 @@ export default function Add(){
     return(
         <Container fluid>
 
-            <NavigbarP/>
+             <NavigbarP/>
 
             <Row style={{marginTop:'5em'}}>
                 {calendariohidden=="true" ? <Col xl={8} lg={8} md={8} sm={12} xs={12}>
@@ -205,7 +203,7 @@ export default function Add(){
                                         if(giornoI.isBefore(moment()) || giornoF.isBefore(moment())){
                                             setBadge('precedente')
                                         }else{
-                                            dispatch(addBooking(dataS,dataF,address,titolo,about,categoria))
+                                            dispatch(addBooking(giornoI,giornoF,address,titolo,about,categoria))
                                             setAddress('')
                                             setTitolo('')
                                             setAbout('')
@@ -237,6 +235,21 @@ export default function Add(){
                                 </Button>
                             </Modal.Footer>
                         </Modal>
+
+                        <Modal.Dialog>
+                            <Modal.Header closeButton>
+                                <Modal.Title className="modal-title-1">Add event to Calendar</Modal.Title>
+                            </Modal.Header>
+
+                            <Modal.Body className="modal-subtitle-1">
+                                <p>Are you sure you want to add this event to the Calendar?</p>
+                            </Modal.Body>
+
+                            <Modal.Footer>
+                                <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}>Cancel</Button>
+                                <Button style={{backgroundColor:"#eb506c", color:"white", borderWidth:"2px", borderColor:"#eb506c", borderRadius:"10px"}}>Add</Button>
+                            </Modal.Footer>
+                        </Modal.Dialog>
                     </Row>
 
                     {ls=='true' ? localStorage.setItem('arrayLS', JSON.stringify(state.arrayLS)) : null}

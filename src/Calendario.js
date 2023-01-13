@@ -1,6 +1,6 @@
 import {Calendar, momentLocalizer} from "react-big-calendar";
 import moment from 'moment'
-import 'moment/locale/en-gb';
+import 'moment/locale/en-in';
 import {useCallback, useContext, useEffect, useState} from "react";
 import {StateContext} from "./App";
 import "./Calendario.css"
@@ -28,6 +28,9 @@ import {addBooking, selected, selectedSlot} from "./Action";
 import {Link, useNavigate} from "react-router-dom";
 import NavigbarBottom from "./components/navbar-bottom";
 import NavigbarP from "./components/navbar-profile";
+import imgcard1 from "./images/Image-event-1.svg";
+import clock from "./images/Clock.svg";
+import map from "./images/Map.svg";
 
 const localizer = momentLocalizer(moment)
 
@@ -101,16 +104,9 @@ export default function Calendario(){
 
     return(
         <Container>
-            {/*}  <NavigbarP/>
-            <NavigbarBottom value="Home"/>*/}
+             <NavigbarP/>
+            <NavigbarBottom value="Home"/>
 
-
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
             <Row style={{textAlign: "center", marginTop:'6em'}}>
                 <Col md={12} xs={12}>
                     <ButtonGroup>
@@ -265,6 +261,27 @@ export default function Calendario(){
                     </Row>
 
             </Row>
+
+            {state.prenotazioni.map( p =>
+
+                <Card className="post" id={p.key} style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem', verticalAlign:'center'}} />
+                    <Card.Body>
+                        <Card.Text className="event-time-1" style={{textAlign: 'left'}}>{p.dataStart.format('MMM Do').toUpperCase()}JAN 7 • 10AM</Card.Text>
+                        <Card.Title className="event-title-1" style={{textAlign: 'left'}}>{p.titolo}</Card.Title>
+                        <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
+                            {p.about}
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                            <img src={clock} alt="Near me" className="icon"/> 7 Jan 2023, 10AM - 11AM
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                            <img src={map} alt="Near me" className="icon"/> 112 Barrack Street, NR3 1TX, UK
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+            )}
 
         </Container>
     )
