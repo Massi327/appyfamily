@@ -21,7 +21,7 @@ const Navigbar = ({ vevents, vblogs, vpeople, vhashtags, vrec, vnearme,value }) 
 
 
 
-return  <Container className="cont">
+return  <Container className="cont" style={{width: "100vw"}}>
 
 
         <Navbar className="navigbar" style={{overflow: "hidden", top: "0px", width: "100%"}}>

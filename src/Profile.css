@@ -11,20 +11,21 @@
         margin-top: 6.7em;
     }
 
-    .container {
 
-    }
+
 
     .cont1 {
         position: fixed;
         z-index: 1000;
-        height: 50%;
+        height: 7em;
         background-image: url(./images/small_navbar.svg);
         background-repeat: no-repeat;
         width: 100%;
         margin-left: 0px;
         padding-left: 0px;
         top: 0em;
+        pointer-events:visiblePainted;
+
     }
 
     .post {

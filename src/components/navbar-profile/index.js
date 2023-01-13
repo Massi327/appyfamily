@@ -20,7 +20,7 @@ import NavigbarBottom from "../navbar-bottom";
 const NavigbarP =  () => {
 
     return  <Container className="cont1">
-        <Container className="container">
+        <Container>
 
             <Navbar className="navigbar" style={{overflow: "hidden", top: "0px", width: "100%"}}>
                 <Container>
