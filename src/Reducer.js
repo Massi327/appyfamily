@@ -4,18 +4,23 @@ import 'moment/locale/it';
 
 export const initialState = {
     prenotazioni:[
-                {   key: 789,
-                    titolo:'Park Hamill',
-                    dataStart:moment('2023-01-03, 10:00','YYYY-MM-DD, hh:mm'),
-                    dataEnd:moment('2023-01-03, 11:30','YYYY-MM-DD, hh:mm'),
-                    address:'Via giordani 78',
-                    about:'Gita al parco',
-                    categoria: 'Park'
-                }, {   key:788,
-                    titolo:'Mario Draghi',
-                    dataStart:moment('2023-01-04, 10:00','YYYY-MM-DD, hh:mm'),
-                    dataEnd:moment('2023-01-04, 11:30','YYYY-MM-DD, hh:mm'),
-                    address:'Come mangiare bene'},
+        {   key: 789,
+            titolo:'Park Hamill',
+            dataStart:moment('2023-01-03, 10:00','YYYY-MM-DD, hh:mm'),
+            dataEnd:moment('2023-01-03, 11:30','YYYY-MM-DD, hh:mm'),
+            address:'Via giordani 78',
+            about:'Gita al parco',
+            categoria: 'Park'
+        },
+        {
+            key:788,
+            titolo:'Sportone',
+            dataStart:moment('2023-01-04, 10:00','YYYY-MM-DD, hh:mm'),
+            dataEnd:moment('2023-01-04, 11:30','YYYY-MM-DD, hh:mm'),
+            address:'112 Barrack Street, NR3 1TX, UK',
+            about:'Sport al parco',
+            categoria: 'Sport'
+        },
     ],
     id:0,
     rid:0,
