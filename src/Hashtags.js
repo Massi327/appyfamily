@@ -30,7 +30,7 @@ export default function Hashtags(){
 
             <Container style={{marginTop:'13em'}}>
 
-                <Card className="people" style={{ width: '21rem', height: '5rem', top: '2em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                <Card className="people" style={{height: '5rem', top: '2em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img  src={hashtag} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
                         <Card.Text className="name-people" style={{textAlign: 'left'}}>#crying_baby</Card.Text>
@@ -41,7 +41,7 @@ export default function Hashtags(){
                 </Card>
 
 
-                <Card className="people" style={{ width: '21rem', height: '5rem', top: '2em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                <Card className="people" style={{height: '5rem', top: '2em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img  src={hashtag} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
                         <Card.Text className="name-people" style={{textAlign: 'left'}}>#jumpingontrampoline</Card.Text>
@@ -52,7 +52,7 @@ export default function Hashtags(){
                 </Card>
 
 
-                <Card className="people" style={{ width: '21rem', height: '5rem', top: '2em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                <Card className="people" style={{height: '5rem', top: '2em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img  src={hashtag} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
                         <Card.Text className="name-people" style={{textAlign: 'left'}}>#babies_at_weddings</Card.Text>
@@ -63,7 +63,7 @@ export default function Hashtags(){
                 </Card>
 
 
-                <Card className="people" style={{ width: '21rem', height: '5rem', top: '2em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                <Card className="people" style={{height: '5rem', top: '2em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img  src={hashtag} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
                         <Card.Text className="name-people" style={{textAlign: 'left'}}>#happy_baby</Card.Text>
@@ -75,7 +75,7 @@ export default function Hashtags(){
 
 
 
-                <Card className="people" style={{ width: '21rem', height: '5rem', top: '2em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                <Card className="people" style={{height: '5rem', top: '2em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img  src={hashtag} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
                         <Card.Text className="name-people" style={{textAlign: 'left'}}>#kids_safety</Card.Text>
@@ -87,7 +87,7 @@ export default function Hashtags(){
 
 
 
-                <Card className="people" style={{ width: '21rem', height: '5rem', top: '2em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                <Card className="people" style={{height: '5rem', top: '2em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img  src={hashtag} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
                         <Card.Text className="name-people" style={{textAlign: 'left'}}>#breastfeeding</Card.Text>
@@ -99,7 +99,7 @@ export default function Hashtags(){
 
 
 
-                <Card className="people" style={{ width: '21rem', height: '5rem', top: '2em', marginBottom: '5em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                <Card className="people" style={{height: '5rem', top: '2em', marginBottom: '5em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img  src={hashtag} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
                         <Card.Text className="name-people" style={{textAlign: 'left'}}>#sleepless_nights</Card.Text>

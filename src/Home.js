@@ -49,8 +49,8 @@ export default function Home(){
             <Container style={{marginTop:"15em"}}>
 
 
-            <Card className="post" style={{ width: '21rem', height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem'}} />
+            <Card className="post" style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem', verticalAlign:'center'}} />
                 <Card.Body>
                     <Card.Text className="event-time-1" style={{textAlign: 'left'}}>JAN 7 • 10AM</Card.Text>
                     <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Play in the Park</Card.Title>
@@ -69,7 +69,7 @@ export default function Home(){
                 </Card.Body>
             </Card>
 
-                <Card className="post" style={{ width: '21rem', height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                <Card className="post" style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img className="cardimg" src={imgcard2} style={{height: '8em', width: '10rem'}} />
                     <Card.Body>
                         <Card.Text className="event-time-1" style={{textAlign: 'left'}}>JAN 7 • 5PM</Card.Text>
@@ -90,7 +90,7 @@ export default function Home(){
                 </Card>
 
 
-                <Card className="post" style={{ width: '21rem', height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                <Card className="post" style={{height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem'}} />
                     <Card.Body>
                         <Card.Text className="event-time-1" style={{textAlign: 'left'}}>JAN 7 • 10AM</Card.Text>
@@ -111,7 +111,7 @@ export default function Home(){
                 </Card>
 
 
-                <Card className="post" style={{ width: '21rem', height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                <Card className="post" style={{height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem'}} />
                     <Card.Body>
                         <Card.Text className="event-time-1" style={{textAlign: 'left'}}>JAN 7 • 10AM</Card.Text>
@@ -132,7 +132,7 @@ export default function Home(){
                 </Card>
 
 
-                <Card className="post" style={{ width: '21rem', height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                <Card className="post" style={{height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem'}} />
                     <Card.Body>
                         <Card.Text className="event-time-1" style={{textAlign: 'left'}}>JAN 7 • 10AM</Card.Text>

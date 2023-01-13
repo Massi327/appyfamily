@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css?family=Inter:400,300,500,600|Josefin+Sans:400");
+
+
+.subtitle{
+    width: 188px;
+    height: 2px;
+    left: 157px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 22px;
+    letter-spacing: -0.408px;
+    color: #3634a0;
+    margin-top:1em;
+
+}
+
+.title-2{
+
+    font-family: 'Inter';
+    color: #181d3d;
+    font-weight: 500;
+    letter-spacing: -0.41px;
+    line-height: 22px;
+    min-height: 34px;
+    text-align: center;
+
+}

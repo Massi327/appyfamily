@@ -3,6 +3,7 @@ import moment from 'moment'
 import 'moment/locale/it';
 import {useContext, useEffect, useState} from "react";
 import {StateContext} from "./App";
+import "./Add.css"
 import {
     Alert,
     Button, ButtonGroup,
@@ -22,6 +23,7 @@ import {addBooking, selected, selectedSlot} from "./Action";
 import {Link, useNavigate} from "react-router-dom";
 import {initialState} from "./Reducer";
 import { useHistory } from "react-router-dom";
+import NavigbarP from "./components/navbar-profile";
 
 const localizer = momentLocalizer(moment)
 
@@ -58,18 +60,9 @@ export default function Add(){
     return(
         <Container fluid>
 
-            <Navbar style={{overflow: "hidden", top: "0px", width: "100%"}} bg="dark" variant="dark">
-                <Container>
-                    <Navbar.Brand href="/home">APPy Family</Navbar.Brand>
-                    <Nav>
-                        <Nav.Link style={{textAlign: "right"}} href="/notifications">Notifications</Nav.Link>
-                        <Nav.Link style={{textAlign: "right"}} href="/messages">Messages</Nav.Link>
-                        <Nav.Link style={{textAlign: "right"}} href="/tutorial">Tutorial</Nav.Link>
-                    </Nav>
-                </Container>
-            </Navbar>
+            <NavigbarP/>
 
-            <Row>
+            <Row style={{marginTop:'5em'}}>
                 {calendariohidden=="true" ? <Col xl={8} lg={8} md={8} sm={12} xs={12}>
                     <Calendar
                         selectable
@@ -88,29 +81,29 @@ export default function Add(){
                 <Col md={6} sm={12} xs={12}>
                     <Row>
 
-                        <Card className='form' border='dark' style={{background: 'linear-gradient(to top, red 10%, black 100%)', color: "white"}}>
-                            <Card.Body>
-                                <CloseButton variant={'white'} onClick={() => navigate(-1)}/>
-                                <Card.Title style={{fontSize: "30px"}}>Add Event</Card.Title>
+                        <Card className='form' style={{background: '#f5f5f5', color: "black", borderWidth: "0"}}>
+                            <Card.Body style={{marginLeft:"1em", marginRight:"1em"}}>
+                                <CloseButton variant={'black'} onClick={() => navigate(-1)}/>
+                                <Card.Title style={{fontSize: "30px", marginTop: "0.3em"}} className="title-2">Add Event</Card.Title>
 
-                                <FormGroup style={{marginBottom: "10px"}}>
-                                    <FormLabel><b>Title*</b></FormLabel>
-                                    <FormControl type='text' value={titolo} style={{textAlign:"left"}} placeholder='Title' onChange={e=> setTitolo(e.target.value)}/>
+                                <FormGroup style={{marginBottom: "10px", textAlign: "left"}}>
+                                    <FormLabel className="subtitle">Title *</FormLabel>
+                                    <FormControl type='text' value={titolo} style={{textAlign:"left", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"0px"}} placeholder='Title' onChange={e=> setTitolo(e.target.value)}/>
                                 </FormGroup>
 
-                                <FormGroup style={{marginBottom: "10px"}}>
-                                    <FormLabel><b>Address*</b></FormLabel>
-                                    <FormControl type='text' value={address} style={{textAlign:"left"}} placeholder='Address' onChange={e=> setAddress(e.target.value)}/>
+                                <FormGroup style={{marginBottom: "10px", textAlign: "left"}}>
+                                    <FormLabel className="subtitle">Address *</FormLabel>
+                                    <FormControl type='text' value={address} style={{textAlign:"left", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"0px"}} placeholder='Address' onChange={e=> setAddress(e.target.value)}/>
                                 </FormGroup>
 
-                                <FormGroup style={{marginBottom: "10px"}}>
-                                    <FormLabel><b>About</b></FormLabel>
-                                    <FormControl type='text' value={about} style={{textAlign:"left"}} placeholder='About' onChange={e=> setAbout(e.target.value)}/>
+                                <FormGroup style={{marginBottom: "10px", textAlign: "left"}}>
+                                    <FormLabel className="subtitle">About</FormLabel>
+                                    <FormControl type='text' value={about} style={{textAlign:"left", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"0px"}} placeholder='About' onChange={e=> setAbout(e.target.value)}/>
                                 </FormGroup>
 
-                                <FormGroup style={{marginBottom: "10px"}}>
-                                    <FormLabel><b>Categoria</b></FormLabel>
-                                    <FormSelect value={categoria} style={{textAlign:"center"}} onChange={e=> setCategoria(e.target.value)}>
+                                <FormGroup style={{marginBottom: "10px", textAlign: "left"}}>
+                                    <FormLabel className="subtitle">Category</FormLabel>
+                                    <FormSelect value={categoria} style={{textAlign:"center", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"0px"}} onChange={e=> setCategoria(e.target.value)}>
 
                                         {state.categoriav.map(cat => (
                                             <option key={Math.random()} value={cat.value}>{cat}</option>
@@ -119,19 +112,19 @@ export default function Add(){
                                     </FormSelect>
                                 </FormGroup>
 
-                                {state.c == 'false' ? <FormGroup style={{marginBottom: "10px"}}>
+                                {state.c == 'false' ? <FormGroup style={{marginBottom: "10px", textAlign: "left"}}>
                                     <Row className={"justify-content-center"}>
                                         <Col md={12} xs={12}>
-                                            <FormLabel><b>Day*</b></FormLabel>
-                                            <FormControl type='date' value={date} style={{textAlign:"center"}} onChange={e => setDate(e.target.value)}/>
+                                            <FormLabel className="subtitle">Day *</FormLabel>
+                                            <FormControl type='date' value={date} style={{textAlign:"center", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"0px"}} onChange={e => setDate(e.target.value)}/>
                                         </Col>
                                     </Row>
                                 </FormGroup> :
-                                    <FormGroup style={{marginBottom: "10px"}}>
+                                    <FormGroup style={{marginBottom: "10px", textAlign: "left"}}>
                                         <Row className={"justify-content-center"}>
                                             <Col md={12} xs={12}>
-                                                <FormLabel><b>Day*</b></FormLabel>
-                                                <FormControl type='date' value={state.giorno} style={{textAlign:"center"}} onChange={e => {setDate(e.target.value)
+                                                <FormLabel className="subtitle">Day *</FormLabel>
+                                                <FormControl type='date' value={state.giorno} style={{textAlign:"center", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"0px"}} onChange={e => {setDate(e.target.value)
                                                     dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), state.start, state.end, 'false'))
                                                     setOraI(state.start)
                                                     setOraF(state.end)}}/>
@@ -139,29 +132,29 @@ export default function Add(){
                                         </Row>
                                     </FormGroup>}
 
-                                {state.c == 'false' ? <FormGroup style={{marginBottom: "10px"}}>
+                                {state.c == 'false' ? <FormGroup style={{marginBottom: "10px", textAlign: "left"}}>
                                     <Row className={"justify-content-center"}>
                                         <Col lg={5} md={5} xs={12}>
-                                            <FormLabel><b>Start*</b></FormLabel>
-                                            <FormControl type='time' value={oraI} style={{textAlign:"center"}} onChange={e => setOraI(e.target.value)}/>
+                                            <FormLabel className="subtitle">Start*</FormLabel>
+                                            <FormControl type='time' value={oraI} style={{textAlign:"center", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"0px"}} onChange={e => setOraI(e.target.value)}/>
                                         </Col>
                                         <Col lg={5} md={5} xs={12}>
-                                            <FormLabel><b>End*</b></FormLabel>
-                                            <FormControl type='time' value={oraF} style={{textAlign:"center"}} onChange={e => setOraF(e.target.value)}/>
+                                            <FormLabel className="subtitle">End*</FormLabel>
+                                            <FormControl type='time' value={oraF} style={{textAlign:"center", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"0px"}} onChange={e => setOraF(e.target.value)}/>
                                         </Col>
                                     </Row>
-                                </FormGroup> : <FormGroup style={{marginBottom: "10px"}}>
+                                </FormGroup> : <FormGroup style={{marginBottom: "10px", textAlign: "left"}}>
                                         <Row className={"justify-content-center"}>
                                             <Col lg={5} md={5} xs={12}>
-                                                <FormLabel><b>Start*</b></FormLabel>
-                                                <FormControl type='time' value={state.start} style={{textAlign:"center"}} onChange={e => {setOraI(e.target.value)
+                                                <FormLabel className="subtitle">Start*</FormLabel>
+                                                <FormControl type='time' value={state.start} style={{textAlign:"center", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"0px"}} onChange={e => {setOraI(e.target.value)
                                                     dispatch(selectedSlot(state.giorno, moment('','yyyy-MM-DD').format('LT'), state.end, 'false'))
                                                     setDate(state.giorno)
                                                     setOraF(state.end)}}/>
                                             </Col>
                                             <Col lg={5} md={5} xs={12}>
-                                                <FormLabel><b>End*</b></FormLabel>
-                                                <FormControl type='time' value={state.end} style={{textAlign:"center"}} onChange={e => {setOraF(e.target.value)
+                                                <FormLabel className="subtitle">End*</FormLabel>
+                                                <FormControl type='time' value={state.end} style={{textAlign:"center", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"0px"}} onChange={e => {setOraF(e.target.value)
                                                     dispatch(selectedSlot(state.giorno, state.start, moment('','yyyy-MM-DD').format('LT'), 'false'))
                                                     setDate(state.giorno)
                                                     setOraI(state.start)}}/>
