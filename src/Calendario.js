@@ -168,25 +168,20 @@ export default function Calendario(){
                 <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
                     <Modal.Dialog>
                         <Modal.Header>
-                            <Modal.Title className="modal-title-1">Add event to Calendar</Modal.Title>
+                            <Modal.Title className="modal-title-1">{prenotaz.filter(p => p.key===state.id).map(m=>m.titolo)}</Modal.Title>
                         </Modal.Header>
 
                         <Modal.Body className="modal-subtitle-1">
-                            <p>Are you sure you want to add this event to the Calendar?</p>
+                            <p>{prenotaz.filter(p => p.key===state.id).map(m=>m.about)}</p>
+                            <p>{prenotaz.filter(p => p.key===state.id).map(m=>m.address)}</p>
+                            <p>{prenotaz.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D MMM YYYY'))}, {prenotaz.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('h:mm a'))} - {prenotaz.filter(p => p.key===state.id).map(m=>moment(m.dataEnd).locale('en').format('h:mm a'))}</p>
+
                         </Modal.Body>
 
                         <Modal.Footer>
                             <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
                                     onClick={handleClose}
                             >Cancel</Button>
-                            <Button style={{backgroundColor:"#eb506c", color:"white", borderWidth:"2px", borderColor:"#eb506c", borderRadius:"10px"}}
-                                    onClick={() => {
-
-
-
-                                        handleClose()
-                                    }}
-                            >Add</Button>
                         </Modal.Footer>
                     </Modal.Dialog>
                 </Modal>

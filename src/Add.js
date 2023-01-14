@@ -299,7 +299,7 @@ export default function Add(){
                                                 setPR('true')
                                                 dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('', 'yyyy-MM-DD').format('LT'), moment('', 'yyyy-MM-DD').format('LT'), 'false'))
                                             }
-                                            handleClose()
+                                            navigate('/home', {replace: true})
                                         }}
                                 >Add</Button>
                             </Modal.Footer>
@@ -313,12 +313,6 @@ export default function Add(){
 
                     {badge=='precedente' ? <Alert variant={"danger"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>DATA PRECEDENTE!</Alert> : null}
 
-                    <Row>
-                        { state.id ?
-                            <Button variant={"dark"} style={{marginTop: "5px", marginBottom: "5px"}}>
-                                <Link to={"/sintesi"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>SINTESI PRENOTAZIONE</span></Link>
-                            </Button> : null}
-                    </Row>
                 </Col>
 
                 <Row className="justify-content-md-center">
