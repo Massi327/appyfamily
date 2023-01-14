@@ -22,74 +22,7 @@ export default function Chat(){
 
     return(
         <Container className="bg-n">
-            <NavigbarP />
-            <Container >
-                <Card className="notif" style={{ width: '22.8rem', height: '5rem', marginBottom: '1em' , marginTop:"6.5em", borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                    <Card.Img  src={profile3} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
-                    <Card.Body>
-                        <Card.Text className="name-people" style={{textAlign: 'left'}}>Gina_Martin</Card.Text>
-                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
-                            Hello Sohpia! I'd like to know more...
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
 
-                <Card className="notif" style={{ width: '22.8rem', height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                    <Card.Img  src={profile1} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
-                    <Card.Body>
-                        <Card.Text className="name-people" style={{textAlign: 'left'}}>Jane_Austen</Card.Text>
-                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
-                            Oh no, I'm sorry Mia, but I can't, I...
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-
-
-                <Card className="notif" style={{ width: '22.8rem', height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                    <Card.Img  src={profile4} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
-                    <Card.Body>
-                        <Card.Text className="name-people" style={{textAlign: 'left'}}>Clara_May_92</Card.Text>
-                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
-                            Amazing!See you there!
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-
-                <Card className="notif" style={{ width: '22.8rem', height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row', boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px;'}}>
-                    <Card.Img  src={profile5} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
-                    <Card.Body>
-                        <Card.Text className="name-people" style={{textAlign: 'left'}}>Santy_Chanty_Maybe</Card.Text>
-                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
-                            Thanks. He feels better now, don't...
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-
-                <Card className="notif" style={{ width: '22.8rem', height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                    <Card.Img  src={profile2} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
-                    <Card.Body>
-                        <Card.Text className="name-people" style={{textAlign: 'left'}}>Doctor_Sally</Card.Text>
-                        <Card.Text className="d-inline-block card-title" style={{textAlign: 'left'}}>
-                            Thank you for your help! I was so...
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-
-
-                <Card className="notif" style={{ width: '22.8rem', height: '5rem', marginBottom: '1em' ,  borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                    <Card.Img  src={profile6} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
-                    <Card.Body>
-                        <Card.Text className="name-people" style={{textAlign: 'left'}}>Jeremy_Clarks</Card.Text>
-                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
-                            You were right! It was really...
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-
-
-
-            </Container>
-            <NavigbarBottom home={homeunselected} calendar={calendarunselected} profile={profileunselected} settings={settingsunselected}/>
         </Container>
     )
 

@@ -34,7 +34,7 @@ export default function Notifiche(){
                     </Card.Body>
                 </Card>
 
-                 <Card className="notif" onClick={()=><Link to={"/Chat"}/>} style={{ width: '22.8rem', height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                 <Card className="notif"  style={{ width: '22.8rem', height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img  src={profile1} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body >
                         <Card.Text className="name-people" style={{textAlign: 'left'}}>Jane_Austen</Card.Text>
@@ -89,7 +89,8 @@ export default function Notifiche(){
 
 
             </Container>
-            <NavigbarBottom home={homeunselected} calendar={calendarunselected} profile={profileunselected} settings={settingsunselected}/>
+            <Button><Link to={"/chat"}>ciao</Link></Button>
+
         </Container>
     )
 
