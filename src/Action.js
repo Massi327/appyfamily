@@ -7,8 +7,8 @@ export function addBooking( dataStart, dataEnd, address, titolo, about, categori
     return {type:ADD_BOOKNG, dataStart, dataEnd, address, titolo, about, categoria}
 }
 
-export function selected(id, rid){
-    return {type: SELECTED, id, rid}
+export function selected(id){
+    return {type: SELECTED, id}
 }
 
 export function selectedSlot(giorno, start, end, c){

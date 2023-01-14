@@ -17,7 +17,7 @@ import nearmebut from "./images/nearme-button.svg";
 import rec from "./images/Recommendedn.svg"
 import home from "./images/Home-icon.svg";
 import calendar from "./images/Calendar.svg";
-import profile from "./images/Profile.svg";
+import profile from "./images/Profile-unselected.svg";
 import settings from "./images/Settings.svg";
 
 

@@ -7,7 +7,7 @@ import homeunselected from "./images/home-unselected.svg";
 import calendar from "./images/Calendar.svg";
 import profileselected from "./images/Profile-selected.svg";
 import settings from "./images/Settings.svg";
-import profile from './images/Profile.svg'
+import profile from './images/Profile-unselected.svg'
 import settingsselected from './images/Settings-selected.svg'
 
 export default function Settings(){

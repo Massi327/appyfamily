@@ -31,6 +31,7 @@ import AddButton from "./components/add-button";
 import eventsselected from "./images/Events-selezionato.svg";
 
 import 'moment/locale/en-gb';
+import moment from "moment/moment";
 
 
 
@@ -41,6 +42,21 @@ export default function Home(){
     const [prenotazione, setPrenotazione] = useState(() => {
         const prenotazione = JSON.parse(localStorage.getItem('prenotazioni'));
         return prenotazione || state.prenotazioni; } )
+
+    let events = [];
+
+    prenotazione.map(p => {
+        let event={
+            key: p.key,
+            titolo: p.titolo,
+            dataStart: moment(p.dataStart,'YYYY-MM-DD, hh:mm').toDate(),
+            dataEnd: moment(p.dataEnd,'YYYY-MM-DD, hh:mm').toDate(),
+            address: p.address,
+            about: p.about,
+            categoria: p.categoria
+        }
+        events.push(event)
+    })
 
     return(
         <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', top:'5em'}}>
@@ -55,18 +71,18 @@ export default function Home(){
 
             <Container style={{marginTop:"15em"}}>
 
-                {state.prenotazioni.map( p =>
+                {events.slice(0).reverse().map( p =>
 
-                    <Card className="post" id={p.key} style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card className="post" key={p.key} style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}} onClick={()=> console.log(events)}>
                         <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem', verticalAlign:'center'}} />
                         <Card.Body>
-                            <Card.Text className="event-time-1" style={{textAlign: 'left'}}>{p.dataStart.locale('en').format('MMM D').toUpperCase()} • {p.dataStart.locale('en').format('h:mm a').toUpperCase()}</Card.Text>
+                            <Card.Text className="event-time-1" style={{textAlign: 'left'}}>{moment(p.dataStart).locale('en').format('MMM D').toUpperCase()} • {moment(p.dataStart).locale('en').format('h:mm a').toUpperCase()}</Card.Text>
                             <Card.Title className="event-title-1" style={{textAlign: 'left'}}>{p.titolo}</Card.Title>
                             <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
                                 {p.about}
                             </Card.Text>
                             <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                                <img src={clock} alt="Near me" className="icon"/> {p.dataStart.locale('en').format('D MMM YYYY')}, {p.dataStart.locale('en').format('h:mm a').toUpperCase()} - {p.dataEnd.locale('en').format('h:mm a').toUpperCase()}
+                                <img src={clock} alt="Near me" className="icon"/> {moment(p.dataStart).locale('en').format('D MMM YYYY')}, {moment(p.dataStart).locale('en').format('h:mm a').toUpperCase()} - {moment(p.dataEnd).locale('en').format('h:mm a').toUpperCase()}
                             </Card.Text>
                             <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
                                 <img src={map} alt="Near me" className="icon"/> {p.address}

@@ -258,7 +258,7 @@ export default function Add(){
                             </Card.Body>
                         </Card>
 
-                        <Modal show={show} onHide={handleClose}>
+                        <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
                         <Modal.Dialog>
                             <Modal.Header>
                                 <Modal.Title className="modal-title-1">Add event to Calendar</Modal.Title>
@@ -305,6 +305,7 @@ export default function Add(){
                             </Modal.Footer>
                         </Modal.Dialog>
                         </Modal>
+
                     </Row>
 
                     {ls=='true' ? localStorage.setItem('arrayLS', JSON.stringify(state.arrayLS)) : null}

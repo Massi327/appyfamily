@@ -2,7 +2,7 @@ import {Col, Container, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import home from "../../images/Home-icon.svg";
 import calendar from "../../images/Calendar.svg";
-import profile from "../../images/Profile.svg";
+import profile from "../../images/Profile-unselected.svg";
 import settings from "../../images/Settings.svg";
 
 

@@ -21,7 +21,7 @@ import {
     Nav,
     Navbar,
     Row,
-    FormCheck
+    FormCheck, Modal
 } from "react-bootstrap";
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import {addBooking, selected, selectedSlot} from "./Action";
@@ -58,6 +58,10 @@ export default function Calendario(){
         return prenotaz || state.prenotazioni; } )
 
     const addHidden = 'false';
+
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const navigate = useNavigate();
 
@@ -135,7 +139,10 @@ export default function Calendario(){
                         views={['month','week','day']}
                         events={events}
                         style={{height:'81vh', backgroundColor: 'white', marginBottom: "5px", zIndex:'-1000'}}
-                        onSelectEvent={e => {dispatch(selected(e.id, e.resourceId))}}
+                        onSelectEvent={e => {
+                            dispatch(selected(e.id))
+                            handleShow()
+                        }}
                         onSelecting={range => handleSelect(range)}
                         eventPropGetter= {(events) => {
                                 let newStyle = {
@@ -145,7 +152,7 @@ export default function Calendario(){
                                     border: "none"
                                 };
 
-                            if (eventi.categoria === 'Park'){
+                            if (events.categoria === 'Park'){
                                 newStyle.backgroundColor = "green"
                             }
 
@@ -157,6 +164,32 @@ export default function Calendario(){
                         onSelectSlot={ slotInfo => selectSlot(slotInfo)}
                     />
                 </Col>
+
+                <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
+                    <Modal.Dialog>
+                        <Modal.Header>
+                            <Modal.Title className="modal-title-1">Add event to Calendar</Modal.Title>
+                        </Modal.Header>
+
+                        <Modal.Body className="modal-subtitle-1">
+                            <p>Are you sure you want to add this event to the Calendar?</p>
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                    onClick={handleClose}
+                            >Cancel</Button>
+                            <Button style={{backgroundColor:"#eb506c", color:"white", borderWidth:"2px", borderColor:"#eb506c", borderRadius:"10px"}}
+                                    onClick={() => {
+
+
+
+                                        handleClose()
+                                    }}
+                            >Add</Button>
+                        </Modal.Footer>
+                    </Modal.Dialog>
+                </Modal>
 
                 {addHidden==="true" ? <Col xl={4} lg={4} md={4} sm={12} xs={12}>
                     <Row>
@@ -223,53 +256,9 @@ export default function Calendario(){
                     </Col>
                 </Row>
 
-                    <Row className="justify-content-md-center">
-                        <Col xs={3} sm={12} md={3}>
-                            {
-                                <Button variant={"dark"} style={{marginTop: "5px", marginBottom: "5px"}}>
-                                    <Link to={"/home"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>Home</span></Link>
-                                </Button>
-                            }
-                        </Col>
-
-                        <Col xs={3} sm={12} md={3}>
-                        {
-                            <Button variant={"danger"} style={{marginTop: "5px", marginBottom: "5px"}}>
-                                <Link to={"/calendar"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>CALENDAR</span></Link>
-                            </Button> }
-                        </Col>
-
-                            <Col xs={3} sm={12} md={3}>
-                        {
-                            <Button variant={"dark"} style={{marginTop: "5px", marginBottom: "5px"}}>
-                                <Link to={"/profile"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>PROFILE</span></Link>
-                            </Button> }
-                            </Col>
-
-                                <Col xs={3} sm={12} md={3}>
-                        {
-                            <Button variant={"dark"} style={{marginTop: "5px", marginBottom: "5px"}}>
-                                <Link to={"/settings"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>SETTINGS</span></Link>
-                            </Button> }
-                                </Col>
-                    </Row>
-
             </Row>
 
 
         </Container>
     )
-}
-
-function bottoneDisabilitato(address, titolo, oraI, oraF, date) {
-    let disabilitato;
-
-    if (address!='' && titolo!='' && oraI!=null && oraF!='' && date!='')
-    {
-        disabilitato= false;
-    }else {
-        disabilitato= true;
-    }
-
-    return(disabilitato)
 }

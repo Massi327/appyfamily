@@ -14,7 +14,7 @@ import people5 from "./images/People_5.svg"
 import "./People.css";
 import recbut from './images/recommended-button.svg'
 import nearme from './images/near-me.svg'
-import profile from './images/Profile.svg'
+import profile from './images/Profile-unselected.svg'
 
 import events from "./images/Events.svg";
 import blogs from "./images/Blogs.svg";
@@ -45,7 +45,9 @@ export default function People(){
                       vhashtags={hashtags}
                       value={"none"}
             />
-            <NavigbarBottom home={home} calendar={calendar} profile={profile} settings={settings}/>
+            <NavigbarBottom home={home} calendar={calendar}
+                            profile={profile}
+                            settings={settings}/>
             <Container style={{marginTop:'15em'}}>
 
 

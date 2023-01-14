@@ -23,7 +23,6 @@ export const initialState = {
         },
     ],
     id:0,
-    rid:0,
     giorno: moment('').format('yyyy-MM-DD'),
     start: moment('','yyyy-MM-DD').format('LT'),
     end: moment('','yyyy-MM-DD').format('LT'),
@@ -80,7 +79,6 @@ export function Reducer(state,action){
             return {
                 ...state,
                 id: action.id,
-                rid: action.rid
             }
 
         case SELECTEDSLOT:
