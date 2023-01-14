@@ -12,6 +12,10 @@ import follow from "./images/follow.svg";
 import NavigbarP from "./components/navbar-profile";
 import NavigbarBottom from "./components/navbar-bottom";
 import "./Notifiche.css";
+import profileunselected from "./images/Profile-unselected.svg";
+import calendarunselected from "./images/Calendar.svg";
+import settingsunselected from "./images/Settings.svg";
+import homeunselected from "./images/home-unselected.svg"
 export default function Notifiche(){
 
     const [state,dispatch] = useContext(StateContext)
@@ -94,7 +98,7 @@ export default function Notifiche(){
 
 
             </Container>
-            <NavigbarBottom value=" "/>
+            <NavigbarBottom home={homeunselected} calendar={calendarunselected} profile={profileunselected} settings={settingsunselected}/>
         </Container>
     )
 

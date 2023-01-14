@@ -17,6 +17,7 @@ import Add from "./Add";
 import './App.css';
 import Sintesi from "./Sintesi";
 import Follower from "./Follower";
+import Chat from "./Chat";
 
 export const StateContext = createContext()
 
@@ -45,6 +46,7 @@ function App() {
 
                 <Route path={"/sintesi"} element={<Sintesi/>}/>
                 <Route path={"/follower"} element={<Follower/>}/>
+                <Route path={"/chat"} element={<Chat/>}/>
             </Routes>
           </BrowserRouter>
         </div>

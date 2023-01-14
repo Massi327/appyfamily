@@ -5,9 +5,7 @@ import {Button, Col, Container, Nav, Navbar, Row} from "react-bootstrap";
 import NavigbarBottom from "./components/navbar-bottom";
 import homeunselected from "./images/home-unselected.svg";
 import calendar from "./images/Calendar.svg";
-import profileselected from "./images/Profile-selected.svg";
-import settings from "./images/Settings.svg";
-import profile from './images/Profile-unselected.svg'
+import profileunselected from './images/Profile-unselected.svg'
 import settingsselected from './images/Settings-selected.svg'
 
 export default function Settings(){
@@ -16,7 +14,7 @@ export default function Settings(){
 
     return(
         <Container fluid styile={{height:"79vh"}}>
-            <NavigbarBottom home={homeunselected} calendar={calendar} profile={profile} settings={settingsselected}/>
+            <NavigbarBottom home={homeunselected} calendar={calendar} profile={profileunselected} settings={settingsselected}/>
 
             <Navbar style={{overflow: "hidden", top: "0px", width: "100%"}} bg="dark" variant="dark">
                 <Container>
