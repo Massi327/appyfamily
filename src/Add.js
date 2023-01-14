@@ -50,6 +50,11 @@ export default function Add(){
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const [dataIM,setDataIM] = useState('')
+    const [dataFM,setDataFM] = useState('')
+    const [giornoIM,setGiornoIM] = useState('')
+    const [giornoFM,setGiornoFM] = useState('')
+
 
     {/*useEffect(() => {
         localStorage.setItem('titolo', JSON.stringify(titolo))
@@ -182,10 +187,40 @@ export default function Add(){
                                     let giornoI = moment(state.giorno+', '+state.start, 'YYYY-MM-DD, hh:mm a')
                                     let giornoF = moment(state.giorno+', '+state.end, 'YYYY-MM-DD, hh:mm a')
 
+                                    setDataIM(dataS)
+                                    setDataFM(dataF)
+                                    setGiornoIM(giornoI)
+                                    setGiornoFM(giornoF)
+
                                     if(state.c == 'false'){
                                         if(dataS.isBefore(moment()) || dataF.isBefore(moment())) {
                                             setBadge('precedente')
                                         }else{
+                                            handleShow()
+                                        }
+                                    }else if(state.c == 'true'){
+                                        if(giornoI.isBefore(moment()) || giornoF.isBefore(moment())){
+                                            setBadge('precedente')
+                                        }else{
+                                            handleShow()
+                                        }
+                                    }
+                                }}>Publish</Button>
+
+                                {/*} <Button className='submit' disabled={bottoneDisabilitato(address, titolo, oraI, oraF, date, state.giorno, state.start, state.end, state.c)} variant='dark' onClick={() => {
+
+                                    let calendarDate = moment(date).format('YYYY-MM-DD')
+                                    let dataS=moment(calendarDate+', '+oraI,'YYYY-MM-DD, hh:mm a')
+                                    let dataF=moment(calendarDate+', '+oraF,'YYYY-MM-DD, hh:mm a')
+
+                                    let giornoI = moment(state.giorno+', '+state.start, 'YYYY-MM-DD, hh:mm a')
+                                    let giornoF = moment(state.giorno+', '+state.end, 'YYYY-MM-DD, hh:mm a')
+
+                                    if(state.c == 'false'){
+                                        if(dataS.isBefore(moment()) || dataF.isBefore(moment())) {
+                                            setBadge('precedente')
+                                        }else{
+                                            passaggioParametri(dataS,dataF,address,titolo,about,categoria)
                                             dispatch(addBooking(dataS,dataF,address,titolo,about,categoria))
                                             setAddress('')
                                             setTitolo('')
@@ -218,26 +253,14 @@ export default function Add(){
                                         }
                                     }
                                 }}>Publish</Button>
+*/}
+
                             </Card.Body>
                         </Card>
 
                         <Modal show={show} onHide={handleClose}>
-                            <Modal.Header closeButton>
-                                <Modal.Title>Modal heading</Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-                            <Modal.Footer>
-                                <Button variant="secondary" onClick={handleClose}>
-                                    Close
-                                </Button>
-                                <Button variant="primary" onClick={handleClose}>
-                                    Save Changes
-                                </Button>
-                            </Modal.Footer>
-                        </Modal>
-
                         <Modal.Dialog>
-                            <Modal.Header closeButton>
+                            <Modal.Header>
                                 <Modal.Title className="modal-title-1">Add event to Calendar</Modal.Title>
                             </Modal.Header>
 
@@ -246,16 +269,47 @@ export default function Add(){
                             </Modal.Body>
 
                             <Modal.Footer>
-                                <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}>Cancel</Button>
-                                <Button style={{backgroundColor:"#eb506c", color:"white", borderWidth:"2px", borderColor:"#eb506c", borderRadius:"10px"}}>Add</Button>
+                                <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                        onClick={handleClose}
+                                >Cancel</Button>
+                                <Button style={{backgroundColor:"#eb506c", color:"white", borderWidth:"2px", borderColor:"#eb506c", borderRadius:"10px"}}
+                                        onClick={() => {
+                                            if (state.c == 'false') {
+                                                dispatch(addBooking(dataIM, dataFM, address, titolo, about, categoria))
+                                                setAddress('')
+                                                setTitolo('')
+                                                setAbout('')
+                                                setDate(moment())
+                                                setOraI('')
+                                                setOraF('')
+                                                setCategoria('')
+                                                setLS('true')
+                                                setPR('true')
+                                                dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('', 'yyyy-MM-DD').format('LT'), moment('', 'yyyy-MM-DD').format('LT'), 'false'))
+                                            }else if(state.c == 'true'){
+                                                dispatch(addBooking(giornoIM, giornoFM, address, titolo, about, categoria))
+                                                setAddress('')
+                                                setTitolo('')
+                                                setAbout('')
+                                                setDate(moment())
+                                                setOraI('')
+                                                setOraF('')
+                                                setCategoria('')
+                                                setLS('true')
+                                                setPR('true')
+                                                dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('', 'yyyy-MM-DD').format('LT'), moment('', 'yyyy-MM-DD').format('LT'), 'false'))
+                                            }
+                                            handleClose()
+                                        }}
+                                >Add</Button>
                             </Modal.Footer>
                         </Modal.Dialog>
+                        </Modal>
                     </Row>
 
                     {ls=='true' ? localStorage.setItem('arrayLS', JSON.stringify(state.arrayLS)) : null}
                     {pr=='true' ? localStorage.setItem('prenotazioni', JSON.stringify(state.prenotazioni)) : null}
 
-                    {badge=='conferma' ? <Alert variant={"success"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>PRENOTAZIONE AVVENUTA CON SUCCESSO!</Alert> : null}
                     {badge=='precedente' ? <Alert variant={"danger"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>DATA PRECEDENTE!</Alert> : null}
 
                     <Row>

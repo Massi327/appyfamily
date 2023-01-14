@@ -30,11 +30,17 @@ import NavigbarBottom from "./components/navbar-bottom";
 import AddButton from "./components/add-button";
 import eventsselected from "./images/Events-selezionato.svg";
 
+import 'moment/locale/en-gb';
+
 
 
 export default function Home(){
 
     const [state,dispatch] = useContext(StateContext)
+
+    const [prenotazione, setPrenotazione] = useState(() => {
+        const prenotazione = JSON.parse(localStorage.getItem('prenotazioni'));
+        return prenotazione || state.prenotazioni; } )
 
     return(
         <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', top:'5em'}}>
@@ -49,6 +55,26 @@ export default function Home(){
 
             <Container style={{marginTop:"15em"}}>
 
+                {state.prenotazioni.map( p =>
+
+                    <Card className="post" id={p.key} style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                        <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem', verticalAlign:'center'}} />
+                        <Card.Body>
+                            <Card.Text className="event-time-1" style={{textAlign: 'left'}}>{p.dataStart.locale('en').format('MMM D').toUpperCase()} • {p.dataStart.locale('en').format('h:mm a').toUpperCase()}</Card.Text>
+                            <Card.Title className="event-title-1" style={{textAlign: 'left'}}>{p.titolo}</Card.Title>
+                            <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
+                                {p.about}
+                            </Card.Text>
+                            <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                                <img src={clock} alt="Near me" className="icon"/> {p.dataStart.locale('en').format('D MMM YYYY')}, {p.dataStart.locale('en').format('h:mm a').toUpperCase()} - {p.dataEnd.locale('en').format('h:mm a').toUpperCase()}
+                            </Card.Text>
+                            <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                                <img src={map} alt="Near me" className="icon"/> {p.address}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+
+                )}
 
             <Card className="post" style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                 <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem', verticalAlign:'center'}} />

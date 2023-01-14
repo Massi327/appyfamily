@@ -15,8 +15,8 @@ export const initialState = {
         {
             key:788,
             titolo:'Sportone',
-            dataStart:moment('2023-01-04, 10:00','YYYY-MM-DD, hh:mm'),
-            dataEnd:moment('2023-01-04, 11:30','YYYY-MM-DD, hh:mm'),
+            dataStart:moment('2023-01-04, 20:00','YYYY-MM-DD, hh:mm'),
+            dataEnd:moment('2023-01-04, 21:30','YYYY-MM-DD, hh:mm'),
             address:'112 Barrack Street, NR3 1TX, UK',
             about:'Sport al parco',
             categoria: 'Sport'

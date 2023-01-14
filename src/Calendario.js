@@ -1,6 +1,6 @@
 import {Calendar, momentLocalizer} from "react-big-calendar";
 import moment from 'moment'
-import 'moment/locale/en-in';
+import 'moment/locale/it';
 import {useCallback, useContext, useEffect, useState} from "react";
 import {StateContext} from "./App";
 import "./Calendario.css"
@@ -53,22 +53,26 @@ export default function Calendario(){
         const eventi = JSON.parse(localStorage.getItem('arrayLS'));
         return eventi || state.arrayLS; } )
 
+    const [prenotaz, setPrenotaz] = useState(() => {
+        const prenotaz = JSON.parse(localStorage.getItem('prenotazioni'));
+        return prenotaz || state.prenotazioni; } )
+
     const addHidden = 'false';
 
     const navigate = useNavigate();
 
-    {/*let events = [];
+    let events = [];
 
-    state.prenotazioni.map(p => {
+    prenotaz.map(p => {
         let event={
             id: p.key,
             title: p.titolo,
-            start: p.dataStart.toDate(),
-            end: p.dataEnd.toDate(),
+            start: moment(p.dataStart,'YYYY-MM-DD, hh:mm').toDate(),
+            end: moment(p.dataEnd,'YYYY-MM-DD, hh:mm').toDate(),
             categoria: p.categoria
         }
         events.push(event)
-    })*/}
+    })
 
 
     //const resourceMap = [{resourceId: 1, resourceTitle: ''},]
@@ -110,7 +114,8 @@ export default function Calendario(){
             <Row style={{textAlign: "center", marginTop:'6em'}}>
                 <Col md={12} xs={12}>
                     <ButtonGroup>
-                        <Button onClick={()=> localStorage.clear()}>+</Button>
+                        <Button style={{margin: '10px'}} onClick={()=> localStorage.clear()}>clear</Button>
+                        <Button onClick={()=> console.log(prenotaz)}>prenotaz</Button>
                     </ButtonGroup>
                 </Col>
             </Row>
@@ -128,11 +133,11 @@ export default function Calendario(){
                         defaultDate={new Date()}
                         defaultView={'month'}
                         views={['month','week','day']}
-                        events={eventi}
+                        events={events}
                         style={{height:'81vh', backgroundColor: 'white', marginBottom: "5px", zIndex:'-1000'}}
                         onSelectEvent={e => {dispatch(selected(e.id, e.resourceId))}}
                         onSelecting={range => handleSelect(range)}
-                        eventPropGetter= {(eventi) => {
+                        eventPropGetter= {(events) => {
                                 let newStyle = {
                                     backgroundColor: "orange",
                                     color: 'black',
@@ -208,17 +213,6 @@ export default function Calendario(){
                             </Card.Body>
                         </Card>
                     </Row>
-
-                    {badge=='conferma' ? <Alert variant={"success"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>PRENOTAZIONE AVVENUTA CON SUCCESSO!</Alert> : null}
-                    {badge=='occupata' ? <Alert variant={"danger"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>STANZA OCCUPPATA!</Alert> : null}
-                    {badge=='precedente' ? <Alert variant={"danger"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>DATA PRECEDENTE!</Alert> : null}
-
-                    <Row>
-                        { state.id ?
-                            <Button variant={"dark"} style={{marginTop: "5px", marginBottom: "5px"}}>
-                                <Link to={"/sintesi"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>SINTESI PRENOTAZIONE</span></Link>
-                            </Button> : null}
-                    </Row>
                 </Col> : null}
 
                 <Row className="justify-content-sm-center">
@@ -262,26 +256,6 @@ export default function Calendario(){
 
             </Row>
 
-            {state.prenotazioni.map( p =>
-
-                <Card className="post" id={p.key} style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                    <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem', verticalAlign:'center'}} />
-                    <Card.Body>
-                        <Card.Text className="event-time-1" style={{textAlign: 'left'}}>{p.dataStart.format('MMM Do').toUpperCase()}JAN 7 • 10AM</Card.Text>
-                        <Card.Title className="event-title-1" style={{textAlign: 'left'}}>{p.titolo}</Card.Title>
-                        <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
-                            {p.about}
-                        </Card.Text>
-                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                            <img src={clock} alt="Near me" className="icon"/> 7 Jan 2023, 10AM - 11AM
-                        </Card.Text>
-                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                            <img src={map} alt="Near me" className="icon"/> 112 Barrack Street, NR3 1TX, UK
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-
-            )}
 
         </Container>
     )
