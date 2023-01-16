@@ -70,7 +70,7 @@ return  <Container className="cont">
 
 
 
-        <Container className={value} >
+        <Container className={value} style={{paddingLeft: "3.5em"}} >
             <Row className="menu-rec-nearme">
 
                 <Col>
