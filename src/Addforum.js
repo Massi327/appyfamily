@@ -63,12 +63,12 @@ export default function Addforum(){
                                     <FormControl type='textarea' value={about} style={{textAlign:"left", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"0px"}} placeholder='About' onChange={e=> setAbout(e.target.value)}/>
                                 </FormGroup>
 
-                                <Button onClick={() =>{
+                                <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}} onClick={() =>{
                                     setTitolo('')
                                     setAbout('')
                                 }}>Cancel</Button>
 
-                                <Button className='submit' disabled={bottoneDisabilitato(titolo, about)} variant='dark' onClick={() => handleShow()}>Publish</Button>
+                                <Button style={{backgroundColor:"#eb506c", color:"white", borderWidth:"2px", borderColor:"#eb506c", borderRadius:"10px"}} disabled={bottoneDisabilitato(titolo, about)} onClick={() => handleShow()}>Publish</Button>
 
                             </Card.Body>
                         </Card>
@@ -108,10 +108,11 @@ export default function Addforum(){
                 <Modal.Dialog>
 
                     <Modal.Body className="modal-subtitle-1">
-                        <p>AGGIUNTO</p>
+                        <p>Added</p>
                     </Modal.Body>
 
                     <Modal.Footer>
+
                         <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
                                 onClick={localStorage.setItem('forums', JSON.stringify(state.forums))}
                         >
@@ -123,9 +124,7 @@ export default function Addforum(){
                 </Modal.Dialog>
             </Modal>
 
-                        <Button variant={"dark"} style={{marginTop: "5px", marginBottom: "5px"}}>
-                            <Link to={"/blogs"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>Home</span></Link>
-                        </Button>
+
 
         </Container>
     )

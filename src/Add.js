@@ -61,7 +61,7 @@ export default function Add(){
 
              <NavigbarP/>
 
-            <Row style={{marginTop:'5em'}}>
+            <Row>
                 {calendariohidden=="true" ? <Col xl={8} lg={8} md={8} sm={12} xs={12}>
                     <Calendar
                         selectable
@@ -80,7 +80,7 @@ export default function Add(){
                 <Col md={6} sm={12} xs={12}>
                     <Row>
 
-                        <Card className='form' style={{background: '#f5f5f5', color: "black", borderWidth: "0"}}>
+                        <Card className='form' style={{background: '#f5f5f5', paddingTop:"5em", color: "black", borderWidth: "0"}}>
                             <Card.Body style={{marginLeft:"1em", marginRight:"1em"}}>
                                 <CloseButton variant={'black'} onClick={() => navigate(-1)}/>
                                 <Card.Title style={{fontSize: "30px", marginTop: "0.3em"}} className="title-2">Add Event</Card.Title>
@@ -161,7 +161,7 @@ export default function Add(){
                                         </Row>
                                     </FormGroup>}
 
-                                <Button onClick={() =>{
+                                <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}} onClick={() =>{
                                     setTitolo('')
                                     setAddress('')
                                     setAbout('')
@@ -174,7 +174,7 @@ export default function Add(){
                                     Cancel
                                 </Button>
 
-                                <Button className='submit' disabled={bottoneDisabilitato(address, titolo, oraI, oraF, date, state.giorno, state.start, state.end, state.c)} variant='dark' onClick={() => {
+                                <Button style={{backgroundColor:"#eb506c", color:"white", borderWidth:"2px", borderColor:"#eb506c", borderRadius:"10px"}} disabled={bottoneDisabilitato(address, titolo, oraI, oraF, date, state.giorno, state.start, state.end, state.c)} variant='dark' onClick={() => {
 
                                     let calendarDate = moment(date).format('YYYY-MM-DD')
                                     let dataS=moment(calendarDate+', '+oraI,'YYYY-MM-DD, hh:mm a')
@@ -282,13 +282,6 @@ export default function Add(){
                 </Col>
 
                 <Row className="justify-content-md-center">
-                    <Col xs={3} sm={12} md={3}>
-                        {
-                            <Button variant={"dark"} style={{marginTop: "5px", marginBottom: "5px"}}>
-                                <Link to={"/home"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>Home</span></Link>
-                            </Button>
-                        }
-                    </Col>
 
                     <Col xs={3} sm={12} md={3}>
                         {

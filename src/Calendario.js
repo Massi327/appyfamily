@@ -31,6 +31,11 @@ import NavigbarP from "./components/navbar-profile";
 import imgcard1 from "./images/Image-event-1.svg";
 import clock from "./images/Clock.svg";
 import map from "./images/Map.svg";
+import homeunselected from "./images/home-unselected.svg";
+import calendarselected from "./images/Calendar-selected.svg";
+import profile from "./images/Profile-unselected.svg";
+import settings from "./images/Settings.svg";
+
 
 const localizer = momentLocalizer(moment)
 
@@ -112,7 +117,8 @@ export default function Calendario(){
     return(
         <Container>
             <NavigbarP/>
-            <NavigbarBottom value="Home"/>
+            <NavigbarBottom home={homeunselected} calendar={calendarselected} profile={profile} settings={settings}/>
+
 
 
             <Container style={{marginTop:"15em", marginBottom:"15em"}}>
