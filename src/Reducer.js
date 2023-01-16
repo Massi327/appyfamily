@@ -108,10 +108,10 @@ export function Reducer(state,action){
             let forum = JSON.parse(localStorage.getItem('forums'))
 
             if(forum == null){
-                if (state.forums.length<2 ){
+                if (state.forums.length<2){
                     newForum = [...state.forums, post]
                 }
-            }else{newArray = [...forum, post]}
+            }else{newForum = [...forum, post]}
 
 
             return{

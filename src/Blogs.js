@@ -1,4 +1,4 @@
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {StateContext} from "./App";
 import {Link} from "react-router-dom";
 import {Button, Card, Col, Container, Form, Nav, Navbar, Row} from "react-bootstrap";
@@ -33,6 +33,10 @@ export default function Blogs(){
     const [forum, setForum] = useState(() => {
         const forum = JSON.parse(localStorage.getItem('forums'));
         return forum || state.forums; } )
+
+    useEffect(() => {
+        localStorage.setItem('forums', JSON.stringify(state.forums))
+    }, [forum])
 
     return(
 

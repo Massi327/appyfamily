@@ -23,15 +23,17 @@ export default function Addforum(){
 
     const navigate = useNavigate()
 
-    const [titolo,setTitolo] = useState('')
-    // () => {const titolo = JSON.parse(localStorage.getItem('titolo'));return titolo || ""; } )
-    const [about,setAbout] = useState('')
-
-    const [fm,setFM] = useState('false')
+    const [titolo,setTitolo] = useState(() => {const titolo = JSON.parse(localStorage.getItem('titolo'));return titolo || ""; } )
+    const [about,setAbout] = useState(() => {const about = JSON.parse(localStorage.getItem('about'));return about || ""; } )
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    useEffect(() => {
+        localStorage.setItem('titolo', JSON.stringify(titolo))
+        localStorage.setItem('about', JSON.stringify(about))
+    }, [titolo, about])
 
     return(
         <Container fluid>
@@ -45,7 +47,7 @@ export default function Addforum(){
                         <Card className='form' style={{background: '#f5f5f5', color: "black", borderWidth: "0"}}>
                             <Card.Body style={{marginLeft:"1em", marginRight:"1em"}}>
                                 <CloseButton variant={'black'} onClick={() => navigate(-1)}/>
-                                <Card.Title style={{fontSize: "30px", marginTop: "0.3em"}} className="title-2">Add Event</Card.Title>
+                                <Card.Title style={{fontSize: "30px", marginTop: "0.3em"}} className="title-2">Add forum</Card.Title>
 
                                 <FormGroup style={{marginBottom: "10px", textAlign: "left"}}>
                                     <FormLabel className="subtitle">Title *</FormLabel>
@@ -90,15 +92,11 @@ export default function Addforum(){
                                     dispatch(addForum(titolo, about))
                                     setTitolo('')
                                     setAbout('')
-                                    setFM('true')
-                                    navigate('/blogs', {replace: true})
                                 }}
-                        >Add</Button>
+                        ><Link to={"/blogs"} style={{color:"white"}}>Add</Link></Button>
                     </Modal.Footer>
                 </Modal.Dialog>
             </Modal>
-
-            {fm=='true' ? localStorage.setItem('forums', JSON.stringify(state.forums)) : null}
 
                         <Button variant={"dark"} style={{marginTop: "5px", marginBottom: "5px"}}>
                             <Link to={"/blogs"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>Home</span></Link>

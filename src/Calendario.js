@@ -45,17 +45,16 @@ export default function Calendario(){
     const [oraI,setOraI] = useState('')
     const [oraF,setOraF] = useState('')
     //const [sala,setSala] = useState(1)
-    const [badge,setBadge] = useState('')
     const [sel,setSel] = useState('')
     const [categoria,setCategoria] = useState('')
 
-    const [eventi, setEventi] = useState(() => {
+    {/*const [eventi, setEventi] = useState(() => {
         const eventi = JSON.parse(localStorage.getItem('arrayLS'));
-        return eventi || state.arrayLS; } )
+        return eventi || state.arrayLS; } )*/}
 
     const [prenotaz, setPrenotaz] = useState(() => {
         const prenotaz = JSON.parse(localStorage.getItem('prenotazioni'));
-        return prenotaz || state.prenotazioni; } )
+        return prenotaz  } )
 
     const addHidden = 'false';
 
@@ -112,23 +111,13 @@ export default function Calendario(){
 
     return(
         <Container>
-             <NavigbarP/>
+            <NavigbarP/>
             <NavigbarBottom value="Home"/>
 
-            <Row style={{textAlign: "center", marginTop:'6em'}}>
-                <Col md={12} xs={12}>
-                    <ButtonGroup>
-                        <Button style={{margin: '10px'}} onClick={()=> localStorage.clear()}>clear</Button>
-                        <Button onClick={()=> console.log(prenotaz)}>prenotaz</Button>
-                    </ButtonGroup>
-                </Col>
-            </Row>
 
-            <br/>
-            <br/>
-
+            <Container style={{marginTop:"15em", marginBottom:"15em"}}>
             <Row style={{zIndex:'-5'}}>
-                <Col xl={8} lg={8} md={8} sm={12} xs={12}>
+                <Col sm={12} xs={12}>
                     <Calendar
                         selectable
                         startAccessor='start'
@@ -243,16 +232,8 @@ export default function Calendario(){
                     </Row>
                 </Col> : null}
 
-                <Row className="justify-content-sm-center">
-                    <Col xs={1} md={1}>
-                        <Button variant={"dark"} style={{marginBottom:"1em"}}>
-                            <Link to={"/add"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>+</span></Link>
-                        </Button>
-                    </Col>
-                </Row>
-
             </Row>
-
+            </Container>
 
         </Container>
     )

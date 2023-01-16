@@ -40,24 +40,21 @@ export default function Add(){
     const [categoria,setCategoria] = useState('')
     const calendariohidden = 'false';
 
-    const [ls,setLS] = useState('false')
-    const [pr,setPR] = useState('false')
-
     const navigate = useNavigate()
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const [show_second, setShowSecond] = useState(false);
+    const handleCloseSecond = () => setShowSecond(false);
+    const handleShowSecond = () => setShowSecond(true);
+
     const [dataIM,setDataIM] = useState('')
     const [dataFM,setDataFM] = useState('')
     const [giornoIM,setGiornoIM] = useState('')
     const [giornoFM,setGiornoFM] = useState('')
 
-
-    {/*useEffect(() => {
-        localStorage.setItem('titolo', JSON.stringify(titolo))
-    }, [titolo])*/}
 
     return(
         <Container fluid>
@@ -282,9 +279,8 @@ export default function Add(){
                                                 setOraI('')
                                                 setOraF('')
                                                 setCategoria('')
-                                                setLS('true')
-                                                setPR('true')
                                                 dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('', 'yyyy-MM-DD').format('LT'), moment('', 'yyyy-MM-DD').format('LT'), 'false'))
+                                                console.log(state.prenotazioni)
                                             }else if(state.c == 'true'){
                                                 dispatch(addBooking(giornoIM, giornoFM, address, titolo, about, categoria))
                                                 setAddress('')
@@ -294,21 +290,40 @@ export default function Add(){
                                                 setOraI('')
                                                 setOraF('')
                                                 setCategoria('')
-                                                setLS('true')
-                                                setPR('true')
                                                 dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('', 'yyyy-MM-DD').format('LT'), moment('', 'yyyy-MM-DD').format('LT'), 'false'))
+                                                console.log(state.prenotazioni)
                                             }
-                                            navigate('/home', {replace: true})
+                                            handleClose()
+                                            handleShowSecond()
                                         }}
-                                >Add</Button>
+                                >
+                                        Add
+                                </Button>
                             </Modal.Footer>
                         </Modal.Dialog>
                         </Modal>
 
                     </Row>
 
-                    {ls=='true' ? localStorage.setItem('arrayLS', JSON.stringify(state.arrayLS)) : null}
-                    {pr=='true' ? localStorage.setItem('prenotazioni', JSON.stringify(state.prenotazioni)) : null}
+                    <Modal show={show_second} onHide={handleCloseSecond} backdrop={"static"} centered>
+                        <Modal.Dialog>
+
+                            <Modal.Body className="modal-subtitle-1">
+                                <p>AGGIUNTO</p>
+                            </Modal.Body>
+
+                            <Modal.Footer>
+                                <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                        onClick={localStorage.setItem('prenotazioni', JSON.stringify(state.prenotazioni))}
+                                >
+                                    <Link to={"/profile"}>
+                                    Ok
+                                    </Link>
+                                </Button>
+                            </Modal.Footer>
+                        </Modal.Dialog>
+                    </Modal>
+
 
                     {badge=='precedente' ? <Alert variant={"danger"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>DATA PRECEDENTE!</Alert> : null}
 
@@ -328,7 +343,7 @@ export default function Add(){
                             <Button variant={"danger"} style={{marginTop: "5px", marginBottom: "5px"}} onClick={() => dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('','yyyy-MM-DD').format('LT'), moment('','yyyy-MM-DD').format('LT'),'false'))}>
                                 <Link to={"/calendar"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>CALENDAR</span></Link>
                             </Button> }
-                            <Button onClick={()=> console.log(state.c)}>+</Button>
+                            <Button onClick={()=> console.log(state.prenotazioni)}>+</Button>
 
                     </Col>
                 </Row>
