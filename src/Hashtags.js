@@ -33,7 +33,7 @@ export default function Hashtags(){
             <NavigbarBottom home={home} calendar={calendar} profile={profile} settings={settings}/>
 
             <Container style={{marginTop:'13em'}}>
-
+                <Link to={"/gym"} style={{marginTop:"3em"}}>gym</Link>
                 <Card className="people" style={{height: '5rem', top: '2em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img  src={hashtag} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
@@ -43,6 +43,9 @@ export default function Hashtags(){
                         </Card.Text>
                     </Card.Body>
                 </Card>
+
+                <Link to={"/gym"}><span><img src={events} alt="Events" className="search-icon"/></span></Link>
+
 
 
                 <Card className="people" style={{height: '5rem', top: '2em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>

@@ -15,21 +15,21 @@ import blogsp from "../../images/Blogs-selezionato.svg";
 import "./index.css"
 
 
-const ProfileO = ({ events,blogs}) => {
+const ProfileO = ({events,blogs}) => {
 
 
 
-    return  <Container className="base">
+    return  <Container className="base" style={{top:"5em"}}>
         <Container className="container">
 
             <Container className="search">
                 <Row className='row'>
-                    <Col xs={3} sm={12} md={3}>
-
+                    <Col>
                         <Link to={"/home"}><span><img src={events} alt="Events" className="search"/></span></Link>
+                    </Col>
 
+                    <Col>
                         <Link to={"/blogs"} style={{color: "white", textDecoration: "none"}}><span><img src={blogs} alt="Blogs" className="search-icon"/></span></Link>
-
                     </Col>
                 </Row>
             </Container>

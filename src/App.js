@@ -19,6 +19,9 @@ import Sintesi from "./Sintesi";
 import Follower from "./Follower";
 import Chat from "./Chat";
 import Addforum from "./Addforum";
+import Gym from "./Gym"
+import CenterCalendar from "./CenterCalendar"
+import CenterBlogs from "./CenterBlogs"
 
 export const StateContext = createContext()
 
@@ -49,6 +52,9 @@ function App() {
                 <Route path={"/sintesi"} element={<Sintesi/>}/>
                 <Route path={"/follower"} element={<Follower/>}/>
                 <Route path={"/chat"} element={<Chat/>}/>
+                <Route path={"/gym"} element={<Gym/>}/>
+
+                <Route path={"/centercalendar"} element={<CenterCalendar/>}/>
             </Routes>
           </BrowserRouter>
         </div>

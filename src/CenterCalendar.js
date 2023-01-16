@@ -34,12 +34,12 @@ import ProfileO from "./components/profile-options";
 import CardHeader from "react-bootstrap/CardHeader";
 import centerevents from "./images/Profile_events.svg"
 import centerblogs from "./images/Profile_blogs.svg"
-import centercalendar from "./images/Profile_calendar.svg"
+import centercalendarselected from "./images/Profile_calendar_selected.svg"
 import threedots from "./images/ph_dots-three-vertical-bold.svg";
-import centereventsselected from "./images/Profile_events_selected.svg"
 import centerprofileimage from "./images/cus_torino.svg"
 
-export default function Profile(){
+
+export default function CenterCalendar(){
 
     const [state,dispatch] = useContext(StateContext)
 
@@ -73,22 +73,22 @@ export default function Profile(){
 
                 <Card className="post" style={{ width: '100%', height: '8rem',  marginTop: '0em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img  src={centerprofileimage} style={{height: '8em', width: '8rem'}} />
-                    <Card.Body>
-                        <Card.Title className="name" style={{textAlign: 'left'}}>CUS Torino</Card.Title>
-                        <Card.Text className="connections" style={{textAlign: 'left'}}>
-                            Centro Universitario Sportivo
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
+                        <Card.Body>
+                            <Card.Title className="name" style={{textAlign: 'left'}}>CUS Torino</Card.Title>
+                            <Card.Text className="connections" style={{textAlign: 'left'}}>
+                                Centro Universitario Sportivo
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
 
 
-            </Container>
+                </Container>
             <Card>
                 <CardHeader>
                     <Container className="search">
                         <Row className='row'>
                             <Col>
-                                <Link to={"/profile"}><span><img src={centereventsselected} alt="Events" className="search"/></span></Link>
+                                <Link to={"/profile"}><span><img src={centerevents} alt="Events" className="search"/></span></Link>
                             </Col>
 
                             <Col>
@@ -96,7 +96,7 @@ export default function Profile(){
                             </Col>
 
                             <Col>
-                                <Link to={"/centercalendar"}><span style={{borderBottomWidth:"2px", borderBottomColor:"black"}}><img src={centercalendar} alt="Events" className="search"/></span></Link>
+                                <Link to={"/centercalendar"}><span style={{borderBottomWidth:"2px", borderBottomColor:"black"}}><img src={centercalendarselected} alt="Events" className="search"/></span></Link>
                             </Col>
                         </Row>
                     </Container>
