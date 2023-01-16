@@ -137,6 +137,24 @@
         color:#3634a0;
     }
 
+.event-month-popup{
+    font-family: 'Inter';
+    font-size:19px;
+    letter-spacing: -0.41px;
+    margin-top: -0.5em;
+    margin-bottom: -0.4em;
+    font-weight:500;
+    color:white;
+}
+.event-day-popup{
+    font-family: 'Inter';
+    font-size:19px;
+    letter-spacing: -0.41px;
+    margin-bottom: -2em;
+    font-weight:500;
+    color:white;
+}
+
     .event-subtitle-1{
         font-family: 'Inter';
         font-size:13px;
@@ -160,6 +178,18 @@
         margin-top:-2.5em;
     }
 
+.about{
+    font-family: 'Inter';
+    font-size:16px;
+    letter-spacing: -0.41px;
+    font-weight: 500;
+    letter-spacing: -0.41px;
+    line-height: 15px;
+    min-height: 31px;
+    margin-bottom:-1.2em;
+    margin-top:0.7em;
+}
+
     .event-subsubtitle-2{
         font-family: 'Inter';
         font-size:11px;
@@ -171,6 +201,28 @@
         color:grey;
         margin-top:-3em;
     }
+
+.event-subsubtitle-3{
+    font-family: 'Inter';
+    font-size:13px;
+    letter-spacing: -0.41px;
+    font-weight: 400;
+    letter-spacing: -0.41px;
+    line-height: 15px;
+    min-height: 31px;
+    color:grey;
+    margin-bottom: -1em;
+}
+
+.button-popup{
+    font-family: 'Inter';
+    font-size:8px;
+    letter-spacing: -0.41px;
+    font-weight: 400;
+    letter-spacing: -0.41px;
+    margin-bottom: -1em;
+}
+
 
     .justify-content-sm-right{
         position:fixed;
