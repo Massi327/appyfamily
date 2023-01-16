@@ -21,7 +21,7 @@ export default function Hashtags(){
     const [state,dispatch] = useContext(StateContext)
 
     return(
-        <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'70vh', top:'5em'}}>
+        <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'70vh'}}>
             <Navigbar vevents={events}
                       vblogs={blogs}
                       vpeople={people}
@@ -32,7 +32,7 @@ export default function Hashtags(){
             <AddButton/>
             <NavigbarBottom home={home} calendar={calendar} profile={profile} settings={settings}/>
 
-            <Container style={{marginTop:'13em'}}>
+            <Container style={{paddingTop:'13em'}}>
                 <Card className="people" style={{height: '5rem', top: '2em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img  src={hashtag} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>

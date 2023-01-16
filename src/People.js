@@ -48,7 +48,7 @@ export default function People(){
             <NavigbarBottom home={home} calendar={calendar}
                             profile={profile}
                             settings={settings}/>
-            <Container style={{marginTop:'15em'}}>
+            <Container style={{paddingTop:'15em'}}>
 
 
                 <Card className="people" style={{height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>

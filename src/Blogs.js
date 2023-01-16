@@ -38,7 +38,7 @@ export default function Blogs(){
 
     return(
 
-        <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'70vh', top:'5em'}}>
+        <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'70vh'}}>
             <Navigbar vevents={events}
                       vblogs={blogsselectd}
                       vpeople={people}
@@ -48,7 +48,7 @@ export default function Blogs(){
             <AddButtonForum/>
             <NavigbarBottom home={home} calendar={calendar} profile={profile} settings={settings}/>
 
-            <Container style={{marginTop:'13em'}}>
+            <Container style={{paddingTop:'13em'}}>
 
                 {forum.slice(0).reverse().map( f =>
 

@@ -73,7 +73,7 @@ export default function Home(){
     })
 
     return(
-        <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', top:'5em'}}>
+        <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh'}}>
             <Navigbar vevents={eventsselected}
                       vblogs={blogs}
                       vpeople={people}
@@ -83,7 +83,7 @@ export default function Home(){
                       value={"cont-menu-rec-nearme"}
             />
 
-            <Container style={{marginTop:"15em"}}>
+            <Container style={{paddingTop:"15em"}}>
 
                 <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
                     <Modal.Dialog>
