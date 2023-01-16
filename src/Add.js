@@ -203,54 +203,6 @@ export default function Add(){
                                     }
                                 }}>Publish</Button>
 
-                                {/*} <Button className='submit' disabled={bottoneDisabilitato(address, titolo, oraI, oraF, date, state.giorno, state.start, state.end, state.c)} variant='dark' onClick={() => {
-
-                                    let calendarDate = moment(date).format('YYYY-MM-DD')
-                                    let dataS=moment(calendarDate+', '+oraI,'YYYY-MM-DD, hh:mm a')
-                                    let dataF=moment(calendarDate+', '+oraF,'YYYY-MM-DD, hh:mm a')
-
-                                    let giornoI = moment(state.giorno+', '+state.start, 'YYYY-MM-DD, hh:mm a')
-                                    let giornoF = moment(state.giorno+', '+state.end, 'YYYY-MM-DD, hh:mm a')
-
-                                    if(state.c == 'false'){
-                                        if(dataS.isBefore(moment()) || dataF.isBefore(moment())) {
-                                            setBadge('precedente')
-                                        }else{
-                                            passaggioParametri(dataS,dataF,address,titolo,about,categoria)
-                                            dispatch(addBooking(dataS,dataF,address,titolo,about,categoria))
-                                            setAddress('')
-                                            setTitolo('')
-                                            setAbout('')
-                                            setDate(moment())
-                                            setOraI('')
-                                            setOraF('')
-                                            setCategoria('')
-                                            setLS('true')
-                                            setPR('true')
-                                            dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('','yyyy-MM-DD').format('LT'), moment('','yyyy-MM-DD').format('LT'), 'false'))
-                                            handleShow()
-                                        }
-                                    }else if(state.c == 'true'){
-                                        if(giornoI.isBefore(moment()) || giornoF.isBefore(moment())){
-                                            setBadge('precedente')
-                                        }else{
-                                            dispatch(addBooking(giornoI,giornoF,address,titolo,about,categoria))
-                                            setAddress('')
-                                            setTitolo('')
-                                            setAbout('')
-                                            setDate(moment())
-                                            setOraI('')
-                                            setOraF('')
-                                            setCategoria('')
-                                            setLS('true')
-                                            setPR('true')
-                                            dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('','yyyy-MM-DD').format('LT'), moment('','yyyy-MM-DD').format('LT'), 'false'))
-                                            handleShow()
-                                        }
-                                    }
-                                }}>Publish</Button>
-*/}
-
                             </Card.Body>
                         </Card>
 

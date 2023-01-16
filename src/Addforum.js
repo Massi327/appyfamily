@@ -30,6 +30,10 @@ export default function Addforum(){
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const [show_second, setShowSecond] = useState(false);
+    const handleCloseSecond = () => setShowSecond(false);
+    const handleShowSecond = () => setShowSecond(true);
+
     useEffect(() => {
         localStorage.setItem('titolo', JSON.stringify(titolo))
         localStorage.setItem('about', JSON.stringify(about))
@@ -92,8 +96,29 @@ export default function Addforum(){
                                     dispatch(addForum(titolo, about))
                                     setTitolo('')
                                     setAbout('')
+                                    handleClose()
+                                    handleShowSecond()
                                 }}
-                        ><Link to={"/blogs"} style={{color:"white"}}>Add</Link></Button>
+                        >Add</Button>
+                    </Modal.Footer>
+                </Modal.Dialog>
+            </Modal>
+
+            <Modal show={show_second} onHide={handleCloseSecond} backdrop={"static"} centered>
+                <Modal.Dialog>
+
+                    <Modal.Body className="modal-subtitle-1">
+                        <p>AGGIUNTO</p>
+                    </Modal.Body>
+
+                    <Modal.Footer>
+                        <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                onClick={localStorage.setItem('forums', JSON.stringify(state.forums))}
+                        >
+                            <Link to={"/blogs"}>
+                                Ok
+                            </Link>
+                        </Button>
                     </Modal.Footer>
                 </Modal.Dialog>
             </Modal>

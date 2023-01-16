@@ -1,7 +1,7 @@
 import {useContext, useEffect, useState} from "react";
 import {StateContext} from "./App";
 import {Link} from "react-router-dom";
-import {Button, Card, Col, Container, Form, Nav, Navbar, Row} from "react-bootstrap";
+import {Button, Card, Col, Collapse, Container, Form, Nav, Navbar, Row} from "react-bootstrap";
 import Navigbar from "./components/navbar-search";
 import NavigbarBottom from "./components/navbar-bottom";
 import AddButton from "./components/add-button";
@@ -34,9 +34,7 @@ export default function Blogs(){
         const forum = JSON.parse(localStorage.getItem('forums'));
         return forum || state.forums; } )
 
-    useEffect(() => {
-        localStorage.setItem('forums', JSON.stringify(state.forums))
-    }, [forum])
+    const [open, setOpen] = useState(false);
 
     return(
 
@@ -84,7 +82,6 @@ export default function Blogs(){
                     <Card className="people" style={{ top:"2em", height: '6.5rem', marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                         <Card.Body>
                             <Card.Text className="blog-title" style={{textAlign: 'left'}}>Activity ideas for my 6 months old child during long car trips?</Card.Text>
-
                             <Card.Text>
                                 <Row style={{height:"1em"}}>
                                     <Col  xs={9} className="subtitle-connections" style={{textAlign:"left"}}>
@@ -96,16 +93,22 @@ export default function Blogs(){
 
                                     </Col>
                                     <Col xs={3}>
-                                        <Link className="reply">Reply</Link>
+                                        <Link>Reply</Link>
                                     </Col>
                                     <Col xs={5}>
-                                        <Link className="reply">View 7 replies</Link>
+                                        <Link variant={'white'} aria-controls="example-collapse-text"
+                                                aria-expanded={open} onClick={() => setOpen(!open)}>View 7 replies</Link>
                                     </Col>
                                 </Row>
                             </Card.Text>
 
                         </Card.Body>
                     </Card>
+                <Collapse in={open}>
+                    <div>
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
+                    </div>
+                </Collapse>
 
 
                 <Card className="people" style={{ top:"2em", height: '6.5rem', marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
@@ -126,7 +129,8 @@ export default function Blogs(){
                                     <Link className="reply">Reply</Link>
                                 </Col>
                                 <Col xs={5}>
-                                    <Link className="reply">View 7 replies</Link>
+                                    <Link className="reply" aria-controls="example-collapse-text"
+                                          aria-expanded={open} onClick={() => setOpen(!open)}>View 7 replies</Link>
                                 </Col>
                             </Row>
                         </Card.Text>
