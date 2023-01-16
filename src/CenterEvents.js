@@ -33,13 +33,13 @@ import dropdown from "./images/gridicons_dropdown.svg";
 import ProfileO from "./components/profile-options";
 import CardHeader from "react-bootstrap/CardHeader";
 import centerevents from "./images/Profile_events.svg"
-import centerblogsselected from "./images/Profile_blogs_selected.svg"
+import centerblogs from "./images/Profile_blogs.svg"
 import centercalendar from "./images/Profile_calendar.svg"
 import threedots from "./images/ph_dots-three-vertical-bold.svg";
-
+import centereventsselected from "./images/Profile_events_selected.svg"
 import centerprofileimage from "./images/cus_torino.svg"
 
-export default function CenterBlogs(){
+export default function CenterEvents(){
 
     const [state,dispatch] = useContext(StateContext)
 
@@ -88,11 +88,11 @@ export default function CenterBlogs(){
                     <Container className="search">
                         <Row className='row'>
                             <Col>
-                                <Link to={"/centerevents"}><span><img src={centerevents} alt="Events" className="search"/></span></Link>
+                                <Link to={"/centerevents"}><span><img src={centereventsselected} alt="Events" className="search"/></span></Link>
                             </Col>
 
                             <Col>
-                                <Link to={"/centerblogs"}><span><img src={centerblogsselected} alt="Events" className="search"/></span></Link>
+                                <Link to={"/centerblogs"}><span><img src={centerblogs} alt="Events" className="search"/></span></Link>
                             </Col>
 
                             <Col>
@@ -102,66 +102,92 @@ export default function CenterBlogs(){
                     </Container>
                 </CardHeader>
 
-
-            <CardGroup>
-                <Card className="people" style={{ height: '6.5rem', marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                <Card className="post" style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem', verticalAlign:'center'}} />
                     <Card.Body>
-                        <Card.Text className="blog-title" style={{textAlign: 'left'}}>Activity ideas for my 6 months old child during long car trips?</Card.Text>
 
-                        <Card.Text>
-                            <Row style={{height:"1em"}}>
-                                <Col  xs={9} className="subtitle-connections" style={{textAlign:"left"}}>
-                                    2 weeks ago • Sophia Wilkinson
-                                </Col>
-                            </Row>
+                        <Card.Text className="event-time-1">
                             <Row>
-                                <Col xs={4}>
-
+                                <Col>
+                                    <h5 style={{textAlign:"left"}}>JAN 7 • 10AM </h5>
                                 </Col>
-                                <Col xs={3}>
-                                    <Link className="reply">Reply</Link>
-                                </Col>
-                                <Col xs={5}>
-                                    <Link className="reply">View 7 replies</Link>
+                                <Col xs={2}>
+                                    <img src={threedots} style={{textAlign:"right"}}/>
                                 </Col>
                             </Row>
                         </Card.Text>
-
+                        <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Play in the Park</Card.Title>
+                        <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
+                            Hosted by the Muse Th.
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                            <img src={clock} alt="Near me" className="icon"/> 7 Jan 2023, 10AM - 11AM
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                            <img src={map} alt="Near me" className="icon"/> 112 Barrack Street, NR3 1TX, UK
+                        </Card.Text>
                     </Card.Body>
                 </Card>
 
 
-                <Card className="people" style={{ height: '6.5rem', marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                <Card className="post" style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem', verticalAlign:'center'}} />
                     <Card.Body>
-                        <Card.Text className="blog-title" style={{textAlign: 'left'}}>Activity ideas for my 6 months old child during long car trips?</Card.Text>
 
-                        <Card.Text>
-                            <Row style={{height:"1em"}}>
-                                <Col  xs={9} className="subtitle-connections" style={{textAlign:"left"}}>
-                                    2 weeks ago • Sophia Wilkinson
-                                </Col>
-                            </Row>
+                        <Card.Text className="event-time-1">
                             <Row>
-                                <Col xs={4}>
-
+                                <Col>
+                                    <h5 style={{textAlign:"left"}}>JAN 7 • 10AM </h5>
                                 </Col>
-                                <Col xs={3}>
-                                    <Link className="reply">Reply</Link>
-                                </Col>
-                                <Col xs={5}>
-                                    <Link className="reply">View 7 replies</Link>
+                                <Col xs={2}>
+                                    <img src={threedots} style={{textAlign:"right"}}/>
                                 </Col>
                             </Row>
                         </Card.Text>
-
+                        <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Play in the Park</Card.Title>
+                        <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
+                            Hosted by the Muse Th.
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                            <img src={clock} alt="Near me" className="icon"/> 7 Jan 2023, 10AM - 11AM
+                        </Card.Text>
+                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                            <img src={map} alt="Near me" className="icon"/> 112 Barrack Street, NR3 1TX, UK
+                        </Card.Text>
                     </Card.Body>
                 </Card>
 
 
-            </CardGroup>
+                <CardGroup>
 
+                    <Card className="post" style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                        <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem', verticalAlign:'center'}} />
+                        <Card.Body>
 
+                            <Card.Text className="event-time-1">
+                                <Row>
+                                    <Col>
+                                        <h5 style={{textAlign:"left"}}>JAN 7 • 10AM </h5>
+                                    </Col>
+                                    <Col xs={2}>
+                                        <img src={threedots} style={{textAlign:"right"}}/>
+                                    </Col>
+                                </Row>
+                            </Card.Text>
+                            <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Play in the Park</Card.Title>
+                            <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
+                                Hosted by the Muse Th.
+                            </Card.Text>
+                            <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                                <img src={clock} alt="Near me" className="icon"/> 7 Jan 2023, 10AM - 11AM
+                            </Card.Text>
+                            <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                                <img src={map} alt="Near me" className="icon"/> 112 Barrack Street, NR3 1TX, UK
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
 
+                </CardGroup>
             </Card>
             <NavigbarBottom home={homeunselected} calendar={calendar} profile={profileselected} settings={settings}/>
 

@@ -22,6 +22,7 @@ import Addforum from "./Addforum";
 import Gym from "./Gym"
 import CenterCalendar from "./CenterCalendar"
 import CenterBlogs from "./CenterBlogs"
+import CenterEvents from "./CenterEvents"
 
 export const StateContext = createContext()
 
@@ -55,6 +56,8 @@ function App() {
                 <Route path={"/gym"} element={<Gym/>}/>
 
                 <Route path={"/centercalendar"} element={<CenterCalendar/>}/>
+                <Route path={"/centerblogs"} element={<CenterBlogs/>}/>
+                <Route path={"/centerevents"} element={<CenterEvents/>}/>
             </Routes>
           </BrowserRouter>
         </div>
