@@ -23,11 +23,16 @@ import home from "./images/Home-icon.svg";
 import calendar from "./images/Calendar.svg";
 import profile from "./images/Profile-unselected.svg";
 import settings from "./images/Settings.svg";
+import AddButtonForum from "./components/add-button-forum";
 
 
 export default function Blogs(){
 
     const [state,dispatch] = useContext(StateContext)
+
+    const [forum, setForum] = useState(() => {
+        const forum = JSON.parse(localStorage.getItem('forums'));
+        return forum || state.forums; } )
 
     return(
 
@@ -38,10 +43,39 @@ export default function Blogs(){
                       vhashtags={hashtags}
                       value={"none"}
             />
-            <AddButton/>
+            <AddButtonForum/>
             <NavigbarBottom home={home} calendar={calendar} profile={profile} settings={settings}/>
 
             <Container style={{marginTop:'13em'}}>
+
+                {forum.slice(0).reverse().map( f =>
+
+                    <Card className="people" key={f.key} style={{ top:"2em", height: '6.5rem', marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                        <Card.Body>
+                            <Card.Text className="blog-title" style={{textAlign: 'left'}}>{f.titolo}</Card.Text>
+
+                            <Card.Text>
+                                <Row style={{height:"1em"}}>
+                                    <Col  xs={9} className="subtitle-connections" style={{textAlign:"left"}}>
+                                        Now • You
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col xs={4}>
+
+                                    </Col>
+                                    <Col xs={3}>
+                                        <Link className="reply">Reply</Link>
+                                    </Col>
+                                    <Col xs={5}>
+                                        <Link className="reply">View 7 replies</Link>
+                                    </Col>
+                                </Row>
+                            </Card.Text>
+
+                        </Card.Body>
+                    </Card>)
+                }
 
                     <Card className="people" style={{ top:"2em", height: '6.5rem', marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                         <Card.Body>

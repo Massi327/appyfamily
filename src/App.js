@@ -18,6 +18,7 @@ import './App.css';
 import Sintesi from "./Sintesi";
 import Follower from "./Follower";
 import Chat from "./Chat";
+import Addforum from "./Addforum";
 
 export const StateContext = createContext()
 
@@ -38,6 +39,7 @@ function App() {
                 <Route path={"/notifications"} element={<Notifiche/>}/>
 
                 <Route path={"/add"} element={<Add/>}/>
+                <Route path={"/addforum"} element={<Addforum/>}/>
 
                 <Route path={"/people"} element={<People/>}/>
                 <Route path={"/blogs"} element={<Blogs/>}/>

@@ -36,7 +36,6 @@ export default function Add(){
     const [date,setDate] = useState(new Date())
     const [oraI,setOraI] = useState('')
     const [oraF,setOraF] = useState('')
-    //const [sala,setSala] = useState(1)
     const [badge,setBadge] = useState('')
     const [categoria,setCategoria] = useState('')
     const calendariohidden = 'false';

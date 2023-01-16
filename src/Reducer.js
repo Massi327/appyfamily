@@ -1,4 +1,4 @@
-import {ADD_BOOKNG, ADD_CATEGORY, SELECTED, SELECTEDSLOT} from "./Action";
+import {ADD_BOOKNG, ADD_CATEGORY, ADD_FORUM, SELECTED, SELECTEDSLOT} from "./Action";
 import moment from 'moment'
 import 'moment/locale/it';
 
@@ -22,6 +22,15 @@ export const initialState = {
             categoria: 'Sport'
         },
     ],
+
+    forums:[
+        {
+            key: 100,
+            titolo: 'prova',
+            about: 'prova'
+        },
+    ],
+
     id:0,
     giorno: moment('').format('yyyy-MM-DD'),
     start: moment('','yyyy-MM-DD').format('LT'),
@@ -89,6 +98,25 @@ export function Reducer(state,action){
                 start: action.start,
                 end: action.end,
                 c: action.c
+            }
+
+        case ADD_FORUM:
+
+            let post = {key: Math.random(), titolo: action.titolof, about: action.aboutf}
+            let newForum = [...state.forums]
+
+            let forum = JSON.parse(localStorage.getItem('forums'))
+
+            if(forum == null){
+                if (state.forums.length<2 ){
+                    newForum = [...state.forums, post]
+                }
+            }else{newArray = [...forum, post]}
+
+
+            return{
+                ...state,
+                forums: newForum,
             }
 
 
