@@ -1,7 +1,20 @@
 import {useContext, useEffect, useState} from "react";
 import {StateContext} from "./App";
 import {Link} from "react-router-dom";
-import {Button, Col, Container, Nav, Navbar, Row, Card, Modal, CardGroup} from "react-bootstrap";
+import {
+    Button,
+    Col,
+    Container,
+    Nav,
+    Navbar,
+    Row,
+    Card,
+    Modal,
+    CardGroup,
+    FormGroup,
+    FormLabel,
+    FormControl
+} from "react-bootstrap";
 import NavigbarBottom from "./components/navbar-bottom";
 import NavigbarP from "./components/navbar-profile";
 import eventsselected from "./images/Events-selezionato.svg";
@@ -22,7 +35,7 @@ import home from "./images/Home-icon.svg";
 import calendar from "./images/Calendar.svg";
 import settings from "./images/Settings.svg";
 import homeunselected from "./images/home-unselected.svg"
-import {selected} from "./Action";
+import {addForum, selected} from "./Action";
 import imgcard4 from "./images/Image-event-4.svg";
 import moment from "moment";
 import popupsport from "./images/image 1.svg";
@@ -65,6 +78,10 @@ export default function CenterCalendar(){
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const [show_second, setShowSecond] = useState(false);
+    const handleCloseSecond = () => setShowSecond(false);
+    const handleShowSecond = () => setShowSecond(true);
+
     return(
         <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', top:'5em'}}>
 
@@ -105,9 +122,19 @@ export default function CenterCalendar(){
 
                 <CardGroup>
 
-                    <p style={{paddingTop:"5em", paddingBottom:"5em"}}>To visualise the schedule, you have to login first</p>
+                    <p style={{paddingTop:"5em"}}>To visualise the schedule, you have to login first</p>
+                    <Button onClick={() => handleShow()} style={{backgroundColor:"#eb506c", color:"white", borderWidth:"2px", borderColor:"#eb506c", borderRadius:"10px", marginBottom:"5em"}}>Log in</Button>
 
                 </CardGroup>
+                <Row>
+                {show_second =="true" ? <Col>
+
+                    <Card style={{backgroundColor:"orange"}}>
+                        <p>7pm Dance Lesson</p>
+                    </Card>
+
+                </Col> : null}
+                    </Row>
             </Card>
             <NavigbarBottom home={homeunselected} calendar={calendar} profile={profileselected} settings={settings}/>
 
@@ -136,40 +163,33 @@ export default function CenterCalendar(){
 
                 <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
                     <Modal.Dialog>
-
-
-                        <Modal.Header closeButton>
-                            <Card style={{backgroundColor:"#4b7bf8", color:"white"}}>
-                                <Card.Body>
-                                    <Card.Text className="event-month-popup" style={{textAlign: 'center'}}>                      {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('MMM').toUpperCase())}
-                                    </Card.Text>
-                                    <Card.Text className="event-day-popup" style={{textAlign: 'center'}}>                      {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D').toUpperCase())}
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                            <Modal.Title className="modal-title-1">{prenotazione.filter(p => p.key===state.id).map(m=>m.titolo)}</Modal.Title>
+                        <Modal.Header>
+                            <Modal.Title className="modal-title-1">Login</Modal.Title>
                         </Modal.Header>
 
                         <Modal.Body className="modal-subtitle-1">
+                            <FormGroup style={{marginBottom: "10px", textAlign: "left"}}>
+                                <FormLabel className="subtitle">Username</FormLabel>
+                                <FormControl></FormControl>
+                                {/* <FormControl type='text' value={titolo} style={{textAlign:"left", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"0px"}} placeholder='Title' onChange={e=> setTitolo(e.target.value)}/>*/}
+                            </FormGroup>
 
-                            <img src={popupsport} style={{marginBottom:"0.5em", width:"22em"}}/>
+                            <FormGroup style={{marginBottom: "10px", textAlign: "left"}}>
+                                <FormLabel className="subtitle">Password</FormLabel>
+                                {/* <FormControl type='textarea' value={about} style={{textAlign:"left", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"0px"}} placeholder='About' onChange={e=> setAbout(e.target.value)}/>*/}
+                                    <FormControl></FormControl>
+                            </FormGroup>
 
-                            <p className="event-subsubtitle-3"> <img src={clock} className="icon"/> {prenotazione.filter(p => p.key===state.id).map(m=>m.address)}</p>
-                            <p className="event-subsubtitle-3"> <img src={map} className="icon"/> {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D MMM YYYY'))}, {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('h:mm a'))} - {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataEnd).locale('en').format('h:mm a'))}</p>
-                            <p className="about">About</p>
-                            <p>{prenotazione.filter(p => p.key===state.id).map(m=>m.about)}</p>
                         </Modal.Body>
 
                         <Modal.Footer>
-                            <Button style={{fontSize:"13px",borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
+                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
                                     onClick={handleClose}
-                            ><img src={interested}/> Interested</Button>
-                            <Button style={{fontSize:"13px", borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
+                            >Cancel</Button>
+                            <Button style={{backgroundColor:"#eb506c", color:"white", borderWidth:"2px", borderColor:"#eb506c", borderRadius:"10px"}}
                                     onClick={handleClose}
-                            ><img src={participate}/> Participate</Button>
-                            <Button style={{fontSize:"13px",borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
-                                    onClick={handleClose}
-                            ><img src={whosgoing}/> Who's going<img src={dropdown} style={{marginRight:"-10px"}}/></Button>
+                                /*onClick={() => handleShowSecond()}*/
+                            >Log in</Button>
                         </Modal.Footer>
                     </Modal.Dialog>
                 </Modal>
