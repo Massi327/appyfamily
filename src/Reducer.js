@@ -155,15 +155,12 @@ export function Reducer(state,action){
             let eventoedit = { key: Math.random(), address: action.address, dataStart: action.dataStart, dataEnd: action.dataEnd, titolo: action.titolo, about: action.about, categoria: action.categoria}
 
             let arrayprova = [...state.prenotazioni]
-            let arrayCancellato= arrayprova.filter(f => f.key !== action.id)
 
-            let prenotazioninuove = JSON.parse(localStorage.getItem('prenotazioni'))
-
-            
+            arrayprova = [...arrayprova, eventoedit]
 
             return {
                 ...state,
-                prenotazioni: arrayCancellato
+                prenotazioni: arrayprova
             }
 
         default:

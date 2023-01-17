@@ -30,7 +30,7 @@ export default function EditAddEvent(){
 
     const [prenotazioni, setPrenotazioni] = useState(() => {
         const prenotazioni = JSON.parse(localStorage.getItem('prenotazioni'));
-        return prenotazioni} )
+        return prenotazioni || '' } )
 
     const [address,setAddress] = useState(() => prenotazioni.filter(f => f.key == state.id).map(p => p.address))
     const [titolo,setTitolo] = useState(() => prenotazioni.filter(f => f.key == state.id).map(p => p.titolo))
@@ -140,7 +140,6 @@ export default function EditAddEvent(){
                                     setDate(moment())
                                     setOraI('')
                                     setOraF('')
-
                                 }}>
                                     Cancel
                                 </Button>
@@ -161,11 +160,6 @@ export default function EditAddEvent(){
                                         }
                                     }
                                 }>Publish</Button>
-
-                                <Button onClick={()=> console.log(state.id)}>
-                                    stampa cose
-                                </Button>
-
                             </Card.Body>
                         </Card>
 
@@ -198,7 +192,7 @@ export default function EditAddEvent(){
                                                 handleClose()
                                                 handleShowSecond()
                                             }}>
-                                        Add
+                                        Change
                                     </Button>
                                 </Modal.Footer>
                             </Modal.Dialog>
@@ -213,14 +207,11 @@ export default function EditAddEvent(){
 
                                 <Modal.Footer>
                                     <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
-                                            onClick={()=> setPrenotazioni(state.prenotazioni)}
+                                            onClick={() => localStorage.setItem('prenotazioni', JSON.stringify(state.prenotazioni))}
                                     >
                                         <Link to={"/calendar"}>
                                             Ok
                                         </Link>
-                                    </Button>
-                                    <Button onClick={()=> console.log(state.prenotazioni)}>
-                                        provo
                                     </Button>
                                 </Modal.Footer>
                             </Modal.Dialog>
