@@ -4,6 +4,8 @@ export const SELECTEDSLOT= 'selectedSlot'
 export const ADD_CATEGORY = 'addCategory'
 export const ADD_FORUM = 'addForum'
 
+export const CANCEL_BOOKNG = 'cancelBooking'
+
 export function addBooking(dataStart, dataEnd, address, titolo, about, categoria){
     return {type:ADD_BOOKNG, dataStart, dataEnd, address, titolo, about, categoria}
 }
@@ -22,4 +24,8 @@ export function addCategory(category){
 
 export function addForum(titolof, aboutf){
     return {type:ADD_FORUM, titolof, aboutf}
+}
+
+export function cancelBooking(id){
+    return {type:CANCEL_BOOKNG, id}
 }

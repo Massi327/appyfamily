@@ -58,24 +58,6 @@ export default function CenterCalendar(){
 
     const [state,dispatch] = useContext(StateContext)
 
-    const [prenotazione, setPrenotazione] = useState(() => {
-        const prenotazione = JSON.parse(localStorage.getItem('prenotazioni'));
-        return prenotazione} )
-
-    let events = [];
-    prenotazione.map(p => {
-        let event={
-            key: p.key,
-            titolo: p.titolo,
-            dataStart: moment(p.dataStart,'YYYY-MM-DD, hh:mm').toDate(),
-            dataEnd: moment(p.dataEnd,'YYYY-MM-DD, hh:mm').toDate(),
-            address: p.address,
-            about: p.about,
-            categoria: p.categoria
-        }
-        events.push(event)
-    })
-
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -84,9 +66,13 @@ export default function CenterCalendar(){
     const handleCloseSecond = () => setShowSecond(false);
     const handleShowSecond = () => setShowSecond(true);
 
+    const [show_third, setShowThird] = useState(false);
+    const handleCloseThird = () => setShowThird(false);
+    const handleShowThird = () => setShowThird(true);
+
     const [controlloLogin, setControlloLogin] = useLocalStorage('login', "true")
     const [controlloCorsi, setControlloCorsi] = useLocalStorage('corsi', "false")
-    const [controlloCorsiCancella, setControlloCorsiCancella] = useLocalStorage('corsi', "false")
+    const [controlloCorsiCancella, setControlloCorsiCancella] = useLocalStorage('corsiCancella', "false")
     const [controlloPale, setControlloPale] = useLocalStorage('pale', "false")
 
 
@@ -169,7 +155,7 @@ export default function CenterCalendar(){
                                 <CardHeader style={{height:"3em"}}><Card.Title className="course-title">Dance Lesson</Card.Title></CardHeader>
                                 <p style={{paddingTop:"0.3em", marginBottom:"-0.1em"}}>Monday 7PM - 8PM</p>
                                 <p style={{paddingTop:"0.3em", marginBottom:"-0.1em"}}>Già aggiunto al calendario</p>
-                                <Button style={{margin:"0.5em", marginLeft:"13em"}}>Cancella dal Calendar</Button>
+                                <Button style={{margin:"0.5em", marginLeft:"13em"}} onClick={()=> handleShowSecond()}>Cancella dal Calendar</Button>
                             </Card>
 
                             <Card style={{backgroundColor:"mediumaquamarine", margin:"0.5em"}}>
@@ -194,10 +180,44 @@ export default function CenterCalendar(){
 
                     <Modal.Footer>
                         <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
-                        onClick={()=> setControlloCorsiCancella('true')}>
-                            <Link to={"/calendar"}>
-                                Ok
-                            </Link>
+                        onClick={()=> {setControlloCorsi('false'); setControlloCorsiCancella('true'); handleClose()}}>
+                            Ok
+                        </Button>
+                    </Modal.Footer>
+                </Modal.Dialog>
+            </Modal>
+
+            <Modal show={show_second} onHide={handleCloseSecond} backdrop={"static"} centered>
+                <Modal.Dialog>
+
+                    <Modal.Body className="modal-subtitle-1">
+                        <p>Vuoi cancellare?</p>
+                    </Modal.Body>
+
+                    <Modal.Footer>
+                        <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                onClick={()=> {setControlloCorsi('true'); setControlloCorsiCancella('false'); setControlloPale('false'); handleCloseSecond(); handleShowThird()}}>
+                            Si
+                        </Button>
+                        <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                onClick={()=> handleCloseSecond()}>
+                            No
+                        </Button>
+                    </Modal.Footer>
+                </Modal.Dialog>
+            </Modal>
+
+            <Modal show={show_third} onHide={handleCloseThird} backdrop={"static"} centered>
+                <Modal.Dialog>
+
+                    <Modal.Body className="modal-subtitle-1">
+                        <p>CANCELLATO</p>
+                    </Modal.Body>
+
+                    <Modal.Footer>
+                        <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                onClick={()=> {handleCloseThird()}}>
+                            Ok
                         </Button>
                     </Modal.Footer>
                 </Modal.Dialog>

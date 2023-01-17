@@ -1,4 +1,4 @@
-import {ADD_BOOKNG, ADD_CATEGORY, ADD_FORUM, SELECTED, SELECTEDSLOT} from "./Action";
+import {ADD_BOOKNG, ADD_CATEGORY, ADD_FORUM, CANCEL_BOOKNG, SELECTED, SELECTEDSLOT} from "./Action";
 import moment from 'moment'
 import 'moment/locale/it';
 
@@ -140,6 +140,15 @@ export function Reducer(state,action){
                 forums: newForum,
             }
 
+        case CANCEL_BOOKNG:
+
+            let arrayp = [...state.prenotazioni]
+            let arrayC= arrayp.filter(f => f.key !== action.id)
+
+            return {
+                ...state,
+                prenotazioni: arrayC
+            }
 
         default:
             return state
