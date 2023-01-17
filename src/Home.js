@@ -73,7 +73,15 @@ export default function Home(){
     })
 
     return(
-        <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh'}}>
+        <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', width:"100.5vw"}}>
+
+            {/*<Row style={{backgroundColor:"red"}}>
+                <p>balbsjaksd</p>
+            </Row>
+            <Container  style={{backgroundColor:"red"}}>
+                <p>balbsjaksd</p>
+            </Container>*/}
+
             <Navigbar vevents={eventsselected}
                       vblogs={blogs}
                       vpeople={people}

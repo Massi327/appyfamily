@@ -27,9 +27,6 @@
         background-image: url(../../images/rectangle-56.svg);
         background-repeat: no-repeat;
         width:100%;
-        margin-left:0px;
-        padding-left:0px;
-        top:0em;
     }
 
     .cont{
@@ -37,9 +34,8 @@
         z-index: 1000;
         background-image: url(../../images/rectangle-56.svg);
         background-repeat: no-repeat;
-        width:100%;
         top:0em;
-        height:35%;    }
+        height:37%;    }
 
     .notifications{
         background-repeat: no-repeat;

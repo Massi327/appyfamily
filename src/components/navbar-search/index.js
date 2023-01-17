@@ -21,10 +21,11 @@ const Navigbar = ({ vevents, vblogs, vpeople, vhashtags, vrec, vnearme,value }) 
 
 
 
-return  <Container className="cont">
+return  <Row className="cont">
+    <Container style={{width:"101vw", marginRight:"0em"}}>
 
 
-        <Navbar className="navigbar" style={{overflow: "hidden", top: "0px", width: "100%"}}>
+        <Navbar  style={{overflow: "hidden", top: "0px"}}>
             <Container>
                 <span><img src={logo} className="logo"/></span>
                 <Navbar.Brand className="title"  style={{color:"white"}} href="/home"> APPy Family</Navbar.Brand>
@@ -84,8 +85,10 @@ return  <Container className="cont">
             </Row>
         </Container>
 
+    </Container>
 
-</Container>
+
+</Row>
 }
 
 export default Navigbar
