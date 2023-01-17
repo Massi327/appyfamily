@@ -22,6 +22,7 @@ import settings from "./images/Settings.svg";
 import threedots from "./images/ph_dots-three-vertical-bold.svg";
 import imgcard5 from "./images/Image-event-5.svg";
 import imgcard4 from "./images/Image-event-4.svg";
+import forums from "./images/Forums.svg"
 
 
 export default function Nearme(){
@@ -31,7 +32,7 @@ export default function Nearme(){
     return(
         <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh'}}>
             <Navigbar vevents={eventsselected}
-                      vforum={forum}
+                      vforum={forums}
                       vpeople={people}
                       vcenters={centers}
                       vrec={rec}
