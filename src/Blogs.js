@@ -75,10 +75,7 @@ export default function Blogs(){
 
                 {forum.slice(0).reverse().map( f =>
 
-
-
-
-                    <Accordion defaultActiveKey="0">
+                    <Accordion>
                         <Card>
                             <Card.Header style={{minHeight:"4.5em"}}>
                                 <Card.Text className="blog-title" style={{textAlign: 'left'}}>{f.titolo}</Card.Text>
@@ -119,23 +116,17 @@ export default function Blogs(){
 
                                                 </Col>
                                                 <Col xs={3}>
-                                                    <Link className="reply">Reply</Link>
+
                                                 </Col>
                                             </Row>
                                         </Card.Text>
-
                                     </Card.Body>
                                 </Card>
 
-
-
-
                                     <Card className="people" style={{marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"0.5em", flexDirection: 'row'}}>
                                         <Card.Img  src={profile1} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
-
                                         <Card.Body>
                                             <Card.Text className="blog-title" style={{textAlign: 'left'}}>Have you tried medicines?</Card.Text>
-
                                             <Card.Text>
                                                 <Row style={{height:"1em"}}>
                                                     <Col  className="subtitle-connections" style={{textAlign:"left"}}>
@@ -147,11 +138,10 @@ export default function Blogs(){
 
                                                     </Col>
                                                     <Col xs={3}>
-                                                        <Link className="reply">Reply</Link>
+
                                                     </Col>
                                                 </Row>
                                             </Card.Text>
-
                                         </Card.Body>
                                     </Card>
 
@@ -159,11 +149,8 @@ export default function Blogs(){
 
                                     <Card className="people" style={{marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"0.5em", flexDirection: 'row'}}>
                                         <Card.Img  src={profile4} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
-
                                         <Card.Body>
-
                                             <Card.Text className="blog-title" style={{textAlign: 'left'}}>Are you feeding him/her?</Card.Text>
-
                                             <Card.Text>
                                                 <Row style={{height:"1em"}}>
                                                     <Col  className="subtitle-connections" style={{textAlign:"left"}}>
@@ -175,11 +162,10 @@ export default function Blogs(){
 
                                                     </Col>
                                                     <Col xs={3}>
-                                                        <Link className="reply">Reply</Link>
+
                                                     </Col>
                                                 </Row>
                                             </Card.Text>
-
                                         </Card.Body>
                                     </Card>
 
@@ -309,10 +295,6 @@ export default function Blogs(){
 
                     </Accordion>)}*/}
 
-
-
-
-
                 {/*
                     <Card className="people" key={f.key} style={{ top:"2em", height: '6.5rem', marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                         <Card.Body>
@@ -340,41 +322,6 @@ export default function Blogs(){
                         </Card.Body>
                     </Card>)
                 }*/}
-
-                    <Card className="people" style={{ top:"2em", height: '6.5rem', marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                        <Card.Body>
-                            <Card.Text className="blog-title" style={{textAlign: 'left'}}>Activity ideas for my 6 months old child during long car trips?</Card.Text>
-                            <Card.Text>
-                                <Row style={{height:"1em"}}>
-                                    <Col  xs={9} className="subtitle-connections" style={{textAlign:"left"}}>
-                                        2 weeks ago • Sophia Wilkinson
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col xs={4}>
-
-                                    </Col>
-                                    <Col xs={3}>
-                                        <Link>Reply</Link>
-                                    </Col>
-                                    <Col xs={5}>
-                                        <Link variant={'white'} aria-controls="example-collapse-text"
-                                                aria-expanded={open} onClick={() => setOpen(!open)}>View 7 replies</Link>
-                                    </Col>
-                                </Row>
-                            </Card.Text>
-
-                        </Card.Body>
-                    </Card>
-                <Collapse in={open}>
-                    <div>
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-                    </div>
-                </Collapse>
-
-
-
-
 
                 <Card className="people" style={{ top:"2em", height: '6.5rem', marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Body>

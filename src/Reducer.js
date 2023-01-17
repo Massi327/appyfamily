@@ -50,7 +50,28 @@ export const initialState = {
             start: moment('2023-01-04, 10:00','YYYY-MM-DD, hh:mm'),
             end: moment('2023-01-04, 11:30','YYYY-MM-DD, hh:mm'),
             categoria: 'Sport'
-        },]
+        },],
+
+    palestra: [
+        {   key: 900,
+            titolo:'Dance Lesson',
+            dataStart:moment('2023-01-23, 19:00','YYYY-MM-DD, hh:mm'),
+            dataEnd:moment('2023-01-23, 20:00','YYYY-MM-DD, hh:mm'),
+            address:'112 Barrack Street, NR3 1TX, UK',
+            about:'Ballo di gruppo',
+            categoria: 'Palestra'
+        },
+        {
+            key:901,
+            titolo:'Dance Lesson',
+            dataStart:moment('2023-01-30, 19:00','YYYY-MM-DD, hh:mm'),
+            dataEnd:moment('2023-01-30, 20:00','YYYY-MM-DD, hh:mm'),
+            address:'112 Barrack Street, NR3 1TX, UK',
+            about:'Ballo di gruppo',
+            categoria: 'Palestra'
+        },
+
+    ]
 }
 
 export function Reducer(state,action){

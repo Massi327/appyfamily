@@ -49,7 +49,6 @@ export default function Calendario(){
     const [date,setDate] = useState(new Date())
     const [oraI,setOraI] = useState('')
     const [oraF,setOraF] = useState('')
-    //const [sala,setSala] = useState(1)
     const [sel,setSel] = useState('')
     const [categoria,setCategoria] = useState('')
 
@@ -59,7 +58,11 @@ export default function Calendario(){
 
     const [prenotaz, setPrenotaz] = useState(() => {
         const prenotaz = JSON.parse(localStorage.getItem('prenotazioni'));
-        return prenotaz  } )
+        return prenotaz || '' } )
+
+    const [controlloPale, setControlloPale] = useState( () => {
+        const controlloPale = JSON.parse(localStorage.getItem('pale'));
+    return controlloPale })
 
     const addHidden = 'false';
 
@@ -81,6 +84,19 @@ export default function Calendario(){
         }
         events.push(event)
     })
+
+    if(controlloPale == 'true'){
+        state.palestra.map(p => {
+            let event={
+                id: p.key,
+                title: p.titolo,
+                start: moment(p.dataStart,'YYYY-MM-DD, hh:mm').toDate(),
+                end: moment(p.dataEnd,'YYYY-MM-DD, hh:mm').toDate(),
+                categoria: p.categoria
+            }
+            events.push(event)
+        })
+    }
 
 
     //const resourceMap = [{resourceId: 1, resourceTitle: ''},]
@@ -149,6 +165,9 @@ export default function Calendario(){
 
                             if (events.categoria === 'Park'){
                                 newStyle.backgroundColor = "green"
+                            }
+                            if (events.categoria === 'Palestra'){
+                                newStyle.backgroundColor = "red"
                             }
 
                                 return {
