@@ -25,7 +25,7 @@
         padding-left: 0px;
         top: 0em;
         pointer-events:visiblePainted;
-        position: absolute;
+        position: fixed;
 
     }
 
