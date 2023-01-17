@@ -19,7 +19,7 @@ import {
     Row
 } from "react-bootstrap";
 import 'react-big-calendar/lib/css/react-big-calendar.css'
-import {addBooking, selected, selectedSlot} from "./Action";
+import {addBooking, editBooking, selected, selectedSlot} from "./Action";
 import {Link, useNavigate} from "react-router-dom";
 import NavigbarP from "./components/navbar-profile";
 
@@ -55,11 +55,6 @@ export default function EditAddEvent(){
 
     const [dataIM,setDataIM] = useState('')
     const [dataFM,setDataFM] = useState('')
-    const [giornoIM,setGiornoIM] = useState('')
-    const [giornoFM,setGiornoFM] = useState('')
-
-
-    let events = [];
 
     return(
         <Container fluid>
@@ -156,36 +151,84 @@ export default function EditAddEvent(){
                                     let dataS=moment(calendarDate+', '+oraI,'YYYY-MM-DD, hh:mm a')
                                     let dataF=moment(calendarDate+', '+oraF,'YYYY-MM-DD, hh:mm a')
 
-                                    let giornoI = moment(state.giorno+', '+state.start, 'YYYY-MM-DD, hh:mm a')
-                                    let giornoF = moment(state.giorno+', '+state.end, 'YYYY-MM-DD, hh:mm a')
-
                                     setDataIM(dataS)
                                     setDataFM(dataF)
-                                    setGiornoIM(giornoI)
-                                    setGiornoFM(giornoF)
 
-                                    if(state.c == 'false'){
                                         if(dataS.isBefore(moment()) || dataF.isBefore(moment())) {
                                             setBadge('precedente')
                                         }else{
                                             handleShow()
                                         }
-                                    }else if(state.c == 'true'){
-                                        if(giornoI.isBefore(moment()) || giornoF.isBefore(moment())){
-                                            setBadge('precedente')
-                                        }else{
-                                            handleShow()
-                                        }
                                     }
-                                }}>Publish</Button>
+                                }>Publish</Button>
 
-                                <Button onClick={()=> console.log(prenotazioni.filter(f => f.key == state.id).map(p => moment(p.dataStart, 'yyyy-MM-DD').format('yyyy-MM-DD')))}>
+                                <Button onClick={()=> console.log(state.id)}>
                                     stampa cose
                                 </Button>
 
                             </Card.Body>
                         </Card>
+
+                        <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
+                            <Modal.Dialog>
+                                <Modal.Header>
+                                    <Modal.Title className="modal-title-1">Add event to Calendar</Modal.Title>
+                                </Modal.Header>
+
+                                <Modal.Body className="modal-subtitle-1">
+                                    <p>Are you sure you want to add this event to the Calendar?</p>
+                                </Modal.Body>
+
+                                <Modal.Footer>
+                                    <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                            onClick={handleClose}
+                                    >Cancel</Button>
+                                    <Button style={{backgroundColor:"#eb506c", color:"white", borderWidth:"2px", borderColor:"#eb506c", borderRadius:"10px"}}
+                                            onClick={() => {
+
+                                                    dispatch(editBooking(dataIM, dataFM, address, titolo, about, categoria))
+                                                    setAddress('')
+                                                    setTitolo('')
+                                                    setAbout('')
+                                                    setDate(moment())
+                                                    setOraI('')
+                                                    setOraF('')
+                                                    setCategoria('')
+
+                                                handleClose()
+                                                handleShowSecond()
+                                            }}>
+                                        Add
+                                    </Button>
+                                </Modal.Footer>
+                            </Modal.Dialog>
+                        </Modal>
+
+                        <Modal show={show_second} onHide={handleCloseSecond} backdrop={"static"} centered>
+                            <Modal.Dialog>
+
+                                <Modal.Body className="modal-subtitle-1">
+                                    <p>CAMBIATO</p>
+                                </Modal.Body>
+
+                                <Modal.Footer>
+                                    <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                            onClick={()=> setPrenotazioni(state.prenotazioni)}
+                                    >
+                                        <Link to={"/calendar"}>
+                                            Ok
+                                        </Link>
+                                    </Button>
+                                    <Button onClick={()=> console.log(state.prenotazioni)}>
+                                        provo
+                                    </Button>
+                                </Modal.Footer>
+                            </Modal.Dialog>
+                        </Modal>
+
                     </Row>
+                    {badge=='precedente' ? <Alert variant={"danger"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>DATA PRECEDENTE!</Alert> : null}
+
                 </Col>
             </Row>
         </Container>

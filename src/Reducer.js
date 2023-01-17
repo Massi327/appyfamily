@@ -1,4 +1,4 @@
-import {ADD_BOOKNG, ADD_CATEGORY, ADD_FORUM, CANCEL_BOOKNG, SELECTED, SELECTEDSLOT} from "./Action";
+import {ADD_BOOKNG, ADD_CATEGORY, ADD_FORUM, CANCEL_BOOKNG, EDIT_BOOKNG, SELECTED, SELECTEDSLOT} from "./Action";
 import moment from 'moment'
 import 'moment/locale/it';
 
@@ -148,6 +148,22 @@ export function Reducer(state,action){
             return {
                 ...state,
                 prenotazioni: arrayC
+            }
+
+        case EDIT_BOOKNG:
+
+            let eventoedit = { key: Math.random(), address: action.address, dataStart: action.dataStart, dataEnd: action.dataEnd, titolo: action.titolo, about: action.about, categoria: action.categoria}
+
+            let arrayprova = [...state.prenotazioni]
+            let arrayCancellato= arrayprova.filter(f => f.key !== action.id)
+
+            let prenotazioninuove = JSON.parse(localStorage.getItem('prenotazioni'))
+
+            
+
+            return {
+                ...state,
+                prenotazioni: arrayCancellato
             }
 
         default:

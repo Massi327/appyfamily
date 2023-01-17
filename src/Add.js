@@ -233,7 +233,7 @@ export default function Add(){
                                                 setOraF('')
                                                 setCategoria('')
                                                 dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('', 'yyyy-MM-DD').format('LT'), moment('', 'yyyy-MM-DD').format('LT'), 'false'))
-                                                console.log(state.prenotazioni)
+
                                             }else if(state.c == 'true'){
                                                 dispatch(addBooking(giornoIM, giornoFM, address, titolo, about, categoria))
                                                 setAddress('')
@@ -244,7 +244,7 @@ export default function Add(){
                                                 setOraF('')
                                                 setCategoria('')
                                                 dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('', 'yyyy-MM-DD').format('LT'), moment('', 'yyyy-MM-DD').format('LT'), 'false'))
-                                                console.log(state.prenotazioni)
+
                                             }
                                             handleClose()
                                             handleShowSecond()
