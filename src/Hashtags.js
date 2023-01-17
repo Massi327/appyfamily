@@ -6,15 +6,15 @@ import Navigbar from "./components/navbar-search";
 import AddButton from "./components/add-button";
 import NavigbarBottom from "./components/navbar-bottom";
 import events from "./images/Events.svg";
-import blogs from "./images/Blogs.svg";
+import forum from "./images/Forum-unselected.svg";
 import people from "./images/People.svg";
-import hashtagsselected from "./images/Hashtags-selezionato.svg";
 import profile4 from "./images/profile4.svg";
 import hashtag from "./images/hashtag.svg"
 import home from "./images/Home-icon.svg";
 import calendar from "./images/Calendar.svg";
 import profile from "./images/Profile-unselected.svg";
 import settings from "./images/Settings.svg";
+import centersselected from "./images/centers-selected.svg";
 
 export default function Hashtags(){
 
@@ -23,9 +23,9 @@ export default function Hashtags(){
     return(
         <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'70vh'}}>
             <Navigbar vevents={events}
-                      vblogs={blogs}
+                      vforum={forum}
                       vpeople={people}
-                      vhashtags={hashtagsselected}
+                      vcenters={centersselected}
                       value={"none"}
             />
 

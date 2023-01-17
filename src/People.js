@@ -15,9 +15,9 @@ import "./People.css";
 import recbut from './images/recommended-button.svg'
 import nearme from './images/near-me.svg'
 import profile from './images/Profile-unselected.svg'
-
+import centers from "./images/centers-unselected.svg";
 import events from "./images/Events.svg";
-import blogs from "./images/Blogs.svg";
+import forum from "./images/Forum-unselected.svg";
 import hashtags from "./images/Hashtags.svg";
 import peopleselected from "./images/People-selezionato.svg";
 import peopleFrame from "./images/People_frame.svg";
@@ -40,9 +40,9 @@ export default function People(){
         <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000'}}>
 
             <Navigbar vevents={events}
-                      vblogs={blogs}
+                      vforum={forum}
                       vpeople={peopleselected}
-                      vhashtags={hashtags}
+                      vcenters={centers}
                       value={"none"}
             />
             <NavigbarBottom home={home} calendar={calendar}

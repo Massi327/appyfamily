@@ -6,9 +6,9 @@ import Navigbar from "./components/navbar-search";
 import AddButton from "./components/add-button";
 import NavigbarBottom from "./components/navbar-bottom";
 import eventsselected from "./images/Events-selezionato.svg";
-import blogs from "./images/Blogs.svg";
+import forum from "./images/Forum-unselected.svg";
+import centers from "./images/centers-unselected.svg";
 import people from "./images/People.svg";
-import hashtags from "./images/Hashtags.svg";
 import imgcard1 from "./images/Image-event-1.svg";
 import clock from "./images/Clock.svg";
 import map from "./images/Map.svg";
@@ -31,9 +31,9 @@ export default function Nearme(){
     return(
         <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh'}}>
             <Navigbar vevents={eventsselected}
-                      vblogs={blogs}
+                      vforum={forum}
                       vpeople={people}
-                      vhashtags={hashtags}
+                      vcenters={centers}
                       vrec={rec}
                       vnearme={nearmebut}
             />

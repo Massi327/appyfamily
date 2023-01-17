@@ -5,19 +5,19 @@ import message from "../../images/messages-icon.svg";
 import help from "../../images/help-icon.svg";
 import events from "../../images/Events.svg";
 import people from "../../images/People.svg";
-import blogs from "../../images/Blogs.svg";
+import forum from "../../images/Forum-selected.svg";
 import hashtags from "../../images/Hashtags.svg";
 import recbut from "../../images/recommended-button.svg";
 import nearme from "../../images/near-me.svg";
 import {Link} from "react-router-dom";
 import eventsselected from "../../images/Events-selezionato.svg";
 import peopleselected from "../../images/People-selezionato.svg";
-import blogsselectd from "../../images/Blogs-selezionato.svg";
-import hashtagsselected from "../../images/Hashtags-selezionato.svg";
+import forumselected from "../../images/Forum-selected.svg";
+import centersselected from "../../images/centers-selected.svg";
 import "./index.css"
 
 
-const Navigbar = ({ vevents, vblogs, vpeople, vhashtags, vrec, vnearme,value }) => {
+const Navigbar = ({ vevents, vforum, vpeople, vcenters, vrec, vnearme,value }) => {
 
 
 
@@ -58,12 +58,12 @@ return  <Row className="cont">
                 </Col>
                 <Col xs={3} sm={12} md={3}>
 
-                    <Link to={"/blogs"} style={{color: "white", textDecoration: "none"}}><span><img src={vblogs} alt="Blogs" className="search-icon"/></span></Link>
+                    <Link to={"/forum"} style={{color: "white", textDecoration: "none"}}><span><img src={vforum} alt="Forum" className="search-icon"/></span></Link>
 
                 </Col>
                 <Col xs={3} sm={12} md={3}>
 
-                    <Link to={"/hashtags"} style={{color: "white", textDecoration: "none"}}><span><img src={vhashtags} alt="Hashtags" className="search-icon"/></span></Link>
+                    <Link to={"/hashtags"} style={{color: "white", textDecoration: "none"}}><span><img src={vcenters} alt="Centers" className="search-icon"/></span></Link>
 
                 </Col>
             </Row>

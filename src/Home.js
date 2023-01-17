@@ -10,8 +10,8 @@ import message from './images/messages-icon.svg';
 import help from './images/help-icon.svg'
 
 import people from './images/People.svg'
-import blogs from './images/Blogs.svg'
-import hashtags from './images/Hashtags.svg'
+import forum from "./images/Forum-unselected.svg";
+import centers from "./images/centers-unselected.svg";
 import recbut from './images/recommended-button.svg'
 import nearme from './images/near-me.svg'
 import ellipse from './images/Ellipse-bottom-menu.svg'
@@ -83,9 +83,9 @@ export default function Home(){
             </Container>*/}
 
             <Navigbar vevents={eventsselected}
-                      vblogs={blogs}
+                      vforum={forum}
                       vpeople={people}
-                      vhashtags={hashtags}
+                      vcenters={centers}
                       vrec={recbut}
                       vnearme={nearme}
                       value={"cont-menu-rec-nearme"}
