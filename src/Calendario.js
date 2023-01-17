@@ -75,6 +75,10 @@ export default function Calendario(){
     const handleCloseSecond = () => setShowSecond(false);
     const handleShowSecond = () => setShowSecond(true);
 
+    const [show_third, setShowThird] = useState(false);
+    const handleCloseThird = () => setShowThird(false);
+    const handleShowThird = () => setShowThird(true);
+
     const navigate = useNavigate();
 
     let events = [];
@@ -251,12 +255,28 @@ export default function Calendario(){
 
                         <Modal.Footer>
                             <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
-                                    onClick={()=> handleCloseSecond()}>
+                                    onClick={()=> {localStorage.setItem('prenotazioni', JSON.stringify(state.prenotazioni)); handleCloseSecond(); handleShowThird()}}>
                                 Si
                             </Button>
                             <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
                                     onClick={()=> handleCloseSecond()}>
                                 No
+                            </Button>
+                        </Modal.Footer>
+                    </Modal.Dialog>
+                </Modal>
+
+                <Modal show={show_third} onHide={handleCloseThird} backdrop={"static"} centered>
+                    <Modal.Dialog>
+
+                        <Modal.Body className="modal-subtitle-1">
+                            <p>CANCELLATO</p>
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                    onClick={()=> {setPrenotaz(state.prenotazioni); handleCloseThird()}}>
+                                Ok
                             </Button>
                         </Modal.Footer>
                     </Modal.Dialog>

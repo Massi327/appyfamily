@@ -31,7 +31,6 @@ export default function Add(){
 
     const [address,setAddress] = useState('')
     const [titolo,setTitolo] = useState('')
-       // () => {const titolo = JSON.parse(localStorage.getItem('titolo'));return titolo || ""; } )
     const [about,setAbout] = useState('')
     const [date,setDate] = useState(new Date())
     const [oraI,setOraI] = useState('')
@@ -82,7 +81,7 @@ export default function Add(){
 
                         <Card className='form' style={{background: '#f5f5f5', paddingTop:"5em", color: "black", borderWidth: "0"}}>
                             <Card.Body style={{marginLeft:"1em", marginRight:"1em"}}>
-                                <CloseButton variant={'black'} onClick={() => navigate(-1)}/>
+                                <CloseButton variant={'black'} onClick={() => {navigate(-1); dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('','yyyy-MM-DD').format('LT'), moment('','yyyy-MM-DD').format('LT'),'false'))}}/>
                                 <Card.Title style={{fontSize: "30px", marginTop: "0.3em"}} className="title-2">Add Event</Card.Title>
 
                                 <FormGroup style={{marginBottom: "10px", textAlign: "left"}}>
@@ -266,7 +265,7 @@ export default function Add(){
 
                             <Modal.Footer>
                                 <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
-                                        onClick={localStorage.setItem('prenotazioni', JSON.stringify(state.prenotazioni))}
+                                        onClick={() => localStorage.setItem('prenotazioni', JSON.stringify(state.prenotazioni))}
                                 >
                                     <Link to={"/profile"}>
                                     Ok
@@ -280,18 +279,6 @@ export default function Add(){
                     {badge=='precedente' ? <Alert variant={"danger"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>DATA PRECEDENTE!</Alert> : null}
 
                 </Col>
-
-                <Row className="justify-content-md-center">
-
-                    <Col xs={3} sm={12} md={3}>
-                        {
-                            <Button variant={"danger"} style={{marginTop: "5px", marginBottom: "5px"}} onClick={() => dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('','yyyy-MM-DD').format('LT'), moment('','yyyy-MM-DD').format('LT'),'false'))}>
-                                <Link to={"/calendar"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>CALENDAR</span></Link>
-                            </Button> }
-                            <Button onClick={()=> console.log(state.prenotazioni)}>+</Button>
-
-                    </Col>
-                </Row>
 
 
             </Row>
