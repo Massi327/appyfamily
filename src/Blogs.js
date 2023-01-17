@@ -12,6 +12,7 @@ import forumselected from "./images/Forum-selected.svg";
 import people from "./images/People.svg";
 import centers from "./images/centers-unselected.svg";
 
+
 import imgcard1 from "./images/Image-event-1.svg";
 import clock from "./images/Clock.svg";
 import map from "./images/Map.svg";
