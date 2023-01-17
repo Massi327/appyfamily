@@ -23,7 +23,7 @@
     .contam{
         position:fixed;
         z-index: 1000;
-        height:50%;
+        height:40%;
         background-image: url(../../images/rectangle-56.svg);
         background-repeat: no-repeat;
         width:100%;
@@ -39,7 +39,7 @@
         background-repeat: no-repeat;
         width:100%;
         top:0em;
-        height:50%;    }
+        height:35%;    }
 
     .notifications{
         background-repeat: no-repeat;

@@ -1,6 +1,7 @@
 import {useContext, useEffect, useState} from "react";
 import {StateContext} from "./App";
 import {Link} from "react-router-dom";
+import "./CenterCalendar.css"
 import {
     Button,
     Col,
@@ -120,21 +121,44 @@ export default function CenterCalendar(){
                 </CardHeader>
 
 
-                <CardGroup>
+                {/*<CardGroup>
 
                     <p style={{paddingTop:"5em"}}>To visualise the schedule, you have to login first</p>
                     <Button onClick={() => handleShow()} style={{backgroundColor:"#eb506c", color:"white", borderWidth:"2px", borderColor:"#eb506c", borderRadius:"10px", marginBottom:"5em"}}>Log in</Button>
 
-                </CardGroup>
-                <Row>
-                {show_second =="true" ? <Col>
+                </CardGroup>*/}
 
-                    <Card style={{backgroundColor:"orange"}}>
-                        <p>7pm Dance Lesson</p>
+                <CardGroup>
+                    {/*<Row>
+                    {/*{show_second =="true" ? <Col>*/}
+                    <p style={{marginTop:"0.5em", marginBottom:"-0.3em"}}>You signed up for the following courses</p>
+
+                    <Card style={{backgroundColor:"orange", margin:"0.5em"}}>
+                        <CardHeader style={{height:"3em"}}><Card.Title className="course-title">Dance Lesson</Card.Title></CardHeader>
+                        <p style={{paddingTop:"0.3em", marginBottom:"-0.1em"}}>Monday 7PM - 8PM</p>
+                        <Button style={{margin:"0.5em", marginLeft:"13em"}}>Copy to Calendar</Button>
                     </Card>
 
-                </Col> : null}
-                    </Row>
+                    <Card style={{backgroundColor:"mediumaquamarine", margin:"0.5em"}}>
+                        <CardHeader style={{height:"3em"}}><Card.Title className="course-title">Fencing Lesson</Card.Title></CardHeader>
+                        <p style={{paddingTop:"0.3em", marginBottom:"-0.1em"}}>Tuesday 8PM - 9PM</p>
+                        <Button style={{margin:"0.5em", marginLeft:"13em"}}>Copy to Calendar</Button>
+                    </Card>
+
+                    {/*</Col> : null}*/}
+                    {/*</Row>*/}
+
+                    {/*} <Card style={{backgroundColor:"orange", margin:"0.5em"}}>
+                        <p style={{paddingTop:"0.5em"}}>7pm Dance Lesson</p>
+                    </Card>
+
+                    <Card style={{backgroundColor:"mediumaquamarine", margin:"0.5em"}}>
+                        <p style={{paddingTop:"0.5em"}}>9pm Athletics Lesson</p>
+                    </Card>*/}
+
+
+                </CardGroup>
+
             </Card>
             <NavigbarBottom home={homeunselected} calendar={calendar} profile={profileselected} settings={settings}/>
 

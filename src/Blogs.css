@@ -21,6 +21,7 @@
     font-style: normal;
     font-weight: 600;
     letter-spacing: -0.408px;
+    line-height: 1.2em;
     color: #181D3D;
     font-size: 16px;
     margin-bottom:-0.3em;
@@ -29,7 +30,6 @@
 .subtitle-connections{
     width: 188px;
     height: 1px;
-    left: 157px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -37,6 +37,7 @@
     line-height: 22px;
     letter-spacing: -0.408px;
     color: #696767;
+    left:1em;
 }
 
 .subtitle-name{
@@ -53,7 +54,6 @@
 }
 
 .reply{
-    width: 188px;
     height: 1em;
 
     font-family: 'Inter';
