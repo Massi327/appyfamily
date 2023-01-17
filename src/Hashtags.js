@@ -16,6 +16,8 @@ import profile from "./images/Profile-unselected.svg";
 import settings from "./images/Settings.svg";
 import centersselected from "./images/centers-selected.svg";
 import forums from "./images/Forums.svg"
+import profile2 from "./images/profile2.svg";
+import cusimage from "./images/CUS.svg"
 
 export default function Hashtags(){
 
@@ -33,7 +35,50 @@ export default function Hashtags(){
             <AddButton/>
             <NavigbarBottom home={home} calendar={calendar} profile={profile} settings={settings}/>
 
-            <Container style={{paddingTop:'13em'}}>
+            <Container style={{paddingTop:'16em'}}>
+
+                <Card className="people" style={{height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img  src={cusimage} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                    <Card.Body>
+                        <Card.Text className="name-people" style={{textAlign: 'left'}}>CUS Torino</Card.Text>
+                        <Card.Text className="subtitle-name" style={{textAlign: 'left'}}>
+                            Centro Universitario Sportivo
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+                <Card className="people" style={{height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img  src={cusimage} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                    <Card.Body>
+                        <Card.Text className="name-people" style={{textAlign: 'left'}}>CUS Torino</Card.Text>
+                        <Card.Text className="subtitle-name" style={{textAlign: 'left'}}>
+                            Centro Universitario Sportivo
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+                <Card className="people" style={{height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img  src={cusimage} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                    <Card.Body>
+                        <Card.Text className="name-people" style={{textAlign: 'left'}}>CUS Torino</Card.Text>
+                        <Card.Text className="subtitle-name" style={{textAlign: 'left'}}>
+                            Centro Universitario Sportivo
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+                <Card className="people" style={{height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card.Img  src={cusimage} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                    <Card.Body>
+                        <Card.Text className="name-people" style={{textAlign: 'left'}}>CUS Torino</Card.Text>
+                        <Card.Text className="subtitle-name" style={{textAlign: 'left'}}>
+                            Centro Universitario Sportivo
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
+
+
                 <Card className="people" style={{height: '5rem', top: '2em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img  src={hashtag} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
