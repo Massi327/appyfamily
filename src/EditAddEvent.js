@@ -35,11 +35,12 @@ export default function EditAddEvent(){
     const [address,setAddress] = useState(() => prenotazioni.filter(f => f.key == state.id).map(p => p.address))
     const [titolo,setTitolo] = useState(() => prenotazioni.filter(f => f.key == state.id).map(p => p.titolo))
     const [about,setAbout] = useState(() => prenotazioni.filter(f => f.key == state.id).map(p => p.about))
-    const [date,setDate] = useState(() => prenotazioni.filter(f => f.key == state.id).map(p => moment(p.dataStart, 'DD-MM-YYYY')))
-    const [oraI,setOraI] = useState('')
-    const [oraF,setOraF] = useState('')
+    const [date,setDate] = useState(() => prenotazioni.filter(f => f.key == state.id).map(p => moment(p.dataStart, 'YYYY-MM-DD').format('yyyy-MM-DD')))
+    const [oraI,setOraI] = useState(() => prenotazioni.filter(f => f.key == state.id).map(p => moment(p.dataStart, ).format('hh:mm')))
+    const [oraF,setOraF] = useState(() => prenotazioni.filter(f => f.key == state.id).map(p => moment(p.dataEnd, ).format('hh:mm')))
     const [badge,setBadge] = useState('')
     const [categoria,setCategoria] = useState(() => prenotazioni.filter(f => f.key == state.id).map(p => p.categoria))
+
     const calendariohidden = 'false';
 
     const navigate = useNavigate()
@@ -59,19 +60,6 @@ export default function EditAddEvent(){
 
 
     let events = [];
-
-    {/*
-    prenotazioni.filter(f => f.key == state.id).map(p => {
-
-
-        setDate(moment(p.dataStart, 'YYYY-MM-DD').toDate())
-        setOraI(''
-            //moment(p.dataStart,'hh:mm').toDate().toString
-            )
-        setOraF(''
-            //moment(p.dataEnd,'hh:mm').toDate().toString
-        )
-    })*/}
 
     return(
         <Container fluid>
@@ -190,6 +178,10 @@ export default function EditAddEvent(){
                                         }
                                     }
                                 }}>Publish</Button>
+
+                                <Button onClick={()=> console.log(prenotazioni.filter(f => f.key == state.id).map(p => moment(p.dataStart, 'yyyy-MM-DD').format('yyyy-MM-DD')))}>
+                                    stampa cose
+                                </Button>
 
                             </Card.Body>
                         </Card>

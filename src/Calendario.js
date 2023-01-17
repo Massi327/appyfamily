@@ -66,7 +66,6 @@ export default function Calendario(){
     return controlloPale })
 
     const addHidden = 'false';
-    const [tipomodale, setTipoModale] = useState(true);
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -157,13 +156,6 @@ export default function Calendario(){
                         style={{height:'81vh', backgroundColor: 'white', marginBottom: "5px", zIndex:'-1000'}}
                         onSelectEvent={e => {
                             dispatch(selected(e.id))
-                            prenotaz.map(m => {
-                                if (m.key == e.id){
-                                    setTipoModale(true)
-                                }else {
-                                    setTipoModale(false)
-                                }
-                            })
                             handleShow()
                         }}
                         onSelecting={range => handleSelect(range)}
@@ -213,7 +205,7 @@ export default function Calendario(){
                 </Modal> */}
 
                 <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
-                    {tipomodale == true ? <Modal.Dialog>
+                    <Modal.Dialog>
 
                         <Modal.Header closeButton>
                             <Card style={{backgroundColor:"#4b7bf8", color:"white"}}>
@@ -241,14 +233,15 @@ export default function Calendario(){
 
                         <Modal.Footer>
                             <Button style={{fontSize:"13px",borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}>
-                               <Link to={"/editaddevent"} onClick={()=>console.log(prenotaz.filter(f => f.key == state.id).map(p => String(moment(p.dataStart, 'DD-MM-YYYY'))))}>Edit</Link>
+                               <Link to={"/editaddevent"}>Edit</Link>
                             </Button>
                             <Button style={{fontSize:"13px", borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
                                     onClick={()=>{dispatch(cancelBooking(state.id)); handleClose(); handleShowSecond()}}
                             >Delete</Button>
 
                         </Modal.Footer>
-                    </Modal.Dialog> :
+                    </Modal.Dialog>
+                    {/*
                     <Modal.Dialog>
 
                         <Modal.Header closeButton>
@@ -274,8 +267,9 @@ export default function Calendario(){
                             <p className="about">About</p>
                             <p>{state.palestra.filter(p => p.key===state.id).map(m=>m.about)}</p>
                         </Modal.Body>
-                    </Modal.Dialog> }
+                    </Modal.Dialog> */}
                 </Modal>
+
 
                 <Modal show={show_second} onHide={handleCloseSecond} backdrop={"static"} centered>
                     <Modal.Dialog>

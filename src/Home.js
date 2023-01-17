@@ -42,6 +42,7 @@ import threedots from "./images/ph_dots-three-vertical-bold.svg"
 import 'moment/locale/en-gb';
 import moment from "moment/moment";
 import {selected} from "./Action";
+import {useLocalStorage} from "./useLocalStorage";
 
 
 
@@ -49,9 +50,8 @@ export default function Home(){
 
     const [state,dispatch] = useContext(StateContext)
 
-    const [prenotazione, setPrenotazione] = useState(() => {
-        const prenotazione = JSON.parse(localStorage.getItem('prenotazioni'));
-        return prenotazione || state.prenotazioni; } )
+    const [prenotazione, setPrenotazione] = useLocalStorage('prenotazioni', state.prenotazioni)
+    const [forum, setForum] = useLocalStorage('forums', state.forums)
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
