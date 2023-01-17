@@ -36,6 +36,9 @@ import calendarselected from "./images/Calendar-selected.svg";
 import profile from "./images/Profile-unselected.svg";
 import settings from "./images/Settings.svg";
 import popupsport from "./images/image 1.svg";
+import notif from "./images/notifications-icon.svg";
+import message from "./images/messages-icon.svg";
+import help from "./images/help-icon.svg";
 
 
 const localizer = momentLocalizer(moment)
@@ -138,7 +141,7 @@ export default function Calendario(){
 
     return(
         <Container>
-            <NavigbarP/>
+            <NavigbarP vnotifications={notif} vmessages={message} vtutorial={help}/>
             <NavigbarBottom home={homeunselected} calendar={calendarselected} profile={profile} settings={settings}/>
 
             <Container style={{marginTop:"7em", marginBottom:"5em"}}>
@@ -276,17 +279,17 @@ export default function Calendario(){
                     <Modal.Dialog>
 
                         <Modal.Body className="modal-subtitle-1">
-                            <p>Vuoi cancellare?</p>
+                            <p>Do you wish to delete?</p>
                         </Modal.Body>
 
                         <Modal.Footer>
                             <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
                                     onClick={()=> {localStorage.setItem('prenotazioni', JSON.stringify(state.prenotazioni)); handleCloseSecond(); handleShowThird()}}>
-                                Si
+                                Delete
                             </Button>
                             <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
                                     onClick={()=> handleCloseSecond()}>
-                                No
+                                Don't Delete
                             </Button>
                         </Modal.Footer>
                     </Modal.Dialog>
@@ -296,7 +299,7 @@ export default function Calendario(){
                     <Modal.Dialog>
 
                         <Modal.Body className="modal-subtitle-1">
-                            <p>CANCELLATO</p>
+                            <p>The event has been deleted successfully</p>
                         </Modal.Body>
 
                         <Modal.Footer>

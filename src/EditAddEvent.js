@@ -22,6 +22,9 @@ import 'react-big-calendar/lib/css/react-big-calendar.css'
 import {addBooking, editBooking, selected, selectedSlot} from "./Action";
 import {Link, useNavigate} from "react-router-dom";
 import NavigbarP from "./components/navbar-profile";
+import notif from "./images/notifications-icon.svg";
+import message from "./images/messages-icon.svg";
+import help from "./images/help-icon.svg";
 
 const localizer = momentLocalizer(moment)
 
@@ -59,7 +62,7 @@ export default function EditAddEvent(){
     return(
         <Container fluid>
 
-            <NavigbarP/>
+            <NavigbarP vnotifications={notif} vmessages={message} vtutorial={help}/>
 
             <Row>
                 {calendariohidden=="true" ? <Col xl={8} lg={8} md={8} sm={12} xs={12}>

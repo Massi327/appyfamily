@@ -16,6 +16,9 @@ import {
 import NavigbarP from "./components/navbar-profile";
 import moment from "moment/moment";
 import {addBooking, addForum, selectedSlot} from "./Action";
+import notif from "./images/notifications-icon.svg";
+import message from "./images/messages-icon.svg";
+import help from "./images/help-icon.svg";
 
 export default function Addforum(){
 
@@ -42,9 +45,9 @@ export default function Addforum(){
     return(
         <Container fluid>
 
-            <NavigbarP/>
+            <NavigbarP vnotifications={notif} vmessages={message} vtutorial={help}/>
 
-            <Row style={{marginTop:'10em'}}>
+            <Row style={{paddingTop:'10em', background: '#f5f5f5', minHeight:"100vh"}}>
                 <Col md={6} sm={12} xs={12}>
                     <Row>
 

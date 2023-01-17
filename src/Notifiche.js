@@ -16,22 +16,31 @@ import profileunselected from "./images/Profile-unselected.svg";
 import calendarunselected from "./images/Calendar.svg";
 import settingsunselected from "./images/Settings.svg";
 import homeunselected from "./images/home-unselected.svg"
+import notif from "./images/notifications-icon.svg";
+import message from "./images/messages-icon.svg";
+import help from "./images/help-icon.svg";
+import notifselected from "./images/notificationsselected.svg";
 export default function Notifiche(){
 
     const [state,dispatch] = useContext(StateContext)
 
     return(
         <Container className="bg-n">
-            <NavigbarP />
+            <NavigbarP vnotifications={notifselected} vmessages={message} vtutorial={help}/>
             <Container >
                 <Card className="notif" style={{ width: '22.8rem', height: '5rem', marginBottom: '1em' ,marginTop: '7em',  borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img  src={profile6} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
                         <Card.Text className="name-people" style={{textAlign: 'left'}}>Jeremy_Clarks</Card.Text>
-                        <span> <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
-                            started following you.
-                        </Card.Text>
-                       <Link to={"/follower"}> <img src={follow} alt="Follower" /></Link></span>
+
+                        <Row>
+                            <Col className="subtitle-connections" style={{textAlign: 'left'}}>
+                                started following you.
+                            </Col>
+                            <Col>                       <Link to={"/follower"}> <img src={follow} alt="Follower" /></Link>
+                            </Col>
+
+                        </Row>
                     </Card.Body>
                 </Card>
 
@@ -79,9 +88,14 @@ export default function Notifiche(){
                     <Card.Img  src={profile3} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
                         <Card.Text className="name-people" style={{textAlign: 'left'}}>Gina_Martin</Card.Text>
-                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
-                            started following you.
-                        </Card.Text>
+                        <Row>
+                            <Col className="subtitle-connections" style={{textAlign: 'left'}}>
+                                started following you.
+                            </Col>
+                            <Col>                       <Link to={"/follower"}> <img src={follow} alt="Follower" /></Link>
+                            </Col>
+
+                        </Row>
                     </Card.Body>
                 </Card>
 
@@ -90,7 +104,7 @@ export default function Notifiche(){
                     <Card.Img  src={profile2} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
                         <Card.Text className="name-people" style={{textAlign: 'left'}}>Doctor_Sally</Card.Text>
-                        <Card.Text className="d-inline-block card-title" style={{textAlign: 'left'}}>
+                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
                             replied to your question.
                         </Card.Text>
                     </Card.Body>

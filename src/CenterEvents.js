@@ -39,6 +39,9 @@ import threedots from "./images/ph_dots-three-vertical-bold.svg";
 import centereventsselected from "./images/Profile_events_selected.svg"
 import centerprofileimage from "./images/cus_torino.svg"
 import centerforums from "./images/Profile_Forums_unselected.svg";
+import notif from "./images/notifications-icon.svg";
+import message from "./images/messages-icon.svg";
+import help from "./images/help-icon.svg";
 
 export default function CenterEvents(){
 
@@ -69,7 +72,7 @@ export default function CenterEvents(){
     return(
         <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', top:'5em'}}>
 
-            <NavigbarP/>
+            <NavigbarP vnotifications={notif} vmessages={message} vtutorial={help}/>
             <Container className="bg2" style={{paddingTop:"7em"}}>
 
                 <Card className="post" style={{ width: '100%', height: '8rem',  marginTop: '0em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>

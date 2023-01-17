@@ -26,6 +26,16 @@
     color: #696767;
 }
 
+.subtitle-random{
+    height: 1px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: -0.408px;
+    color: #696767;
+}
+
 .subtitle-name{
     width: 188px;
     height: 1px;

@@ -72,7 +72,7 @@ export default function Blogs(){
             <AddButtonForum/>
             <NavigbarBottom home={home} calendar={calendar} profile={profile} settings={settings}/>
 
-            <Container style={{paddingTop:'15em'}}>
+            <Container style={{paddingTop:'15em', minHeight:"100vh"}}>
 
                 {forum.slice(0).reverse().map( f =>
 
@@ -83,7 +83,7 @@ export default function Blogs(){
 
                                 <Card.Text>
                                     <Row style={{height:"1em"}}>
-                                        <Col  className="subtitle-connections" style={{textAlign:"left"}}>Now • You
+                                        <Col  className="subtitle-connections" style={{textAlign:"left"}}>{f.about}
                                         </Col>
                                     </Row >
                                     <Row style={{height:"1em"}}>
@@ -324,7 +324,7 @@ export default function Blogs(){
                     </Card>)
                 }*/}
 
-                <Card className="people" style={{ top:"2em", height: '6.5rem', marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                {/* <Card className="people" style={{ top:"2em", height: '6.5rem', marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Body>
                         <Card.Text className="blog-title" style={{textAlign: 'left'}}>Activity ideas for my 6 months old child during long car trips?</Card.Text>
 
@@ -531,7 +531,7 @@ export default function Blogs(){
                             </Card.Text>
 
                         </Card.Body>
-                    </Card>
+                    </Card>*/}
 
 
             </Container>

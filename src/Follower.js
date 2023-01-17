@@ -21,6 +21,9 @@ import homeu from "./images/home-unselected.svg";
 import calendaru from "./images/Calendar.svg";
 import settingsu from "./images/Settings.svg";
 import profileunselected from "./images/Profile-unselected.svg";
+import notif from "./images/notifications-icon.svg";
+import message from "./images/messages-icon.svg";
+import help from "./images/help-icon.svg";
 
 export default function Follower(){
 
@@ -29,7 +32,7 @@ export default function Follower(){
     return(
         <Container className="sfondo" style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', top:'5em'}}>
 
-            <NavigbarP />
+            <NavigbarP vnotifications={notif} vmessages={message} vtutorial={help}/>
 
             <Container className="sfndo2">
 

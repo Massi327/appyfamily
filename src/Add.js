@@ -22,6 +22,9 @@ import 'react-big-calendar/lib/css/react-big-calendar.css'
 import {addBooking, selected, selectedSlot} from "./Action";
 import {Link, useNavigate} from "react-router-dom";
 import NavigbarP from "./components/navbar-profile";
+import notif from "./images/notifications-icon.svg";
+import message from "./images/messages-icon.svg";
+import help from "./images/help-icon.svg";
 
 const localizer = momentLocalizer(moment)
 
@@ -58,7 +61,7 @@ export default function Add(){
     return(
         <Container fluid>
 
-             <NavigbarP/>
+            <NavigbarP vnotifications={notif} vmessages={message} vtutorial={help}/>
 
             <Row>
                 {calendariohidden=="true" ? <Col xl={8} lg={8} md={8} sm={12} xs={12}>
@@ -79,7 +82,7 @@ export default function Add(){
                 <Col md={6} sm={12} xs={12}>
                     <Row>
 
-                        <Card className='form' style={{background: '#f5f5f5', paddingTop:"5em", color: "black", borderWidth: "0"}}>
+                        <Card className='form' style={{background: '#f5f5f5', paddingTop:"7em", color: "black", borderWidth: "0"}}>
                             <Card.Body style={{marginLeft:"1em", marginRight:"1em"}}>
                                 <CloseButton variant={'black'} onClick={() => {
                                     if(state.c == 'false'){navigate(-1);}else {navigate('/calendar', {replace: true})}
@@ -262,7 +265,7 @@ export default function Add(){
                         <Modal.Dialog>
 
                             <Modal.Body className="modal-subtitle-1">
-                                <p>AGGIUNTO</p>
+                                <p>The event has been added</p>
                             </Modal.Body>
 
                             <Modal.Footer>

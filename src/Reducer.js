@@ -26,8 +26,8 @@ export const initialState = {
     forums:[
         {
             key: 100,
-            titolo: 'prova',
-            about: 'prova'
+            titolo: 'Activity ideas for my 6 months old child during long car trips?',
+            about: '2 weeks ago • Sophia Wilkinson'
         },
     ],
 

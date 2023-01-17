@@ -41,6 +41,9 @@ import threedots from "./images/ph_dots-three-vertical-bold.svg";
 import addicon from "./images/Add-icon.svg";
 import centerforums from "./images/Profile_Forums_unselected.svg";
 import centerforumsselected from "./images/Profile_Forums.svg";
+import notif from "./images/notifications-icon.svg";
+import message from "./images/messages-icon.svg";
+import help from "./images/help-icon.svg";
 
 export default function ProfileForums(){
 
@@ -71,7 +74,7 @@ export default function ProfileForums(){
     return(
         <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', top:'5em'}}>
 
-            <NavigbarP/>
+            <NavigbarP vnotifications={notif} vmessages={message} vtutorial={help}/>
             <Row className="justify-content-sm-right" style={{zIndex:"1000"}}>
                 <Col xs={10} md={1}>
                     <Link to={"/add"} style={{right: "2em"}}><span><img src={addicon} alt="Add"

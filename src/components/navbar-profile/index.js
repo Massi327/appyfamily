@@ -17,9 +17,9 @@ import hashtagsselected from "../../images/Hashtags-selezionato.svg";
 import NavigbarBottom from "../navbar-bottom";
 
 
-const NavigbarP =  () => {
+const NavigbarP =  ({vnotifications, vmessages, vtutorial}) => {
 
-    return  <Row className="cont1">
+    return  <Row className="cont1" style={{width:"101vw"}}>
         <Container>
 
             <Navbar className="navigbar" style={{overflow: "hidden", top: "0px", width: "100%"}}>
@@ -27,9 +27,9 @@ const NavigbarP =  () => {
                     <span><img src={logo} className="logo"/></span>
                     <Navbar.Brand className="title"  style={{color:"white"}} href="/home"> APPy Family</Navbar.Brand>
                     <Nav>
-                        <Nav.Link className="notifications" style={{textAlign: "right"}} href="/notifications"><img src={notif} alt="Notifications" className="icon"/></Nav.Link>
-                        <Nav.Link style={{textAlign: "right"}} href="/messages"><img src={message} alt="Messages" className="icon"/></Nav.Link>
-                        <Nav.Link style={{textAlign: "right"}} href="/tutorial"><img src={help} alt="Help" className="icon"/></Nav.Link>
+                        <Nav.Link className="notifications" style={{textAlign: "right"}} href="/notifications"><img src={vnotifications} alt="Notifications" className="icon"/></Nav.Link>
+                        <Nav.Link style={{textAlign: "right"}} href="/messages"><img src={vmessages} alt="Messages" className="icon"/></Nav.Link>
+                        <Nav.Link style={{textAlign: "right"}} href="/tutorial"><img src={vtutorial} alt="Help" className="icon"/></Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
