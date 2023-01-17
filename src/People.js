@@ -21,6 +21,7 @@ import forum from "./images/Forum-unselected.svg";
 import hashtags from "./images/Hashtags.svg";
 import peopleselected from "./images/People-selezionato.svg";
 import peopleFrame from "./images/People_frame.svg";
+import forums from "./images/Forums.svg"
 
 import profile1 from "./images/profile1.svg"
 import profile2 from "./images/profile2.svg"
@@ -40,7 +41,7 @@ export default function People(){
         <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000'}}>
 
             <Navigbar vevents={events}
-                      vforum={forum}
+                      vforum={forums}
                       vpeople={peopleselected}
                       vcenters={centers}
                       value={"none"}

@@ -7,7 +7,7 @@ import NavigbarBottom from "./components/navbar-bottom";
 import AddButton from "./components/add-button";
 import events from "./images/Events.svg";
 import "./Blogs.css"
-import forumselected from "./images/Forum-selected.svg";
+import forumsselected from "./images/Forums_selected.svg";
 
 import people from "./images/People.svg";
 import centers from "./images/centers-unselected.svg";
@@ -64,7 +64,7 @@ export default function Blogs(){
 
         <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'70vh'}}>
             <Navigbar vevents={events}
-                      vforum={forumselected}
+                      vforum={forumsselected}
                       vpeople={people}
                       vcenters={centers}
                       value={"none"}

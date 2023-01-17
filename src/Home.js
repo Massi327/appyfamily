@@ -38,6 +38,7 @@ import whosgoing from "./images/material-symbols_emoji-people-rounded.svg";
 import dropdown from "./images/gridicons_dropdown.svg"
 import popupsport from "./images/image 1.svg"
 import threedots from "./images/ph_dots-three-vertical-bold.svg"
+import forums from "./images/Forums.svg"
 
 import 'moment/locale/en-gb';
 import moment from "moment/moment";
@@ -83,7 +84,7 @@ export default function Home(){
             </Container>*/}
 
             <Navigbar vevents={eventsselected}
-                      vforum={forumunselected}
+                      vforum={forums}
                       vpeople={people}
                       vcenters={centers}
                       vrec={recbut}

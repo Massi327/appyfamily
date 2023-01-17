@@ -15,6 +15,7 @@ import calendar from "./images/Calendar.svg";
 import profile from "./images/Profile-unselected.svg";
 import settings from "./images/Settings.svg";
 import centersselected from "./images/centers-selected.svg";
+import forums from "./images/Forums.svg"
 
 export default function Hashtags(){
 
@@ -23,7 +24,7 @@ export default function Hashtags(){
     return(
         <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'70vh'}}>
             <Navigbar vevents={events}
-                      vforum={forum}
+                      vforum={forums}
                       vpeople={people}
                       vcenters={centersselected}
                       value={"none"}
