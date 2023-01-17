@@ -66,6 +66,7 @@ export default function Calendario(){
     return controlloPale })
 
     const addHidden = 'false';
+    const [tipomodale, setTipoModale] = useState(true);
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -141,8 +142,6 @@ export default function Calendario(){
             <NavigbarP/>
             <NavigbarBottom home={homeunselected} calendar={calendarselected} profile={profile} settings={settings}/>
 
-
-
             <Container style={{marginTop:"7em", marginBottom:"5em"}}>
             <Row style={{zIndex:'-5'}}>
                 <Col sm={12} xs={12}>
@@ -158,6 +157,13 @@ export default function Calendario(){
                         style={{height:'81vh', backgroundColor: 'white', marginBottom: "5px", zIndex:'-1000'}}
                         onSelectEvent={e => {
                             dispatch(selected(e.id))
+                            prenotaz.map(m => {
+                                if (m.key == e.id){
+                                    setTipoModale(true)
+                                }else {
+                                    setTipoModale(false)
+                                }
+                            })
                             handleShow()
                         }}
                         onSelecting={range => handleSelect(range)}
@@ -207,8 +213,7 @@ export default function Calendario(){
                 </Modal> */}
 
                 <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
-                    <Modal.Dialog>
-
+                    {tipomodale == true ? <Modal.Dialog>
 
                         <Modal.Header closeButton>
                             <Card style={{backgroundColor:"#4b7bf8", color:"white"}}>
@@ -235,15 +240,41 @@ export default function Calendario(){
                         </Modal.Body>
 
                         <Modal.Footer>
-                            <Button style={{fontSize:"13px",borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
-                                    onClick={()=>console.log(state.id)}
-                            >Edit</Button>
+                            <Button style={{fontSize:"13px",borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}>
+                               <Link to={"/editaddevent"} onClick={()=>console.log(prenotaz.filter(f => f.key == state.id).map(p => String(moment(p.dataStart, 'DD-MM-YYYY'))))}>Edit</Link>
+                            </Button>
                             <Button style={{fontSize:"13px", borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
                                     onClick={()=>{dispatch(cancelBooking(state.id)); handleClose(); handleShowSecond()}}
                             >Delete</Button>
 
                         </Modal.Footer>
-                    </Modal.Dialog>
+                    </Modal.Dialog> :
+                    <Modal.Dialog>
+
+                        <Modal.Header closeButton>
+                            <Card style={{backgroundColor:"#4b7bf8", color:"white"}}>
+                                <Card.Body>
+                                    <Card.Text className="event-month-popup" style={{textAlign: 'center'}}>
+                                        {state.palestra.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('MMM').toUpperCase())}
+                                    </Card.Text>
+                                    <Card.Text className="event-day-popup" style={{textAlign: 'center'}}>
+                                        {state.palestra.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D').toUpperCase())}
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                            <Modal.Title className="modal-title-1">{state.palestra.filter(p => p.key===state.id).map(m=>m.titolo)}</Modal.Title>
+                        </Modal.Header>
+
+                        <Modal.Body className="modal-subtitle-1">
+
+                            <img src={popupsport} style={{marginBottom:"0.5em", width:"22em"}}/>
+
+                            <p className="event-subsubtitle-3"> <img src={clock} className="icon"/> {state.palestra.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D MMM YYYY'))}, {state.palestra.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('h:mm a'))} - {state.palestra.filter(p => p.key===state.id).map(m=>moment(m.dataEnd).locale('en').format('h:mm a'))}</p>
+                            <p className="event-subsubtitle-3"> <img src={map} className="icon"/> {state.palestra.filter(p => p.key===state.id).map(m=>m.address)} </p>
+                            <p className="about">About</p>
+                            <p>{state.palestra.filter(p => p.key===state.id).map(m=>m.about)}</p>
+                        </Modal.Body>
+                    </Modal.Dialog> }
                 </Modal>
 
                 <Modal show={show_second} onHide={handleCloseSecond} backdrop={"static"} centered>

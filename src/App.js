@@ -23,6 +23,7 @@ import Gym from "./Gym"
 import CenterCalendar from "./CenterCalendar"
 import CenterBlogs from "./CenterBlogs"
 import CenterEvents from "./CenterEvents"
+import EditAddEvent from "./EditAddEvent";
 
 export const StateContext = createContext()
 
@@ -44,6 +45,7 @@ function App() {
 
                 <Route path={"/add"} element={<Add/>}/>
                 <Route path={"/addforum"} element={<Addforum/>}/>
+                <Route path={"/editaddevent"} element={<EditAddEvent/>}/>
 
                 <Route path={"/people"} element={<People/>}/>
                 <Route path={"/blogs"} element={<Blogs/>}/>
