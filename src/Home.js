@@ -10,7 +10,7 @@ import message from './images/messages-icon.svg';
 import help from './images/help-icon.svg'
 
 import people from './images/People.svg'
-import forum from "./images/Forum-unselected.svg";
+import forumunselected from "./images/Forum-unselected.svg";
 import centers from "./images/centers-unselected.svg";
 import recbut from './images/recommended-button.svg'
 import nearme from './images/near-me.svg'
@@ -83,7 +83,7 @@ export default function Home(){
             </Container>*/}
 
             <Navigbar vevents={eventsselected}
-                      vforum={forum}
+                      vforum={forumunselected}
                       vpeople={people}
                       vcenters={centers}
                       vrec={recbut}
