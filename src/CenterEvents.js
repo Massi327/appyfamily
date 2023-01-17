@@ -38,6 +38,7 @@ import centercalendar from "./images/Profile_calendar.svg"
 import threedots from "./images/ph_dots-three-vertical-bold.svg";
 import centereventsselected from "./images/Profile_events_selected.svg"
 import centerprofileimage from "./images/cus_torino.svg"
+import centerforums from "./images/Profile_Forums_unselected.svg";
 
 export default function CenterEvents(){
 
@@ -92,7 +93,7 @@ export default function CenterEvents(){
                             </Col>
 
                             <Col>
-                                <Link to={"/centerblogs"}><span><img src={centerblogs} alt="Events" className="search"/></span></Link>
+                                <Link to={"/centerblogs"}><span><img src={centerforums} alt="Events" className="search"/></span></Link>
                             </Col>
 
                             <Col>
@@ -189,7 +190,7 @@ export default function CenterEvents(){
 
                 </CardGroup>
             </Card>
-            <NavigbarBottom home={homeunselected} calendar={calendar} profile={profileselected} settings={settings}/>
+            <NavigbarBottom home={homeunselected} calendar={calendar} profile={profile} settings={settings}/>
 
             <Container style={{marginTop:"15em"}}>
                 <Button onClick={()=> console.log(state.prenotazioni)}>+</Button>

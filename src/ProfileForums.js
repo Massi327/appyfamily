@@ -34,7 +34,7 @@ import dropdown from "./images/gridicons_dropdown.svg";
 import ProfileO from "./components/profile-options";
 import centerprofileimage from "./images/cus_torino.svg";
 import CardHeader from "react-bootstrap/CardHeader";
-import centereventsselected from "./images/Profile_events_selected.svg";
+import centerevents from "./images/Profile_events.svg";
 import centerblogs from "./images/Profile_blogs.svg";
 import centercalendar from "./images/Profile_calendar.svg";
 import threedots from "./images/ph_dots-three-vertical-bold.svg";
@@ -42,7 +42,7 @@ import addicon from "./images/Add-icon.svg";
 import centerforums from "./images/Profile_Forums_unselected.svg";
 import centerforumsselected from "./images/Profile_Forums.svg";
 
-export default function Profile(){
+export default function ProfileForums(){
 
     const [state,dispatch] = useContext(StateContext)
 
@@ -102,11 +102,11 @@ export default function Profile(){
                     <Container className="search">
                         <Row className='row'>
                             <Col>
-                                <Link to={"/profile"}><span><img src={centereventsselected} alt="Events" className="search"/></span></Link>
+                                <Link to={"/profile"}><span><img src={centerevents} alt="Events" className="search"/></span></Link>
                             </Col>
 
                             <Col>
-                                <Link to={"/profileforums"}><span><img src={centerforums} alt="Events" className="search"/></span></Link>
+                                <Link to={"/profileforums"}><span><img src={centerforumsselected} alt="Events" className="search"/></span></Link>
                             </Col>
                         </Row>
                     </Container>
@@ -227,124 +227,6 @@ export default function Profile(){
             </Container>
 
 
-
-
-
-
-
-
-
-            {/* <Container style={{marginTop:"15em"}}>
-                <Button onClick={()=> console.log(state.prenotazioni)}>+</Button>
-                {events.slice(0).reverse().map( p =>
-
-                    <Card className="post" key={p.key} style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}} onClick={()=> {handleShow(); dispatch(selected(p.key))}}>
-                        <Card.Img className="cardimg" src={imgcard4} style={{height: '8em', width: '10rem', verticalAlign:'center'}} />
-                        <Card.Body>
-                            <Card.Text className="event-time-1" style={{textAlign: 'left'}}>{moment(p.dataStart).locale('en').format('MMM D').toUpperCase()} • {moment(p.dataStart).locale('en').format('h:mm a').toUpperCase()}</Card.Text>
-                            <Card.Title className="event-title-1" style={{textAlign: 'left'}}>{p.titolo}</Card.Title>
-                            <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
-                                {p.about}
-                            </Card.Text>
-                            <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                                <img src={clock} alt="Near me" className="icon"/> {moment(p.dataStart).locale('en').format('D MMM YYYY')}, {moment(p.dataStart).locale('en').format('h:mm a').toUpperCase()} - {moment(p.dataEnd).locale('en').format('h:mm a').toUpperCase()}
-                            </Card.Text>
-                            <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                                <img src={map} alt="Near me" className="icon"/> {p.address}
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-
-                )}
-
-                <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
-                    <Modal.Dialog>
-
-
-                        <Modal.Header closeButton>
-                            <Card style={{backgroundColor:"#4b7bf8", color:"white"}}>
-                                <Card.Body>
-                                    <Card.Text className="event-month-popup" style={{textAlign: 'center'}}>                      {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('MMM').toUpperCase())}
-                                    </Card.Text>
-                                    <Card.Text className="event-day-popup" style={{textAlign: 'center'}}>                      {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D').toUpperCase())}
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                            <Modal.Title className="modal-title-1">{prenotazione.filter(p => p.key===state.id).map(m=>m.titolo)}</Modal.Title>
-                        </Modal.Header>
-
-                        <Modal.Body className="modal-subtitle-1">
-
-                            <img src={popupsport} style={{marginBottom:"0.5em", width:"22em"}}/>
-
-                            <p className="event-subsubtitle-3"> <img src={clock} className="icon"/> {prenotazione.filter(p => p.key===state.id).map(m=>m.address)}</p>
-                            <p className="event-subsubtitle-3"> <img src={map} className="icon"/> {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D MMM YYYY'))}, {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('h:mm a'))} - {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataEnd).locale('en').format('h:mm a'))}</p>
-                            <p className="about">About</p>
-                            <p>{prenotazione.filter(p => p.key===state.id).map(m=>m.about)}</p>
-                        </Modal.Body>
-
-                        <Modal.Footer>
-                            <Button style={{fontSize:"13px",borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
-                                    onClick={handleClose}
-                            >Edit</Button>
-                            <Button style={{fontSize:"13px", borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
-                                    onClick={handleClose}
-                            >Delete</Button>
-
-                        </Modal.Footer>
-                    </Modal.Dialog>
-                </Modal>
-
-            </Container>
-            {/*<NavigbarP />
-
-                <Container className="bg2">
-
-                    <Card className="post" style={{ width: '100%', height: '8rem',  marginTop: '0em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                        <Card.Img  src={profile} style={{height: '8em', width: '8rem'}} />
-                        {/*<Card.Img  src={ribbon} className="ribbon" />
-                        <Card.Body>
-                            <Card.Title className="name" style={{textAlign: 'left'}}>Sophia_Wilkinson</Card.Title>
-                            <Card.Text className="connections" style={{textAlign: 'left'}}>
-                                Silver, 356 connections
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-
-
-                </Container>
-            <Container style={{marginTop:"15em"}}>
-                <NavbarProfile events={eventsp}
-                               blogs={blogsp}/>
-            </Container>*/}
-            {/*TODO: card eventi*/}
-            {/*  <Row className="justify-content-md-center">
-
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
-                        <Link to={"/home"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>HOME</span></Link>
-                    </Button>
-                </Col>
-
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
-                        <Link to={"/calendar"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>CALENDAR</span></Link>
-                    </Button>
-                </Col>
-
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"danger"} style={{marginBottom:"1em"}}>
-                        <Link to={"/profile"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>PROFILE</span></Link>
-                    </Button>
-                </Col>
-
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
-                        <Link to={"/settings"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>SETTINGS</span></Link>
-                    </Button>
-                </Col>
-            </Row>*/}
-            {/*<NavigbarBottom home={homeunselected} calendar={calendar} profile={profileselected} settings={settings}/>*/}
 
         </Container>
     )

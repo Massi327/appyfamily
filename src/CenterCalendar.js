@@ -52,6 +52,7 @@ import centercalendarselected from "./images/Profile_calendar_selected.svg"
 import threedots from "./images/ph_dots-three-vertical-bold.svg";
 import centerprofileimage from "./images/cus_torino.svg"
 import {useLocalStorage} from "./useLocalStorage";
+import centerforums from "./images/Profile_Forums_unselected.svg";
 
 
 export default function CenterCalendar(){
@@ -103,7 +104,7 @@ export default function CenterCalendar(){
                             </Col>
 
                             <Col>
-                                <Link to={"/centerblogs"}><span><img src={centerblogs} alt="Events" className="search"/></span></Link>
+                                <Link to={"/centerblogs"}><span><img src={centerforums} alt="Events" className="search"/></span></Link>
                             </Col>
 
                             <Col>
@@ -223,7 +224,7 @@ export default function CenterCalendar(){
                 </Modal.Dialog>
             </Modal>
 
-            <NavigbarBottom home={homeunselected} calendar={calendar} profile={profileselected} settings={settings}/>
+            <NavigbarBottom home={homeunselected} calendar={calendar} profile={profile} settings={settings}/>
 
         </Container>
     )

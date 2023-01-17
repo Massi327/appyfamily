@@ -36,6 +36,7 @@ import centerevents from "./images/Profile_events.svg"
 import centerblogsselected from "./images/Profile_blogs_selected.svg"
 import centercalendar from "./images/Profile_calendar.svg"
 import threedots from "./images/ph_dots-three-vertical-bold.svg";
+import centerforumsselected from "./images/Profile_Forums.svg";
 
 import centerprofileimage from "./images/cus_torino.svg"
 
@@ -92,7 +93,7 @@ export default function CenterBlogs(){
                             </Col>
 
                             <Col>
-                                <Link to={"/centerblogs"}><span><img src={centerblogsselected} alt="Events" className="search"/></span></Link>
+                                <Link to={"/centerblogs"}><span><img src={centerforumsselected} alt="Events" className="search"/></span></Link>
                             </Col>
 
                             <Col>
@@ -163,7 +164,7 @@ export default function CenterBlogs(){
 
 
             </Card>
-            <NavigbarBottom home={homeunselected} calendar={calendar} profile={profileselected} settings={settings}/>
+            <NavigbarBottom home={homeunselected} calendar={calendar} profile={profile} settings={settings}/>
 
             <Container style={{marginTop:"15em"}}>
                 <Button onClick={()=> console.log(state.prenotazioni)}>+</Button>
