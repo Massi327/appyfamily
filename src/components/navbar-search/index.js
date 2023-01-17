@@ -58,7 +58,7 @@ return  <Row className="cont">
                 </Col>
                 <Col xs={3} sm={12} md={3}>
 
-                    <Link to={"/blog"} style={{color: "white", textDecoration: "none"}}><span><img src={vforum} alt="Forum" className="search-icon"/></span></Link>
+                    <Link to={"/blogs"} style={{color: "white", textDecoration: "none"}}><span><img src={vforum} alt="Forum" className="search-icon"/></span></Link>
 
                 </Col>
                 <Col xs={3} sm={12} md={3}>
