@@ -138,7 +138,7 @@ export default function Home(){
             <Container style={{paddingTop:"15em"}}>
 
                 {cardhome.map( p =>
-                    <Card className="post" key={p.key} style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card className="post" key={p.key} style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}} onClick={()=> {handleShow(); dispatch(selected(p.key))}}>
                         <Card.Img className="cardimg" src={img.filter(f => f.key == p.img).map(c => c.img)} style={{height: '8em', width: '10rem', verticalAlign:'center'}} />
                         <Card.Body>
                             <Card.Text className="event-time-1">
@@ -167,30 +167,28 @@ export default function Home(){
 
                 <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
                     <Modal.Dialog>
-
-
                         <Modal.Header closeButton>
                             <Card style={{backgroundColor:"#4b7bf8", color:"white"}}>
                                 <Card.Body>
                                     <Card.Text className="event-month-popup" style={{textAlign: 'center'}}>
-                                        {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('MMM').toUpperCase())}
+                                        {cardhome.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('MMM').toUpperCase())}
                                     </Card.Text>
                                     <Card.Text className="event-day-popup" style={{textAlign: 'center'}}>
-                                        {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D').toUpperCase())}
+                                        {cardhome.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D').toUpperCase())}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
-                            <Modal.Title className="modal-title-1">{prenotazione.filter(p => p.key===state.id).map(m=>m.titolo)}</Modal.Title>
+                            <Modal.Title className="modal-title-1">{cardhome.filter(p => p.key===state.id).map(m=>m.titolo)}</Modal.Title>
                         </Modal.Header>
 
                         <Modal.Body className="modal-subtitle-1">
 
                             <img src={popupsport} style={{marginBottom:"0.5em", width:"22em"}}/>
 
-                            <p className="event-subsubtitle-3"> <img src={clock} className="icon"/> {prenotazione.filter(p => p.key===state.id).map(m=>m.address)}</p>
-                            <p className="event-subsubtitle-3"> <img src={map} className="icon"/> {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D MMM YYYY'))}, {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('h:mm a'))} - {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataEnd).locale('en').format('h:mm a'))}</p>
+                            <p className="event-subsubtitle-3"> <img src={clock} className="icon"/> {cardhome.filter(p => p.key===state.id).map(m=>m.address)}</p>
+                            <p className="event-subsubtitle-3"> <img src={map} className="icon"/> {cardhome.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D MMM YYYY'))}, {cardhome.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('h:mm a'))} - {cardhome.filter(p => p.key===state.id).map(m=>moment(m.dataEnd).locale('en').format('h:mm a'))}</p>
                             <p className="about">About</p>
-                            <p>{prenotazione.filter(p => p.key===state.id).map(m=>m.about)}</p>
+                            <p>{cardhome.filter(p => p.key===state.id).map(m=>m.about)}</p>
                         </Modal.Body>
 
                         <Modal.Footer>

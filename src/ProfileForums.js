@@ -1,7 +1,7 @@
 import {useContext, useEffect, useState} from "react";
 import {StateContext} from "./App";
 import {Link} from "react-router-dom";
-import {Button, Col, Container, Nav, Navbar, Row, Card, Modal, CardGroup} from "react-bootstrap";
+import {Button, Col, Container, Nav, Navbar, Row, Card, Modal, CardGroup, Accordion} from "react-bootstrap";
 import NavigbarBottom from "./components/navbar-bottom";
 import NavigbarP from "./components/navbar-profile";
 import eventsselected from "./images/Events-selezionato.svg";
@@ -44,32 +44,18 @@ import centerforumsselected from "./images/Profile_Forums.svg";
 import notif from "./images/notifications-icon.svg";
 import message from "./images/messages-icon.svg";
 import help from "./images/help-icon.svg";
+import profile2 from "./images/profile2.svg";
+import profile1 from "./images/profile1.svg";
+import profile4 from "./images/profile4.svg";
+import {useAccordionButton} from "react-bootstrap/AccordionButton";
 
 export default function ProfileForums(){
 
     const [state,dispatch] = useContext(StateContext)
 
-    const [prenotazione, setPrenotazione] = useState(() => {
-        const prenotazione = JSON.parse(localStorage.getItem('prenotazioni'));
-        return prenotazione} )
-
-    let events = [];
-    prenotazione.map(p => {
-        let event={
-            key: p.key,
-            titolo: p.titolo,
-            dataStart: moment(p.dataStart,'YYYY-MM-DD, hh:mm').toDate(),
-            dataEnd: moment(p.dataEnd,'YYYY-MM-DD, hh:mm').toDate(),
-            address: p.address,
-            about: p.about,
-            categoria: p.categoria
-        }
-        events.push(event)
-    })
-
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const [forum, setForum] = useState(() => {
+        const forum = JSON.parse(localStorage.getItem('forums'));
+        return forum || state.forums; } )
 
     return(
         <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', top:'5em'}}>
@@ -114,124 +100,130 @@ export default function ProfileForums(){
                         </Row>
                     </Container>
                 </CardHeader>
+            </Card>
 
-                <Card className="post" style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                    <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem', verticalAlign:'center'}} />
-                    <Card.Body>
+            {forum.slice(0).reverse().map( f =>
 
-                        <Card.Text className="event-time-1">
-                            <Row>
-                                <Col>
-                                    <h5 style={{textAlign:"left"}}>JAN 7 • 10AM </h5>
-                                </Col>
-                                <Col xs={2}>
-                                    <img src={threedots} style={{textAlign:"right"}}/>
-                                </Col>
-                            </Row>
-                        </Card.Text>
-                        <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Play in the Park</Card.Title>
-                        <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
-                            Hosted by the Muse Th.
-                        </Card.Text>
-                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                            <img src={clock} alt="Near me" className="icon"/> 7 Jan 2023, 10AM - 11AM
-                        </Card.Text>
-                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                            <img src={map} alt="Near me" className="icon"/> 112 Barrack Street, NR3 1TX, UK
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
+                <Accordion>
+                    <Card>
+                        <Card.Header style={{minHeight:"4.5em"}}>
+                            <Card.Text className="blog-title" style={{textAlign: 'left'}}>{f.titolo}</Card.Text>
 
-
-                <Card className="post" style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                    <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem', verticalAlign:'center'}} />
-                    <Card.Body>
-
-                        <Card.Text className="event-time-1">
-                            <Row>
-                                <Col>
-                                    <h5 style={{textAlign:"left"}}>JAN 7 • 10AM </h5>
-                                </Col>
-                                <Col xs={2}>
-                                    <img src={threedots} style={{textAlign:"right"}}/>
-                                </Col>
-                            </Row>
-                        </Card.Text>
-                        <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Play in the Park</Card.Title>
-                        <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
-                            Hosted by the Muse Th.
-                        </Card.Text>
-                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                            <img src={clock} alt="Near me" className="icon"/> 7 Jan 2023, 10AM - 11AM
-                        </Card.Text>
-                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                            <img src={map} alt="Near me" className="icon"/> 112 Barrack Street, NR3 1TX, UK
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-
-
-                <CardGroup>
-
-                    <Card className="post" style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                        <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem', verticalAlign:'center'}} />
-                        <Card.Body>
-
-                            <Card.Text className="event-time-1">
-                                <Row>
-                                    <Col>
-                                        <h5 style={{textAlign:"left"}}>JAN 7 • 10AM </h5>
+                            <Card.Text>
+                                <Row style={{height:"1em"}}>
+                                    <Col  className="subtitle-connections" style={{textAlign:"left"}}>{f.about}
                                     </Col>
-                                    <Col xs={2}>
-                                        <img src={threedots} style={{textAlign:"right"}}/>
+                                </Row >
+                                <Row style={{height:"1em"}}>
+                                    <Col xs={4}>
+
+                                    </Col>
+                                    <Col xs={3}>
+                                        <Link className="reply">Reply</Link>
+                                    </Col>
+                                    <Col xs={5}>
+                                        <CustomToggle eventKey="0">View Replies</CustomToggle>
                                     </Col>
                                 </Row>
                             </Card.Text>
-                            <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Play in the Park</Card.Title>
-                            <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
-                                Hosted by the Muse Th.
-                            </Card.Text>
-                            <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                                <img src={clock} alt="Near me" className="icon"/> 7 Jan 2023, 10AM - 11AM
-                            </Card.Text>
-                            <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                                <img src={map} alt="Near me" className="icon"/> 112 Barrack Street, NR3 1TX, UK
-                            </Card.Text>
-                        </Card.Body>
+                        </Card.Header>
+                        <Accordion.Collapse eventKey="0">
+                            <Card.Body><Card className="people" style={{marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"-1em", flexDirection: 'row'}}>
+                                <Card.Img  src={profile2} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+
+                                <Card.Body>
+                                    <Card.Text className="blog-title" style={{textAlign: 'left'}}>Use a hot water bottle</Card.Text>
+
+                                    <Card.Text>
+                                        <Row style={{height:"1em"}}>
+                                            <Col  className="subtitle-connections" style={{textAlign:"left"}}>
+                                                3 weeks ago • Sullivan Jayden
+                                            </Col>
+                                        </Row>
+                                        <Row style={{height:"1em", marginTop:"-0.1em"}}>
+                                            <Col xs={7}>
+
+                                            </Col>
+                                            <Col xs={3}>
+
+                                            </Col>
+                                        </Row>
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+
+                                <Card className="people" style={{marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"0.5em", flexDirection: 'row'}}>
+                                    <Card.Img  src={profile1} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                                    <Card.Body>
+                                        <Card.Text className="blog-title" style={{textAlign: 'left'}}>Have you tried medicines?</Card.Text>
+                                        <Card.Text>
+                                            <Row style={{height:"1em"}}>
+                                                <Col  className="subtitle-connections" style={{textAlign:"left"}}>
+                                                    2 weeks ago • Mia Johnson
+                                                </Col>
+                                            </Row>
+                                            <Row style={{height:"1em", marginTop:"-0.1em"}}>
+                                                <Col xs={7}>
+
+                                                </Col>
+                                                <Col xs={3}>
+
+                                                </Col>
+                                            </Row>
+                                        </Card.Text>
+                                    </Card.Body>
+                                </Card>
+
+
+
+                                <Card className="people" style={{marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"0.5em", flexDirection: 'row'}}>
+                                    <Card.Img  src={profile4} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                                    <Card.Body>
+                                        <Card.Text className="blog-title" style={{textAlign: 'left'}}>Are you feeding him/her?</Card.Text>
+                                        <Card.Text>
+                                            <Row style={{height:"1em"}}>
+                                                <Col  className="subtitle-connections" style={{textAlign:"left"}}>
+                                                    4 days ago • Clara May
+                                                </Col>
+                                            </Row>
+                                            <Row style={{height:"1em", marginTop:"-0.1em"}}>
+                                                <Col xs={7}>
+
+                                                </Col>
+                                                <Col xs={3}>
+
+                                                </Col>
+                                            </Row>
+                                        </Card.Text>
+                                    </Card.Body>
+                                </Card>
+
+                            </Card.Body>
+                        </Accordion.Collapse>
                     </Card>
 
-                </CardGroup>
-            </Card>
-            <NavigbarBottom home={homeunselected} calendar={calendar} profile={profileselected} settings={settings}/>
+                </Accordion>
 
-            <Container style={{marginTop:"15em"}}>
-                <Button onClick={()=> console.log(state.prenotazioni)}>+</Button>
-                {events.slice(0).reverse().map( p =>
-
-                    <Card className="post" key={p.key} style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}} onClick={()=> {handleShow(); dispatch(selected(p.key))}}>
-                        <Card.Img className="cardimg" src={imgcard4} style={{height: '8em', width: '10rem', verticalAlign:'center'}} />
-                        <Card.Body>
-                            <Card.Text className="event-time-1" style={{textAlign: 'left'}}>{moment(p.dataStart).locale('en').format('MMM D').toUpperCase()} • {moment(p.dataStart).locale('en').format('h:mm a').toUpperCase()}</Card.Text>
-                            <Card.Title className="event-title-1" style={{textAlign: 'left'}}>{p.titolo}</Card.Title>
-                            <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
-                                {p.about}
-                            </Card.Text>
-                            <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                                <img src={clock} alt="Near me" className="icon"/> {moment(p.dataStart).locale('en').format('D MMM YYYY')}, {moment(p.dataStart).locale('en').format('h:mm a').toUpperCase()} - {moment(p.dataEnd).locale('en').format('h:mm a').toUpperCase()}
-                            </Card.Text>
-                            <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                                <img src={map} alt="Near me" className="icon"/> {p.address}
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-
-                )}
-
-            </Container>
-
-
+            )}
 
         </Container>
     )
 
+}
+
+function CustomToggle({ children, eventKey }) {
+    const decoratedOnClick = useAccordionButton(eventKey, () =>
+        console.log('totally custom!'),
+    );
+
+    return (
+        <button
+            type="button"
+            className="reply"
+            style={{borderWidth:"0px", backgroundColor: "#f7f7f7"}}
+            onClick={decoratedOnClick}
+        >
+            {children}
+        </button>
+    );
 }

@@ -58,8 +58,6 @@ export default function Blogs(){
         const forum = JSON.parse(localStorage.getItem('forums'));
         return forum || state.forums; } )
 
-    const [open, setOpen] = useState(false);
-
     return(
 
         <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'70vh'}}>
