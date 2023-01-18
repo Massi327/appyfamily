@@ -26,8 +26,8 @@ export default function Addforum(){
 
     const navigate = useNavigate()
 
-    const [titolo,setTitolo] = useState(() => {const titolo = JSON.parse(localStorage.getItem('titolo'));return titolo || ""; } )
-    const [about,setAbout] = useState(() => {const about = JSON.parse(localStorage.getItem('about'));return about || ""; } )
+    const [titolo,setTitolo] = useState(() => {const titolo = JSON.parse(localStorage.getItem('title'));return titolo || ""; } )
+    const [about,setAbout] = useState(() => {const about = JSON.parse(localStorage.getItem('cosa'));return about || ""; } )
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -38,8 +38,8 @@ export default function Addforum(){
     const handleShowSecond = () => setShowSecond(true);
 
     useEffect(() => {
-        localStorage.setItem('titolo', JSON.stringify(titolo))
-        localStorage.setItem('about', JSON.stringify(about))
+        localStorage.setItem('title', JSON.stringify(titolo))
+        localStorage.setItem('cosa', JSON.stringify(about))
     }, [titolo, about])
 
     return(

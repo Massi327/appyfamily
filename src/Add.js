@@ -38,9 +38,10 @@ export default function Add(){
     const [date,setDate] = useState(new Date())
     const [oraI,setOraI] = useState('')
     const [oraF,setOraF] = useState('')
-    const [badge,setBadge] = useState('')
     const [categoria,setCategoria] = useState('')
     const calendariohidden = 'false';
+
+        const dataNow = moment(new Date()).format('YYYY-MM-DD, hh:mm a')
 
     const navigate = useNavigate()
 
@@ -51,6 +52,10 @@ export default function Add(){
     const [show_second, setShowSecond] = useState(false);
     const handleCloseSecond = () => setShowSecond(false);
     const handleShowSecond = () => setShowSecond(true);
+
+    const [show_third, setShowThird] = useState(false);
+    const handleCloseThird = () => setShowThird(false);
+    const handleShowThird = () => setShowThird(true);
 
     const [dataIM,setDataIM] = useState('')
     const [dataFM,setDataFM] = useState('')
@@ -194,13 +199,13 @@ export default function Add(){
 
                                     if(state.c == 'false'){
                                         if(dataS.isBefore(moment()) || dataF.isBefore(moment())) {
-                                            setBadge('precedente')
+                                            handleShowThird()
                                         }else{
                                             handleShow()
                                         }
                                     }else if(state.c == 'true'){
                                         if(giornoI.isBefore(moment()) || giornoF.isBefore(moment())){
-                                            setBadge('precedente')
+                                            handleShowThird()
                                         }else{
                                             handleShow()
                                         }
@@ -281,7 +286,23 @@ export default function Add(){
                     </Modal>
 
 
-                    {badge=='precedente' ? <Alert variant={"danger"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>DATA PRECEDENTE!</Alert> : null}
+
+                        <Modal show={show_third} onHide={handleCloseThird} backdrop={"static"} centered>
+                            <Modal.Dialog>
+
+                                <Modal.Body className="modal-subtitle-1">
+                                    <p>Data Precedente, mettere una data successiva a {dataNow}</p>
+                                </Modal.Body>
+
+                                <Modal.Footer>
+                                    <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                            onClick={()=> {handleCloseThird()}}>
+                                        Ok
+                                    </Button>
+                                </Modal.Footer>
+                            </Modal.Dialog>
+                        </Modal>
+
 
                 </Col>
 

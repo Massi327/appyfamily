@@ -19,12 +19,13 @@ import {
     Row
 } from "react-bootstrap";
 import 'react-big-calendar/lib/css/react-big-calendar.css'
-import {addBooking, editBooking, selected, selectedSlot} from "./Action";
+import {addBooking, cancelBooking, editBooking, selected, selectedSlot} from "./Action";
 import {Link, useNavigate} from "react-router-dom";
 import NavigbarP from "./components/navbar-profile";
 import notif from "./images/notifications-icon.svg";
 import message from "./images/messages-icon.svg";
 import help from "./images/help-icon.svg";
+import {useLocalStorage} from "./useLocalStorage";
 
 const localizer = momentLocalizer(moment)
 
@@ -35,16 +36,24 @@ export default function EditAddEvent(){
         const prenotazioni = JSON.parse(localStorage.getItem('prenotazioni'));
         return prenotazioni || '' } )
 
-    const [address,setAddress] = useState(() => prenotazioni.filter(f => f.key == state.id).map(p => p.address))
-    const [titolo,setTitolo] = useState(() => prenotazioni.filter(f => f.key == state.id).map(p => p.titolo))
-    const [about,setAbout] = useState(() => prenotazioni.filter(f => f.key == state.id).map(p => p.about))
-    const [date,setDate] = useState(() => prenotazioni.filter(f => f.key == state.id).map(p => moment(p.dataStart, 'YYYY-MM-DD').format('yyyy-MM-DD')))
-    const [oraI,setOraI] = useState(() => prenotazioni.filter(f => f.key == state.id).map(p => moment(p.dataStart, ).format('hh:mm')))
-    const [oraF,setOraF] = useState(() => prenotazioni.filter(f => f.key == state.id).map(p => moment(p.dataEnd, ).format('hh:mm')))
-    const [badge,setBadge] = useState('')
-    const [categoria,setCategoria] = useState(() => prenotazioni.filter(f => f.key == state.id).map(p => p.categoria))
+    const [address,setAddress] = useLocalStorage('address', prenotazioni.filter(f => f.key == state.id).map(p => p.address))
+        //useState(() => prenotazioni.filter(f => f.key == state.id).map(p => p.address))
+    const [titolo,setTitolo] = useLocalStorage('titolo', prenotazioni.filter(f => f.key == state.id).map(p => p.titolo))
+        //useState(() => prenotazioni.filter(f => f.key == state.id).map(p => p.titolo))
+    const [about,setAbout] = useLocalStorage('about', prenotazioni.filter(f => f.key == state.id).map(p => p.about))
+        //useState(() => prenotazioni.filter(f => f.key == state.id).map(p => p.about))
+    const [date,setDate] = useLocalStorage('date', prenotazioni.filter(f => f.key == state.id).map(p => moment(p.dataStart, 'YYYY-MM-DD').format('yyyy-MM-DD')))
+        //useState(() => prenotazioni.filter(f => f.key == state.id).map(p => moment(p.dataStart, 'YYYY-MM-DD').format('yyyy-MM-DD')))
+    const [oraI,setOraI] = useLocalStorage('oraI', prenotazioni.filter(f => f.key == state.id).map(p => moment(p.dataStart).format('hh:mm')))
+        //useState(() => prenotazioni.filter(f => f.key == state.id).map(p => moment(p.dataStart).format('hh:mm')))
+    const [oraF,setOraF] = useLocalStorage('oraF', prenotazioni.filter(f => f.key == state.id).map(p => moment(p.dataEnd).format('hh:mm')))
+        //useState(() => prenotazioni.filter(f => f.key == state.id).map(p => moment(p.dataEnd).format('hh:mm')))
+    const [categoria,setCategoria] = useLocalStorage('cate', prenotazioni.filter(f => f.key == state.id).map(p => p.categoria))
+        //useState(() => prenotazioni.filter(f => f.key == state.id).map(p => p.categoria))
 
     const calendariohidden = 'false';
+
+    const dataNow = moment(new Date()).format('YYYY-MM-DD, hh:mm a')
 
     const navigate = useNavigate()
 
@@ -55,6 +64,10 @@ export default function EditAddEvent(){
     const [show_second, setShowSecond] = useState(false);
     const handleCloseSecond = () => setShowSecond(false);
     const handleShowSecond = () => setShowSecond(true);
+
+    const [show_third, setShowThird] = useState(false);
+    const handleCloseThird = () => setShowThird(false);
+    const handleShowThird = () => setShowThird(true);
 
     const [dataIM,setDataIM] = useState('')
     const [dataFM,setDataFM] = useState('')
@@ -84,7 +97,16 @@ export default function EditAddEvent(){
 
                         <Card className='form' style={{background: '#f5f5f5', paddingTop:"5em", color: "black", borderWidth: "0"}}>
                             <Card.Body style={{marginLeft:"1em", marginRight:"1em"}}>
-                                <CloseButton variant={'black'} onClick={() => {navigate('/calendar', {replace: true})}}/>
+                                <CloseButton variant={'black'} onClick={() => {
+                                    setTitolo('')
+                                    setAddress('')
+                                    setAbout('')
+                                    setCategoria('')
+                                    setDate('')
+                                    setOraI('')
+                                    setOraF('')
+                                    navigate(-1)
+                                   }}/>
                                 <Card.Title style={{fontSize: "30px", marginTop: "0.3em"}} className="title-2">Edit Event</Card.Title>
 
                                 <FormGroup style={{marginBottom: "10px", textAlign: "left"}}>
@@ -149,7 +171,7 @@ export default function EditAddEvent(){
 
                                 <Button style={{backgroundColor:"#eb506c", color:"white", borderWidth:"2px", borderColor:"#eb506c", borderRadius:"10px"}} disabled={bottoneDisabilitato(address, titolo, oraI, oraF, date, state.giorno, state.start, state.end, state.c)} variant='dark' onClick={() => {
 
-                                    let calendarDate = moment(date).format('YYYY-MM-DD')
+                                    let calendarDate = moment(date, 'YYYY-MM-DD').format('YYYY-MM-DD')
                                     let dataS=moment(calendarDate+', '+oraI,'YYYY-MM-DD, hh:mm a')
                                     let dataF=moment(calendarDate+', '+oraF,'YYYY-MM-DD, hh:mm a')
 
@@ -157,7 +179,8 @@ export default function EditAddEvent(){
                                     setDataFM(dataF)
 
                                         if(dataS.isBefore(moment()) || dataF.isBefore(moment())) {
-                                            setBadge('precedente')
+                                            dispatch(cancelBooking(state.id))
+                                            handleShowThird()
                                         }else{
                                             handleShow()
                                         }
@@ -220,8 +243,44 @@ export default function EditAddEvent(){
                             </Modal.Dialog>
                         </Modal>
 
+                        <Modal show={show_second} onHide={handleCloseSecond} backdrop={"static"} centered>
+                            <Modal.Dialog>
+
+                                <Modal.Body className="modal-subtitle-1">
+                                    <p>The event has been added</p>
+                                </Modal.Body>
+
+                                <Modal.Footer>
+                                    <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                            onClick={() => localStorage.setItem('prenotazioni', JSON.stringify(state.prenotazioni))}
+                                    >
+                                        <Link to={"/profile"}>
+                                            Ok
+                                        </Link>
+                                    </Button>
+                                </Modal.Footer>
+                            </Modal.Dialog>
+                        </Modal>
+
+
+
+                        <Modal show={show_third} onHide={handleCloseThird} backdrop={"static"} centered>
+                            <Modal.Dialog>
+
+                                <Modal.Body className="modal-subtitle-1">
+                                    <p>Data Precedente, mettere una data successiva a {dataNow}</p>
+                                </Modal.Body>
+
+                                <Modal.Footer>
+                                    <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                            onClick={()=> {handleCloseThird()}}>
+                                        Ok
+                                    </Button>
+                                </Modal.Footer>
+                            </Modal.Dialog>
+                        </Modal>
+
                     </Row>
-                    {badge=='precedente' ? <Alert variant={"danger"} style={{marginTop: "10px", marginBottom: "5px"}}><CloseButton style={{float:"left"}} onClick={() => setBadge('')}/>DATA PRECEDENTE!</Alert> : null}
 
                 </Col>
             </Row>

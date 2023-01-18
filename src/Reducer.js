@@ -142,8 +142,15 @@ export function Reducer(state,action){
 
         case CANCEL_BOOKNG:
 
+            let prenota = JSON.parse(localStorage.getItem('prenotazioni'))
             let arrayp = [...state.prenotazioni]
-            let arrayC= arrayp.filter(f => f.key !== action.id)
+            let arrayC = []
+
+            if(prenota != null){
+                if (state.prenotazioni.length<3 ){
+                    arrayC = prenota.filter(f => f.key !== action.id)
+                }
+            }else{arrayC= arrayp.filter(f => f.key !== action.id)}
 
             return {
                 ...state,
