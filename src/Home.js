@@ -51,6 +51,49 @@ export default function Home(){
 
     const [state,dispatch] = useContext(StateContext)
 
+    const cardh = [
+        {   key: 300,
+            titolo:'Play in the Park',
+            dataStart:moment('2023-02-02, 10:00','YYYY-MM-DD, hh:mm'),
+            dataEnd:moment('2023-02-02, 11:00','YYYY-MM-DD, hh:mm'),
+            address:'112 Barrack Street, NR3 1TX, UK',
+            about:'Hosted by the Muse Th.',
+            categoria: 'Esterno',
+            img: 'imgcard1'
+        },
+        {   key: 301,
+            titolo:'Music therapy',
+            dataStart:moment('2023-02-02, 17:00','YYYY-MM-DD, hh:mm'),
+            dataEnd:moment('2023-02-02, 18:00','YYYY-MM-DD, hh:mm'),
+            address:'112 Barrack Street, NR3 1TX, UK',
+            about:'Hosted by Color Notes',
+            categoria: 'Esterno',
+            img: 'imgcard2'
+        },
+        {   key: 302,
+            titolo:'Joe\'s Party',
+            dataStart:moment('2023-02-03, 17:00','YYYY-MM-DD, hh:mm'),
+            dataEnd:moment('2023-02-03, 20:00','YYYY-MM-DD, hh:mm'),
+            address:'113 Flams Close, CB4 2TY, UK',
+            about:'Hosted by the Mia Johnson',
+            categoria: 'Esterno',
+            img: 'imgcard5'
+        },
+        {   key: 303,
+            titolo:'Soccer U10',
+            dataStart:moment('2023-02-04, 20:00','YYYY-MM-DD, hh:mm'),
+            dataEnd:moment('2023-02-04, 21:00','YYYY-MM-DD, hh:mm'),
+            address:'13 Congo Street, PT3 1MX, UK',
+            about:'Hosted by the MegaSport',
+            categoria: 'Esterno',
+            img: 'imgcard4'
+        },
+    ]
+
+    const img = [{key:'imgcard1', img: imgcard1}, {key:'imgcard2', img: imgcard2}, {key:'imgcard5', img: imgcard5}, {key:'imgcard4', img: imgcard4}]
+
+    const [cardhome, setCardhome] = useLocalStorage('cardhome', cardh)
+
     const [prenotazione, setPrenotazione] = useLocalStorage('prenotazioni', state.prenotazioni)
     const [forum, setForum] = useLocalStorage('forums', state.forums)
 
@@ -94,6 +137,34 @@ export default function Home(){
 
             <Container style={{paddingTop:"15em"}}>
 
+                {cardhome.map( p =>
+                    <Card className="post" key={p.key} style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                        <Card.Img className="cardimg" src={img.filter(f => f.key == p.img).map(c => c.img)} style={{height: '8em', width: '10rem', verticalAlign:'center'}} />
+                        <Card.Body>
+                            <Card.Text className="event-time-1">
+                                <Row>
+                                    <Col>
+                                        <h5 style={{textAlign:"left"}}>{moment(p.dataStart).locale('en').format('MMM D').toUpperCase()} • {moment(p.dataStart).locale('en').format('h:mm a').toUpperCase()}</h5>
+                                    </Col>
+                                    <Col xs={2}>
+                                        <img src={threedots} style={{textAlign:"right"}}/>
+                                    </Col>
+                                </Row>
+                            </Card.Text>
+                            <Card.Title className="event-title-1" style={{textAlign: 'left'}}>{p.titolo}</Card.Title>
+                            <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
+                                {p.about}
+                            </Card.Text>
+                            <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                                <img src={clock} alt="Near me" className="icon"/> {moment(p.dataStart).locale('en').format('D MMM YYYY')}, {moment(p.dataStart).locale('en').format('h:mm a').toUpperCase()} - {moment(p.dataEnd).locale('en').format('h:mm a').toUpperCase()}
+                            </Card.Text>
+                            <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                                <img src={map} alt="Near me" className="icon"/> {p.address}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                )}
+
                 <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
                     <Modal.Dialog>
 
@@ -101,9 +172,11 @@ export default function Home(){
                         <Modal.Header closeButton>
                             <Card style={{backgroundColor:"#4b7bf8", color:"white"}}>
                                 <Card.Body>
-                                    <Card.Text className="event-month-popup" style={{textAlign: 'center'}}>                      {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('MMM').toUpperCase())}
+                                    <Card.Text className="event-month-popup" style={{textAlign: 'center'}}>
+                                        {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('MMM').toUpperCase())}
                                     </Card.Text>
-                                    <Card.Text className="event-day-popup" style={{textAlign: 'center'}}>                      {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D').toUpperCase())}
+                                    <Card.Text className="event-day-popup" style={{textAlign: 'center'}}>
+                                        {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D').toUpperCase())}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
@@ -133,108 +206,6 @@ export default function Home(){
                         </Modal.Footer>
                     </Modal.Dialog>
                 </Modal>
-
-            <Card className="post" style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem', verticalAlign:'center'}} />
-                <Card.Body>
-
-                    <Card.Text className="event-time-1">
-                        <Row>
-                            <Col>
-                                <h5 style={{textAlign:"left"}}>JAN 7 • 10AM </h5>
-                            </Col>
-                            <Col xs={2}>
-                                <img src={threedots} style={{textAlign:"right"}}/>
-                            </Col>
-                        </Row>
-                        </Card.Text>
-                        <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Play in the Park</Card.Title>
-                    <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
-                        Hosted by the Muse Th.
-                    </Card.Text>
-                    <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                        <img src={clock} alt="Near me" className="icon"/> 7 Jan 2023, 10AM - 11AM
-                    </Card.Text>
-                    <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                        <img src={map} alt="Near me" className="icon"/> 112 Barrack Street, NR3 1TX, UK
-                    </Card.Text>
-                </Card.Body>
-            </Card>
-
-                <Card className="post" style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                    <Card.Img className="cardimg" src={imgcard2} style={{height: '8em', width: '10rem'}} />
-                    <Card.Body>
-                        <Card.Text className="event-time-1" style={{textAlign: 'left'}}>JAN 7 • 5PM</Card.Text>
-                        <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Music therapy</Card.Title>
-                        <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
-                            Hosted by Color Notes
-                        </Card.Text>
-                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                            <img src={clock} alt="Near me" className="icon"/> 7 Jan 2023, 10AM - 11AM
-                        </Card.Text>
-                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                            <img src={map} alt="Near me" className="icon"/> 112 Barrack Street, NR3 1TX, UK
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-
-
-                <Card className="post" style={{height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                    <Card.Img className="cardimg" src={imgcard5} style={{height: '8em', width: '10rem'}} />
-                    <Card.Body>
-                        <Card.Text className="event-time-1" style={{textAlign: 'left'}}>JAN 8 • 5PM</Card.Text>
-                        <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Joe's Party</Card.Title>
-                        <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
-                            Hosted by the Mia Johnson
-                        </Card.Text>
-                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                            <img src={clock} alt="Near me" className="icon"/> 7 Jan 2023, 5PM - 8PM
-                        </Card.Text>
-                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                            <img src={map} alt="Near me" className="icon"/> 113 Flams Close, CB4 2TY, UK
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-
-
-                <Card className="post" style={{height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                    <Card.Img className="cardimg" src={imgcard4} style={{height: '8em', width: '10rem'}} />
-                    <Card.Body>
-                        <Card.Text className="event-time-1" style={{textAlign: 'left'}}>JAN 7 • 10AM</Card.Text>
-                        <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Soccer U10</Card.Title>
-                        <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
-                            Hosted by the MegaSport
-                        </Card.Text>
-                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                            <img src={clock} alt="Near me" className="icon"/> 7 Jan 2023, 8PM - 9PM
-                        </Card.Text>
-                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                            <img src={map} alt="Near me" className="icon"/> 13 Congo Street, PT3 1MX, UK
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-
-
-                <Card className="post" style={{height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                    <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem'}} />
-                    <Card.Body>
-                        <Card.Text className="event-time-1" style={{textAlign: 'left'}}>JAN 7 • 10AM</Card.Text>
-                        <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Play in the Park</Card.Title>
-                        <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
-                            Hosted by the Muse Th.
-                        </Card.Text>
-                        <Card.Text className="event-subsubtitle-1" style={{textAlign: 'left'}}>
-                            Public
-                        </Card.Text>
-                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                            <img src={clock} alt="Near me" className="icon"/> 7 Jan 2023, 10AM - 11AM
-                        </Card.Text>
-                        <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                            <img src={map} alt="Near me" className="icon"/> 112 Barrack Street, NR3 1TX, UK
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-
 
 
         </Container>
