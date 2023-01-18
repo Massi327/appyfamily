@@ -229,19 +229,19 @@ export default function Profile(){
                 <Modal.Dialog>
 
                     <Modal.Body className="modal-subtitle-1">
-                        <p>Cosa vuoi aggiungere?</p>
+                        <p>What do you wish to add?</p>
                     </Modal.Body>
 
                     <Modal.Footer>
                         <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
                                 onClick={()=> { handleCloseFourth();}}>
-                            <Link to={"/add"}>
-                                Evento al cale
+                            <Link to={"/add"} style={{color:"#eb506c", textDecoration: "none"}}>
+                                Event
                             </Link>
                         </Button>
                         <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
                                 onClick={()=> { handleCloseFourth();}}>
-                            <Link to={"/addforum"}>
+                            <Link to={"/addforum"} style={{color:"#eb506c", textDecoration: "none"}}>
                                 Forum
                             </Link>
                         </Button>

@@ -24,8 +24,8 @@ const NavigbarP =  ({vnotifications, vmessages, vtutorial}) => {
 
             <Navbar className="navigbar" style={{overflow: "hidden", top: "0px", width: "100%"}}>
                 <Container>
-                    <span><img src={logo} className="logo"/></span>
-                    <Navbar.Brand className="title"  style={{color:"white"}} href="/home"> APPy Family</Navbar.Brand>
+                    <Link to={"/home"}><img src={logo} className="logo" /></Link>
+                    <Navbar.Brand className="title"  style={{color:"white", marginLeft:"-2em"}} href="/home"> APPy Family</Navbar.Brand>
                     <Nav>
                         <Nav.Link className="notifications" style={{textAlign: "right"}} href="/notifications"><img src={vnotifications} alt="Notifications" className="icon"/></Nav.Link>
                         <Nav.Link style={{textAlign: "right"}} href="/messages"><img src={vmessages} alt="Messages" className="icon"/></Nav.Link>

@@ -161,8 +161,8 @@ export default function CenterCalendar(){
                             <Card style={{backgroundColor:"orange", margin:"0.5em"}}>
                                 <CardHeader style={{height:"3em"}}><Card.Title className="course-title">Dance Lesson</Card.Title></CardHeader>
                                 <p style={{paddingTop:"0.3em", marginBottom:"-0.1em"}}>Monday 7PM - 8PM</p>
-                                <p style={{paddingTop:"0.3em", marginBottom:"-0.1em"}}>Già aggiunto al calendario</p>
-                                <Button style={{margin:"0.5em", marginLeft:"13em"}} onClick={()=> handleShowSecond()}>Cancella dal Calendar</Button>
+                                <p style={{paddingTop:"0.3em", marginBottom:"-0.1em"}}>Added to Calendar</p>
+                                <Button style={{margin:"0.5em", marginLeft:"11em"}} onClick={()=> handleShowSecond()}>Delete from Calendar</Button>
                             </Card>
 
                             <Card style={{backgroundColor:"mediumaquamarine", margin:"0.5em"}}>
@@ -199,7 +199,7 @@ export default function CenterCalendar(){
                 <Modal.Dialog>
 
                     <Modal.Body className="modal-subtitle-1">
-                        <p>AGGIUNTO</p>
+                        <p>The class has been added to your Calendar</p>
                     </Modal.Body>
 
                     <Modal.Footer>
@@ -215,17 +215,17 @@ export default function CenterCalendar(){
                 <Modal.Dialog>
 
                     <Modal.Body className="modal-subtitle-1">
-                        <p>Vuoi cancellare?</p>
+                        <p>Do you wish to delete this class from your Calendar?</p>
                     </Modal.Body>
 
                     <Modal.Footer>
                         <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
                                 onClick={()=> {setControlloCorsi('true'); setControlloCorsiCancella('false'); setControlloPale('false'); handleCloseSecond(); handleShowThird()}}>
-                            Si
+                            Delete
                         </Button>
                         <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
                                 onClick={()=> handleCloseSecond()}>
-                            No
+                            Don't Delete
                         </Button>
                     </Modal.Footer>
                 </Modal.Dialog>
@@ -235,7 +235,7 @@ export default function CenterCalendar(){
                 <Modal.Dialog>
 
                     <Modal.Body className="modal-subtitle-1">
-                        <p>CANCELLATO</p>
+                        <p>The class has been deleted from the Calendar</p>
                     </Modal.Body>
 
                     <Modal.Footer>

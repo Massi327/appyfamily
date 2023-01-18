@@ -52,8 +52,9 @@ export default function Nearme(){
                         <Card.Text className="event-time-1">
                             <Row>
                                 <Col>
-                                    <h5 style={{textAlign:"left"}}>JAN 7 • 10AM </h5>
+                                    <h5 style={{textAlign:"left"}}>NOW </h5>
                                 </Col>
+                                <Col style={{backgroundColor:"#19bf97", marginTop:"-0.5em", marginBottom:"0.7em", color:"white"}}>2.5 km</Col>
                                 <Col xs={2}>
                                     <img src={threedots} style={{textAlign:"right"}}/>
                                 </Col>
@@ -75,7 +76,16 @@ export default function Nearme(){
                 <Card className="post" style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img className="cardimg" src={imgcard2} style={{height: '8em', width: '10rem'}} />
                     <Card.Body>
-                        <Card.Text className="event-time-1" style={{textAlign: 'left'}}>JAN 7 • 5PM</Card.Text>
+                        <Card.Text className="event-time-1">
+                            <Row>
+                            <Col>
+                                <h5 style={{textAlign:"left"}}>SOON </h5>
+                            </Col>
+                            <Col style={{backgroundColor:"#19bf97", marginTop:"-0.5em", marginBottom:"0.7em", color:"white"}}>1.5 km</Col>
+                            <Col xs={2}>
+                                <img src={threedots} style={{textAlign:"right"}}/>
+                            </Col>
+                        </Row></Card.Text>
                         <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Music therapy</Card.Title>
                         <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
                             Hosted by Color Notes
@@ -93,7 +103,17 @@ export default function Nearme(){
                 <Card className="post" style={{height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img className="cardimg" src={imgcard5} style={{height: '8em', width: '10rem'}} />
                     <Card.Body>
-                        <Card.Text className="event-time-1" style={{textAlign: 'left'}}>JAN 8 • 5PM</Card.Text>
+                        <Card.Text className="event-time-1">
+                            <Row>
+                                <Col>
+                                    <h5 style={{textAlign:"left"}}>SOON </h5>
+                                </Col>
+                                <Col style={{backgroundColor:"#19bf97", marginTop:"-0.5em", marginBottom:"0.7em", color:"white"}}>700m</Col>
+                                <Col xs={2}>
+                                    <img src={threedots} style={{textAlign:"right"}}/>
+                                </Col>
+                            </Row>
+                        </Card.Text>
                         <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Joe's Party</Card.Title>
                         <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
                             Hosted by the Mia Johnson
@@ -111,7 +131,17 @@ export default function Nearme(){
                 <Card className="post" style={{height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img className="cardimg" src={imgcard4} style={{height: '8em', width: '10rem'}} />
                     <Card.Body>
-                        <Card.Text className="event-time-1" style={{textAlign: 'left'}}>JAN 7 • 10AM</Card.Text>
+                        <Card.Text className="event-time-1">
+                            <Row>
+                                <Col>
+                                    <h5 style={{textAlign:"left"}}>TODAY</h5>
+                                </Col>
+                                <Col style={{backgroundColor:"#19bf97", marginTop:"-0.5em", marginBottom:"0.7em", color:"white"}}>5 km</Col>
+                                <Col xs={2}>
+                                    <img src={threedots} style={{textAlign:"right"}}/>
+                                </Col>
+                            </Row>
+                        </Card.Text>
                         <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Soccer U10</Card.Title>
                         <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
                             Hosted by the MegaSport
@@ -129,7 +159,17 @@ export default function Nearme(){
                 <Card className="post" style={{height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem'}} />
                     <Card.Body>
-                        <Card.Text className="event-time-1" style={{textAlign: 'left'}}>JAN 7 • 10AM</Card.Text>
+                        <Card.Text className="event-time-1">
+                            <Row>
+                                <Col>
+                                    <h5 style={{textAlign:"left"}}>TODAY </h5>
+                                </Col>
+                                <Col style={{backgroundColor:"#19bf97", marginTop:"-0.5em", marginBottom:"0.7em", color:"white"}}>2.5 km</Col>
+                                <Col xs={2}>
+                                    <img src={threedots} style={{textAlign:"right"}}/>
+                                </Col>
+                            </Row>
+                        </Card.Text>
                         <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Play in the Park</Card.Title>
                         <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
                             Hosted by the Muse Th.

@@ -19,6 +19,10 @@ import forums from "./images/Forums.svg"
 import profile2 from "./images/profile2.svg";
 import cusimage from "./images/CUS.svg"
 
+import artattic from "./images/artattic.svg"
+import musetheatre from "./images/musetheatre.svg"
+import bounce from "./images/bounce.svg"
+
 export default function Hashtags(){
 
     const [state,dispatch] = useContext(StateContext)
@@ -38,7 +42,7 @@ export default function Hashtags(){
             <Container style={{paddingTop:'16em'}}>
 
 
-                <Link to={"/centerevents"}>
+                <Link to={"/centerevents"} style={{textDecoration:"none"}}>
                 <Card className="people" style={{height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img  src={cusimage} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
@@ -51,31 +55,31 @@ export default function Hashtags(){
                 </Link>
 
                 <Card className="people" style={{height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                    <Card.Img  src={cusimage} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                    <Card.Img  src={musetheatre} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
-                        <Card.Text className="name-people" style={{textAlign: 'left'}}>CUS Torino</Card.Text>
+                        <Card.Text className="name-people" style={{textAlign: 'left'}}>The Muse Theatre</Card.Text>
                         <Card.Text className="subtitle-name" style={{textAlign: 'left'}}>
-                            Centro Universitario Sportivo
+                            Music School
                         </Card.Text>
                     </Card.Body>
                 </Card>
 
                 <Card className="people" style={{height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                    <Card.Img  src={cusimage} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                    <Card.Img  src={artattic} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
-                        <Card.Text className="name-people" style={{textAlign: 'left'}}>CUS Torino</Card.Text>
+                        <Card.Text className="name-people" style={{textAlign: 'left'}}>Art attic!</Card.Text>
                         <Card.Text className="subtitle-name" style={{textAlign: 'left'}}>
-                            Centro Universitario Sportivo
+                            Art center
                         </Card.Text>
                     </Card.Body>
                 </Card>
 
                 <Card className="people" style={{height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                    <Card.Img  src={cusimage} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                    <Card.Img  src={bounce} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
-                        <Card.Text className="name-people" style={{textAlign: 'left'}}>CUS Torino</Card.Text>
+                        <Card.Text className="name-people" style={{textAlign: 'left'}}>Bounce</Card.Text>
                         <Card.Text className="subtitle-name" style={{textAlign: 'left'}}>
-                            Centro Universitario Sportivo
+                            Gym
                         </Card.Text>
                     </Card.Body>
                 </Card>

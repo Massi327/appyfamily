@@ -43,6 +43,10 @@ import notif from "./images/notifications-icon.svg";
 import message from "./images/messages-icon.svg";
 import help from "./images/help-icon.svg";
 
+import fencing from "./images/Fencing.svg"
+import dance from "./images/Dance.svg"
+import longjump from "./images/LongJump.svg"
+
 export default function CenterEvents(){
 
     const [state,dispatch] = useContext(StateContext)
@@ -107,7 +111,7 @@ export default function CenterEvents(){
                 </CardHeader>
 
                 <Card className="post" style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                    <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem', verticalAlign:'center'}} />
+                    <Card.Img className="cardimg" src={longjump} style={{height: '8em', width: '10rem', verticalAlign:'center'}} />
                     <Card.Body>
 
                         <Card.Text className="event-time-1">
@@ -120,43 +124,43 @@ export default function CenterEvents(){
                                 </Col>
                             </Row>
                         </Card.Text>
-                        <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Play in the Park</Card.Title>
+                        <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Long jump race</Card.Title>
                         <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
-                            Hosted by the Muse Th.
+                            Hosted by CUS Torino
                         </Card.Text>
                         <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
                             <img src={clock} alt="Near me" className="icon"/> 7 Jan 2023, 10AM - 11AM
                         </Card.Text>
                         <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                            <img src={map} alt="Near me" className="icon"/> 112 Barrack Street, NR3 1TX, UK
+                            <img src={map} alt="Near me" className="icon"/> Regent Park, LN3 1TX, UK
                         </Card.Text>
                     </Card.Body>
                 </Card>
 
 
                 <Card className="post" style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                    <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem', verticalAlign:'center'}} />
+                    <Card.Img className="cardimg" src={dance} style={{height: '8em', width: '9rem', verticalAlign:'center', marginLeft:"0.5em"}} />
                     <Card.Body>
 
                         <Card.Text className="event-time-1">
                             <Row>
                                 <Col>
-                                    <h5 style={{textAlign:"left"}}>JAN 7 • 10AM </h5>
+                                    <h5 style={{textAlign:"left"}}>DEC 20 • 10AM </h5>
                                 </Col>
                                 <Col xs={2}>
                                     <img src={threedots} style={{textAlign:"right"}}/>
                                 </Col>
                             </Row>
                         </Card.Text>
-                        <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Play in the Park</Card.Title>
+                        <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Dance with us</Card.Title>
                         <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
-                            Hosted by the Muse Th.
+                            Hosted by CUS Torino
                         </Card.Text>
                         <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
                             <img src={clock} alt="Near me" className="icon"/> 7 Jan 2023, 10AM - 11AM
                         </Card.Text>
                         <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                            <img src={map} alt="Near me" className="icon"/> 112 Barrack Street, NR3 1TX, UK
+                            <img src={map} alt="Near me" className="icon"/> 12 Blue Street, BN3 6IX, UK
                         </Card.Text>
                     </Card.Body>
                 </Card>
@@ -165,28 +169,28 @@ export default function CenterEvents(){
                 <CardGroup>
 
                     <Card className="post" style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                        <Card.Img className="cardimg" src={imgcard1} style={{height: '8em', width: '10rem', verticalAlign:'center'}} />
+                        <Card.Img className="cardimg" src={fencing} style={{height: '8em', width: '9rem', verticalAlign:'center', marginLeft:"0.5em", marginTop:'-0.5em'}} />
                         <Card.Body>
 
                             <Card.Text className="event-time-1">
                                 <Row>
                                     <Col>
-                                        <h5 style={{textAlign:"left"}}>JAN 7 • 10AM </h5>
+                                        <h5 style={{textAlign:"left"}}>NOV 3 • 6PM </h5>
                                     </Col>
                                     <Col xs={2}>
                                         <img src={threedots} style={{textAlign:"right"}}/>
                                     </Col>
                                 </Row>
                             </Card.Text>
-                            <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Play in the Park</Card.Title>
+                            <Card.Title className="event-title-1" style={{textAlign: 'left'}}>Dance with us</Card.Title>
                             <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
-                                Hosted by the Muse Th.
+                                Hosted by CUS Torino
                             </Card.Text>
                             <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
                                 <img src={clock} alt="Near me" className="icon"/> 7 Jan 2023, 10AM - 11AM
                             </Card.Text>
                             <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                                <img src={map} alt="Near me" className="icon"/> 112 Barrack Street, NR3 1TX, UK
+                                <img src={map} alt="Near me" className="icon"/> 12 Blue Street, BN3 6IX, UK
                             </Card.Text>
                         </Card.Body>
                     </Card>

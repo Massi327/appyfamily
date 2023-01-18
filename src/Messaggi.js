@@ -36,7 +36,7 @@ export default function Notifiche(){
                     <Card.Body>
                         <Card.Text className="name-people" style={{textAlign: 'left'}}>Gina_Martin</Card.Text>
                         <Card.Text className="subtitle-random" style={{textAlign: 'left'}}>
-                            Hello Sohpia! I'd like to know more...
+                            Hello Sophia! I'd like to know more...
                         </Card.Text>
                     </Card.Body>
                 </Card>
@@ -57,7 +57,7 @@ export default function Notifiche(){
                     <Card.Body>
                         <Card.Text className="name-people" style={{textAlign: 'left'}}>Clara_May_92</Card.Text>
                         <Card.Text className="subtitle-random" style={{textAlign: 'left'}}>
-                            Amazing!See you there!
+                            Amazing! See you there!
                         </Card.Text>
                     </Card.Body>
                 </Card>

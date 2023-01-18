@@ -1,7 +1,7 @@
 import {useContext, useEffect, useState} from "react";
 import {StateContext} from "./App";
 import {Link} from "react-router-dom";
-import {Button, Col, Container, Nav, Navbar, Row, Card, Modal, CardGroup} from "react-bootstrap";
+import {Button, Col, Container, Nav, Navbar, Row, Card, Modal, CardGroup, Accordion} from "react-bootstrap";
 import NavigbarBottom from "./components/navbar-bottom";
 import NavigbarP from "./components/navbar-profile";
 import eventsselected from "./images/Events-selezionato.svg";
@@ -42,6 +42,29 @@ import centerprofileimage from "./images/cus_torino.svg"
 import notif from "./images/notifications-icon.svg";
 import message from "./images/messages-icon.svg";
 import help from "./images/help-icon.svg";
+import profile2 from "./images/profile2.svg";
+import profile1 from "./images/profile1.svg";
+import profile4 from "./images/profile4.svg";
+import {useAccordionButton} from "react-bootstrap/AccordionButton";
+import cusimage from "./images/CUS.svg"
+
+
+function CustomToggle({ children, eventKey }) {
+    const decoratedOnClick = useAccordionButton(eventKey, () =>
+        console.log('totally custom!'),
+    );
+
+    return (
+        <button
+            type="button"
+            className="reply"
+            style={{borderWidth:"0px", backgroundColor: "#f7f7f7"}}
+            onClick={decoratedOnClick}
+        >
+            {children}
+        </button>
+    );
+}
 
 export default function CenterBlogs(){
 
@@ -107,59 +130,282 @@ export default function CenterBlogs(){
                 </CardHeader>
 
 
-            <CardGroup>
-                <Card className="people" style={{ height: '6.5rem', marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                    <Card.Body>
-                        <Card.Text className="blog-title" style={{textAlign: 'left'}}>Activity ideas for my 6 months old child during long car trips?</Card.Text>
+            <CardGroup style={{textAlign:"left"}}>
+                <Card.Text style={{ paddingLeft:"1em", marginBottom:"-0em", marginTop:"1em", color:"white", backgroundColor:"#4b7bf8"}}>Cus Torino replied to this forum</Card.Text>
+                <Accordion>
+                    <Card>
+                        <Card.Header style={{minHeight:"4.5em"}}>
+                            <Card.Text className="blog-title" style={{textAlign: 'left'}}>Do kids need special shoes for tennis?</Card.Text>
 
-                        <Card.Text>
-                            <Row style={{height:"1em"}}>
-                                <Col  xs={9} className="subtitle-connections" style={{textAlign:"left"}}>
-                                    2 weeks ago • Sophia Wilkinson
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={4}>
+                            <Card.Text>
+                                <Row style={{height:"1em"}}>
+                                    <Col  className="subtitle-connections" style={{textAlign:"left"}}>2 weeks ago • Mia Johnson
+                                    </Col>
+                                </Row >
+                                <Row style={{height:"1em"}}>
+                                    <Col xs={4}>
 
-                                </Col>
-                                <Col xs={3}>
-                                    <Link className="reply">Reply</Link>
-                                </Col>
-                                <Col xs={5}>
-                                    <Link className="reply">View 7 replies</Link>
-                                </Col>
-                            </Row>
-                        </Card.Text>
-
-                    </Card.Body>
-                </Card>
+                                    </Col>
+                                    <Col xs={3}>
+                                        <Link className="reply">Reply</Link>
+                                    </Col>
+                                    <Col xs={5}>
+                                        <CustomToggle eventKey="0">View Replies</CustomToggle>
+                                    </Col>
+                                </Row>
+                            </Card.Text>
+                        </Card.Header>
 
 
-                <Card className="people" style={{ height: '6.5rem', marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                    <Card.Body>
-                        <Card.Text className="blog-title" style={{textAlign: 'left'}}>Activity ideas for my 6 months old child during long car trips?</Card.Text>
+                        <Accordion.Collapse eventKey="0">
+                            <Card.Body><Card className="people" style={{marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"-1em", flexDirection: 'row'}}>
+                                <Card.Img  src={cusimage} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
 
-                        <Card.Text>
-                            <Row style={{height:"1em"}}>
-                                <Col  xs={9} className="subtitle-connections" style={{textAlign:"left"}}>
-                                    2 weeks ago • Sophia Wilkinson
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={4}>
+                                <Card.Body>
+                                    <Card.Text className="blog-title" style={{textAlign: 'left'}}>Yes they do</Card.Text>
 
-                                </Col>
-                                <Col xs={3}>
-                                    <Link className="reply">Reply</Link>
-                                </Col>
-                                <Col xs={5}>
-                                    <Link className="reply">View 7 replies</Link>
-                                </Col>
-                            </Row>
-                        </Card.Text>
+                                    <Card.Text>
+                                        <Row style={{height:"1em"}}>
+                                            <Col  className="subtitle-connections" style={{textAlign:"left"}}>
+                                                2 weeks ago • CUS Torino
+                                            </Col>
+                                        </Row>
+                                        <Row style={{height:"1em", marginTop:"-0.1em"}}>
+                                            <Col xs={7}>
 
-                    </Card.Body>
-                </Card>
+                                            </Col>
+                                            <Col xs={3}>
+
+                                            </Col>
+                                        </Row>
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+
+                                <Card className="people" style={{marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"0.5em", flexDirection: 'row'}}>
+                                    <Card.Img  src={profile1} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                                    <Card.Body>
+                                        <Card.Text className="blog-title" style={{textAlign: 'left'}}>try Decathlon</Card.Text>
+                                        <Card.Text>
+                                            <Row style={{height:"1em"}}>
+                                                <Col  className="subtitle-connections" style={{textAlign:"left"}}>
+                                                    2 weeks ago • Mia Johnson
+                                                </Col>
+                                            </Row>
+                                            <Row style={{height:"1em", marginTop:"-0.1em"}}>
+                                                <Col xs={7}>
+
+                                                </Col>
+                                                <Col xs={3}>
+
+                                                </Col>
+                                            </Row>
+                                        </Card.Text>
+                                    </Card.Body>
+                                </Card>
+
+
+                                <Card className="people" style={{marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"0.5em", flexDirection: 'row'}}>
+                                    <Card.Img  src={profile4} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                                    <Card.Body>
+                                        <Card.Text className="blog-title" style={{textAlign: 'left'}}>or Sportsdirect</Card.Text>
+                                        <Card.Text>
+                                            <Row style={{height:"1em"}}>
+                                                <Col  className="subtitle-connections" style={{textAlign:"left"}}>
+                                                    4 days ago • Clara May
+                                                </Col>
+                                            </Row>
+                                            <Row style={{height:"1em", marginTop:"-0.1em"}}>
+                                                <Col xs={7}>
+
+                                                </Col>
+                                                <Col xs={3}>
+
+                                                </Col>
+                                            </Row>
+                                        </Card.Text>
+                                    </Card.Body>
+                                </Card>
+
+                            </Card.Body>
+                        </Accordion.Collapse>
+                    </Card>
+
+                </Accordion>
+
+
+                <Card.Text style={{ paddingLeft:"1em", marginBottom:"-0em", marginTop:"1em", color:"white", backgroundColor:"#4b7bf8"}}>Cus Torino replied to this forum</Card.Text>
+                <Accordion>
+                    <Card>
+                        <Card.Header style={{minHeight:"4.5em"}}>
+                            <Card.Text className="blog-title" style={{textAlign: 'left'}}>When is the women 10km?</Card.Text>
+
+                            <Card.Text>
+                                <Row style={{height:"1em"}}>
+                                    <Col  className="subtitle-connections" style={{textAlign:"left"}}>1 year ago • Jade Lee
+                                    </Col>
+                                </Row >
+                                <Row style={{height:"1em"}}>
+                                    <Col xs={4}>
+
+                                    </Col>
+                                    <Col xs={3}>
+                                        <Link className="reply">Reply</Link>
+                                    </Col>
+                                    <Col xs={5}>
+                                        <CustomToggle eventKey="0">View Replies</CustomToggle>
+                                    </Col>
+                                </Row>
+                            </Card.Text>
+                        </Card.Header>
+
+
+                        <Accordion.Collapse eventKey="0">
+                            <Card.Body><Card className="people" style={{marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"-1em", flexDirection: 'row'}}>
+                                <Card.Img  src={cusimage} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+
+                                <Card.Body>
+                                    <Card.Text className="blog-title" style={{textAlign: 'left'}}>On Monday 8 March</Card.Text>
+
+                                    <Card.Text>
+                                        <Row style={{height:"1em"}}>
+                                            <Col  className="subtitle-connections" style={{textAlign:"left"}}>
+                                                2 weeks ago • CUS Torino
+                                            </Col>
+                                        </Row>
+                                        <Row style={{height:"1em", marginTop:"-0.1em"}}>
+                                            <Col xs={7}>
+
+                                            </Col>
+                                            <Col xs={3}>
+
+                                            </Col>
+                                        </Row>
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+
+                                <Card className="people" style={{marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"0.5em", flexDirection: 'row'}}>
+                                    <Card.Img  src={profile1} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                                    <Card.Body>
+                                        <Card.Text className="blog-title" style={{textAlign: 'left'}}>8 March</Card.Text>
+                                        <Card.Text>
+                                            <Row style={{height:"1em"}}>
+                                                <Col  className="subtitle-connections" style={{textAlign:"left"}}>
+                                                    2 weeks ago • Mia Johnson
+                                                </Col>
+                                            </Row>
+                                            <Row style={{height:"1em", marginTop:"-0.1em"}}>
+                                                <Col xs={7}>
+
+                                                </Col>
+                                                <Col xs={3}>
+
+                                                </Col>
+                                            </Row>
+                                        </Card.Text>
+                                    </Card.Body>
+                                </Card>
+
+
+
+
+                            </Card.Body>
+                        </Accordion.Collapse>
+                    </Card>
+
+                </Accordion>
+
+                <Card.Text style={{ paddingLeft:"1em", marginBottom:"-0em", marginTop:"1em", color:"white", backgroundColor:"#4b7bf8"}}>Cus Torino replied to this forum</Card.Text>
+                <Accordion>
+                    <Card>
+                        <Card.Header style={{minHeight:"4.5em"}}>
+                            <Card.Text className="blog-title" style={{textAlign: 'left'}}>Are there any dance courses for 3 year olds?</Card.Text>
+
+                            <Card.Text>
+                                <Row style={{height:"1em"}}>
+                                    <Col  className="subtitle-connections" style={{textAlign:"left"}}>2 years ago • Jennifer Mosby
+                                    </Col>
+                                </Row >
+                                <Row style={{height:"1em"}}>
+                                    <Col xs={4}>
+
+                                    </Col>
+                                    <Col xs={3}>
+                                        <Link className="reply">Reply</Link>
+                                    </Col>
+                                    <Col xs={5}>
+                                        <CustomToggle eventKey="0">View Replies</CustomToggle>
+                                    </Col>
+                                </Row>
+                            </Card.Text>
+                        </Card.Header>
+
+
+                        <Accordion.Collapse eventKey="0">
+                            <Card.Body><Card className="people" style={{marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"-1em", flexDirection: 'row'}}>
+                                <Card.Img  src={cusimage} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+
+                                <Card.Body>
+                                    <Card.Text className="blog-title" style={{textAlign: 'left'}}>We have a class that might interest you</Card.Text>
+
+                                    <Card.Text>
+                                        <Row style={{height:"1em"}}>
+                                            <Col  className="subtitle-connections" style={{textAlign:"left"}}>
+                                                2 weeks ago • CUS Torino
+                                            </Col>
+                                        </Row>
+                                        <Row style={{height:"1em", marginTop:"-0.1em"}}>
+                                            <Col xs={7}>
+
+                                            </Col>
+                                            <Col xs={3}>
+
+                                            </Col>
+                                        </Row>
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+
+
+                                <Card className="people" style={{marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"0.5em", flexDirection: 'row'}}>
+                                    <Card.Img  src={profile4} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                                    <Card.Body>
+                                        <Card.Text className="blog-title" style={{textAlign: 'left'}}>my daughter loves this course</Card.Text>
+                                        <Card.Text>
+                                            <Row style={{height:"1em"}}>
+                                                <Col  className="subtitle-connections" style={{textAlign:"left"}}>
+                                                    2 days ago • Clara May
+                                                </Col>
+                                            </Row>
+                                            <Row style={{height:"1em", marginTop:"-0.1em"}}>
+                                                <Col xs={7}>
+
+                                                </Col>
+                                                <Col xs={3}>
+
+                                                </Col>
+                                            </Row>
+                                        </Card.Text>
+                                    </Card.Body>
+                                </Card>
+
+                            </Card.Body>
+                        </Accordion.Collapse>
+                    </Card>
+
+                </Accordion>
+
+
+
+
+
+
+
+
+
+
+
 
 
             </CardGroup>
