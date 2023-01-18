@@ -90,8 +90,8 @@ export default function Calendario(){
         let event={
             id: p.key,
             title: p.titolo,
-            start: moment(p.dataStart,'YYYY-MM-DD, hh:mm').toDate(),
-            end: moment(p.dataEnd,'YYYY-MM-DD, hh:mm').toDate(),
+            start: moment(p.dataStart,'YYYY-MM-DD, hh:mm').add(1, 'hour').toDate(),
+            end: moment(p.dataEnd,'YYYY-MM-DD, hh:mm').add(1, 'hour').toDate(),
             categoria: p.categoria
         }
         events.push(event)
@@ -147,9 +147,7 @@ export default function Calendario(){
             <Container style={{marginTop:"7em", marginBottom:"5em"}}>
             <Row style={{zIndex:'-5'}}>
                 <Col sm={12} xs={12}>
-                    <Button onClick={()=>console.log(JSON.parse(state.prenotazioni))}>
-                        prenotazione
-                    </Button>
+
                     <Calendar
                         selectable
                         startAccessor='start'

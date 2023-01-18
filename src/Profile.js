@@ -58,8 +58,8 @@ export default function Profile(){
         let event={
             key: p.key,
             titolo: p.titolo,
-            dataStart: moment(p.dataStart,'YYYY-MM-DD, hh:mm').toDate(),
-            dataEnd: moment(p.dataEnd,'YYYY-MM-DD, hh:mm').toDate(),
+            dataStart: moment(p.dataStart,'YYYY-MM-DD, hh:mm').add(1, 'hour').toDate(),
+            dataEnd: moment(p.dataEnd,'YYYY-MM-DD, hh:mm').add(1, 'hour').toDate(),
             address: p.address,
             about: p.about,
             categoria: p.categoria
