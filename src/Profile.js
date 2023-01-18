@@ -79,14 +79,17 @@ export default function Profile(){
     const handleCloseThird = () => setShowThird(false);
     const handleShowThird = () => setShowThird(true);
 
+    const [show_fourth, setShowFourth] = useState(false);
+    const handleCloseFourth = () => setShowFourth(false);
+    const handleShowFourth = () => setShowFourth(true);
+
     return(
         <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', top:'5em'}}>
 
             <NavigbarP vnotifications={notif} vmessages={message} vtutorial={help}/>
             <Row className="justify-content-sm-right" style={{zIndex:"1000"}}>
                 <Col xs={10} md={1}>
-                    <Link to={"/add"} style={{right: "2em"}}><span><img src={addicon} alt="Add"
-                                                                        className="search-icon"/></span></Link>
+                    <span><img src={addicon} onClick={()=>handleShowFourth()} alt="Add" className="search-icon"/></span>
                 </Col>
             </Row>
 
@@ -217,6 +220,30 @@ export default function Profile(){
                         <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
                                 onClick={()=> {setPrenotazione(state.prenotazioni); handleCloseThird();}}>
                             Ok
+                        </Button>
+                    </Modal.Footer>
+                </Modal.Dialog>
+            </Modal>
+
+            <Modal show={show_fourth} onHide={handleCloseFourth} backdrop={"static"} centered>
+                <Modal.Dialog>
+
+                    <Modal.Body className="modal-subtitle-1">
+                        <p>Cosa vuoi aggiungere?</p>
+                    </Modal.Body>
+
+                    <Modal.Footer>
+                        <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                onClick={()=> { handleCloseFourth();}}>
+                            <Link to={"/add"}>
+                                Evento al cale
+                            </Link>
+                        </Button>
+                        <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                onClick={()=> { handleCloseFourth();}}>
+                            <Link to={"/addforum"}>
+                                Forum
+                            </Link>
                         </Button>
                     </Modal.Footer>
                 </Modal.Dialog>
