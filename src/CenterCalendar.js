@@ -38,7 +38,6 @@ import settings from "./images/Settings.svg";
 import homeunselected from "./images/home-unselected.svg"
 import {addForum, selected} from "./Action";
 import imgcard4 from "./images/Image-event-4.svg";
-import moment from "moment";
 import popupsport from "./images/image 1.svg";
 import interested from "./images/ic_round-star-border.svg";
 import participate from "./images/ic_round-check-circle-outline.svg";
@@ -73,6 +72,10 @@ export default function CenterCalendar(){
     const [show_third, setShowThird] = useState(false);
     const handleCloseThird = () => setShowThird(false);
     const handleShowThird = () => setShowThird(true);
+
+    const [show_fourth, setShowFourth] = useState(false);
+    const handleCloseFourth = () => setShowFourth(false);
+    const handleShowFourth = () => setShowFourth(true);
 
     const [controlloLogin, setControlloLogin] = useLocalStorage('login', "true")
     const [controlloCorsi, setControlloCorsi] = useLocalStorage('corsi', "false")
@@ -122,7 +125,7 @@ export default function CenterCalendar(){
                     <p style={{paddingTop:"5em"}}>To visualise the schedule, you have to login first</p>
                     <Button onClick={() => {
                         setControlloLogin("false")
-                        setControlloCorsi("true")
+                        handleShowFourth()
                     }}
                             style={{backgroundColor:"#eb506c", color:"white", borderWidth:"2px", borderColor:"#eb506c", borderRadius:"10px", marginBottom:"5em"}}>
                         Log in</Button>
@@ -174,6 +177,23 @@ export default function CenterCalendar(){
                 </CardGroup>
 
             </Card>
+
+            <Modal show={show_fourth} onHide={handleCloseFourth} backdrop={"static"} centered>
+                <Modal.Dialog>
+
+                    <Modal.Body className="modal-subtitle-1">
+                        <p>Hai inviato la richiesta per vedere i calendari</p>
+                        <p>A breve riceverai la risposta</p>
+                    </Modal.Body>
+
+                    <Modal.Footer>
+                        <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                onClick={()=> { setControlloCorsi("true"); handleCloseFourth()}}>
+                            Ok
+                        </Button>
+                    </Modal.Footer>
+                </Modal.Dialog>
+            </Modal>
 
             <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
                 <Modal.Dialog>

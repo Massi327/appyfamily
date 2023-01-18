@@ -147,6 +147,9 @@ export default function Calendario(){
             <Container style={{marginTop:"7em", marginBottom:"5em"}}>
             <Row style={{zIndex:'-5'}}>
                 <Col sm={12} xs={12}>
+                    <Button onClick={()=>console.log(JSON.parse(state.prenotazioni))}>
+                        prenotazione
+                    </Button>
                     <Calendar
                         selectable
                         startAccessor='start'
