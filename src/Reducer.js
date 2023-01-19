@@ -1,4 +1,13 @@
-import {ADD_BOOKNG, ADD_CATEGORY, ADD_FORUM, CANCEL_BOOKNG, EDIT_BOOKNG, SELECTED, SELECTEDSLOT} from "./Action";
+import {
+    ADD_BOOKNG,
+    ADD_CATEGORY,
+    ADD_FORUM,
+    CANCEL_BOOKNG,
+    EDIT_BOOKNG, NON_PARTECIPO,
+    PARTECIPO,
+    SELECTED,
+    SELECTEDSLOT
+} from "./Action";
 import moment from 'moment'
 import 'moment/locale/it';
 
@@ -79,7 +88,9 @@ export const initialState = {
             categoria: 'Palestra'
         },
 
-    ]
+    ],
+
+    partecipazioni: []
 }
 
 export function Reducer(state,action){
@@ -176,6 +187,46 @@ export function Reducer(state,action){
             return {
                 ...state,
                 prenotazioni: arrayprova
+            }
+
+        case PARTECIPO:
+
+            let eventoPartecipo = { key: action.key, address: action.address, dataStart: action.dataStart, dataEnd: action.dataEnd, titolo: action.titolo, about: action.about, categoria: action.categoria, property: action.property, host: action.host, img: action.host}
+
+
+            let newPartecipazioni = [...state.partecipazioni]
+
+
+            let cardh = JSON.parse(localStorage.getItem('partecipazioni'))
+
+
+            if(cardh == null){
+                if (state.partecipazioni.length<2 ){
+                    newPartecipazioni = [...state.partecipazioni, eventoPartecipo]
+                }
+            }else{newPartecipazioni = [...cardh, eventoPartecipo]}
+
+
+            return{
+                ...state,
+                partecipazioni: newPartecipazioni,
+            }
+
+        case NON_PARTECIPO:
+
+            let parteci = JSON.parse(localStorage.getItem('partecipazioni'))
+            let arraypart = [...state.partecipazioni]
+            let arrayPP
+
+            if(parteci == null){
+                if (state.prenotazioni.length<2 ){
+                    arrayPP = arraypart.filter(f => f.key !== action.id)
+                }
+            }else{arrayPP = parteci.filter(f => f.key !== action.id)}
+
+            return {
+                ...state,
+                partecipazioni: arrayPP
             }
 
         default:

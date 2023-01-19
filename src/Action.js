@@ -5,6 +5,8 @@ export const ADD_CATEGORY = 'addCategory'
 export const ADD_FORUM = 'addForum'
 export const CANCEL_BOOKNG = 'cancelBooking'
 export const EDIT_BOOKNG = 'editBooking'
+export const PARTECIPO = 'Partecipo'
+export const NON_PARTECIPO = 'nonPartecipo'
 
 export function addBooking(dataStart, dataEnd, address, titolo, about, categoria, property){
     return {type:ADD_BOOKNG, dataStart, dataEnd, address, titolo, about, categoria, property}
@@ -32,4 +34,12 @@ export function cancelBooking(id){
 
 export function editBooking(dataStart, dataEnd, address, titolo, about, categoria, property){
     return {type:EDIT_BOOKNG, dataStart, dataEnd, address, titolo, about, categoria, property}
+}
+
+export function partecipo(key, dataStart, dataEnd, address, titolo, about, categoria, property, host, img){
+    return {type:PARTECIPO, key, dataStart, dataEnd, address, titolo, about, categoria, property, host, img}
+}
+
+export function nonPartecipo(id){
+    return {type:NON_PARTECIPO, id}
 }
