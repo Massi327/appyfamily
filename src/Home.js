@@ -138,7 +138,7 @@ export default function Home(){
     const handleShowFifth = () => setShowFifth(true);
 
     return(
-        <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', width:"100vw"}}>
+        <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', width:"100vw", paddingBottom:"10em"}}>
 
             {/*<Row style={{backgroundColor:"red"}}>
                 <p>balbsjaksd</p>
@@ -199,7 +199,18 @@ export default function Home(){
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
-                            <Modal.Title className="modal-title-1">{cardhome.filter(p => p.key===state.id).map(m=>m.titolo)}</Modal.Title>
+                            <Col>
+                                <Row>
+                                    <Modal.Title className="modal-title-1" style={{fontSize:"25px", marginLeft:"1em"}}>{cardhome.filter(p => p.key===state.id).map(m=>m.titolo)}</Modal.Title>
+                                </Row>
+                                <Row className="event-subtitle-1" style={{textAlign: 'left', marginLeft:"0.1em", fontSize:"15px"}}>
+                                   <p style={{textAlign: 'left'}}>{cardhome.filter(p => p.key===state.id).map(m=>m.host)}</p>
+                                </Row>
+                            </Col>
+                            {/*<Modal.Title className="modal-title-1">{cardhome.filter(p => p.key===state.id).map(m=>m.titolo)}</Modal.Title>
+                            <p className="event-subtitle-1" style={{textAlign: 'left'}}>
+                                {cardhome.filter(p => p.key===state.id).map(m=>m.host)}
+                            </p>*/}
                         </Modal.Header>
 
                         <Modal.Body className="modal-subtitle-1">
@@ -215,9 +226,9 @@ export default function Home(){
                         <Modal.Footer>
                             {cardhome.filter(f=> f.key == state.id).map(m=> m.partecipo) == 'false'?
                                 <Button style={{fontSize:"15px", borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0em"}}
-                                    onClick={()=>{handleClose(); handleShowSecond()}}><img src={going}/> Going</Button> :
+                                    onClick={()=>{handleClose(); handleShowSecond()}}><img src={going}/> Participate</Button> :
                             <Button style={{fontSize:"15px", borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
-                                    onClick={()=>{handleClose(); handleShowFourth()}}><img src={participate}/> Not Going</Button> }
+                                    onClick={()=>{handleClose(); handleShowFourth()}}><img src={participate}/> Don't participate</Button> }
 
                             <Dropdown>
                                 <Dropdown.Toggle id="dropdown-basic"  style={{borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0em"}}>
@@ -242,7 +253,7 @@ export default function Home(){
                     <Modal.Dialog>
 
                         <Modal.Body className="modal-subtitle-1">
-                            <p>Vuoi partecipare?</p>
+                            <p>Do you wish to participate?</p>
                         </Modal.Body>
 
                         <Modal.Footer>
@@ -252,11 +263,11 @@ export default function Home(){
                                             dispatch(partecipo(m.key, m.dataStart, m.dataEnd, m.address, m.titolo, m.about, m.categoria, m.property, m.host, m.img))
                                         });
                                         handleCloseSecond(); handleShowThird()}}>
-                                si
+                                Yes
                             </Button>
                             <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
                                     onClick={()=> handleCloseSecond()}>
-                                no
+                                No
                             </Button>
                         </Modal.Footer>
                     </Modal.Dialog>
@@ -266,7 +277,7 @@ export default function Home(){
                     <Modal.Dialog>
 
                         <Modal.Body className="modal-subtitle-1">
-                            <p>Parteciperai ed è stato aggiunto al tuo calendario</p>
+                            <p>The event has been added to your Calendar</p>
                         </Modal.Body>
 
                         <Modal.Footer>
@@ -283,18 +294,18 @@ export default function Home(){
                     <Modal.Dialog>
 
                         <Modal.Body className="modal-subtitle-1">
-                            <p>NON Vuoi più partecipare?</p>
+                            <p>Are you sure that you don't want to participate anymore?</p>
                         </Modal.Body>
 
                         <Modal.Footer>
                             <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
                                     onClick={()=> {cardhome.filter(f=> f.key == state.id).map(q => q.partecipo='false');
                                         dispatch(nonPartecipo(state.id));handleCloseFourth(); handleShowFifth()}}>
-                                si non voglio più partecipare
+                                Don't participate
                             </Button>
                             <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
                                     onClick={()=> handleCloseFourth()}>
-                                no voglio ancora partecipare
+                                Participate
                             </Button>
                         </Modal.Footer>
                     </Modal.Dialog>
@@ -304,7 +315,7 @@ export default function Home(){
                     <Modal.Dialog>
 
                         <Modal.Body className="modal-subtitle-1">
-                            <p>NON Parteciperai più ed è stato TOLTO dal tuo calendario</p>
+                            <p>The event has been removed from your Calendar</p>
                         </Modal.Body>
 
                         <Modal.Footer>
