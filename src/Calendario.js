@@ -39,6 +39,12 @@ import popupsport from "./images/image 1.svg";
 import notif from "./images/notifications-icon.svg";
 import message from "./images/messages-icon.svg";
 import help from "./images/help-icon.svg";
+import going from "./images/going.svg";
+import participate from "./images/ic_round-check-circle-outline (1).svg";
+import whosgoing from "./images/whosgoing-white.svg";
+import profile1 from "./images/profile1.svg";
+import profile4 from "./images/profile4.svg";
+import profile3 from "./images/profile3.svg";
 
 
 const localizer = momentLocalizer(moment)
@@ -68,7 +74,12 @@ export default function Calendario(){
         const controlloPale = JSON.parse(localStorage.getItem('pale'));
     return controlloPale })
 
+    const [partecipazioniC, setPartecipazioniC] = useState( () => {
+        const partecipazioniC = JSON.parse(localStorage.getItem('partecipazioni'));
+        return partecipazioniC })
+
     const [tipo, setTipo] = useState('')
+    const [propriet, setPropriet] = useState('')
 
     const addHidden = 'false';
 
@@ -108,6 +119,20 @@ export default function Calendario(){
                 start: moment(p.dataStart,'YYYY-MM-DD, hh:mm').toDate(),
                 end: moment(p.dataEnd,'YYYY-MM-DD, hh:mm').toDate(),
                 categoria: p.categoria
+            }
+            events.push(event)
+        })
+    }
+
+    if (partecipazioniC != null){
+        partecipazioniC.map(p => {
+            let event = {
+                id: p.key,
+                title: p.titolo,
+                start: moment(p.dataStart, 'YYYY-MM-DD, hh:mm').add(1, 'hour').toDate(),
+                end: moment(p.dataEnd, 'YYYY-MM-DD, hh:mm').add(1, 'hour').toDate(),
+                categoria: p.categoria,
+                property: p.property
             }
             events.push(event)
         })
@@ -164,6 +189,8 @@ export default function Calendario(){
                         onSelectEvent={e => {
                             dispatch(selected(e.id))
                             setTipo(e.categoria)
+                            setPropriet(e.property)
+                            console.log(tipo)
                             handleShow()
                         }}
                         onSelecting={range => handleSelect(range)}
@@ -212,7 +239,7 @@ export default function Calendario(){
                     </Modal.Dialog>
                 </Modal> */}
 
-                {tipo != 'Palestra' && tipo != 'Esterno' ?
+                {tipo != 'Palestra' ?
                     <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
                     <Modal.Dialog>
 
@@ -245,7 +272,7 @@ export default function Calendario(){
                                <Link to={"/editaddevent"}>Edit</Link>
                             </Button>
                             <Button style={{fontSize:"13px", borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
-                                    onClick={()=>{dispatch(cancelBooking(state.id)); handleClose(); handleShowSecond()}}
+                                    onClick={()=>{ handleClose(); handleShowSecond()}}
                             >Delete</Button>
 
                         </Modal.Footer>
@@ -309,6 +336,67 @@ export default function Calendario(){
                     </Modal.Dialog>
                 </Modal> : null}
 
+                {propriet == 'Esterno' ?
+                    <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
+                        <Modal.Dialog>
+                            <Modal.Header closeButton>
+                                <Card style={{backgroundColor:"#4b7bf8", color:"white"}}>
+                                    <Card.Body>
+                                        <Card.Text className="event-month-popup" style={{textAlign: 'center'}}>
+                                            {partecipazioniC.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('MMM').toUpperCase())}
+                                        </Card.Text>
+                                        <Card.Text className="event-day-popup" style={{textAlign: 'center'}}>
+                                            {partecipazioniC.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D').toUpperCase())}
+                                        </Card.Text>
+                                    </Card.Body>
+                                </Card>
+                                <Col>
+                                    <Row>
+                                        <Modal.Title className="modal-title-1" style={{fontSize:"25px", marginLeft:"1em"}}>{partecipazioniC.filter(p => p.key===state.id).map(m=>m.titolo)}</Modal.Title>
+                                    </Row>
+                                    <Row className="event-subtitle-1" style={{textAlign: 'left', marginLeft:"0.1em", fontSize:"15px"}}>
+                                        <p style={{textAlign: 'left'}}>{partecipazioniC.filter(p => p.key===state.id).map(m=>m.host)}</p>
+                                    </Row>
+                                </Col>
+                            </Modal.Header>
+
+                            <Modal.Body className="modal-subtitle-1">
+
+                                <img src={popupsport} style={{marginBottom:"0.5em", width:"22em"}}/>
+
+                                <p className="event-subsubtitle-3"> <img src={clock} className="icon"/> {partecipazioniC.filter(p => p.key===state.id).map(m=>m.address)}</p>
+                                <p className="event-subsubtitle-3"> <img src={map} className="icon"/> {partecipazioniC.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D MMM YYYY'))}, {partecipazioniC.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('h:mm a'))} - {partecipazioniC.filter(p => p.key===state.id).map(m=>moment(m.dataEnd).locale('en').format('h:mm a'))}</p>
+                                <p className="about">About</p>
+                                <p>{partecipazioniC.filter(p => p.key===state.id).map(m=>m.about)}</p>
+                            </Modal.Body>
+
+                            <Modal.Footer>
+                                {partecipazioniC.filter(f=> f.key == state.id).map(m=> m.partecipo) == 'false'?
+                                    <Button style={{fontSize:"15px", borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0em"}}
+                                            onClick={()=>{handleClose(); handleShowSecond()}}><img src={going}/> Going</Button> :
+                                    <Button style={{fontSize:"15px", borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
+                                            onClick={()=>{handleClose(); handleShowSecond()}}><img src={participate}/> Not Going</Button> }
+
+                                <Dropdown>
+                                    <Dropdown.Toggle id="dropdown-basic"  style={{borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0em"}}>
+                                        <img src={whosgoing}/>  Who's Going
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item href="/miajohnson">                    <img  src={profile1} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
+                                            Mia Johnson</Dropdown.Item>
+                                        <Dropdown.Item href="/claramay">
+                                            <img  src={profile4} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />Clara May</Dropdown.Item>
+                                        <Dropdown.Item href="/sullivanjayden">
+                                            <img  src={profile3} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
+                                            Sullivan Jayden</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            </Modal.Footer>
+                        </Modal.Dialog>
+                    </Modal>
+                    : null}
+
 
                 <Modal show={show_second} onHide={handleCloseSecond} backdrop={"static"} centered>
                     <Modal.Dialog>
@@ -319,7 +407,7 @@ export default function Calendario(){
 
                         <Modal.Footer>
                             <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
-                                    onClick={()=> {localStorage.setItem('prenotazioni', JSON.stringify(state.prenotazioni)); handleCloseSecond(); handleShowThird()}}>
+                                    onClick={()=> {dispatch(cancelBooking(state.id)); handleCloseSecond(); handleShowThird()}}>
                                 Delete
                             </Button>
                             <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
@@ -339,7 +427,7 @@ export default function Calendario(){
 
                         <Modal.Footer>
                             <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
-                                    onClick={()=> {setPrenotaz(state.prenotazioni); handleCloseThird()}}>
+                                    onClick={()=> {setPrenotaz(state.prenotazioni); localStorage.setItem('prenotazioni', JSON.stringify(state.prenotazioni)); handleCloseThird()}}>
                                 Ok
                             </Button>
                         </Modal.Footer>
