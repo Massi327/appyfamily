@@ -150,12 +150,6 @@ export default function CenterCalendar(){
                         <Button style={{margin:"0.5em", marginLeft:"13em"}} onClick={() => {handleShow(); setControlloPale('true')}}>Copy to Calendar</Button>
                     </Card>
 
-                    <Card style={{backgroundColor:"mediumaquamarine", margin:"0.5em"}}>
-                        <CardHeader style={{height:"3em"}}><Card.Title className="course-title">Fencing Lesson</Card.Title></CardHeader>
-                        <p style={{paddingTop:"0.3em", marginBottom:"-0.1em"}}>Tuesday 8PM - 9PM</p>
-                        <Button style={{margin:"0.5em", marginLeft:"13em"}}>Copy to Calendar</Button>
-                    </Card>
-
                     </Col> : null}
                     </Row>
 
@@ -171,12 +165,6 @@ export default function CenterCalendar(){
                                 <p style={{paddingTop:"0.3em", marginBottom:"-0.1em"}}>Monday 7PM - 8PM</p>
                                 <p style={{paddingTop:"0.3em", marginBottom:"-0.1em"}}>Added to Calendar</p>
                                 <Button style={{margin:"0.5em", marginLeft:"11em"}} onClick={()=> handleShowSecond()}>Delete from Calendar</Button>
-                            </Card>
-
-                            <Card style={{backgroundColor:"mediumaquamarine", margin:"0.5em"}}>
-                                <CardHeader style={{height:"3em"}}><Card.Title className="course-title">Fencing Lesson</Card.Title></CardHeader>
-                                <p style={{paddingTop:"0.3em", marginBottom:"-0.1em"}}>Tuesday 8PM - 9PM</p>
-                                <Button style={{margin:"0.5em", marginLeft:"13em"}}>Copy to Calendar</Button>
                             </Card>
 
                         </Col> : null}

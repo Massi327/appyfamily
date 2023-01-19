@@ -51,6 +51,10 @@ import moment from "moment/moment";
 import {nonPartecipo, partecipo, selected} from "./Action";
 import {useLocalStorage} from "./useLocalStorage";
 import profile1 from "./images/profile1.svg";
+import other from "./images/other.svg";
+import music from "./images/music.svg";
+import party from "./images/party.svg";
+import sport from "./images/sport.svg";
 
 
 
@@ -66,7 +70,7 @@ export default function Home(){
             address:'112 Barrack Street, NR3 1TX, UK',
             host:'Hosted by the Muse Th.',
             about:'boh',
-            categoria: 'Park',
+            categoria: 'Other',
             img: 'imgcard1',
             partecipo: 'false',
             property: 'Esterno'
@@ -78,7 +82,7 @@ export default function Home(){
             address:'112 Barrack Street, NR3 1TX, UK',
             host:'Hosted by Color Notes',
             about:'boh',
-            categoria: 'Park',
+            categoria: 'Music',
             img: 'imgcard2',
             partecipo: 'false',
             property: 'Esterno'
@@ -90,7 +94,7 @@ export default function Home(){
             address:'113 Flams Close, CB4 2TY, UK',
             host:'Hosted by the Mia Johnson',
             about:'boh',
-            categoria: 'Park',
+            categoria: 'Party',
             img: 'imgcard5',
             partecipo: 'false',
             property: 'Esterno'
@@ -102,7 +106,7 @@ export default function Home(){
             address:'13 Congo Street, PT3 1MX, UK',
             host:'Hosted by the MegaSport',
             about:'boh',
-            categoria: 'Park',
+            categoria: 'Sport',
             img: 'imgcard4',
             partecipo: 'false',
             property: 'Esterno'
@@ -110,6 +114,7 @@ export default function Home(){
     ]
 
     const img = [{key:'imgcard1', img: imgcard1}, {key:'imgcard2', img: imgcard2}, {key:'imgcard5', img: imgcard5}, {key:'imgcard4', img: imgcard4}]
+    const imgBig = [{key:'Other', img: other}, {key:'Music', img: music}, {key:'Party', img: party}, {key:'Sport', img: sport}]
 
     const [cardhome, setCardhome] = useLocalStorage('cardhome', cardh)
 
@@ -140,13 +145,6 @@ export default function Home(){
     return(
         <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', width:"100vw", paddingBottom:"10em"}}>
 
-            {/*<Row style={{backgroundColor:"red"}}>
-                <p>balbsjaksd</p>
-            </Row>
-            <Container  style={{backgroundColor:"red"}}>
-                <p>balbsjaksd</p>
-            </Container>*/}
-
             <Navigbar vevents={eventsselected}
                       vforum={forums}
                       vpeople={people}
@@ -159,7 +157,8 @@ export default function Home(){
             <Container style={{paddingTop:"15em"}}>
 
                 {cardhome.map( p =>
-                    <Card className="post" key={p.key} style={{ minHeight: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}} onClick={()=> {handleShow(); dispatch(selected(p.key))}}>
+                    <Card className="post" key={p.key} style={{ minHeight: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}
+                          onClick={()=> {handleShow(); dispatch(selected(p.key))}}>
                         <Card.Img className="cardimg" src={img.filter(f => f.key == p.img).map(c => c.img)} style={{minHeight: '5em', maxWidth: "9em", marginLeft:"0.5em", width: '10rem', verticalAlign:'center'}} />
                         <Card.Body>
                             <Card.Text className="event-time-1">
@@ -207,15 +206,11 @@ export default function Home(){
                                    <p style={{textAlign: 'left'}}>{cardhome.filter(p => p.key===state.id).map(m=>m.host)}</p>
                                 </Row>
                             </Col>
-                            {/*<Modal.Title className="modal-title-1">{cardhome.filter(p => p.key===state.id).map(m=>m.titolo)}</Modal.Title>
-                            <p className="event-subtitle-1" style={{textAlign: 'left'}}>
-                                {cardhome.filter(p => p.key===state.id).map(m=>m.host)}
-                            </p>*/}
                         </Modal.Header>
 
                         <Modal.Body className="modal-subtitle-1">
 
-                            <img src={popupsport} style={{marginBottom:"0.5em", width:"22em"}}/>
+                            <img src={imgBig.filter(f => f.key == cardhome.filter(g=> g.key == state.id).map(m=> m.categoria)).map(c => c.img)} style={{marginBottom:"0.5em", width:"22em"}}/>
 
                             <p className="event-subsubtitle-3"> <img src={clock} className="icon"/> {cardhome.filter(p => p.key===state.id).map(m=>m.address)}</p>
                             <p className="event-subsubtitle-3"> <img src={map} className="icon"/> {cardhome.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D MMM YYYY'))}, {cardhome.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('h:mm a'))} - {cardhome.filter(p => p.key===state.id).map(m=>moment(m.dataEnd).locale('en').format('h:mm a'))}</p>

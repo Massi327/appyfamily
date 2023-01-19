@@ -44,10 +44,19 @@ import centerforumsselected from "./images/Profile_Forums.svg";
 import notif from "./images/notifications-icon.svg";
 import message from "./images/messages-icon.svg";
 import help from "./images/help-icon.svg";
+import imgcard2 from "./images/Image-event-2.svg";
+import imgcard5 from "./images/Image-event-5.svg";
+import other from "./images/other.svg";
+import music from "./images/music.svg";
+import party from "./images/party.svg";
+import sport from "./images/sport.svg";
 
 export default function Profile(){
 
     const [state,dispatch] = useContext(StateContext)
+
+    const img = [{key:'Other', img: imgcard1}, {key:'', img: imgcard1}, {key:'Music', img: imgcard2}, {key:'Party', img: imgcard5}, {key:'Sport', img: imgcard4}]
+    const imgBig = [{key:'Other', img: other}, {key:'', img: other}, {key:'Music', img: music}, {key:'Party', img: party}, {key:'Sport', img: sport}]
 
     const [prenotazione, setPrenotazione] = useState(() => {
         const prenotazione = JSON.parse(localStorage.getItem('prenotazioni'));
@@ -129,8 +138,12 @@ export default function Profile(){
 
                 {events.slice(0).reverse().filter(f=> f.property == 'public').map( p =>
                         <Card className="post" key={p.key} style={{height: '8rem', marginBottom: '1em', borderRadius: '10px', borderWidth: '0', flexDirection: 'row'}}
-                              onClick={() => {handleShow();dispatch(selected(p.key))}}>
-                            <Card.Img className="cardimg" src={imgcard4}
+                              onClick={() => {handleShow(); console.log(events); dispatch(selected(p.key))}}>
+                            <Card.Img className="cardimg" src={img.map(i=> {
+                                if (i.key == p.categoria){
+                                    return i.img
+                                }else {return ''}
+                            })}
                                       style={{height: '8em', width: '10rem', verticalAlign: 'center'}}/>
                             <Card.Body>
                                 <Card.Text className="event-time-1"
@@ -172,7 +185,7 @@ export default function Profile(){
 
                     <Modal.Body className="modal-subtitle-1">
 
-                        <img src={popupsport} style={{marginBottom:"0.5em", width:"22em"}}/>
+                        <img src={imgBig.filter(f => f.key == events.filter(g=> g.key == state.id).map(m=> m.categoria)).map(c => c.img)} style={{marginBottom:"0.5em", width:"22em"}}/>
 
                         <p className="event-subsubtitle-3"> <img src={clock} className="icon"/> {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D MMM YYYY'))}, {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('h:mm a'))} - {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataEnd).locale('en').format('h:mm a'))}</p>
                         <p className="event-subsubtitle-3"> <img src={map} className="icon"/> {prenotazione.filter(p => p.key===state.id).map(m=>m.address)} </p>

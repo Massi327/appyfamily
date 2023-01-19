@@ -24,11 +24,11 @@ import {
     FormCheck, Modal
 } from "react-bootstrap";
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import {addBooking, cancelBooking, selected, selectedSlot} from "./Action";
+import {addBooking, cancelBooking, nonPartecipo, selected, selectedSlot} from "./Action";
 import {Link, useNavigate} from "react-router-dom";
 import NavigbarBottom from "./components/navbar-bottom";
 import NavigbarP from "./components/navbar-profile";
-import imgcard1 from "./images/Image-event-1.svg";
+import other from "./images/other.svg";
 import clock from "./images/Clock.svg";
 import map from "./images/Map.svg";
 import homeunselected from "./images/home-unselected.svg";
@@ -45,6 +45,10 @@ import whosgoing from "./images/whosgoing-white.svg";
 import profile1 from "./images/profile1.svg";
 import profile4 from "./images/profile4.svg";
 import profile3 from "./images/profile3.svg";
+import dance_big from "./images/dance_big.svg";
+import music from "./images/music.svg";
+import party from "./images/party.svg";
+import sport from "./images/sport.svg";
 
 
 const localizer = momentLocalizer(moment)
@@ -52,6 +56,8 @@ const localizer = momentLocalizer(moment)
 export default function Calendario(){
 
     const [state,dispatch] = useContext(StateContext)
+
+    const img = [{key:'Other', img: other}, {key:'', img: other}, {key:'Music', img: music}, {key:'Party', img: party}, {key:'Sport', img: sport}]
 
     const [address,setAddress] = useState('')
     const [titolo,setTitolo] = useState('')
@@ -74,6 +80,10 @@ export default function Calendario(){
         const controlloPale = JSON.parse(localStorage.getItem('pale'));
     return controlloPale })
 
+    const [cardhome, setCardhome] = useState( () => {
+        const cardhome = JSON.parse(localStorage.getItem('cardhome'));
+        return cardhome })
+
     const [partecipazioniC, setPartecipazioniC] = useState( () => {
         const partecipazioniC = JSON.parse(localStorage.getItem('partecipazioni'));
         return partecipazioniC })
@@ -94,6 +104,14 @@ export default function Calendario(){
     const [show_third, setShowThird] = useState(false);
     const handleCloseThird = () => setShowThird(false);
     const handleShowThird = () => setShowThird(true);
+
+    const [show_fourth, setShowFourth] = useState(false);
+    const handleCloseFourth = () => setShowFourth(false);
+    const handleShowFourth = () => setShowFourth(true);
+
+    const [show_fifth, setShowFifth] = useState(false);
+    const handleCloseFifth = () => setShowFifth(false);
+    const handleShowFifth = () => setShowFifth(true);
 
     const navigate = useNavigate();
 
@@ -190,23 +208,31 @@ export default function Calendario(){
                             dispatch(selected(e.id))
                             setTipo(e.categoria)
                             setPropriet(e.property)
-                            console.log(tipo)
                             handleShow()
                         }}
                         onSelecting={range => handleSelect(range)}
                         eventPropGetter= {(events) => {
                                 let newStyle = {
-                                    backgroundColor: "orange",
+                                    backgroundColor: "#842DF2",
                                     color: 'black',
-                                    borderRadius: "5px",
+                                    borderRadius: "10px",
                                     border: "none"
                                 };
 
-                            if (events.categoria === 'Park'){
-                                newStyle.backgroundColor = "green"
+                            if (events.categoria === 'Other'){
+                                newStyle.backgroundColor = "#842DF2"
                             }
                             if (events.categoria === 'Palestra'){
-                                newStyle.backgroundColor = "red"
+                                newStyle.backgroundColor = "#FF8C2E"
+                            }
+                            if (events.categoria === 'Sport'){
+                                newStyle.backgroundColor = "#4B7BF8"
+                            }
+                            if (events.categoria === 'Party'){
+                                newStyle.backgroundColor = "#EB506C"
+                            }
+                            if (events.categoria === 'Music'){
+                                newStyle.backgroundColor = "#19BF97"
                             }
 
                                 return {
@@ -217,27 +243,6 @@ export default function Calendario(){
                         onSelectSlot={ slotInfo => selectSlot(slotInfo)}
                     />
                 </Col>
-
-                {/*<Modal show={show} onHide={handleClose} backdrop={"static"} centered>
-                    <Modal.Dialog>
-                        <Modal.Header>
-                            <Modal.Title className="modal-title-1">{prenotaz.filter(p => p.key===state.id).map(m=>m.titolo)}</Modal.Title>
-                        </Modal.Header>
-
-                        <Modal.Body className="modal-subtitle-1">
-                            <p>{prenotaz.filter(p => p.key===state.id).map(m=>m.about)}</p>
-                            <p>{prenotaz.filter(p => p.key===state.id).map(m=>m.address)}</p>
-                            <p>{prenotaz.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D MMM YYYY'))}, {prenotaz.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('h:mm a'))} - {prenotaz.filter(p => p.key===state.id).map(m=>moment(m.dataEnd).locale('en').format('h:mm a'))}</p>
-
-                        </Modal.Body>
-
-                        <Modal.Footer>
-                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
-                                    onClick={handleClose}
-                            >Cancel</Button>
-                        </Modal.Footer>
-                    </Modal.Dialog>
-                </Modal> */}
 
                 {tipo != 'Palestra' ?
                     <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
@@ -259,7 +264,7 @@ export default function Calendario(){
 
                         <Modal.Body className="modal-subtitle-1">
 
-                            <img src={popupsport} style={{marginBottom:"0.5em", width:"22em"}}/>
+                            <img src={img.filter(f => f.key == prenotaz.filter(g=> g.key == state.id).map(m=> m.categoria)).map(c => c.img)} style={{marginBottom:"0.5em", width:"22em"}}/>
 
                             <p className="event-subsubtitle-3"> <img src={clock} className="icon"/> {prenotaz.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D MMM YYYY'))}, {prenotaz.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('h:mm a'))} - {prenotaz.filter(p => p.key===state.id).map(m=>moment(m.dataEnd).locale('en').format('h:mm a'))}</p>
                             <p className="event-subsubtitle-3"> <img src={map} className="icon"/> {prenotaz.filter(p => p.key===state.id).map(m=>m.address)} </p>
@@ -326,7 +331,7 @@ export default function Calendario(){
 
                         <Modal.Body className="modal-subtitle-1">
 
-                            <img src={popupsport} style={{marginBottom:"0.5em", width:"22em"}}/>
+                            <img src={dance_big} style={{marginBottom:"0.5em", width:"22em"}}/>
 
                             <p className="event-subsubtitle-3"> <img src={clock} className="icon"/> {state.palestra.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D MMM YYYY'))}, {state.palestra.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('h:mm a'))} - {state.palestra.filter(p => p.key===state.id).map(m=>moment(m.dataEnd).locale('en').format('h:mm a'))}</p>
                             <p className="event-subsubtitle-3"> <img src={map} className="icon"/> {state.palestra.filter(p => p.key===state.id).map(m=>m.address)} </p>
@@ -362,7 +367,7 @@ export default function Calendario(){
 
                             <Modal.Body className="modal-subtitle-1">
 
-                                <img src={popupsport} style={{marginBottom:"0.5em", width:"22em"}}/>
+                                <img src={img.filter(f => f.key == partecipazioniC.filter(g=> g.key == state.id).map(m=> m.categoria)).map(c => c.img)} style={{marginBottom:"0.5em", width:"22em"}}/>
 
                                 <p className="event-subsubtitle-3"> <img src={clock} className="icon"/> {partecipazioniC.filter(p => p.key===state.id).map(m=>m.address)}</p>
                                 <p className="event-subsubtitle-3"> <img src={map} className="icon"/> {partecipazioniC.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D MMM YYYY'))}, {partecipazioniC.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('h:mm a'))} - {partecipazioniC.filter(p => p.key===state.id).map(m=>moment(m.dataEnd).locale('en').format('h:mm a'))}</p>
@@ -371,11 +376,8 @@ export default function Calendario(){
                             </Modal.Body>
 
                             <Modal.Footer>
-                                {partecipazioniC.filter(f=> f.key == state.id).map(m=> m.partecipo) == 'false'?
-                                    <Button style={{fontSize:"15px", borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0em"}}
-                                            onClick={()=>{handleClose(); handleShowSecond()}}><img src={going}/> Going</Button> :
-                                    <Button style={{fontSize:"15px", borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
-                                            onClick={()=>{handleClose(); handleShowSecond()}}><img src={participate}/> Not Going</Button> }
+                                <Button style={{fontSize:"15px", borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
+                                        onClick={()=>{handleClose(); handleShowFourth()}}><img src={participate}/> Don't participate</Button>
 
                                 <Dropdown>
                                     <Dropdown.Toggle id="dropdown-basic"  style={{borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0em"}}>
@@ -383,7 +385,8 @@ export default function Calendario(){
                                     </Dropdown.Toggle>
 
                                     <Dropdown.Menu>
-                                        <Dropdown.Item href="/miajohnson">                    <img  src={profile1} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
+                                        <Dropdown.Item href="/miajohnson">
+                                            <img  src={profile1} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
                                             Mia Johnson</Dropdown.Item>
                                         <Dropdown.Item href="/claramay">
                                             <img  src={profile4} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />Clara May</Dropdown.Item>
@@ -394,8 +397,7 @@ export default function Calendario(){
                                 </Dropdown>
                             </Modal.Footer>
                         </Modal.Dialog>
-                    </Modal>
-                    : null}
+                    </Modal> : null}
 
 
                 <Modal show={show_second} onHide={handleCloseSecond} backdrop={"static"} centered>
@@ -428,6 +430,46 @@ export default function Calendario(){
                         <Modal.Footer>
                             <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
                                     onClick={()=> {setPrenotaz(state.prenotazioni); localStorage.setItem('prenotazioni', JSON.stringify(state.prenotazioni)); handleCloseThird()}}>
+                                Ok
+                            </Button>
+                        </Modal.Footer>
+                    </Modal.Dialog>
+                </Modal>
+
+                <Modal show={show_fourth} onHide={handleCloseFourth} backdrop={"static"} centered>
+                    <Modal.Dialog>
+
+                        <Modal.Body className="modal-subtitle-1">
+                            <p>Are you sure that you don't want to participate anymore?</p>
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                    onClick={()=> {cardhome.filter(f=> f.key == state.id).map(q => q.partecipo='false');
+                                        dispatch(nonPartecipo(state.id));handleCloseFourth(); handleShowFifth()}}>
+                                Don't participate
+                            </Button>
+                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                    onClick={()=> handleCloseFourth()}>
+                                Participate
+                            </Button>
+                        </Modal.Footer>
+                    </Modal.Dialog>
+                </Modal>
+
+                <Modal show={show_fifth} onHide={handleCloseFifth} backdrop={"static"} centered>
+                    <Modal.Dialog>
+
+                        <Modal.Body className="modal-subtitle-1">
+                            <p>The event has been removed from your Calendar</p>
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                    onClick={()=> {
+                                        setPartecipazioniC(state.partecipazioni)
+                                        localStorage.setItem('partecipazioni', JSON.stringify(state.partecipazioni));
+                                        localStorage.setItem('cardhome', JSON.stringify(cardhome)); handleCloseFifth()}}>
                                 Ok
                             </Button>
                         </Modal.Footer>

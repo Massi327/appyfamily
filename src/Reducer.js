@@ -19,7 +19,7 @@ export const initialState = {
             dataEnd:moment('2023-01-03, 11:30','YYYY-MM-DD, hh:mm'),
             address:'Via giordani 78',
             about:'Gita al parco',
-            categoria: 'Park',
+            categoria: 'Other',
             property: 'public'
         },
         {
@@ -53,7 +53,7 @@ export const initialState = {
     start: moment('','yyyy-MM-DD').format('LT'),
     end: moment('','yyyy-MM-DD').format('LT'),
     c: 'false',
-    categoriav: ['---', 'Sport', 'Park'],
+    categoriav: ['---', 'Sport', 'Party', 'Music', 'Other'],
 
     arrayLS:[
         {   ids: 789,
@@ -191,7 +191,7 @@ export function Reducer(state,action){
 
         case PARTECIPO:
 
-            let eventoPartecipo = { key: action.key, address: action.address, dataStart: action.dataStart, dataEnd: action.dataEnd, titolo: action.titolo, about: action.about, categoria: action.categoria, property: action.property, host: action.host, img: action.host}
+            let eventoPartecipo = { key: action.key, address: action.address, dataStart: action.dataStart, dataEnd: action.dataEnd, titolo: action.titolo, about: action.about, categoria: action.categoria, property: action.property, host: action.host, img: action.img}
 
 
             let newPartecipazioni = [...state.partecipazioni]
