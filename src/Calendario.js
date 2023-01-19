@@ -68,6 +68,8 @@ export default function Calendario(){
         const controlloPale = JSON.parse(localStorage.getItem('pale'));
     return controlloPale })
 
+    const [tipo, setTipo] = useState('')
+
     const addHidden = 'false';
 
     const [show, setShow] = useState(false);
@@ -161,6 +163,7 @@ export default function Calendario(){
                         style={{height:'81vh', backgroundColor: 'white', marginBottom: "5px", zIndex:'-1000'}}
                         onSelectEvent={e => {
                             dispatch(selected(e.id))
+                            setTipo(e.categoria)
                             handleShow()
                         }}
                         onSelecting={range => handleSelect(range)}
@@ -209,7 +212,8 @@ export default function Calendario(){
                     </Modal.Dialog>
                 </Modal> */}
 
-                <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
+                {tipo != 'Palestra' && tipo != 'Esterno' ?
+                    <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
                     <Modal.Dialog>
 
                         <Modal.Header closeButton>
@@ -273,7 +277,37 @@ export default function Calendario(){
                             <p>{state.palestra.filter(p => p.key===state.id).map(m=>m.about)}</p>
                         </Modal.Body>
                     </Modal.Dialog> */}
-                </Modal>
+                </Modal> : null}
+
+                {tipo == 'Palestra' ?
+                    <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
+                    <Modal.Dialog>
+
+                        <Modal.Header closeButton>
+                            <Card style={{backgroundColor:"#4b7bf8", color:"white"}}>
+                                <Card.Body>
+                                    <Card.Text className="event-month-popup" style={{textAlign: 'center'}}>
+                                        {state.palestra.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('MMM').toUpperCase())}
+                                    </Card.Text>
+                                    <Card.Text className="event-day-popup" style={{textAlign: 'center'}}>
+                                        {state.palestra.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D').toUpperCase())}
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                            <Modal.Title className="modal-title-1">{state.palestra.filter(p => p.key===state.id).map(m=>m.titolo)}</Modal.Title>
+                        </Modal.Header>
+
+                        <Modal.Body className="modal-subtitle-1">
+
+                            <img src={popupsport} style={{marginBottom:"0.5em", width:"22em"}}/>
+
+                            <p className="event-subsubtitle-3"> <img src={clock} className="icon"/> {state.palestra.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D MMM YYYY'))}, {state.palestra.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('h:mm a'))} - {state.palestra.filter(p => p.key===state.id).map(m=>moment(m.dataEnd).locale('en').format('h:mm a'))}</p>
+                            <p className="event-subsubtitle-3"> <img src={map} className="icon"/> {state.palestra.filter(p => p.key===state.id).map(m=>m.address)} </p>
+                            <p className="about">About</p>
+                            <p>{state.palestra.filter(p => p.key===state.id).map(m=>m.about)}</p>
+                        </Modal.Body>
+                    </Modal.Dialog>
+                </Modal> : null}
 
 
                 <Modal show={show_second} onHide={handleCloseSecond} backdrop={"static"} centered>

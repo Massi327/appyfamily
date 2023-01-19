@@ -101,20 +101,13 @@ export default function Home(){
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    let events = [];
+    const [show_second, setShowSecond] = useState(false);
+    const handleCloseSecond = () => setShowSecond(false);
+    const handleShowSecond = () => setShowSecond(true);
 
-    prenotazione.map(p => {
-        let event={
-            key: p.key,
-            titolo: p.titolo,
-            dataStart: moment(p.dataStart,'YYYY-MM-DD, hh:mm').toDate(),
-            dataEnd: moment(p.dataEnd,'YYYY-MM-DD, hh:mm').toDate(),
-            address: p.address,
-            about: p.about,
-            categoria: p.categoria
-        }
-        events.push(event)
-    })
+    const [show_third, setShowThird] = useState(false);
+    const handleCloseThird = () => setShowThird(false);
+    const handleShowThird = () => setShowThird(true);
 
     return(
         <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', width:"100vw"}}>
@@ -196,8 +189,7 @@ export default function Home(){
                                     onClick={handleClose}
                             ><img src={interested}/> Interested</Button>
                             <Button style={{fontSize:"13px", borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
-                                    onClick={handleClose}
-                            ><img src={participate}/> Participate</Button>
+                                    onClick={()=>{handleClose(); handleShowSecond()}}><img src={participate}/> Participate</Button>
                             <Button style={{fontSize:"13px",borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
                                     onClick={handleClose}
                             ><img src={whosgoing}/> Who's going<img src={dropdown} style={{marginRight:"-10px"}}/></Button>
@@ -205,6 +197,41 @@ export default function Home(){
                     </Modal.Dialog>
                 </Modal>
 
+                <Modal show={show_second} onHide={handleCloseSecond} backdrop={"static"} centered>
+                    <Modal.Dialog>
+
+                        <Modal.Body className="modal-subtitle-1">
+                            <p>Vuoi partecipare?</p>
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                    onClick={()=> {handleCloseSecond(); handleShowThird()}}>
+                                si
+                            </Button>
+                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                    onClick={()=> handleCloseSecond()}>
+                                no
+                            </Button>
+                        </Modal.Footer>
+                    </Modal.Dialog>
+                </Modal>
+
+                <Modal show={show_third} onHide={handleCloseThird} backdrop={"static"} centered>
+                    <Modal.Dialog>
+
+                        <Modal.Body className="modal-subtitle-1">
+                            <p>Parteciperai ed è stato aggiunto al tuo calendario</p>
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                    onClick={()=> {handleCloseThird()}}>
+                                Ok
+                            </Button>
+                        </Modal.Footer>
+                    </Modal.Dialog>
+                </Modal>
 
         </Container>
 

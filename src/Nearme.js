@@ -23,11 +23,51 @@ import threedots from "./images/ph_dots-three-vertical-bold.svg";
 import imgcard5 from "./images/Image-event-5.svg";
 import imgcard4 from "./images/Image-event-4.svg";
 import forums from "./images/Forums.svg"
+import moment from "moment";
 
 
 export default function Nearme(){
 
     const [state,dispatch] = useContext(StateContext)
+
+    const cardh = [
+        {   key: 300,
+            titolo:'Play in the Park',
+            dataStart:moment('2023-02-02, 10:00','YYYY-MM-DD, hh:mm'),
+            dataEnd:moment('2023-02-02, 11:00','YYYY-MM-DD, hh:mm'),
+            address:'112 Barrack Street, NR3 1TX, UK',
+            about:'Hosted by the Muse Th.',
+            categoria: 'Esterno',
+            img: 'imgcard1'
+        },
+        {   key: 301,
+            titolo:'Music therapy',
+            dataStart:moment('2023-02-02, 17:00','YYYY-MM-DD, hh:mm'),
+            dataEnd:moment('2023-02-02, 18:00','YYYY-MM-DD, hh:mm'),
+            address:'112 Barrack Street, NR3 1TX, UK',
+            about:'Hosted by Color Notes',
+            categoria: 'Esterno',
+            img: 'imgcard2'
+        },
+        {   key: 302,
+            titolo:'Joe\'s Party',
+            dataStart:moment('2023-02-03, 17:00','YYYY-MM-DD, hh:mm'),
+            dataEnd:moment('2023-02-03, 20:00','YYYY-MM-DD, hh:mm'),
+            address:'113 Flams Close, CB4 2TY, UK',
+            about:'Hosted by the Mia Johnson',
+            categoria: 'Esterno',
+            img: 'imgcard5'
+        },
+        {   key: 303,
+            titolo:'Soccer U10',
+            dataStart:moment('2023-02-04, 20:00','YYYY-MM-DD, hh:mm'),
+            dataEnd:moment('2023-02-04, 21:00','YYYY-MM-DD, hh:mm'),
+            address:'13 Congo Street, PT3 1MX, UK',
+            about:'Hosted by the MegaSport',
+            categoria: 'Esterno',
+            img: 'imgcard4'
+        },
+    ]
 
     return(
         <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh'}}>
