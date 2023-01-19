@@ -29,7 +29,7 @@ import moment from "moment";
 import popupsport from "./images/image 1.svg";
 import interested from "./images/ic_round-star-border.svg";
 import participate from "./images/ic_round-check-circle-outline.svg";
-import whosgoing from "./images/material-symbols_emoji-people-rounded.svg";
+
 import dropdown from "./images/gridicons_dropdown.svg";
 import ProfileO from "./components/profile-options";
 import centerprofileimage from "./images/cus_torino.svg";
@@ -65,7 +65,7 @@ export default function MiaJohnsonForums(){
 
     let forum = [ {
         key: 100,
-        titolo: 'Activity ideas for my 6 months old child during long car trips?',
+        titolo: 'What is an orthodontic pacifier?',
         about: '4 weeks ago • Mia Johnson'
     },
     ];

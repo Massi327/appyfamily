@@ -51,6 +51,7 @@ import music from "./images/music.svg";
 import party from "./images/party.svg";
 import sport from "./images/sport.svg";
 
+
 export default function Profile(){
 
     const [state,dispatch] = useContext(StateContext)

@@ -23,13 +23,13 @@ import home from "./images/Home-icon.svg";
 import calendar from "./images/Calendar.svg";
 import settings from "./images/Settings.svg";
 import homeunselected from "./images/home-unselected.svg"
-import {cancelBooking, selected} from "./Action";
+import {cancelBooking, nonPartecipo, partecipo, selected} from "./Action";
 import imgcard4 from "./images/Image-event-4.svg";
 import moment from "moment";
 import popupsport from "./images/image 1.svg";
 import interested from "./images/ic_round-star-border.svg";
 import participate from "./images/ic_round-check-circle-outline.svg";
-import whosgoing from "./images/material-symbols_emoji-people-rounded.svg";
+
 import dropdown from "./images/gridicons_dropdown.svg";
 import ProfileO from "./components/profile-options";
 import centerprofileimage from "./images/cus_torino.svg";
@@ -49,12 +49,20 @@ import calendarunselected from "./images/Calendar.svg";
 import profileunselected from "./images/Profile-unselected.svg";
 import settingsunselected from "./images/Settings.svg";
 import backarrow from "./images/backarrow.svg";
-import going from "./images/going.svg";
+
 import profile1 from "./images/profile1.svg";
 import profile4 from "./images/profile4.svg";
 import profile3 from "./images/profile3.svg";
 import imgcard2 from "./images/Image-event-2.svg";
 import imgcard5 from "./images/Image-event-5.svg";
+import other from "./images/other.svg";
+import music from "./images/music.svg";
+import party from "./images/party.svg";
+import sport from "./images/sport.svg";
+import {useLocalStorage} from "./useLocalStorage";
+import going from "./images/going.svg"
+import whosgoing from "./images/whosgoing-white.svg";
+
 
 export default function MiaJohnson(){
 
@@ -64,7 +72,7 @@ export default function MiaJohnson(){
         const prenotazione = JSON.parse(localStorage.getItem('prenotazioni'));
         return prenotazione} )
 
-    const cardb = [
+    const cardmia = [
         {   key: 300,
             titolo:'Park Date',
             dataStart:moment('2023-02-01, 18:00','YYYY-MM-DD, hh:mm'),
@@ -134,7 +142,15 @@ export default function MiaJohnson(){
     const handleCloseFourth = () => setShowFourth(false);
     const handleShowFourth = () => setShowFourth(true);
 
+    const [show_fifth, setShowFifth] = useState(false);
+    const handleCloseFifth = () => setShowFifth(false);
+    const handleShowFifth = () => setShowFifth(true);
+    const [cardhome, setCardhome] = useLocalStorage('cardhome', cardmia)
+
+
+
     const img = [{key:'imgcard1', img: imgcard1}, {key:'imgcard2', img: imgcard2}, {key:'imgcard5', img: imgcard5}, {key:'imgcard4', img: imgcard4}]
+    const imgBig = [{key:'Other', img: other}, {key:'Music', img: music}, {key:'Party', img: party}, {key:'Sport', img: sport}]
 
 
     return(
@@ -202,7 +218,7 @@ export default function MiaJohnson(){
                     </Container>
                 </CardHeader>
 
-                {cardb.map( p =>
+                {cardmia.map( p =>
                     <Card className="post" key={p.key} style={{ minHeight: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}} onClick={()=> {handleShow(); dispatch(selected(p.key))}}>
                         <Card.Img className="cardimg" src={img.filter(f => f.key == p.img).map(c => c.img)} style={{minHeight: '5em', maxWidth: "9em", marginLeft:"0.5em", width: '10rem', verticalAlign:'center'}} />
                         <Card.Body>
@@ -236,29 +252,38 @@ export default function MiaJohnson(){
                             <Card style={{backgroundColor:"#4b7bf8", color:"white"}}>
                                 <Card.Body>
                                     <Card.Text className="event-month-popup" style={{textAlign: 'center'}}>
-                                        {cardb.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('MMM').toUpperCase())}
+                                        {cardmia.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('MMM').toUpperCase())}
                                     </Card.Text>
                                     <Card.Text className="event-day-popup" style={{textAlign: 'center'}}>
-                                        {cardb.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D').toUpperCase())}
+                                        {cardmia.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D').toUpperCase())}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
-                            <Modal.Title className="modal-title-1">{cardb.filter(p => p.key===state.id).map(m=>m.titolo)}</Modal.Title>
+                            <Col>
+                                <Row>
+                                    <Modal.Title className="modal-title-1" style={{fontSize:"25px", marginLeft:"1em"}}>{cardmia.filter(p => p.key===state.id).map(m=>m.titolo)}</Modal.Title>
+                                </Row>
+                                <Row className="event-subtitle-1" style={{textAlign: 'left', marginLeft:"0.1em", fontSize:"15px"}}>
+                                    <p style={{textAlign: 'left'}}>{cardmia.filter(p => p.key===state.id).map(m=>m.host)}</p>
+                                </Row>
+                            </Col>
                         </Modal.Header>
 
                         <Modal.Body className="modal-subtitle-1">
 
-                            <img src={popupsport} style={{marginBottom:"0.5em", width:"22em"}}/>
-
-                            <p className="event-subsubtitle-3"> <img src={clock} className="icon"/> {cardb.filter(p => p.key===state.id).map(m=>m.address)}</p>
-                            <p className="event-subsubtitle-3"> <img src={map} className="icon"/> {cardb.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D MMM YYYY'))}, {cardb.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('h:mm a'))} - {cardb.filter(p => p.key===state.id).map(m=>moment(m.dataEnd).locale('en').format('h:mm a'))}</p>
+                            <img src={imgBig.filter(f => f.key == cardmia.filter(g=> g.key == state.id).map(m=> m.categoria)).map(c => c.img)} style={{marginBottom:"0.5em", width:"22em"}}/>
+                            <p className="event-subsubtitle-3"> <img src={clock} className="icon"/> {cardmia.filter(p => p.key===state.id).map(m=>m.address)}</p>
+                            <p className="event-subsubtitle-3"> <img src={map} className="icon"/> {cardmia.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D MMM YYYY'))}, {cardmia.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('h:mm a'))} - {cardmia.filter(p => p.key===state.id).map(m=>moment(m.dataEnd).locale('en').format('h:mm a'))}</p>
                             <p className="about">About</p>
-                            <p>{cardb.filter(p => p.key===state.id).map(m=>m.about)}</p>
+                            <p>{cardmia.filter(p => p.key===state.id).map(m=>m.about)}</p>
                         </Modal.Body>
 
                         <Modal.Footer>
-                            <Button style={{fontSize:"15px", borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0em"}}
-                                    onClick={()=>{handleClose(); handleShowSecond()}}><img src={going}/> Going</Button>
+                            {cardmia.filter(f=> f.key == state.id).map(m=> m.partecipo) == 'false'?
+                                <Button style={{fontSize:"15px", borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0em"}}
+                                        onClick={()=>{handleClose(); handleShowSecond()}}><img src={going}/> Participate</Button> :
+                                <Button style={{fontSize:"15px", borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
+                                        onClick={()=>{handleClose(); handleShowFourth()}}><img src={participate}/> Don't participate</Button> }
 
                             <Dropdown>
                                 <Dropdown.Toggle id="dropdown-basic"  style={{borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0em"}}>
@@ -275,8 +300,6 @@ export default function MiaJohnson(){
                                         Sullivan Jayden</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
-                            <Button style={{fontSize:"15px", borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
-                                    onClick={()=>{handleClose(); handleShowSecond()}}><img src={participate}/> Not Going</Button>
                         </Modal.Footer>
                     </Modal.Dialog>
                 </Modal>
@@ -285,17 +308,21 @@ export default function MiaJohnson(){
                     <Modal.Dialog>
 
                         <Modal.Body className="modal-subtitle-1">
-                            <p>Vuoi partecipare?</p>
+                            <p>Do you wish to participate?</p>
                         </Modal.Body>
 
                         <Modal.Footer>
                             <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
-                                    onClick={()=> {handleCloseSecond(); handleShowThird()}}>
-                                si
+                                    onClick={()=> {cardmia.filter(f=> f.key == state.id).map(q=> q.partecipo='true');
+                                        cardmia.filter(f=> f.key == state.id).map(m=>{
+                                            dispatch(partecipo(m.key, m.dataStart, m.dataEnd, m.address, m.titolo, m.about, m.categoria, m.property, m.host, m.img))
+                                        });
+                                        handleCloseSecond(); handleShowThird()}}>
+                                Yes
                             </Button>
                             <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
                                     onClick={()=> handleCloseSecond()}>
-                                no
+                                No
                             </Button>
                         </Modal.Footer>
                     </Modal.Dialog>
@@ -305,12 +332,51 @@ export default function MiaJohnson(){
                     <Modal.Dialog>
 
                         <Modal.Body className="modal-subtitle-1">
-                            <p>Parteciperai ed è stato aggiunto al tuo calendario</p>
+                            <p>The event has been added to your Calendar</p>
                         </Modal.Body>
 
                         <Modal.Footer>
                             <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
-                                    onClick={()=> {handleCloseThird()}}>
+                                    onClick={()=> {localStorage.setItem('partecipazioni', JSON.stringify(state.partecipazioni));
+                                        localStorage.setItem('cardhome', JSON.stringify(cardhome)); handleCloseThird()}}>
+                                Ok
+                            </Button>
+                        </Modal.Footer>
+                    </Modal.Dialog>
+                </Modal>
+
+                <Modal show={show_fourth} onHide={handleCloseFourth} backdrop={"static"} centered>
+                    <Modal.Dialog>
+
+                        <Modal.Body className="modal-subtitle-1">
+                            <p>Are you sure that you don't want to participate anymore?</p>
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                    onClick={()=> {cardmia.filter(f=> f.key == state.id).map(q => q.partecipo='false');
+                                        dispatch(nonPartecipo(state.id));handleCloseFourth(); handleShowFifth()}}>
+                                Don't participate
+                            </Button>
+                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                    onClick={()=> handleCloseFourth()}>
+                                Participate
+                            </Button>
+                        </Modal.Footer>
+                    </Modal.Dialog>
+                </Modal>
+
+                <Modal show={show_fifth} onHide={handleCloseFifth} backdrop={"static"} centered>
+                    <Modal.Dialog>
+
+                        <Modal.Body className="modal-subtitle-1">
+                            <p>The event has been removed from your Calendar</p>
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                    onClick={()=> {localStorage.setItem('partecipazioni', JSON.stringify(state.partecipazioni));
+                                        localStorage.setItem('cardhome', JSON.stringify(cardhome)); handleCloseFifth()}}>
                                 Ok
                             </Button>
                         </Modal.Footer>
