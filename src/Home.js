@@ -48,7 +48,7 @@ import profile5 from "./images/profile5.svg"
 
 import 'moment/locale/en-gb';
 import moment from "moment/moment";
-import {selected} from "./Action";
+import {nonPartecipo, partecipo, selected} from "./Action";
 import {useLocalStorage} from "./useLocalStorage";
 import profile1 from "./images/profile1.svg";
 
@@ -64,36 +64,48 @@ export default function Home(){
             dataStart:moment('2023-02-02, 10:00','YYYY-MM-DD, hh:mm'),
             dataEnd:moment('2023-02-02, 11:00','YYYY-MM-DD, hh:mm'),
             address:'112 Barrack Street, NR3 1TX, UK',
-            about:'Hosted by the Muse Th.',
-            categoria: 'Esterno',
-            img: 'imgcard1'
+            host:'Hosted by the Muse Th.',
+            about:'boh',
+            categoria: 'Park',
+            img: 'imgcard1',
+            partecipo: 'false',
+            property: 'Esterno'
         },
         {   key: 301,
             titolo:'Music therapy',
             dataStart:moment('2023-02-02, 17:00','YYYY-MM-DD, hh:mm'),
             dataEnd:moment('2023-02-02, 18:00','YYYY-MM-DD, hh:mm'),
             address:'112 Barrack Street, NR3 1TX, UK',
-            about:'Hosted by Color Notes',
-            categoria: 'Esterno',
-            img: 'imgcard2'
+            host:'Hosted by Color Notes',
+            about:'boh',
+            categoria: 'Park',
+            img: 'imgcard2',
+            partecipo: 'false',
+            property: 'Esterno'
         },
         {   key: 302,
             titolo:'Joe\'s Party',
             dataStart:moment('2023-02-03, 17:00','YYYY-MM-DD, hh:mm'),
             dataEnd:moment('2023-02-03, 20:00','YYYY-MM-DD, hh:mm'),
             address:'113 Flams Close, CB4 2TY, UK',
-            about:'Hosted by the Mia Johnson',
-            categoria: 'Esterno',
-            img: 'imgcard5'
+            host:'Hosted by the Mia Johnson',
+            about:'boh',
+            categoria: 'Park',
+            img: 'imgcard5',
+            partecipo: 'false',
+            property: 'Esterno'
         },
         {   key: 303,
             titolo:'Soccer U10',
             dataStart:moment('2023-02-04, 20:00','YYYY-MM-DD, hh:mm'),
             dataEnd:moment('2023-02-04, 21:00','YYYY-MM-DD, hh:mm'),
             address:'13 Congo Street, PT3 1MX, UK',
-            about:'Hosted by the MegaSport',
-            categoria: 'Esterno',
-            img: 'imgcard4'
+            host:'Hosted by the MegaSport',
+            about:'boh',
+            categoria: 'Park',
+            img: 'imgcard4',
+            partecipo: 'false',
+            property: 'Esterno'
         },
     ]
 
@@ -103,6 +115,7 @@ export default function Home(){
 
     const [prenotazione, setPrenotazione] = useLocalStorage('prenotazioni', state.prenotazioni)
     const [forum, setForum] = useLocalStorage('forums', state.forums)
+    const [partecipazioni, setPartecipazioni] = useLocalStorage('partecipazioni', state.partecipazioni)
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -115,6 +128,14 @@ export default function Home(){
     const [show_third, setShowThird] = useState(false);
     const handleCloseThird = () => setShowThird(false);
     const handleShowThird = () => setShowThird(true);
+
+    const [show_fourth, setShowFourth] = useState(false);
+    const handleCloseFourth = () => setShowFourth(false);
+    const handleShowFourth = () => setShowFourth(true);
+
+    const [show_fifth, setShowFifth] = useState(false);
+    const handleCloseFifth = () => setShowFifth(false);
+    const handleShowFifth = () => setShowFifth(true);
 
     return(
         <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', width:"100vw"}}>
@@ -153,7 +174,7 @@ export default function Home(){
                             </Card.Text>
                             <Card.Title className="event-title-1" style={{textAlign: 'left'}}>{p.titolo}</Card.Title>
                             <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
-                                {p.about}
+                                {p.host}
                             </Card.Text>
                             <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
                                 <img src={clock} alt="Near me" className="icon"/> {moment(p.dataStart).locale('en').format('D MMM YYYY')}, {moment(p.dataStart).locale('en').format('h:mm a').toUpperCase()} - {moment(p.dataEnd).locale('en').format('h:mm a').toUpperCase()}
@@ -192,8 +213,11 @@ export default function Home(){
                         </Modal.Body>
 
                         <Modal.Footer>
-                            <Button style={{fontSize:"15px", borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0em"}}
-                                    onClick={()=>{handleClose(); handleShowSecond()}}><img src={going}/> Going</Button>
+                            {cardhome.filter(f=> f.key == state.id).map(m=> m.partecipo) == 'false'?
+                                <Button style={{fontSize:"15px", borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0em"}}
+                                    onClick={()=>{handleClose(); handleShowSecond()}}><img src={going}/> Going</Button> :
+                            <Button style={{fontSize:"15px", borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
+                                    onClick={()=>{handleClose(); handleShowFourth()}}><img src={participate}/> Not Going</Button> }
 
                             <Dropdown>
                                 <Dropdown.Toggle id="dropdown-basic"  style={{borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0em"}}>
@@ -210,8 +234,6 @@ export default function Home(){
                                         Sullivan Jayden</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
-                            <Button style={{fontSize:"15px", borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
-                                    onClick={()=>{handleClose(); handleShowSecond()}}><img src={participate}/> Not Going</Button>
                         </Modal.Footer>
                     </Modal.Dialog>
                 </Modal>
@@ -225,7 +247,11 @@ export default function Home(){
 
                         <Modal.Footer>
                             <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
-                                    onClick={()=> {handleCloseSecond(); handleShowThird()}}>
+                                    onClick={()=> {cardhome.filter(f=> f.key == state.id).map(q=> q.partecipo='true');
+                                        cardhome.filter(f=> f.key == state.id).map(m=>{
+                                            dispatch(partecipo(m.key, m.dataStart, m.dataEnd, m.address, m.titolo, m.about, m.categoria, m.property, m.host, m.img))
+                                        });
+                                        handleCloseSecond(); handleShowThird()}}>
                                 si
                             </Button>
                             <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
@@ -245,7 +271,46 @@ export default function Home(){
 
                         <Modal.Footer>
                             <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
-                                    onClick={()=> {handleCloseThird()}}>
+                                    onClick={()=> {localStorage.setItem('partecipazioni', JSON.stringify(state.partecipazioni));
+                                        localStorage.setItem('cardhome', JSON.stringify(cardhome)); handleCloseThird()}}>
+                                Ok
+                            </Button>
+                        </Modal.Footer>
+                    </Modal.Dialog>
+                </Modal>
+
+                <Modal show={show_fourth} onHide={handleCloseFourth} backdrop={"static"} centered>
+                    <Modal.Dialog>
+
+                        <Modal.Body className="modal-subtitle-1">
+                            <p>NON Vuoi più partecipare?</p>
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                    onClick={()=> {cardhome.filter(f=> f.key == state.id).map(q => q.partecipo='false');
+                                        dispatch(nonPartecipo(state.id));handleCloseFourth(); handleShowFifth()}}>
+                                si non voglio più partecipare
+                            </Button>
+                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                    onClick={()=> handleCloseFourth()}>
+                                no voglio ancora partecipare
+                            </Button>
+                        </Modal.Footer>
+                    </Modal.Dialog>
+                </Modal>
+
+                <Modal show={show_fifth} onHide={handleCloseFifth} backdrop={"static"} centered>
+                    <Modal.Dialog>
+
+                        <Modal.Body className="modal-subtitle-1">
+                            <p>NON Parteciperai più ed è stato TOLTO dal tuo calendario</p>
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                    onClick={()=> {localStorage.setItem('partecipazioni', JSON.stringify(state.partecipazioni));
+                                        localStorage.setItem('cardhome', JSON.stringify(cardhome)); handleCloseFifth()}}>
                                 Ok
                             </Button>
                         </Modal.Footer>
