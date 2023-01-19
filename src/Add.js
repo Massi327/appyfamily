@@ -43,7 +43,9 @@ export default function Add(){
     const [propertyHere, setPropertyHere] = useState('')
     const calendariohidden = 'false';
 
-        const dataNow = moment(new Date()).format('YYYY-MM-DD, hh:mm a')
+    const dataNow = moment(new Date()).format('YYYY-MM-DD, hh:mm a')
+
+    const [where, setWhere] = useState('')
 
     const navigate = useNavigate()
 
@@ -92,7 +94,8 @@ export default function Add(){
                         <Card className='form' style={{background: '#f5f5f5', paddingTop:"7em", color: "black", borderWidth: "0"}}>
                             <Card.Body style={{marginLeft:"1em", marginRight:"1em"}}>
                                 <CloseButton variant={'black'} onClick={() => {
-                                    if(state.c == 'false'){navigate(-1);}else {navigate('/calendar', {replace: true})}
+                                    if(state.c == 'false' && where != 'calendar'){navigate(-1);}
+                                    else {navigate('/calendar', {replace: true})}
                                     dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('','yyyy-MM-DD').format('LT'), moment('','yyyy-MM-DD').format('LT'),'false'))}}/>
                                 <Card.Title style={{fontSize: "30px", marginTop: "0.3em"}} className="title-2">Add Event</Card.Title>
 
@@ -126,7 +129,7 @@ export default function Add(){
                                     <Row className={"justify-content-center"}>
                                         <Col md={12} xs={12}>
                                             <FormLabel className="subtitle">Day *</FormLabel>
-                                            <FormControl type='date' value={date} style={{textAlign:"center", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"0px"}} onChange={e => {setDate(e.target.value); console.log(typeof date)}}/>
+                                            <FormControl type='date' value={date} style={{textAlign:"center", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"0px"}} onChange={e => setDate(e.target.value)}/>
                                         </Col>
                                     </Row>
                                 </FormGroup> :
@@ -136,6 +139,7 @@ export default function Add(){
                                                 <FormLabel className="subtitle">Day *</FormLabel>
                                                 <FormControl type='date' value={state.giorno} style={{textAlign:"center", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"0px"}} onChange={e => {setDate(e.target.value)
                                                     dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), state.start, state.end, 'false'))
+                                                    setWhere('calendar')
                                                     setOraI(state.start)
                                                     setOraF(state.end)}}/>
                                             </Col>
@@ -159,6 +163,7 @@ export default function Add(){
                                                 <FormLabel className="subtitle">Start*</FormLabel>
                                                 <FormControl type='time' value={state.start} style={{textAlign:"center", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"0px"}} onChange={e => {setOraI(e.target.value)
                                                     dispatch(selectedSlot(state.giorno, moment('','yyyy-MM-DD').format('LT'), state.end, 'false'))
+                                                    setWhere('calendar')
                                                     setDate(state.giorno)
                                                     setOraF(state.end)}}/>
                                             </Col>
@@ -166,6 +171,7 @@ export default function Add(){
                                                 <FormLabel className="subtitle">End*</FormLabel>
                                                 <FormControl type='time' value={state.end} style={{textAlign:"center", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"0px"}} onChange={e => {setOraF(e.target.value)
                                                     dispatch(selectedSlot(state.giorno, state.start, moment('','yyyy-MM-DD').format('LT'), 'false'))
+                                                    setWhere('calendar')
                                                     setDate(state.giorno)
                                                     setOraI(state.start)}}/>
                                             </Col>
@@ -191,6 +197,7 @@ export default function Add(){
                                     setOraI('')
                                     setOraF('')
                                     setProperty('')
+                                    dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('', 'yyyy-MM-DD').format('LT'), moment('', 'yyyy-MM-DD').format('LT'), 'false'))
                                 }}>
                                     Cancel
                                 </Button>
