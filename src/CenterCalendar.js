@@ -190,8 +190,8 @@ export default function CenterCalendar(){
                 <Modal.Dialog>
 
                     <Modal.Body className="modal-subtitle-1">
-                        <p>Hai inviato la richiesta per vedere i calendari</p>
-                        <p>A breve riceverai la risposta</p>
+                        <p>You have sent a request to view the classes</p>
+                        <p>Soon you will receive a feedback</p>
                     </Modal.Body>
 
                     <Modal.Footer>
