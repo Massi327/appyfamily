@@ -24,6 +24,8 @@ import CenterBlogs from "./CenterBlogs"
 import CenterEvents from "./CenterEvents"
 import EditAddEvent from "./EditAddEvent";
 import ProfileForums from "./ProfileForums"
+import MiaJohnson from "./Miajohnson";
+import MiaJohnsonForums from "./MiajohnsonForums";
 
 export const StateContext = createContext()
 
@@ -60,6 +62,8 @@ function App() {
                 <Route path={"/centerblogs"} element={<CenterBlogs/>}/>
                 <Route path={"/centerevents"} element={<CenterEvents/>}/>
                 <Route path={"/profileforums"} element={<ProfileForums/>}/>
+                <Route path={"/miajohnson"} element={<MiaJohnson/>}/>
+                <Route path={"/miajohnsonforums"} element={<MiaJohnsonForums/>}/>
             </Routes>
           </BrowserRouter>
         </div>

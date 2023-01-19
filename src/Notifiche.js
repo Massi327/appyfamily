@@ -33,14 +33,9 @@ export default function Notifiche(){
                     <Card.Body>
                         <Card.Text className="name-people" style={{textAlign: 'left'}}>Jeremy_Clarks</Card.Text>
 
-                        <Row>
-                            <Col className="subtitle-connections" style={{textAlign: 'left'}}>
-                                started following you.
-                            </Col>
-                            <Col>                       <Link to={"/follower"}> <img src={follow} alt="Follower" /></Link>
-                            </Col>
-
-                        </Row>
+                        <Card.Text className="subtitle-random" style={{textAlign: 'left'}}>
+                            started following you
+                        </Card.Text>
                     </Card.Body>
                 </Card>
 
@@ -48,7 +43,7 @@ export default function Notifiche(){
                     <Card.Img  src={profile3} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
                         <Card.Text className="name-people" style={{textAlign: 'left'}}>Gina_Martin</Card.Text>
-                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
+                        <Card.Text className="subtitle-random" style={{textAlign: 'left'}}>
                             will partecipate in your event.                        </Card.Text>
                     </Card.Body>
                 </Card>
@@ -58,7 +53,7 @@ export default function Notifiche(){
                     <Card.Img  src={profile4} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
                         <Card.Text className="name-people" style={{textAlign: 'left'}}>Clara_May_92</Card.Text>
-                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
+                        <Card.Text className="subtitle-random" style={{textAlign: 'left'}}>
                             is interested in your event.
                         </Card.Text>
                     </Card.Body>
@@ -68,7 +63,7 @@ export default function Notifiche(){
                     <Card.Img  src={profile1} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
                         <Card.Text className="name-people" style={{textAlign: 'left'}}>Jane_Austen</Card.Text>
-                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
+                        <Card.Text className="subtitle-random" style={{textAlign: 'left'}}>
                             invited you to her event.
                         </Card.Text>
                     </Card.Body>
@@ -78,7 +73,7 @@ export default function Notifiche(){
                     <Card.Img  src={profile5} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
                         <Card.Text className="name-people" style={{textAlign: 'left'}}>Santy_Chanty_Maybe</Card.Text>
-                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
+                        <Card.Text className="subtitle-random" style={{textAlign: 'left'}}>
                             replied to your question.
                         </Card.Text>
                     </Card.Body>
@@ -88,14 +83,11 @@ export default function Notifiche(){
                     <Card.Img  src={profile3} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
                         <Card.Text className="name-people" style={{textAlign: 'left'}}>Gina_Martin</Card.Text>
-                        <Row>
-                            <Col className="subtitle-connections" style={{textAlign: 'left'}}>
+                        <Card.Text className="subtitle-random" style={{textAlign: 'left'}}>
                                 started following you.
-                            </Col>
-                            <Col>                       <Link to={"/follower"}> <img src={follow} alt="Follower" /></Link>
-                            </Col>
+                        </Card.Text>
 
-                        </Row>
+
                     </Card.Body>
                 </Card>
 

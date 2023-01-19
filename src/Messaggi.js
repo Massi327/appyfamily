@@ -87,7 +87,7 @@ export default function Notifiche(){
                     <Card.Img  src={profile6} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
                         <Card.Text className="name-people" style={{textAlign: 'left'}}>Jeremy_Clarks</Card.Text>
-                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
+                        <Card.Text className="subtitle-random" style={{textAlign: 'left'}}>
                             You were right! It was really...
                         </Card.Text>
                     </Card.Body>

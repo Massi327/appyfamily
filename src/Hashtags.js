@@ -28,7 +28,7 @@ export default function Hashtags(){
     const [state,dispatch] = useContext(StateContext)
 
     return(
-        <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'70vh'}}>
+        <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh'}}>
             <Navigbar vevents={events}
                       vforum={forums}
                       vpeople={people}

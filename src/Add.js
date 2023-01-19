@@ -179,7 +179,7 @@ export default function Add(){
                                     </FormGroup>}
 
                                 <FormGroup style={{marginBottom: "10px", textAlign: "left"}}>
-                                    <FormLabel className="subtitle">Public or Private*</FormLabel>
+                                    <FormLabel className="subtitle">Visibility*</FormLabel>
                                     <FormSelect value={property} style={{textAlign:"center", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"0px"}} onChange={e=> {setProperty(e.target.value); setPropertyHere(e.target.value)}}>
                                         <option key={0} value={'---'}>---</option>
                                         <option key={1} value={'public'}>Public</option>
@@ -329,7 +329,7 @@ export default function Add(){
                             <Modal.Dialog>
 
                                 <Modal.Body className="modal-subtitle-1">
-                                    <p>Data Precedente, mettere una data successiva a {dataNow}</p>
+                                    <p>This date is in the past, insert a date following {dataNow}</p>
                                 </Modal.Body>
 
                                 <Modal.Footer>

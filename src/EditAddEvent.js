@@ -206,11 +206,11 @@ export default function EditAddEvent(){
                         <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
                             <Modal.Dialog>
                                 <Modal.Header>
-                                    <Modal.Title className="modal-title-1">Add event to Calendar</Modal.Title>
+                                    <Modal.Title className="modal-title-1">Edit event in Calendar</Modal.Title>
                                 </Modal.Header>
 
                                 <Modal.Body className="modal-subtitle-1">
-                                    <p>Are you sure you want to CHANGE this event to the Calendar?</p>
+                                    <p>Are you sure you want to edit this event in the Calendar?</p>
                                 </Modal.Body>
 
                                 <Modal.Footer>
@@ -232,7 +232,7 @@ export default function EditAddEvent(){
                                                 handleClose()
                                                 handleShowSecond()
                                             }}>
-                                        Change
+                                        Edit
                                     </Button>
                                 </Modal.Footer>
                             </Modal.Dialog>
@@ -243,7 +243,7 @@ export default function EditAddEvent(){
                             <Modal.Dialog>
 
                                 <Modal.Body className="modal-subtitle-1">
-                                    <p>CAMBIATO</p>
+                                    <p>The event has been edited</p>
                                 </Modal.Body>
 
                                 <Modal.Footer>
@@ -261,7 +261,7 @@ export default function EditAddEvent(){
                             <Modal.Dialog>
 
                                 <Modal.Body className="modal-subtitle-1">
-                                    <p>The event has been added</p>
+                                    <p>The event has been edited</p>
                                 </Modal.Body>
 
                                 <Modal.Footer>
@@ -281,7 +281,7 @@ export default function EditAddEvent(){
                             <Modal.Dialog>
 
                                 <Modal.Body className="modal-subtitle-1">
-                                    <p>Data Precedente, mettere una data successiva a {dataNow}</p>
+                                    <p>This date is in the past, insert a date following {dataNow}</p>
                                 </Modal.Body>
 
                                 <Modal.Footer>

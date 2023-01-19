@@ -38,7 +38,7 @@ export default function People(){
     const [state,dispatch] = useContext(StateContext)
 
     return(
-        <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000'}}>
+        <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', paddingBottom: "10em"}}>
 
             <Navigbar vevents={events}
                       vforum={forums}
@@ -51,19 +51,21 @@ export default function People(){
                             settings={settings}/>
             <Container style={{paddingTop:'15em'}}>
 
+                <Link to={"/miajohnson"} style={{ textDecoration:"none"}}>
+                    <Card className="people" style={{height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                        <Card.Img  src={profile1} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                        <Card.Body>
+                            <Card.Text className="name-people" style={{textAlign: 'left'}}>Jane_Austen</Card.Text>
+                            <Card.Text className="subtitle-name" style={{textAlign: 'left'}}>
+                                Mia Johnson
+                            </Card.Text>
+                            <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
+                                Followed by Lame_Jane + 30 more
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
 
-                <Card className="people" style={{height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                    <Card.Img  src={profile1} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
-                    <Card.Body>
-                        <Card.Text className="name-people" style={{textAlign: 'left'}}>Jane_Austen</Card.Text>
-                        <Card.Text className="subtitle-name" style={{textAlign: 'left'}}>
-                            Mia Johnson
-                        </Card.Text>
-                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
-                            Followed by Lame_Jane + 30 more
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
+                </Link>
 
 
                 <Card className="people" style={{height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
