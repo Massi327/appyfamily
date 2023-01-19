@@ -80,6 +80,7 @@ export default function MiaJohnson(){
             address:'112 Barrack Street, NR3 1TX, UK',
             about:'Hosted by Mia Johnson',
             categoria: 'Esterno',
+            partecipo: 'false',
             img: 'imgcard1'
         },
         {   key: 301,
@@ -89,6 +90,7 @@ export default function MiaJohnson(){
             address:'113 Flams Close, CB4 2TY, UK',
             about:'Hosted by Mia Johnson',
             categoria: 'Esterno',
+            partecipo: 'false',
             img: 'imgcard5'
         },
         {   key: 302,
@@ -98,6 +100,7 @@ export default function MiaJohnson(){
             address:'112 Barrack Street, NR3 1TX, UK',
             about:'Hosted by Mia Johnson',
             categoria: 'Esterno',
+            partecipo: 'false',
             img: 'imgcard2'
         },
         {   key: 303,
@@ -107,6 +110,7 @@ export default function MiaJohnson(){
             address:'13 Congo Street, PT3 1MX, UK',
             about:'Hosted by Mia Johnson',
             categoria: 'Esterno',
+            partecipo: 'false',
             img: 'imgcard4'
         },
     ]

@@ -91,7 +91,8 @@ export default function CenterEvents(){
             host:'Hosted by CUS Torino',
             categoria: 'Esterno',
             about:'Let us see who can jump more than 4 meters. You can win a pie!',
-            img: 'longjump'
+            img: 'longjump',
+            partecipo: 'false'
         },
         {   key: 301,
             titolo:'Dance with us',
@@ -101,7 +102,8 @@ export default function CenterEvents(){
             host:'Hosted by CUS Torino',
             categoria: 'Esterno',
             about:'Join us for a fun morning with music',
-            img: 'dance'
+            img: 'dance',
+            partecipo: 'false'
         },
         {   key: 302,
             titolo:'Feeencing',
@@ -111,7 +113,8 @@ export default function CenterEvents(){
             host:'Hosted by CUS Torino',
             categoria: 'Esterno',
             about: 'Feeling like a Musketeer? Come join us in this fun fencing lesson',
-            img: 'fencing'
+            img: 'fencing',
+            partecipo: 'false'
         },
 
     ]
