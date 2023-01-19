@@ -1,7 +1,7 @@
 import {useContext, useEffect, useState} from "react";
 import {StateContext} from "./App";
 import {Link} from "react-router-dom";
-import {Button, Col, Container, Nav, Navbar, Row, Card, Modal, CardGroup} from "react-bootstrap";
+import {Button, Col, Container, Nav, Navbar, Row, Card, Modal, CardGroup, CloseButton} from "react-bootstrap";
 import NavigbarBottom from "./components/navbar-bottom";
 import NavigbarP from "./components/navbar-profile";
 import eventsselected from "./images/Events-selezionato.svg";
@@ -46,6 +46,8 @@ import help from "./images/help-icon.svg";
 import fencing from "./images/Fencing.svg"
 import dance from "./images/Dance.svg"
 import longjump from "./images/LongJump.svg"
+import backarrow from "./images/backarrow.svg"
+import {navigate} from "react-big-calendar/lib/utils/constants";
 
 export default function CenterEvents(){
 
@@ -74,10 +76,17 @@ export default function CenterEvents(){
     const handleShow = () => setShow(true);
 
     return(
-        <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', top:'5em'}}>
+        <Container style={{backgroundColor:"#f5f5f5", paddingBottom:"10em", zIndex:'-1000', minHeight:'100vh', top:'5em'}}>
 
             <NavigbarP vnotifications={notif} vmessages={message} vtutorial={help}/>
-            <Container className="bg2" style={{paddingTop:"7em"}}>
+            <Container className="bg2" style={{paddingTop:"6.5em"}}>
+                <Row>
+                    <Col xs={1}>
+                        <Link to={"/hashtags"}><img src={backarrow} style={{left:"2em"}}/></Link>
+                    </Col>
+                    <Col></Col>
+                </Row>
+
 
                 <Card className="post" style={{ width: '100%', height: '8rem',  marginTop: '0em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img  src={centerprofileimage} style={{height: '8em', width: '8rem'}} />
@@ -110,7 +119,7 @@ export default function CenterEvents(){
                     </Container>
                 </CardHeader>
 
-                <Card className="post" style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                <Card className="post" style={{ height: '8rem',  paddingTop:"1em", marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img className="cardimg" src={longjump} style={{height: '8em', width: '10rem', verticalAlign:'center'}} />
                     <Card.Body>
 
@@ -138,7 +147,7 @@ export default function CenterEvents(){
                 </Card>
 
 
-                <Card className="post" style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                <Card className="post" style={{ height: '8rem', marginBottom: '1em' ,  paddingTop:"1em", borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img className="cardimg" src={dance} style={{height: '8em', width: '9rem', verticalAlign:'center', marginLeft:"0.5em"}} />
                     <Card.Body>
 
@@ -168,7 +177,7 @@ export default function CenterEvents(){
 
                 <CardGroup>
 
-                    <Card className="post" style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
+                    <Card className="post" style={{ height: '8rem', marginBottom: '1em' ,  paddingTop:"1em", borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                         <Card.Img className="cardimg" src={fencing} style={{height: '8em', width: '9rem', verticalAlign:'center', marginLeft:"0.5em", marginTop:'-0.5em'}} />
                         <Card.Body>
 
@@ -199,119 +208,6 @@ export default function CenterEvents(){
             </Card>
             <NavigbarBottom home={homeunselected} calendar={calendar} profile={profile} settings={settings}/>
 
-            <Container style={{marginTop:"15em"}}>
-                <Button onClick={()=> console.log(state.prenotazioni)}>+</Button>
-                {events.slice(0).reverse().map( p =>
-
-                    <Card className="post" key={p.key} style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}} onClick={()=> {handleShow(); dispatch(selected(p.key))}}>
-                        <Card.Img className="cardimg" src={imgcard4} style={{height: '8em', width: '10rem', verticalAlign:'center'}} />
-                        <Card.Body>
-                            <Card.Text className="event-time-1" style={{textAlign: 'left'}}>{moment(p.dataStart).locale('en').format('MMM D').toUpperCase()} • {moment(p.dataStart).locale('en').format('h:mm a').toUpperCase()}</Card.Text>
-                            <Card.Title className="event-title-1" style={{textAlign: 'left'}}>{p.titolo}</Card.Title>
-                            <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
-                                {p.about}
-                            </Card.Text>
-                            <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                                <img src={clock} alt="Near me" className="icon"/> {moment(p.dataStart).locale('en').format('D MMM YYYY')}, {moment(p.dataStart).locale('en').format('h:mm a').toUpperCase()} - {moment(p.dataEnd).locale('en').format('h:mm a').toUpperCase()}
-                            </Card.Text>
-                            <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                                <img src={map} alt="Near me" className="icon"/> {p.address}
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-
-                )}
-
-                <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
-                    <Modal.Dialog>
-
-
-                        <Modal.Header closeButton>
-                            <Card style={{backgroundColor:"#4b7bf8", color:"white"}}>
-                                <Card.Body>
-                                    <Card.Text className="event-month-popup" style={{textAlign: 'center'}}>                      {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('MMM').toUpperCase())}
-                                    </Card.Text>
-                                    <Card.Text className="event-day-popup" style={{textAlign: 'center'}}>                      {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D').toUpperCase())}
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                            <Modal.Title className="modal-title-1">{prenotazione.filter(p => p.key===state.id).map(m=>m.titolo)}</Modal.Title>
-                        </Modal.Header>
-
-                        <Modal.Body className="modal-subtitle-1">
-
-                            <img src={popupsport} style={{marginBottom:"0.5em", width:"22em"}}/>
-
-                            <p className="event-subsubtitle-3"> <img src={clock} className="icon"/> {prenotazione.filter(p => p.key===state.id).map(m=>m.address)}</p>
-                            <p className="event-subsubtitle-3"> <img src={map} className="icon"/> {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D MMM YYYY'))}, {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('h:mm a'))} - {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataEnd).locale('en').format('h:mm a'))}</p>
-                            <p className="about">About</p>
-                            <p>{prenotazione.filter(p => p.key===state.id).map(m=>m.about)}</p>
-                        </Modal.Body>
-
-                        <Modal.Footer>
-                            <Button style={{fontSize:"13px",borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
-                                    onClick={handleClose}
-                            ><img src={interested}/> Interested</Button>
-                            <Button style={{fontSize:"13px", borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
-                                    onClick={handleClose}
-                            ><img src={participate}/> Participate</Button>
-                            <Button style={{fontSize:"13px",borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
-                                    onClick={handleClose}
-                            ><img src={whosgoing}/> Who's going<img src={dropdown} style={{marginRight:"-10px"}}/></Button>
-                        </Modal.Footer>
-                    </Modal.Dialog>
-                </Modal>
-
-            </Container>
-            {/*<NavigbarP />
-
-                <Container className="bg2">
-
-                    <Card className="post" style={{ width: '100%', height: '8rem',  marginTop: '0em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                        <Card.Img  src={profile} style={{height: '8em', width: '8rem'}} />
-                        {/*<Card.Img  src={ribbon} className="ribbon" />
-                        <Card.Body>
-                            <Card.Title className="name" style={{textAlign: 'left'}}>Sophia_Wilkinson</Card.Title>
-                            <Card.Text className="connections" style={{textAlign: 'left'}}>
-                                Silver, 356 connections
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-
-
-                </Container>
-            <Container style={{marginTop:"15em"}}>
-                <NavbarProfile events={eventsp}
-                               blogs={blogsp}/>
-            </Container>*/}
-            {/*TODO: card eventi*/}
-            {/*  <Row className="justify-content-md-center">
-
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
-                        <Link to={"/home"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>HOME</span></Link>
-                    </Button>
-                </Col>
-
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
-                        <Link to={"/calendar"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>CALENDAR</span></Link>
-                    </Button>
-                </Col>
-
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"danger"} style={{marginBottom:"1em"}}>
-                        <Link to={"/profile"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>PROFILE</span></Link>
-                    </Button>
-                </Col>
-
-                <Col xs={12} sm={12} md={3}>
-                    <Button variant={"dark"} style={{marginBottom:"1em"}}>
-                        <Link to={"/settings"} style={{color: "white", textDecoration: "none"}}><span style={{margin: "0.5em"}}>SETTINGS</span></Link>
-                    </Button>
-                </Col>
-            </Row>*/}
-            {/*<NavigbarBottom home={homeunselected} calendar={calendar} profile={profileselected} settings={settings}/>*/}
 
         </Container>
     )

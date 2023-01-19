@@ -89,7 +89,7 @@ export default function Blogs(){
 
                                         </Col>
                                         <Col xs={3}>
-                                            <Link className="reply">Reply</Link>
+                                            <Link className="reply" style={{textDecoration:"none"}}>Reply</Link>
                                         </Col>
                                         <Col xs={5}>
                                             <CustomToggle eventKey="0">View Replies</CustomToggle>

@@ -55,6 +55,7 @@ import centerforums from "./images/Profile_Forums_unselected.svg";
 import notif from "./images/notifications-icon.svg";
 import message from "./images/messages-icon.svg";
 import help from "./images/help-icon.svg";
+import backarrow from "./images/backarrow.svg";
 
 
 export default function CenterCalendar(){
@@ -85,10 +86,17 @@ export default function CenterCalendar(){
 
 
     return(
-        <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', top:'5em'}}>
+        <Container style={{backgroundColor:"#f5f5f5", paddingBottom:"10em", zIndex:'-1000', minHeight:'100vh', top:'5em'}}>
 
             <NavigbarP vnotifications={notif} vmessages={message} vtutorial={help}/>
-            <Container className="bg2" style={{paddingTop:"7em"}}>
+            <Container className="bg2" style={{paddingTop:"6.5em"}}>
+                <Row>
+                    <Col xs={1}>
+                        <Link to={"/hashtags"}><img src={backarrow} style={{left:"2em"}}/></Link>
+                    </Col>
+                    <Col></Col>
+                </Row>
+
 
                 <Card className="post" style={{ width: '100%', height: '8rem',  marginTop: '0em', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img  src={centerprofileimage} style={{height: '8em', width: '8rem'}} />

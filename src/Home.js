@@ -1,7 +1,7 @@
 import {useContext, useState} from "react";
 import {StateContext} from "./App";
 import {Link} from "react-router-dom";
-import {Button, Card, Col, Container, Form, Image, Modal, Nav, Navbar, Row} from "react-bootstrap";
+import {Button, Card, Col, Container, Dropdown, Form, Image, Modal, Nav, Navbar, Row} from "react-bootstrap";
 import img_1 from "./img_1.png";
 import "./Home.css";
 import logo from './images/APPy family-logo.png';
@@ -33,17 +33,24 @@ import NavigbarBottom from "./components/navbar-bottom";
 import AddButton from "./components/add-button";
 import eventsselected from "./images/Events-selezionato.svg";
 import interested from "./images/ic_round-star-border.svg";
-import participate from "./images/ic_round-check-circle-outline.svg";
-import whosgoing from "./images/material-symbols_emoji-people-rounded.svg";
+import participate from "./images/ic_round-check-circle-outline (1).svg";
+import going from "./images/going.svg"
+import whosgoing from "./images/whosgoing-white.svg";
 import dropdown from "./images/gridicons_dropdown.svg"
 import popupsport from "./images/image 1.svg"
 import threedots from "./images/ph_dots-three-vertical-bold.svg"
 import forums from "./images/Forums.svg"
 
+import profile2 from "./images/profile2.svg"
+import profile3 from "./images/profile3.svg";
+import profile4 from "./images/profile4.svg";
+import profile5 from "./images/profile5.svg"
+
 import 'moment/locale/en-gb';
 import moment from "moment/moment";
 import {selected} from "./Action";
 import {useLocalStorage} from "./useLocalStorage";
+import profile1 from "./images/profile1.svg";
 
 
 
@@ -137,7 +144,7 @@ export default function Home(){
                             <Card.Text className="event-time-1">
                                 <Row>
                                     <Col>
-                                        <h5 style={{textAlign:"left"}}>{moment(p.dataStart).locale('en').format('MMM D').toUpperCase()} • {moment(p.dataStart).locale('en').format('h:mm a').toUpperCase()}</h5>
+                                        <h6 style={{textAlign:"left"}}>{moment(p.dataStart).locale('en').format('MMM D').toUpperCase()} • {moment(p.dataStart).locale('en').format('h:mm a').toUpperCase()}</h6>
                                     </Col>
                                     <Col xs={2}>
                                         <img src={threedots} style={{textAlign:"right"}}/>
@@ -185,14 +192,26 @@ export default function Home(){
                         </Modal.Body>
 
                         <Modal.Footer>
-                            <Button style={{fontSize:"13px",borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
-                                    onClick={handleClose}
-                            ><img src={interested}/> Interested</Button>
-                            <Button style={{fontSize:"13px", borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
-                                    onClick={()=>{handleClose(); handleShowSecond()}}><img src={participate}/> Participate</Button>
-                            <Button style={{fontSize:"13px",borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
-                                    onClick={handleClose}
-                            ><img src={whosgoing}/> Who's going<img src={dropdown} style={{marginRight:"-10px"}}/></Button>
+                            <Button style={{fontSize:"15px", borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0em"}}
+                                    onClick={()=>{handleClose(); handleShowSecond()}}><img src={going}/> Going</Button>
+
+                            <Dropdown>
+                                <Dropdown.Toggle id="dropdown-basic"  style={{borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0em"}}>
+                                    <img src={whosgoing}/>  Who's Going
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu>
+                                    <Dropdown.Item href="/miajohnson">                    <img  src={profile1} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
+                                          Mia Johnson</Dropdown.Item>
+                                    <Dropdown.Item href="/claramay">
+                                        <img  src={profile4} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />Clara May</Dropdown.Item>
+                                    <Dropdown.Item href="/sullivanjayden">
+                                        <img  src={profile3} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
+                                        Sullivan Jayden</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                            <Button style={{fontSize:"15px", borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
+                                    onClick={()=>{handleClose(); handleShowSecond()}}><img src={participate}/> Not Going</Button>
                         </Modal.Footer>
                     </Modal.Dialog>
                 </Modal>
