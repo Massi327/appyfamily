@@ -62,7 +62,8 @@ export default function Profile(){
             dataEnd: moment(p.dataEnd,'YYYY-MM-DD, hh:mm').add(1, 'hour').toDate(),
             address: p.address,
             about: p.about,
-            categoria: p.categoria
+            categoria: p.categoria,
+            property: p.property
         }
         events.push(event)
     })
@@ -126,26 +127,29 @@ export default function Profile(){
                     </Container>
                 </CardHeader>
 
-                {events.slice(0).reverse().map( p =>
-
-                    <Card className="post" key={p.key} style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}} onClick={()=> {handleShow(); dispatch(selected(p.key))}}>
-                        <Card.Img className="cardimg" src={imgcard4} style={{height: '8em', width: '10rem', verticalAlign:'center'}} />
-                        <Card.Body>
-                            <Card.Text className="event-time-1" style={{textAlign: 'left'}}>{moment(p.dataStart).locale('en').format('MMM D').toUpperCase()} • {moment(p.dataStart).locale('en').format('h:mm a').toUpperCase()}</Card.Text>
-                            <Card.Title className="event-title-1" style={{textAlign: 'left'}}>{p.titolo}</Card.Title>
-                            <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
-                                {p.about}
-                            </Card.Text>
-                            <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                                <img src={clock} alt="Near me" className="icon"/> {moment(p.dataStart).locale('en').format('D MMM YYYY')}, {moment(p.dataStart).locale('en').format('h:mm a').toUpperCase()} - {moment(p.dataEnd).locale('en').format('h:mm a').toUpperCase()}
-                            </Card.Text>
-                            <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
-                                <img src={map} alt="Near me" className="icon"/> {p.address}
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-
-                )}
+                {events.slice(0).reverse().filter(f=> f.property == 'public').map( p =>
+                        <Card className="post" key={p.key} style={{height: '8rem', marginBottom: '1em', borderRadius: '10px', borderWidth: '0', flexDirection: 'row'}}
+                              onClick={() => {handleShow();dispatch(selected(p.key))}}>
+                            <Card.Img className="cardimg" src={imgcard4}
+                                      style={{height: '8em', width: '10rem', verticalAlign: 'center'}}/>
+                            <Card.Body>
+                                <Card.Text className="event-time-1"
+                                           style={{textAlign: 'left'}}>{moment(p.dataStart).locale('en').format('MMM D').toUpperCase()} • {moment(p.dataStart).locale('en').format('h:mm a').toUpperCase()}</Card.Text>
+                                <Card.Title className="event-title-1"
+                                            style={{textAlign: 'left'}}>{p.titolo}</Card.Title>
+                                <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
+                                    {p.about}
+                                </Card.Text>
+                                <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                                    <img src={clock} alt="Near me"
+                                         className="icon"/> {moment(p.dataStart).locale('en').format('D MMM YYYY')}, {moment(p.dataStart).locale('en').format('h:mm a').toUpperCase()} - {moment(p.dataEnd).locale('en').format('h:mm a').toUpperCase()}
+                                </Card.Text>
+                                <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                                    <img src={map} alt="Near me" className="icon"/> {p.address}
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    )}
 
             </Card>
 

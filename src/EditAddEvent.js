@@ -50,6 +50,8 @@ export default function EditAddEvent(){
         //useState(() => prenotazioni.filter(f => f.key == state.id).map(p => moment(p.dataEnd).format('hh:mm')))
     const [categoria,setCategoria] = useLocalStorage('cate', prenotazioni.filter(f => f.key == state.id).map(p => p.categoria))
         //useState(() => prenotazioni.filter(f => f.key == state.id).map(p => p.categoria))
+    const [property,setProperty] = useLocalStorage('property', prenotazioni.filter(f => f.key == state.id).map(p => p.property))
+    const [propertyHere, setPropertyHere] = useState('')
 
     const calendariohidden = 'false';
 
@@ -105,6 +107,7 @@ export default function EditAddEvent(){
                                     setDate('')
                                     setOraI('')
                                     setOraF('')
+                                    setProperty('')
                                     navigate(-1)
                                    }}/>
                                 <Card.Title style={{fontSize: "30px", marginTop: "0.3em"}} className="title-2">Edit Event</Card.Title>
@@ -157,14 +160,25 @@ export default function EditAddEvent(){
                                     </Row>
                                 </FormGroup>
 
+                                <FormGroup style={{marginBottom: "10px", textAlign: "left"}}>
+                                    <FormLabel className="subtitle">Public or Private*</FormLabel>
+                                    <FormSelect value={property} style={{textAlign:"center", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"0px"}} onChange={e=> {setProperty(e.target.value); setPropertyHere(e.target.value)}}>
+                                        <option key={0} value={'---'}>---</option>
+                                        <option key={1} value={'public'}>Public</option>
+                                        <option key={2} value={'private'}>Add only to your calendar</option>
+
+                                    </FormSelect>
+                                </FormGroup>
+
                                 <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}} onClick={() =>{
                                     setTitolo('')
                                     setAddress('')
                                     setAbout('')
                                     setCategoria('')
-                                    setDate(moment())
+                                    setDate('')
                                     setOraI('')
                                     setOraF('')
+                                    setProperty('')
                                 }}>
                                     Cancel
                                 </Button>
@@ -179,9 +193,9 @@ export default function EditAddEvent(){
                                     setDataFM(dataF)
 
                                         if(dataS.isBefore(moment()) || dataF.isBefore(moment())) {
-                                            dispatch(cancelBooking(state.id))
                                             handleShowThird()
                                         }else{
+                                            dispatch(cancelBooking(state.id))
                                             handleShow()
                                         }
                                     }
@@ -196,7 +210,7 @@ export default function EditAddEvent(){
                                 </Modal.Header>
 
                                 <Modal.Body className="modal-subtitle-1">
-                                    <p>Are you sure you want to add this event to the Calendar?</p>
+                                    <p>Are you sure you want to CHANGE this event to the Calendar?</p>
                                 </Modal.Body>
 
                                 <Modal.Footer>
@@ -206,15 +220,15 @@ export default function EditAddEvent(){
                                     <Button style={{backgroundColor:"#eb506c", color:"white", borderWidth:"2px", borderColor:"#eb506c", borderRadius:"10px"}}
                                             onClick={() => {
 
-                                                    dispatch(editBooking(dataIM, dataFM, address, titolo, about, categoria))
-                                                    setAddress('')
-                                                    setTitolo('')
-                                                    setAbout('')
-                                                    setDate(moment())
-                                                    setOraI('')
-                                                    setOraF('')
-                                                    setCategoria('')
-
+                                                dispatch(editBooking(dataIM, dataFM, address, titolo, about, categoria, property))
+                                                setAddress('')
+                                                setTitolo('')
+                                                setAbout('')
+                                                setDate('')
+                                                setOraI('')
+                                                setOraF('')
+                                                setCategoria('')
+                                                setProperty('')
                                                 handleClose()
                                                 handleShowSecond()
                                             }}>
@@ -224,6 +238,7 @@ export default function EditAddEvent(){
                             </Modal.Dialog>
                         </Modal>
 
+                        {propertyHere == 'private' ?
                         <Modal show={show_second} onHide={handleCloseSecond} backdrop={"static"} centered>
                             <Modal.Dialog>
 
@@ -233,8 +248,7 @@ export default function EditAddEvent(){
 
                                 <Modal.Footer>
                                     <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
-                                            onClick={() => localStorage.setItem('prenotazioni', JSON.stringify(state.prenotazioni))}
-                                    >
+                                            onClick={() => {localStorage.setItem('prenotazioni', JSON.stringify(state.prenotazioni)); setPropertyHere('')}}>
                                         <Link to={"/calendar"}>
                                             Ok
                                         </Link>
@@ -242,7 +256,7 @@ export default function EditAddEvent(){
                                 </Modal.Footer>
                             </Modal.Dialog>
                         </Modal>
-
+                            :
                         <Modal show={show_second} onHide={handleCloseSecond} backdrop={"static"} centered>
                             <Modal.Dialog>
 
@@ -252,15 +266,14 @@ export default function EditAddEvent(){
 
                                 <Modal.Footer>
                                     <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
-                                            onClick={() => localStorage.setItem('prenotazioni', JSON.stringify(state.prenotazioni))}
-                                    >
+                                            onClick={() => {localStorage.setItem('prenotazioni', JSON.stringify(state.prenotazioni)); setPropertyHere('')}}>
                                         <Link to={"/profile"}>
                                             Ok
                                         </Link>
                                     </Button>
                                 </Modal.Footer>
                             </Modal.Dialog>
-                        </Modal>
+                        </Modal>}
 
 
 

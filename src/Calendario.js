@@ -92,7 +92,8 @@ export default function Calendario(){
             title: p.titolo,
             start: moment(p.dataStart,'YYYY-MM-DD, hh:mm').add(1, 'hour').toDate(),
             end: moment(p.dataEnd,'YYYY-MM-DD, hh:mm').add(1, 'hour').toDate(),
-            categoria: p.categoria
+            categoria: p.categoria,
+            property: p.property
         }
         events.push(event)
     })

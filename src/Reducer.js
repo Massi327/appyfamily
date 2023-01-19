@@ -10,7 +10,8 @@ export const initialState = {
             dataEnd:moment('2023-01-03, 11:30','YYYY-MM-DD, hh:mm'),
             address:'Via giordani 78',
             about:'Gita al parco',
-            categoria: 'Park'
+            categoria: 'Park',
+            property: 'public'
         },
         {
             key:788,
@@ -19,7 +20,8 @@ export const initialState = {
             dataEnd:moment('2023-01-04, 21:30','YYYY-MM-DD, hh:mm'),
             address:'112 Barrack Street, NR3 1TX, UK',
             about:'Sport al parco',
-            categoria: 'Sport'
+            categoria: 'Sport',
+            property: 'private'
         },
     ],
 
@@ -78,7 +80,7 @@ export function Reducer(state,action){
     switch (action.type){
         case ADD_BOOKNG:
 
-            let evento = { key: Math.random(), address: action.address, dataStart: action.dataStart, dataEnd: action.dataEnd, titolo: action.titolo, about: action.about, categoria: action.categoria}
+            let evento = { key: Math.random(), address: action.address, dataStart: action.dataStart, dataEnd: action.dataEnd, titolo: action.titolo, about: action.about, categoria: action.categoria, property: action.property}
             let eventoLS = { ids: evento.key, title: action.titolo, start: action.dataStart, end: action.dataEnd, categoria: action.categoria}
             let newArrayLS = [...state.arrayLS]
             let newArray = [...state.prenotazioni]
@@ -144,13 +146,13 @@ export function Reducer(state,action){
 
             let prenota = JSON.parse(localStorage.getItem('prenotazioni'))
             let arrayp = [...state.prenotazioni]
-            let arrayC = []
+            let arrayC
 
-            if(prenota != null){
+            if(prenota == null){
                 if (state.prenotazioni.length<3 ){
-                    arrayC = prenota.filter(f => f.key !== action.id)
+                    arrayC = arrayp.filter(f => f.key !== action.id)
                 }
-            }else{arrayC= arrayp.filter(f => f.key !== action.id)}
+            }else{arrayC = prenota.filter(f => f.key !== action.id)}
 
             return {
                 ...state,
@@ -159,7 +161,7 @@ export function Reducer(state,action){
 
         case EDIT_BOOKNG:
 
-            let eventoedit = { key: Math.random(), address: action.address, dataStart: action.dataStart, dataEnd: action.dataEnd, titolo: action.titolo, about: action.about, categoria: action.categoria}
+            let eventoedit = { key: Math.random(), address: action.address, dataStart: action.dataStart, dataEnd: action.dataEnd, titolo: action.titolo, about: action.about, categoria: action.categoria, property: action.property}
 
             let arrayprova = [...state.prenotazioni]
 

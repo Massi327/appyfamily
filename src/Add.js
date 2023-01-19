@@ -39,6 +39,8 @@ export default function Add(){
     const [oraI,setOraI] = useState('')
     const [oraF,setOraF] = useState('')
     const [categoria,setCategoria] = useState('')
+    const [property, setProperty] = useState('')
+    const [propertyHere, setPropertyHere] = useState('')
     const calendariohidden = 'false';
 
         const dataNow = moment(new Date()).format('YYYY-MM-DD, hh:mm a')
@@ -170,6 +172,16 @@ export default function Add(){
                                         </Row>
                                     </FormGroup>}
 
+                                <FormGroup style={{marginBottom: "10px", textAlign: "left"}}>
+                                    <FormLabel className="subtitle">Public or Private*</FormLabel>
+                                    <FormSelect value={property} style={{textAlign:"center", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"0px"}} onChange={e=> {setProperty(e.target.value); setPropertyHere(e.target.value)}}>
+                                        <option key={0} value={'---'}>---</option>
+                                        <option key={1} value={'public'}>Public</option>
+                                        <option key={2} value={'private'}>Add only to your calendar</option>
+
+                                    </FormSelect>
+                                </FormGroup>
+
                                 <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}} onClick={() =>{
                                     setTitolo('')
                                     setAddress('')
@@ -178,12 +190,12 @@ export default function Add(){
                                     setDate(moment())
                                     setOraI('')
                                     setOraF('')
-
+                                    setProperty('')
                                 }}>
                                     Cancel
                                 </Button>
 
-                                <Button style={{backgroundColor:"#eb506c", color:"white", borderWidth:"2px", borderColor:"#eb506c", borderRadius:"10px"}} disabled={bottoneDisabilitato(address, titolo, oraI, oraF, date, state.giorno, state.start, state.end, state.c)} variant='dark' onClick={() => {
+                                <Button style={{backgroundColor:"#eb506c", color:"white", borderWidth:"2px", borderColor:"#eb506c", borderRadius:"10px"}} disabled={bottoneDisabilitato(address, titolo, oraI, oraF, date, property, state.giorno, state.start, state.end, state.c)} variant='dark' onClick={() => {
 
                                     let calendarDate = moment(date).format('YYYY-MM-DD')
                                     let dataS=moment(calendarDate+', '+oraI,'YYYY-MM-DD, hh:mm a')
@@ -232,7 +244,7 @@ export default function Add(){
                                 <Button style={{backgroundColor:"#eb506c", color:"white", borderWidth:"2px", borderColor:"#eb506c", borderRadius:"10px"}}
                                         onClick={() => {
                                             if (state.c == 'false') {
-                                                dispatch(addBooking(dataIM, dataFM, address, titolo, about, categoria))
+                                                dispatch(addBooking(dataIM, dataFM, address, titolo, about, categoria, property))
                                                 setAddress('')
                                                 setTitolo('')
                                                 setAbout('')
@@ -240,10 +252,11 @@ export default function Add(){
                                                 setOraI('')
                                                 setOraF('')
                                                 setCategoria('')
+                                                setProperty('')
                                                 dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('', 'yyyy-MM-DD').format('LT'), moment('', 'yyyy-MM-DD').format('LT'), 'false'))
 
                                             }else if(state.c == 'true'){
-                                                dispatch(addBooking(giornoIM, giornoFM, address, titolo, about, categoria))
+                                                dispatch(addBooking(giornoIM, giornoFM, address, titolo, about, categoria, property))
                                                 setAddress('')
                                                 setTitolo('')
                                                 setAbout('')
@@ -251,6 +264,7 @@ export default function Add(){
                                                 setOraI('')
                                                 setOraF('')
                                                 setCategoria('')
+                                                setProperty('')
                                                 dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('', 'yyyy-MM-DD').format('LT'), moment('', 'yyyy-MM-DD').format('LT'), 'false'))
 
                                             }
@@ -266,7 +280,8 @@ export default function Add(){
 
                     </Row>
 
-                    <Modal show={show_second} onHide={handleCloseSecond} backdrop={"static"} centered>
+                    {propertyHere == 'public' ?
+                        <Modal show={show_second} onHide={handleCloseSecond} backdrop={"static"} centered>
                         <Modal.Dialog>
 
                             <Modal.Body className="modal-subtitle-1">
@@ -275,16 +290,32 @@ export default function Add(){
 
                             <Modal.Footer>
                                 <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
-                                        onClick={() => localStorage.setItem('prenotazioni', JSON.stringify(state.prenotazioni))}
-                                >
+                                        onClick={() => {localStorage.setItem('prenotazioni', JSON.stringify(state.prenotazioni)); setPropertyHere('');}}>
                                     <Link to={"/profile"}>
                                     Ok
                                     </Link>
                                 </Button>
                             </Modal.Footer>
                         </Modal.Dialog>
-                    </Modal>
+                    </Modal> :
+                        <Modal show={show_second} onHide={handleCloseSecond} backdrop={"static"} centered>
+                            <Modal.Dialog>
 
+                                <Modal.Body className="modal-subtitle-1">
+                                    <p>The event has been added</p>
+                                </Modal.Body>
+
+                                <Modal.Footer>
+                                    <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                            onClick={() => {localStorage.setItem('prenotazioni', JSON.stringify(state.prenotazioni)); setPropertyHere('');}}>
+                                        <Link to={"/calendar"}>
+                                            Ok
+                                        </Link>
+                                    </Button>
+                                </Modal.Footer>
+                            </Modal.Dialog>
+                        </Modal>
+                    }
 
 
                         <Modal show={show_third} onHide={handleCloseThird} backdrop={"static"} centered>
@@ -313,18 +344,18 @@ export default function Add(){
     )
 }
 
-function bottoneDisabilitato(address, titolo, oraI, oraF, date, oraIV, oraFV, dateV, c) {
+function bottoneDisabilitato(address, titolo, oraI, oraF, date, property, oraIV, oraFV, dateV, c) {
     let disabilitato;
 
     if(c == 'true'){
-        if (address!='' && titolo!='' && oraIV!=null && oraFV!='' && dateV!='')
+        if (address!='' && titolo!='' && property!='' && oraIV!=null && oraFV!='' && dateV!='')
         {
             disabilitato= false;
         }else {
             disabilitato= true;
         }
     }else if (c == 'false'){
-        if (address!='' && titolo!='' && oraI!=null && oraF!='' && date!='')
+        if (address!='' && titolo!='' && property!='' && oraI!=null && oraF!='' && date!='')
         {
             disabilitato= false;
         }else {

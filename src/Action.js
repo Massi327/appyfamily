@@ -6,8 +6,8 @@ export const ADD_FORUM = 'addForum'
 export const CANCEL_BOOKNG = 'cancelBooking'
 export const EDIT_BOOKNG = 'editBooking'
 
-export function addBooking(dataStart, dataEnd, address, titolo, about, categoria){
-    return {type:ADD_BOOKNG, dataStart, dataEnd, address, titolo, about, categoria}
+export function addBooking(dataStart, dataEnd, address, titolo, about, categoria, property){
+    return {type:ADD_BOOKNG, dataStart, dataEnd, address, titolo, about, categoria, property}
 }
 
 export function selected(id){
@@ -30,6 +30,6 @@ export function cancelBooking(id){
     return {type:CANCEL_BOOKNG, id}
 }
 
-export function editBooking(dataStart, dataEnd, address, titolo, about, categoria){
-    return {type:EDIT_BOOKNG, dataStart, dataEnd, address, titolo, about, categoria}
+export function editBooking(dataStart, dataEnd, address, titolo, about, categoria, property){
+    return {type:EDIT_BOOKNG, dataStart, dataEnd, address, titolo, about, categoria, property}
 }
