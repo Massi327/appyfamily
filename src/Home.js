@@ -131,8 +131,8 @@ export default function Home(){
             <Container style={{paddingTop:"15em"}}>
 
                 {cardhome.map( p =>
-                    <Card className="post" key={p.key} style={{ height: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}} onClick={()=> {handleShow(); dispatch(selected(p.key))}}>
-                        <Card.Img className="cardimg" src={img.filter(f => f.key == p.img).map(c => c.img)} style={{height: '8em', width: '10rem', verticalAlign:'center'}} />
+                    <Card className="post" key={p.key} style={{ minHeight: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}} onClick={()=> {handleShow(); dispatch(selected(p.key))}}>
+                        <Card.Img className="cardimg" src={img.filter(f => f.key == p.img).map(c => c.img)} style={{minHeight: '5em', maxWidth: "9em", marginLeft:"0.5em", width: '10rem', verticalAlign:'center'}} />
                         <Card.Body>
                             <Card.Text className="event-time-1">
                                 <Row>
