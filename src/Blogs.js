@@ -112,9 +112,7 @@ export default function Blogs(){
             <AddButtonForum/>
             <NavigbarBottom home={home} calendar={calendar} profile={profile} settings={settings}/>
 
-            <Container style={{paddingTop:'15em', minHeight:"100vh"}}>
-
-
+            <Container style={{paddingTop:'15em', paddingBottom:'7em', minHeight:"100vh"}}>
 
                 {forum.slice(0).reverse().map( f =>
 

@@ -1,7 +1,20 @@
 import {useContext, useEffect, useState} from "react";
 import {StateContext} from "./App";
 import {Link} from "react-router-dom";
-import {Button, Col, Container, Nav, Navbar, Row, Card, Modal, CardGroup, Accordion} from "react-bootstrap";
+import {
+    Button,
+    Col,
+    Container,
+    Nav,
+    Navbar,
+    Row,
+    Card,
+    Modal,
+    CardGroup,
+    Accordion,
+    FormGroup,
+    FormControl
+} from "react-bootstrap";
 import NavigbarBottom from "./components/navbar-bottom";
 import NavigbarP from "./components/navbar-profile";
 import eventsselected from "./images/Events-selezionato.svg";
@@ -48,6 +61,8 @@ import profile2 from "./images/profile2.svg";
 import profile1 from "./images/profile1.svg";
 import profile4 from "./images/profile4.svg";
 import {useAccordionButton} from "react-bootstrap/AccordionButton";
+import send3 from "./images/send3.svg";
+import sophia_piccola from "./images/sophia_piccola.svg";
 
 export default function ProfileForums(){
 
@@ -56,6 +71,12 @@ export default function ProfileForums(){
     const [forum, setForum] = useState(() => {
         const forum = JSON.parse(localStorage.getItem('forums'));
         return forum || state.forums; } )
+
+    const [risposte, setRisposte] = useState(() => {
+        const risposte = JSON.parse(localStorage.getItem('risposte'));
+        return risposte} )
+
+    const [reply, setReply] = useState('')
 
     return(
         <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', top:'5em'}}>
@@ -102,6 +123,7 @@ export default function ProfileForums(){
                 </CardHeader>
             </Card>
 
+            <Container style={{paddingTop:'0.1em', paddingBottom:'6em'}}>
             {forum.slice(0).reverse().map( f =>
 
                 <Card style={{paddingBottom:"0.5em", paddingTop:"0.5em", backgroundColor: "#f5f5f5", borderStyle: "hidden"}}>
@@ -120,85 +142,58 @@ export default function ProfileForums(){
 
                                     </Col>
                                     <Col xs={3}>
-                                        <Link className="reply">Reply</Link>
+
                                     </Col>
                                     <Col xs={5}>
-                                        <CustomToggle eventKey="0">View Replies</CustomToggle>
+                                        <CustomToggle eventKey="1">View Replies</CustomToggle>
                                     </Col>
                                 </Row>
                             </Card.Text>
                         </Card.Header>
-                        <Accordion.Collapse eventKey="0">
+                        <Accordion.Collapse eventKey="1">
                             <Card.Body>
-                                <Card className="people" style={{marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"-1em", flexDirection: 'row'}}>
-                                <Card.Img  src={profile2} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                                {risposte.filter(g=> g.kf == f.key).map(r=>
+                                    <Card className="people" key={r.key} style={{marginBottom: '0.4em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"-0.5em", flexDirection: 'row'}}>
+                                        <Card.Img  src={r.img} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.2em'}} />
 
-                                <Card.Body>
-                                    <Card.Text className="blog-title" style={{textAlign: 'left'}}>Use a hot water bottle</Card.Text>
+                                        <Card.Body>
+                                            <Card.Text className="blog-title" style={{textAlign: 'left'}}>{r.testo}</Card.Text>
 
-                                    <Card.Text>
-                                        <Row style={{height:"1em"}}>
-                                            <Col  className="subtitle-connections" style={{textAlign:"left"}}>
-                                                3 weeks ago • Sullivan Jayden
-                                            </Col>
-                                        </Row>
-                                        <Row style={{height:"1em", marginTop:"-0.1em"}}>
-                                            <Col xs={7}>
+                                            <Card.Text>
+                                                <Row style={{height:"1em"}}>
+                                                    <Col  className="subtitle-connections" style={{textAlign:"left"}}>
+                                                        {r.about}
+                                                    </Col>
+                                                </Row>
+                                                <Row style={{height:"1em", marginTop:"-0.1em"}}>
+                                                    <Col xs={7}>
 
-                                            </Col>
-                                            <Col xs={3}>
+                                                    </Col>
+                                                    <Col xs={3}>
 
-                                            </Col>
-                                        </Row>
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-
-                                <Card className="people" style={{marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"0.5em", flexDirection: 'row'}}>
-                                    <Card.Img  src={profile1} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
-                                    <Card.Body>
-                                        <Card.Text className="blog-title" style={{textAlign: 'left'}}>Have you tried medicines?</Card.Text>
-                                        <Card.Text>
-                                            <Row style={{height:"1em"}}>
-                                                <Col  className="subtitle-connections" style={{textAlign:"left"}}>
-                                                    2 weeks ago • Mia Johnson
-                                                </Col>
-                                            </Row>
-                                            <Row style={{height:"1em", marginTop:"-0.1em"}}>
-                                                <Col xs={7}>
-
-                                                </Col>
-                                                <Col xs={3}>
-
-                                                </Col>
-                                            </Row>
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Card>
-
-
-
-                                <Card className="people" style={{marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"0.5em", flexDirection: 'row'}}>
-                                    <Card.Img  src={profile4} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
-                                    <Card.Body>
-                                        <Card.Text className="blog-title" style={{textAlign: 'left'}}>Are you feeding him/her?</Card.Text>
-                                        <Card.Text>
-                                            <Row style={{height:"1em"}}>
-                                                <Col  className="subtitle-connections" style={{textAlign:"left"}}>
-                                                    4 days ago • Clara May
-                                                </Col>
-                                            </Row>
-                                            <Row style={{height:"1em", marginTop:"-0.1em"}}>
-                                                <Col xs={7}>
-
-                                                </Col>
-                                                <Col xs={3}>
-
-                                                </Col>
-                                            </Row>
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Card>
+                                                    </Col>
+                                                </Row>
+                                            </Card.Text>
+                                        </Card.Body>
+                                    </Card>
+                                )}
+                                <FormGroup style={{marginBottom: "10px", marginTop: "10px", textAlign: "left"}}>
+                                    <Row>
+                                        <Col xs={10}>
+                                            <FormControl type='text' value={reply} style={{textAlign:"left", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"5px"}} placeholder='Add a reply as Mia Johnson' onChange={e=> setReply(e.target.value)}/>
+                                        </Col>
+                                        <Col xs={2}>
+                                            <img src={send3}  onClick={()=>{
+                                                let scan = JSON.parse(localStorage.getItem('risposte'))
+                                                let tutto = {key: Math.random(), testo: reply, about: "Now • Sophia Wilkinson", img: sophia_piccola, kf: f.key}
+                                                let arrayN = [...scan, tutto]
+                                                setRisposte(arrayN)
+                                                setReply('')
+                                            }
+                                            }/>
+                                        </Col>
+                                    </Row>
+                                </FormGroup>
 
                             </Card.Body>
                         </Accordion.Collapse>
@@ -207,6 +202,7 @@ export default function ProfileForums(){
                 </Accordion>
                 </Card>
             )}
+            </Container>
 
         </Container>
     )
