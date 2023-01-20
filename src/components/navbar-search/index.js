@@ -21,13 +21,7 @@ import {useState} from "react";
 
 const Navigbar = ({ vevents, vforum, vpeople, vcenters, vrec, vnearme,value }) => {
 
-    const [cerca, setCerca] = useLocalStorage('cerca', [])
 
-    const [check, setCheck] = useLocalStorage('check', 'false')
-
-    const [cardhome, setCardhome] = useState( () => {
-        const cardhome = JSON.parse(localStorage.getItem('cardhome'));
-        return cardhome})
 
     const [search, setSearch] = useState('')
 
@@ -47,26 +41,10 @@ return  <Row className="cont">
             </Container>
         </Navbar>
 
-
-
+        
         <Form className="d-flex">
             <Form.Control type="search" value={search} placeholder="Search" aria-label="Search" onChange={e=> setSearch(e.target.value)}/>
-            <Button className="search-button" variant="outline-success" onClick={()=> {
-                let chiave = []
-                let carta
-                let b = 'false'
-                cardhome.map(m => {
-                     carta = { key: m.key, address: m.address, dataStart: m.dataStart, dataEnd: m.dataEnd, titolo: m.titolo, about: m.about, categoria: m.categoria, property: m.property, host: m.host, img: m.img}
-                    if (m.titolo.includes(search) == true && search != ''){
-                        chiave = [...chiave, carta]
-                        b = 'true'
-                    }
-                })
-                setCheck(b)
-                setCerca(chiave)
-                setSearch('')
-            }
-            }>Search</Button>
+            <Button className="search-button" variant="outline-success" >Search</Button>
         </Form>
 
         <Container className="search-icons">
