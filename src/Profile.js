@@ -65,6 +65,7 @@ export default function Profile(){
 
     let events = [];
     prenotazione.map(p => {
+        let imma = img.filter(f=> f.key == p.categoria).map(c=> c.img)
         let event={
             key: p.key,
             titolo: p.titolo,
@@ -73,7 +74,8 @@ export default function Profile(){
             address: p.address,
             about: p.about,
             categoria: p.categoria,
-            property: p.property
+            property: p.property,
+            img: imma
         }
         events.push(event)
     })
@@ -139,12 +141,8 @@ export default function Profile(){
 
                 {events.slice(0).reverse().filter(f=> f.property == 'public').map( p =>
                         <Card className="post" key={p.key} style={{height: '8rem', marginBottom: '1em', borderRadius: '10px', borderWidth: '0', flexDirection: 'row'}}
-                              onClick={() => {handleShow(); console.log(events); dispatch(selected(p.key))}}>
-                            <Card.Img className="cardimg" src={img.map(i=> {
-                                if (i.key == p.categoria){
-                                    return i.img
-                                }else {return ''}
-                            })}
+                              onClick={() => {handleShow(); console.log(''); dispatch(selected(p.key))}}>
+                            <Card.Img className="cardimg" src={p.img}
                                       style={{height: '8em', width: '10rem', verticalAlign: 'center'}}/>
                             <Card.Body>
                                 <Card.Text className="event-time-1"
