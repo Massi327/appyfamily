@@ -104,6 +104,7 @@ export default function ProfileForums(){
 
             {forum.slice(0).reverse().map( f =>
 
+                <Card style={{paddingBottom:"0.5em", paddingTop:"0.5em", backgroundColor: "#f5f5f5", borderStyle: "hidden"}}>
                 <Accordion>
                     <Card>
                         <Card.Header style={{minHeight:"4.5em"}}>
@@ -203,7 +204,7 @@ export default function ProfileForums(){
                     </Card>
 
                 </Accordion>
-
+                </Card>
             )}
 
         </Container>

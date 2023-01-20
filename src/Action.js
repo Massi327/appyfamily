@@ -24,8 +24,8 @@ export function addCategory(category){
     return {type: ADD_CATEGORY, category}
 }
 
-export function addForum(titolof, aboutf){
-    return {type:ADD_FORUM, titolof, aboutf}
+export function addForum(titolof){
+    return {type:ADD_FORUM, titolof}
 }
 
 export function cancelBooking(id){

@@ -380,7 +380,7 @@ export default function Home(){
                         </Modal.Header>
 
                         <Modal.Body className="modal-subtitle-1">
-                            <p>We'll suggest fewer post like this</p>
+                            <p>We'll suggest fewer events like this</p>
                         </Modal.Body>
 
                         <Modal.Footer>

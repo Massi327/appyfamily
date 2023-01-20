@@ -27,7 +27,6 @@ export default function Addforum(){
     const navigate = useNavigate()
 
     const [titolo,setTitolo] = useState(() => {const titolo = JSON.parse(localStorage.getItem('title'));return titolo || ""; } )
-    const [about,setAbout] = useState(() => {const about = JSON.parse(localStorage.getItem('cosa'));return about || ""; } )
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -39,8 +38,7 @@ export default function Addforum(){
 
     useEffect(() => {
         localStorage.setItem('title', JSON.stringify(titolo))
-        localStorage.setItem('cosa', JSON.stringify(about))
-    }, [titolo, about])
+    }, [titolo])
 
     return(
         <Container fluid>
@@ -53,7 +51,7 @@ export default function Addforum(){
 
                         <Card className='form' style={{background: '#f5f5f5', color: "black", borderWidth: "0"}}>
                             <Card.Body style={{marginLeft:"1em", marginRight:"1em"}}>
-                                <CloseButton variant={'black'} onClick={() => navigate(-1)}/>
+                                <CloseButton variant={'black'} onClick={() =>{ setTitolo(''); navigate(-1);} }/>
                                 <Card.Title style={{fontSize: "30px", marginTop: "0.3em"}} className="title-2">Add forum</Card.Title>
 
                                 <FormGroup style={{marginBottom: "10px", textAlign: "left"}}>
@@ -61,17 +59,11 @@ export default function Addforum(){
                                     <FormControl type='text' value={titolo} style={{textAlign:"left", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"0px"}} placeholder='Title' onChange={e=> setTitolo(e.target.value)}/>
                                 </FormGroup>
 
-                                <FormGroup style={{marginBottom: "10px", textAlign: "left"}}>
-                                    <FormLabel className="subtitle">About *</FormLabel>
-                                    <FormControl type='textarea' value={about} style={{textAlign:"left", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"0px"}} placeholder='About' onChange={e=> setAbout(e.target.value)}/>
-                                </FormGroup>
-
                                 <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}} onClick={() =>{
                                     setTitolo('')
-                                    setAbout('')
                                 }}>Cancel</Button>
 
-                                <Button style={{backgroundColor:"#eb506c", color:"white", borderWidth:"2px", borderColor:"#eb506c", borderRadius:"10px"}} disabled={bottoneDisabilitato(titolo, about)} onClick={() => handleShow()}>Publish</Button>
+                                <Button style={{backgroundColor:"#eb506c", color:"white", borderWidth:"2px", borderColor:"#eb506c", borderRadius:"10px"}} disabled={bottoneDisabilitato(titolo)} onClick={() => handleShow()}>Publish</Button>
 
                             </Card.Body>
                         </Card>
@@ -96,9 +88,8 @@ export default function Addforum(){
                         >Cancel</Button>
                         <Button style={{backgroundColor:"#eb506c", color:"white", borderWidth:"2px", borderColor:"#eb506c", borderRadius:"10px"}}
                                 onClick={() => {
-                                    dispatch(addForum(titolo, about))
+                                    dispatch(addForum(titolo))
                                     setTitolo('')
-                                    setAbout('')
                                     handleClose()
                                     handleShowSecond()
                                 }}
@@ -133,10 +124,10 @@ export default function Addforum(){
     )
 }
 
-function bottoneDisabilitato(titolo, about) {
+function bottoneDisabilitato(titolo) {
     let disabilitato = true;
 
-    if(titolo!='' && about!='') disabilitato=false
+    if(titolo!='') disabilitato=false
 
     return(disabilitato)
 }
