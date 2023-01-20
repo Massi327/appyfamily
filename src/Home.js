@@ -1,4 +1,4 @@
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {StateContext} from "./App";
 import {Link} from "react-router-dom";
 import {Button, Card, Col, Container, Dropdown, Form, Image, Modal, Nav, Navbar, Row} from "react-bootstrap";
@@ -149,6 +149,8 @@ export default function Home(){
 
     const [cerca, setCerca] = useLocalStorage('cerca', [])
 
+    const [check, setCheck] = useLocalStorage('check', 'false')
+
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -196,7 +198,8 @@ export default function Home(){
 
             <Container style={{paddingTop:"16em"}}>
 
-                {cardhome.map( p =>
+                { check == 'false' ?
+                    cardhome.map( p =>
                     <Card className="post" key={p.key} style={{ minHeight: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}
                           onClick={()=> {handleShow(); dispatch(selected(p.key))}}>
                         <Card.Img className="cardimg" src={img.filter(f => f.key == p.img).map(c => c.img)} style={{minHeight: '5em', maxWidth: "9em", marginLeft:"0.5em", width: '10rem', verticalAlign:'center'}} />
@@ -223,7 +226,36 @@ export default function Home(){
                             </Card.Text>
                         </Card.Body>
                     </Card>
-                )}
+                    )
+                : cerca.map( p =>
+                        <Card className="post" key={p.key} style={{ minHeight: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}
+                              onClick={()=> {handleShow(); dispatch(selected(p.key))}}>
+                            <Card.Img className="cardimg" src={img.filter(f => f.key == p.img).map(c => c.img)} style={{minHeight: '5em', maxWidth: "9em", marginLeft:"0.5em", width: '10rem', verticalAlign:'center'}} />
+                            <Card.Body>
+                                <Card.Text className="event-time-1">
+                                    <Row>
+                                        <Col>
+                                            <h6 style={{textAlign:"left"}}>{moment(p.dataStart).locale('en').format('MMM D').toUpperCase()} • {moment(p.dataStart).locale('en').format('h:mm a').toUpperCase()}</h6>
+                                        </Col>
+                                        <Col xs={2}>
+                                            <img src={threedots} onClick={()=> {handleShowSith(); dispatch(selected(p.key))}} style={{textAlign:"right"}}/>
+                                        </Col>
+                                    </Row>
+                                </Card.Text>
+                                <Card.Title className="event-title-1" style={{textAlign: 'left'}}>{p.titolo}</Card.Title>
+                                <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
+                                    {p.host}
+                                </Card.Text>
+                                <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                                    <img src={clock} alt="Near me" className="icon"/> {moment(p.dataStart).locale('en').format('D MMM YYYY')}, {moment(p.dataStart).locale('en').format('h:mm a').toUpperCase()} - {moment(p.dataEnd).locale('en').format('h:mm a').toUpperCase()}
+                                </Card.Text>
+                                <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                                    <img src={map} alt="Near me" className="icon"/> {p.address}
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    )
+                }
 
                 {show_sith == false ? <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
                     <Modal.Dialog>
