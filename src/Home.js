@@ -147,6 +147,8 @@ export default function Home(){
     const [forum, setForum] = useLocalStorage('forums', state.forums)
     const [partecipazioni, setPartecipazioni] = useLocalStorage('partecipazioni', state.partecipazioni)
 
+    const [cerca, setCerca] = useLocalStorage('cerca', [])
+
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);

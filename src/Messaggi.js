@@ -30,16 +30,7 @@ export default function Notifiche(){
         <Container className="bg-n">
             <NavigbarP vnotifications={notif} vmessages={messageselected} vtutorial={help}/>
             <NavigbarBottom home={homeunselected} calendar={calendarunselected} profile={profileunselected} settings={settingsunselected}/>
-            <Container >
-                <Card className="notif" style={{ width: '22.8rem', height: '5rem', marginBottom: '1em' , marginTop:"6.5em", borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                    <Card.Img  src={profile3} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
-                    <Card.Body>
-                        <Card.Text className="name-people" style={{textAlign: 'left'}}>Gina_Martin</Card.Text>
-                        <Card.Text className="subtitle-random" style={{textAlign: 'left'}}>
-                            Hello Sophia! I'd like to know more...
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
+            <Container style={{paddingTop:"8em"}}>
 
                  <Card className="notif"  style={{ width: '22.8rem', height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img  src={profile1} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
@@ -82,21 +73,7 @@ export default function Notifiche(){
                     </Card.Body>
                 </Card>
 
-
-                <Card className="notif" style={{ width: '22.8rem', height: '5rem', marginBottom: '1em' ,  borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                    <Card.Img  src={profile6} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
-                    <Card.Body>
-                        <Card.Text className="name-people" style={{textAlign: 'left'}}>Jeremy_Clarks</Card.Text>
-                        <Card.Text className="subtitle-random" style={{textAlign: 'left'}}>
-                            You were right! It was really...
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-
-
-
             </Container>
-            <Button><Link to={"/chat"}>ciao</Link></Button>
 
         </Container>
     )

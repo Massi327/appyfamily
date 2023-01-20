@@ -81,21 +81,6 @@ export default function People(){
                     </Card.Body>
                 </Card>
 
-
-                <Card className="people" style={{height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                    <Card.Img  src={profile3} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
-                    <Card.Body>
-                        <Card.Text className="name-people" style={{textAlign: 'left'}}>Gina_Martin</Card.Text>
-                        <Card.Text className="subtitle-name" style={{textAlign: 'left'}}>
-                            Gina Martin
-                        </Card.Text>
-                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
-                            Followed by Lame_Jane + 30 more
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-
-
                 <Card className="people" style={{height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img  src={profile4} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
@@ -108,7 +93,6 @@ export default function People(){
                         </Card.Text>
                     </Card.Body>
                 </Card>
-
 
                 <Card className="people" style={{height: '5rem', marginBottom: '5em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row', boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px;'}}>
                     <Card.Img  src={profile5} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
