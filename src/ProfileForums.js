@@ -64,6 +64,7 @@ import {useAccordionButton} from "react-bootstrap/AccordionButton";
 import send3 from "./images/send3.svg";
 import sophia_piccola from "./images/sophia_piccola.svg";
 import {useLocalStorage} from "./useLocalStorage";
+import AddButtonForum from "./components/add-button-forum";
 
 export default function ProfileForums(){
 
@@ -105,12 +106,7 @@ export default function ProfileForums(){
         <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', top:'5em'}}>
 
             <NavigbarP vnotifications={notif} vmessages={message} vtutorial={help}/>
-            <Row className="justify-content-sm-right" style={{zIndex:"1000"}}>
-                <Col xs={10} md={1}>
-                    <Link to={"/add"} style={{right: "2em"}}><span><img src={addicon} alt="Add"
-                                                                        className="search-icon"/></span></Link>
-                </Col>
-            </Row>
+            <AddButtonForum/>
 
             <NavigbarBottom home={homeunselected} calendar={calendar} profile={profileselected} settings={settings}/>
 
