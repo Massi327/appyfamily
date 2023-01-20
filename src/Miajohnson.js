@@ -68,67 +68,65 @@ export default function MiaJohnson(){
 
     const [state,dispatch] = useContext(StateContext)
 
-    const [prenotazione, setPrenotazione] = useState(() => {
-        const prenotazione = JSON.parse(localStorage.getItem('prenotazioni'));
-        return prenotazione} )
+    const [partecipazioni, setPartecipazioni] = useState(() => {
+        const partecipazioni = JSON.parse(localStorage.getItem('partecipazioni'));
+        return partecipazioni} )
 
-    const cardmia = [
-        {   key: 300,
+    const cardm = [
+        {   key: 400,
             titolo:'Park Date',
             dataStart:moment('2023-02-01, 18:00','YYYY-MM-DD, hh:mm'),
             dataEnd:moment('2023-02-01, 19:00','YYYY-MM-DD, hh:mm'),
             address:'112 Barrack Street, NR3 1TX, UK',
-            about:'Hosted by Mia Johnson',
-            categoria: 'Esterno',
+            host:'Hosted by Mia Johnson',
+            about:'Join us with your kids for a fun morning at the park' ,
+            categoria: 'Park',
             partecipo: 'false',
-            img: 'imgcard1'
+            img: 'imgcard1',
+            property: 'Esterno'
         },
-        {   key: 301,
+        {   key: 401,
             titolo:'Joe\'s Party',
             dataStart:moment('2023-01-13, 17:00','YYYY-MM-DD, hh:mm'),
             dataEnd:moment('2023-01-13, 20:00','YYYY-MM-DD, hh:mm'),
             address:'113 Flams Close, CB4 2TY, UK',
-            about:'Hosted by Mia Johnson',
-            categoria: 'Esterno',
+            host:'Hosted by Mia Johnson',
+            about:'Join us with your kids for a fun morning at the park' ,
+            categoria: 'Park',
             partecipo: 'false',
-            img: 'imgcard5'
+            img: 'imgcard5',
+            property: 'Esterno'
         },
-        {   key: 302,
+        {   key: 402,
             titolo:'Music games',
             dataStart:moment('2023-01-02, 17:00','YYYY-MM-DD, hh:mm'),
             dataEnd:moment('2023-01-02, 18:00','YYYY-MM-DD, hh:mm'),
             address:'112 Barrack Street, NR3 1TX, UK',
-            about:'Hosted by Mia Johnson',
-            categoria: 'Esterno',
+            host:'Hosted by Mia Johnson',
+            about:'Join us with your kids for a fun morning at the park' ,
+            categoria: 'Park',
             partecipo: 'false',
-            img: 'imgcard2'
+            img: 'imgcard2',
+            property: 'Esterno'
         },
-        {   key: 303,
+        {   key: 403,
             titolo:'Football Party',
             dataStart:moment('2022-12-04, 20:00','YYYY-MM-DD, hh:mm'),
             dataEnd:moment('2022-12-04, 21:00','YYYY-MM-DD, hh:mm'),
             address:'13 Congo Street, PT3 1MX, UK',
-            about:'Hosted by Mia Johnson',
-            categoria: 'Esterno',
+            host:'Hosted by Mia Johnson',
+            about:'Join us with your kids for a fun morning at the park' ,
+            categoria: 'Park',
             partecipo: 'false',
-            img: 'imgcard4'
+            img: 'imgcard4',
+            property: 'Esterno'
         },
     ]
 
-    let events = [];
-    prenotazione.map(p => {
-        let event={
-            key: p.key,
-            titolo: p.titolo,
-            dataStart: moment(p.dataStart,'YYYY-MM-DD, hh:mm').add(1, 'hour').toDate(),
-            dataEnd: moment(p.dataEnd,'YYYY-MM-DD, hh:mm').add(1, 'hour').toDate(),
-            address: p.address,
-            about: p.about,
-            categoria: p.categoria,
-            property: p.property
-        }
-        events.push(event)
-    })
+    const img = [{key:'imgcard1', img: imgcard1}, {key:'imgcard2', img: imgcard2}, {key:'imgcard5', img: imgcard5}, {key:'imgcard4', img: imgcard4}]
+    const imgBig = [{key:'Other', img: other}, {key:'Music', img: music}, {key:'Party', img: party}, {key:'Sport', img: sport}]
+
+
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -149,12 +147,8 @@ export default function MiaJohnson(){
     const [show_fifth, setShowFifth] = useState(false);
     const handleCloseFifth = () => setShowFifth(false);
     const handleShowFifth = () => setShowFifth(true);
-    const [cardhome, setCardhome] = useLocalStorage('cardhome', cardmia)
 
-
-
-    const img = [{key:'imgcard1', img: imgcard1}, {key:'imgcard2', img: imgcard2}, {key:'imgcard5', img: imgcard5}, {key:'imgcard4', img: imgcard4}]
-    const imgBig = [{key:'Other', img: other}, {key:'Music', img: music}, {key:'Party', img: party}, {key:'Sport', img: sport}]
+    const [cardmia, setCardMia] = useLocalStorage('cardmia', cardm)
 
 
     return(
@@ -232,7 +226,7 @@ export default function MiaJohnson(){
                                         <h6 style={{textAlign:"left"}}>{moment(p.dataStart).locale('en').format('MMM D').toUpperCase()} • {moment(p.dataStart).locale('en').format('h:mm a').toUpperCase()}</h6>
                                     </Col>
                                     <Col xs={2}>
-                                        <img src={threedots} style={{textAlign:"right"}}/>
+
                                     </Col>
                                 </Row>
                             </Card.Text>
@@ -342,7 +336,7 @@ export default function MiaJohnson(){
                         <Modal.Footer>
                             <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
                                     onClick={()=> {localStorage.setItem('partecipazioni', JSON.stringify(state.partecipazioni));
-                                        localStorage.setItem('cardhome', JSON.stringify(cardhome)); handleCloseThird()}}>
+                                        localStorage.setItem('cardmia', JSON.stringify(cardmia)); handleCloseThird()}}>
                                 Ok
                             </Button>
                         </Modal.Footer>
@@ -380,7 +374,7 @@ export default function MiaJohnson(){
                         <Modal.Footer>
                             <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
                                     onClick={()=> {localStorage.setItem('partecipazioni', JSON.stringify(state.partecipazioni));
-                                        localStorage.setItem('cardhome', JSON.stringify(cardhome)); handleCloseFifth()}}>
+                                        localStorage.setItem('cardmia', JSON.stringify(cardmia)); handleCloseFifth()}}>
                                 Ok
                             </Button>
                         </Modal.Footer>
