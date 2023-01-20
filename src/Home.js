@@ -142,6 +142,19 @@ export default function Home(){
     const handleCloseFifth = () => setShowFifth(false);
     const handleShowFifth = () => setShowFifth(true);
 
+    const [show_sith, setShowSith] = useState(false);
+    const handleCloseSith = () => setShowSith(false);
+    const handleShowSith = () => setShowSith(true);
+
+    const [show_seventh, setShowSeventh] = useState(false);
+    const handleCloseSeventh = () => setShowSeventh(false);
+    const handleShowSeventh = () => setShowSeventh(true);
+
+    const [show_eighth, setShowEighth] = useState(false);
+    const handleCloseEighth = () => setShowEighth(false);
+    const handleShowEighth = () => setShowEighth(true);
+
+
     return(
         <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', width:"100vw", paddingBottom:"10em"}}>
 
@@ -154,7 +167,7 @@ export default function Home(){
                       value={"cont-menu-rec-nearme"}
             />
 
-            <Container style={{paddingTop:"15em"}}>
+            <Container style={{paddingTop:"16em"}}>
 
                 {cardhome.map( p =>
                     <Card className="post" key={p.key} style={{ minHeight: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}
@@ -167,7 +180,7 @@ export default function Home(){
                                         <h6 style={{textAlign:"left"}}>{moment(p.dataStart).locale('en').format('MMM D').toUpperCase()} • {moment(p.dataStart).locale('en').format('h:mm a').toUpperCase()}</h6>
                                     </Col>
                                     <Col xs={2}>
-                                        <img src={threedots} style={{textAlign:"right"}}/>
+                                        <img src={threedots} onClick={()=> {handleShowSith(); dispatch(selected(p.key))}} style={{textAlign:"right"}}/>
                                     </Col>
                                 </Row>
                             </Card.Text>
@@ -185,7 +198,7 @@ export default function Home(){
                     </Card>
                 )}
 
-                <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
+                {show_sith == false ? <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
                     <Modal.Dialog>
                         <Modal.Header closeButton>
                             <Card style={{backgroundColor:"#4b7bf8", color:"white"}}>
@@ -242,7 +255,7 @@ export default function Home(){
                             </Dropdown>
                         </Modal.Footer>
                     </Modal.Dialog>
-                </Modal>
+                </Modal> : null}
 
                 <Modal show={show_second} onHide={handleCloseSecond} backdrop={"static"} centered>
                     <Modal.Dialog>
@@ -318,6 +331,70 @@ export default function Home(){
                                     onClick={()=> {localStorage.setItem('partecipazioni', JSON.stringify(state.partecipazioni));
                                         localStorage.setItem('cardhome', JSON.stringify(cardhome)); handleCloseFifth()}}>
                                 Ok
+                            </Button>
+                        </Modal.Footer>
+                    </Modal.Dialog>
+                </Modal>
+
+                <Modal show={show_sith} onHide={handleCloseSith} backdrop={"static"} centered>
+                    <Modal.Dialog>
+
+                        <Modal.Footer className="modal-subtitle-1">
+                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                    onClick={()=> {handleCloseSith(); handleClose(); handleShowSeventh()}}>
+                                Why you're seeing this event
+                            </Button>
+                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                    onClick={()=> {handleCloseSith(); handleClose(); handleShowEighth()}}>
+                                Not intrested
+                            </Button>
+                        </Modal.Footer>
+
+                    </Modal.Dialog>
+                </Modal>
+
+                <Modal show={show_seventh} onHide={handleCloseSeventh} backdrop={"static"} centered>
+                    <Modal.Dialog>
+                        <Modal.Header>
+                            Why you're seeing this event?
+                        </Modal.Header>
+
+                        <Modal.Body className="modal-subtitle-1">
+                            You have participated in similar events
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                    onClick={()=> {handleCloseSeventh()}}>
+                                Ok
+                            </Button>
+                        </Modal.Footer>
+                    </Modal.Dialog>
+                </Modal>
+
+                <Modal show={show_eighth} onHide={handleCloseEighth} backdrop={"static"} centered>
+                    <Modal.Dialog>
+
+                        <Modal.Header>
+                            Event hidden
+                        </Modal.Header>
+
+                        <Modal.Body className="modal-subtitle-1">
+                            <p>We'll suggest fewer post like this</p>
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                    onClick={()=> {
+                                        let arrayCard
+                                        arrayCard= cardhome.filter(f=> f.key != state.id);
+                                        setCardhome(arrayCard);
+                                        handleCloseEighth();}}>
+                                Ok
+                            </Button>
+                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                    onClick={()=> handleCloseEighth()}>
+                                Undo
                             </Button>
                         </Modal.Footer>
                     </Modal.Dialog>
