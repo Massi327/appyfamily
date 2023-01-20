@@ -142,7 +142,7 @@ export function Reducer(state,action){
 
         case ADD_FORUM:
 
-            let post = {key: Math.random(), titolo: action.titolof, about: 'Now • Mia Johnson'}
+            let post = {key: Math.random(), titolo: action.titolof, about: 'Now • Sophia Wilkinson'}
             let newForum = [...state.forums]
 
             let forum = JSON.parse(localStorage.getItem('forums'))

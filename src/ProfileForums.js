@@ -129,7 +129,8 @@ export default function ProfileForums(){
                             </Card.Text>
                         </Card.Header>
                         <Accordion.Collapse eventKey="0">
-                            <Card.Body><Card className="people" style={{marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"-1em", flexDirection: 'row'}}>
+                            <Card.Body>
+                                <Card className="people" style={{marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"-1em", flexDirection: 'row'}}>
                                 <Card.Img  src={profile2} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
 
                                 <Card.Body>
