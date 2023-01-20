@@ -73,19 +73,22 @@ export default function Blogs(){
             key: Math.random(),
             testo: "Use a hot water bottle",
             about: "3 weeks ago • Sullivan Jayden",
-            img: profile2
+            img: profile2,
+            kf: 100
         },
         {
             key: Math.random(),
             testo: "Have you tried medicines?",
             about: "2 weeks ago • Mia Johnson",
-            img: profile1
+            img: profile1,
+            kf: 100
         },
         {
             key: Math.random(),
             testo: "Are you feeding him/her?",
             about: "4 days ago • Clara May",
-            img: profile4
+            img: profile4,
+            kf: 101
         },
     ]
 
@@ -131,48 +134,18 @@ export default function Blogs(){
 
                                         </Col>
                                         <Col xs={3}>
-                                            <CustomToggle eventKey="1">Reply</CustomToggle>
+
                                         </Col>
                                         <Col xs={5}>
-                                            <CustomToggle eventKey="0">View Replies</CustomToggle>
+                                            <CustomToggle eventKey="1">View Replies</CustomToggle>
                                         </Col>
                                     </Row>
                                 </Card.Text>
                             </Card.Header>
 
-                            <Accordion.Collapse eventKey="0">
-                                <Card.Body>
-                                {risposte.map(r=>
-                                    <Card className="people" key={r.key} style={{marginBottom: '0.4em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"-0.5em", flexDirection: 'row'}}>
-                                            <Card.Img  src={r.img} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
-
-                                            <Card.Body>
-                                                <Card.Text className="blog-title" style={{textAlign: 'left'}}>{r.testo}</Card.Text>
-
-                                                <Card.Text>
-                                                    <Row style={{height:"1em"}}>
-                                                        <Col  className="subtitle-connections" style={{textAlign:"left"}}>
-                                                            {r.about}
-                                                        </Col>
-                                                    </Row>
-                                                    <Row style={{height:"1em", marginTop:"-0.1em"}}>
-                                                        <Col xs={7}>
-
-                                                        </Col>
-                                                        <Col xs={3}>
-
-                                                        </Col>
-                                                    </Row>
-                                                </Card.Text>
-                                            </Card.Body>
-                                        </Card>
-                                )}
-                                </Card.Body>
-                            </Accordion.Collapse>
-
                             <Accordion.Collapse eventKey="1">
                                 <Card.Body>
-                                    {risposte.map(r=>
+                                    {risposte.filter(g=> g.kf == f.key).map(r=>
                                         <Card className="people" key={r.key} style={{marginBottom: '0.4em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"-0.5em", flexDirection: 'row'}}>
                                             <Card.Img  src={r.img} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.2em'}} />
 
@@ -205,7 +178,7 @@ export default function Blogs(){
                                             <Col xs={2}>
                                                 <img src={send3}  onClick={()=>{
                                                     let scan = JSON.parse(localStorage.getItem('risposte'))
-                                                    let tutto = {key: Math.random(), testo: reply, about: "Now • Sophia Wilkinson", img: sophia_piccola}
+                                                    let tutto = {key: Math.random(), testo: reply, about: "Now • Sophia Wilkinson", img: sophia_piccola, kf: f.key}
                                                     let arrayN = [...scan, tutto]
                                                     setRisposte(arrayN)
                                                     setReply('')
