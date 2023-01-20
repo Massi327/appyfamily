@@ -188,19 +188,35 @@ export default function Add(){
                                     </FormSelect>
                                 </FormGroup>
 
-                                <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}} onClick={() =>{
-                                    setTitolo('')
-                                    setAddress('')
-                                    setAbout('')
-                                    setCategoria('')
+                                {state.c == 'true' ?
+                                <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                        onClick={() =>{
+                                            setTitolo('')
+                                            setAddress('')
+                                            setAbout('')
+                                            setCategoria('')
                                     setDate(moment())
                                     setOraI('')
                                     setOraF('')
                                     setProperty('')
+                                            setWhere('calendar')
                                     dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('', 'yyyy-MM-DD').format('LT'), moment('', 'yyyy-MM-DD').format('LT'), 'false'))
                                 }}>
                                     Cancel
-                                </Button>
+                                </Button> :
+                                    <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}} onClick={() =>{
+                                        setTitolo('')
+                                        setAddress('')
+                                        setAbout('')
+                                        setCategoria('')
+                                        setDate(moment())
+                                        setOraI('')
+                                        setOraF('')
+                                        setProperty('')
+                                        dispatch(selectedSlot(moment('').format('yyyy-MM-DD'), moment('', 'yyyy-MM-DD').format('LT'), moment('', 'yyyy-MM-DD').format('LT'), 'false'))
+                                    }}>
+                                        Cancel
+                                    </Button>}
 
                                 <Button style={{backgroundColor:"#eb506c", color:"white", borderWidth:"2px", borderColor:"#eb506c", borderRadius:"10px"}} disabled={bottoneDisabilitato(address, titolo, oraI, oraF, date, property, state.giorno, state.start, state.end, state.c)} variant='dark' onClick={() => {
 
@@ -277,8 +293,7 @@ export default function Add(){
                                             }
                                             handleClose()
                                             handleShowSecond()
-                                        }}
-                                >
+                                        }}>
                                         Add
                                 </Button>
                             </Modal.Footer>
