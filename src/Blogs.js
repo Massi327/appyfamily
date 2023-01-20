@@ -145,7 +145,7 @@ export default function Blogs(){
                                 <Card.Body>
                                     {risposte.filter(g=> g.kf == f.key).map(r=>
                                         <Card className="people" key={r.key} style={{marginBottom: '0.4em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"-0.5em", flexDirection: 'row'}}>
-                                            <Card.Img  src={r.img} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.2em'}} />
+                                            <Card.Img  src={r.img} style={{height: '3em', width: '3rem', marginLeft:'1em', marginTop:'0.2em'}} />
 
                                             <Card.Body>
                                                 <Card.Text className="blog-title" style={{textAlign: 'left'}}>{r.testo}</Card.Text>

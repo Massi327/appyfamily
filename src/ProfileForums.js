@@ -63,6 +63,7 @@ import profile4 from "./images/profile4.svg";
 import {useAccordionButton} from "react-bootstrap/AccordionButton";
 import send3 from "./images/send3.svg";
 import sophia_piccola from "./images/sophia_piccola.svg";
+import {useLocalStorage} from "./useLocalStorage";
 
 export default function ProfileForums(){
 
@@ -72,9 +73,31 @@ export default function ProfileForums(){
         const forum = JSON.parse(localStorage.getItem('forums'));
         return forum || state.forums; } )
 
-    const [risposte, setRisposte] = useState(() => {
-        const risposte = JSON.parse(localStorage.getItem('risposte'));
-        return risposte} )
+    const rispo = [
+        {
+            key: Math.random(),
+            testo: "Use a hot water bottle",
+            about: "3 weeks ago • Sullivan Jayden",
+            img: profile2,
+            kf: 100
+        },
+        {
+            key: Math.random(),
+            testo: "Have you tried medicines?",
+            about: "2 weeks ago • Mia Johnson",
+            img: profile1,
+            kf: 100
+        },
+        {
+            key: Math.random(),
+            testo: "Are you feeding him/her?",
+            about: "4 days ago • Clara May",
+            img: profile4,
+            kf: 101
+        },
+    ]
+
+    const [risposte, setRisposte] = useLocalStorage('risposte', rispo)
 
     const [reply, setReply] = useState('')
 
@@ -154,7 +177,7 @@ export default function ProfileForums(){
                             <Card.Body>
                                 {risposte.filter(g=> g.kf == f.key).map(r=>
                                     <Card className="people" key={r.key} style={{marginBottom: '0.4em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"-0.5em", flexDirection: 'row'}}>
-                                        <Card.Img  src={r.img} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.2em'}} />
+                                        <Card.Img  src={r.img} style={{height: '3em', width: '3rem', marginLeft:'1em', marginTop:'0.2em'}} />
 
                                         <Card.Body>
                                             <Card.Text className="blog-title" style={{textAlign: 'left'}}>{r.testo}</Card.Text>

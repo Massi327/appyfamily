@@ -112,6 +112,31 @@ export default function Home(){
             property: 'Esterno'
         },
     ]
+    const rispo = [
+        {
+            key: Math.random(),
+            testo: "Use a hot water bottle",
+            about: "3 weeks ago • Sullivan Jayden",
+            img: profile2,
+            kf: 100
+        },
+        {
+            key: Math.random(),
+            testo: "Have you tried medicines?",
+            about: "2 weeks ago • Mia Johnson",
+            img: profile1,
+            kf: 100
+        },
+        {
+            key: Math.random(),
+            testo: "Are you feeding him/her?",
+            about: "4 days ago • Clara May",
+            img: profile4,
+            kf: 101
+        },
+    ]
+
+    const [risposte, setRisposte] = useLocalStorage('risposte', rispo)
 
     const img = [{key:'imgcard1', img: imgcard1}, {key:'imgcard2', img: imgcard2}, {key:'imgcard5', img: imgcard5}, {key:'imgcard4', img: imgcard4}]
     const imgBig = [{key:'Other', img: other}, {key:'Music', img: music}, {key:'Party', img: party}, {key:'Sport', img: sport}]
