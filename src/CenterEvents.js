@@ -64,6 +64,7 @@ import fencingbig from "./images/fencing-big.svg"
 import {useLocalStorage} from "./useLocalStorage";
 import going from "./images/going.svg"
 import whosgoing from "./images/whosgoing-white.svg";
+import profile2 from "./images/profile2.svg";
 
 export default function CenterEvents(){
 
@@ -85,8 +86,8 @@ export default function CenterEvents(){
     const cardcus = [
         {   key: 300,
             titolo:'Long jump race',
-            dataStart:moment('2023-01-03, 17:00','YYYY-MM-DD, hh:mm'),
-            dataEnd:moment('2023-01-03, 19:00','YYYY-MM-DD, hh:mm'),
+            dataStart:moment('2023-04-03, 17:00','YYYY-MM-DD, hh:mm'),
+            dataEnd:moment('2023-04-03, 19:00','YYYY-MM-DD, hh:mm'),
             address:'Regent Park, LN3 1TX, UK',
             host:'Hosted by CUS Torino',
             categoria: 'Esterno',
@@ -96,8 +97,8 @@ export default function CenterEvents(){
         },
         {   key: 301,
             titolo:'Dance with us',
-            dataStart:moment('2022-12-20, 10:00','YYYY-MM-DD, hh:mm'),
-            dataEnd:moment('2022-12-20, 11:00','YYYY-MM-DD, hh:mm'),
+            dataStart:moment('2022-03-20, 10:00','YYYY-MM-DD, hh:mm'),
+            dataEnd:moment('2022-03-20, 11:00','YYYY-MM-DD, hh:mm'),
             address:'12 Blue Street, BN4 2TY, UK',
             host:'Hosted by CUS Torino',
             categoria: 'Esterno',
@@ -107,8 +108,8 @@ export default function CenterEvents(){
         },
         {   key: 302,
             titolo:'Feeencing',
-            dataStart:moment('2022-11-03, 17:00','YYYY-MM-DD, hh:mm'),
-            dataEnd:moment('2022-11-03, 18:00','YYYY-MM-DD, hh:mm'),
+            dataStart:moment('2022-03-03, 17:00','YYYY-MM-DD, hh:mm'),
+            dataEnd:moment('2022-03-03, 18:00','YYYY-MM-DD, hh:mm'),
             address:'14 Blue Street, NS5 1TX, UK',
             host:'Hosted by CUS Torino',
             categoria: 'Esterno',
@@ -285,8 +286,8 @@ export default function CenterEvents(){
                                         Mia Johnson</Dropdown.Item>
                                     <Dropdown.Item href="/claramay">
                                         <img  src={profile4} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />Clara May</Dropdown.Item>
-                                    <Dropdown.Item href="/sullivanjayden">
-                                        <img  src={profile3} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
+                                    <Dropdown.Item href="/sullivanevents">
+                                        <img  src={profile2} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
                                         Sullivan Jayden</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>

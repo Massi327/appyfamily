@@ -276,8 +276,8 @@ export default function Home(){
                                           Mia Johnson</Dropdown.Item>
                                     <Dropdown.Item href="/claramay">
                                         <img  src={profile4} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />Clara May</Dropdown.Item>
-                                    <Dropdown.Item href="/sullivanjayden">
-                                        <img  src={profile3} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
+                                    <Dropdown.Item href="/sullivanevents">
+                                        <img  src={profile2} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
                                         Sullivan Jayden</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>

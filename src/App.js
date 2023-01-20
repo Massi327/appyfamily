@@ -26,6 +26,11 @@ import EditAddEvent from "./EditAddEvent";
 import ProfileForums from "./ProfileForums"
 import MiaJohnson from "./Miajohnson";
 import MiaJohnsonForums from "./MiajohnsonForums";
+import SullivanEvents from "./Sullivan_events"
+import SullivanForum from "./Sullivan_forum";
+import MuseEvents from "./TheMuse_events";
+import MuseForum from "./TheMuse_forum";
+import MuseCalendar from "./TheMuse_calendar";
 
 export const StateContext = createContext()
 
@@ -64,6 +69,11 @@ function App() {
                 <Route path={"/profileforums"} element={<ProfileForums/>}/>
                 <Route path={"/miajohnson"} element={<MiaJohnson/>}/>
                 <Route path={"/miajohnsonforums"} element={<MiaJohnsonForums/>}/>
+                <Route path={"/sullivanevents"} element={<SullivanEvents/>}/>
+                <Route path={"/sullivanforum"} element={<SullivanForum/>}/>
+                <Route path={"/museevents"} element={<MuseEvents/>}/>
+                <Route path={"/museforum"} element={<MuseForum/>}/>
+                <Route path={"/musecalendar"} element={<MuseCalendar/>}/>
             </Routes>
           </BrowserRouter>
         </div>

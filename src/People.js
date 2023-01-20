@@ -67,7 +67,7 @@ export default function People(){
 
                 </Link>
 
-
+                <Link to={"/sullivanevents"} style={{ textDecoration:"none"}}>
                 <Card className="people" style={{height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img  src={profile2} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
@@ -80,6 +80,7 @@ export default function People(){
                         </Card.Text>
                     </Card.Body>
                 </Card>
+                </Link>
 
                 <Card className="people" style={{height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img  src={profile4} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />

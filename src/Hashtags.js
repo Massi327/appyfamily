@@ -54,6 +54,7 @@ export default function Hashtags(){
                 </Card>
                 </Link>
 
+                <Link to={"/museevents"} style={{textDecoration:"none"}}>
                 <Card className="people" style={{height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img  src={musetheatre} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
@@ -63,6 +64,7 @@ export default function Hashtags(){
                         </Card.Text>
                     </Card.Body>
                 </Card>
+                </Link>
 
                 <Card className="people" style={{height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img  src={artattic} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />

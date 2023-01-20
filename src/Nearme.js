@@ -38,6 +38,7 @@ import profile4 from "./images/profile4.svg";
 import profile3 from "./images/profile3.svg";
 import going from "./images/going.svg"
 import whosgoing from "./images/whosgoing-white.svg";
+import profile2 from "./images/profile2.svg";
 
 
 export default function Nearme(){
@@ -145,7 +146,7 @@ export default function Nearme(){
             <NavigbarBottom home={home} calendar={calendar} profile={profile} settings={settings}/>
 
 
-            <Container style={{paddingTop:"15em", paddingBottom:'10em'}}>
+            <Container style={{paddingTop:"16em"}}>
 
 
                 {cardnear.map( p =>
@@ -227,8 +228,8 @@ export default function Nearme(){
                                         Mia Johnson</Dropdown.Item>
                                     <Dropdown.Item href="/claramay">
                                         <img  src={profile4} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />Clara May</Dropdown.Item>
-                                    <Dropdown.Item href="/sullivanjayden">
-                                        <img  src={profile3} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
+                                    <Dropdown.Item href="/sullivanevents">
+                                        <img  src={profile2} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
                                         Sullivan Jayden</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>

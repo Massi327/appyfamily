@@ -52,10 +52,10 @@ export default function Addforum(){
                         <Card className='form' style={{background: '#f5f5f5', color: "black", borderWidth: "0"}}>
                             <Card.Body style={{marginLeft:"1em", marginRight:"1em"}}>
                                 <CloseButton variant={'black'} onClick={() =>{ setTitolo(''); navigate(-1);} }/>
-                                <Card.Title style={{fontSize: "30px", marginTop: "0.3em"}} className="title-2">Add forum</Card.Title>
+                                <Card.Title style={{fontSize: "30px", marginTop: "0.3em"}} className="title-2">Add discussion</Card.Title>
 
                                 <FormGroup style={{marginBottom: "10px", textAlign: "left"}}>
-                                    <FormLabel className="subtitle">Title *</FormLabel>
+                                    <FormLabel className="subtitle">Content *</FormLabel>
                                     <FormControl type='text' value={titolo} style={{textAlign:"left", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"0px"}} placeholder='Title' onChange={e=> setTitolo(e.target.value)}/>
                                 </FormGroup>
 
@@ -75,11 +75,11 @@ export default function Addforum(){
             <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
                 <Modal.Dialog>
                     <Modal.Header>
-                        <Modal.Title className="modal-title-1">Add new forum</Modal.Title>
+                        <Modal.Title className="modal-title-1">Add new discussion</Modal.Title>
                     </Modal.Header>
 
                     <Modal.Body className="modal-subtitle-1">
-                        <p>Are you sure you want to add this new forum?</p>
+                        <p>Are you sure you want to add this new discussion?</p>
                     </Modal.Body>
 
                     <Modal.Footer>
