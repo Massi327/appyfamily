@@ -40,7 +40,7 @@ return  <Row className="cont">
 
         
         <Form className="d-flex">
-            <Form.Control type="search" value={'search'} placeholder="Search" aria-label="Search" onChange={()=> null}/>
+            <Form.Control type="search" placeholder="Search" aria-label="Search"/>
             <Button className="search-button" variant="outline-success" >Search</Button>
         </Form>
 

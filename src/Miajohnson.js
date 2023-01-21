@@ -1,6 +1,6 @@
 import {useContext, useEffect, useState} from "react";
 import {StateContext} from "./App";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {Button, Col, Container, Nav, Navbar, Row, Card, Modal, CardGroup, Dropdown} from "react-bootstrap";
 import NavigbarBottom from "./components/navbar-bottom";
 import NavigbarP from "./components/navbar-profile";
@@ -63,6 +63,7 @@ import {useLocalStorage} from "./useLocalStorage";
 import going from "./images/going.svg"
 import whosgoing from "./images/whosgoing-white.svg";
 import profile2 from "./images/profile2.svg";
+import {navigate} from "react-big-calendar/lib/utils/constants";
 
 
 export default function MiaJohnson(){
@@ -125,6 +126,8 @@ export default function MiaJohnson(){
 
     const [cardmia, setCardMia] = useLocalStorage('cardmia', cardm)
 
+    const navigate = useNavigate();
+
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -154,7 +157,7 @@ export default function MiaJohnson(){
             <Container className="bg2" style={{paddingTop:"6.5em"}}>
                 <Row>
                     <Col xs={1}>
-                        <Link to={"/people"}><img src={backarrow} style={{left:"2em"}}/></Link>
+                        <img src={backarrow} style={{left:"3em"}} onClick={()=> navigate(-1)}/>
                     </Col>
                     <Col></Col>
                 </Row>
@@ -180,7 +183,7 @@ export default function MiaJohnson(){
                             </Col>
                             <Col xs={4}>
                                 <Button style={{fontSize:"15px", marginTop: "-1em", borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0em"}}>
-                                    Message
+                                    <Link to={"/chat"} style={{textDecoration: 'none', color:'white'}}>Message</Link>
                                 </Button>
                             </Col>
                             <Col>
