@@ -23,6 +23,7 @@ import backarrow from "./images/backarrow.svg";
 import send3 from "./images/send3.svg";
 import sophia_piccola from "./images/sophia_piccola.svg";
 import {useLocalStorage} from "./useLocalStorage";
+import messageselected from "./images/messagesselected.svg";
 export default function Chat(){
 
     const [state,dispatch] = useContext(StateContext)
@@ -51,15 +52,15 @@ export default function Chat(){
 
     return(
         <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', top:'5em'}}>
-            <NavigbarP vnotifications={notif} vmessages={message} vtutorial={help}/>
+            <NavigbarP vnotifications={notif} vmessages={messageselected} vtutorial={help}/>
             <Container className="bg2" style={{paddingTop:"6.5em", borderRadius:'1em'}}>
                 <Row>
                     <Col xs={1}>
-                        <img src={backarrow} style={{left:"3em"}} onClick={()=> navigate(-1)}/>
+                        <img src={backarrow} style={{left:"3em", height:'2em', width:'2em'}} onClick={()=> navigate(-1)}/>
                     </Col>
                     <Col></Col>
                 </Row>
-
+                <Link to={"/miajohnson"} style={{textDecoration: 'none', color:'black'}}>
                 <Card className="people" style={{height: '4rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
                     <Card.Img  src={profile1} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
@@ -70,6 +71,7 @@ export default function Chat(){
 
                     </Card.Body>
                 </Card>
+                </Link>
 
             </Container>
 

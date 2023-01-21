@@ -157,7 +157,7 @@ export default function MiaJohnson(){
             <Container className="bg2" style={{paddingTop:"6.5em"}}>
                 <Row>
                     <Col xs={1}>
-                        <img src={backarrow} style={{left:"3em"}} onClick={()=> navigate(-1)}/>
+                        <img src={backarrow} style={{left:"3em", height:'2em', width:'2em'}} onClick={()=> navigate(-1)}/>
                     </Col>
                     <Col></Col>
                 </Row>
