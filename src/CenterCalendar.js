@@ -127,34 +127,27 @@ export default function CenterCalendar(){
                     </Container>
                 </CardHeader>
 
-
-
                 <CardGroup>
                     <Row>
-                        <Col>
-                            <p style={{marginTop:"0.5em", marginBottom:"-0.3em"}}>You signed up for the following courses</p>
-                            <Card style={{backgroundColor:"orange", margin:"0.5em"}}>
-                                <CardHeader style={{height:"3em"}}><Card.Title className="course-title">Dance Lesson</Card.Title></CardHeader>
-                                <p style={{paddingTop:"0.3em", marginBottom:"-0.1em"}}>Monday 7PM - 8PM</p>
-                                <Button style={{margin:"0.5em", marginLeft:"13em"}} onClick={() => {handleShow(); setControlloPale('true')}}>Copy to Calendar</Button>
-                            </Card>
+                        {controlloCorsiCancella == "true" ?
+                            <Col>
+                                <p style={{marginTop:"0.5em", marginBottom:"-0.3em"}}>You signed up for the following courses</p>
+                                <Card style={{backgroundColor:"orange", margin:"0.5em"}}>
+                                    <CardHeader style={{height:"3em"}}><Card.Title className="course-title">Dance Lesson</Card.Title></CardHeader>
+                                    <p style={{paddingTop:"0.3em", marginBottom:"-0.1em"}}>Monday 7PM - 8PM</p>
+                                    <p style={{paddingTop:"0.3em", marginBottom:"-0.1em"}}>Added to Calendar</p>
+                                    <Button style={{margin:"0.5em", marginLeft:"11em"}} onClick={()=> handleShowSecond()}>Delete from Calendar</Button>
+                                </Card>
                         </Col>
-                    </Row>
-                </CardGroup>
-
-                <CardGroup>
-                    <Row>
-                        {controlloCorsiCancella == "true" ? <Col>
-                            <p style={{marginTop:"0.5em", marginBottom:"-0.3em"}}>You signed up for the following courses</p>
-
-                            <Card style={{backgroundColor:"orange", margin:"0.5em"}}>
-                                <CardHeader style={{height:"3em"}}><Card.Title className="course-title">Dance Lesson</Card.Title></CardHeader>
-                                <p style={{paddingTop:"0.3em", marginBottom:"-0.1em"}}>Monday 7PM - 8PM</p>
-                                <p style={{paddingTop:"0.3em", marginBottom:"-0.1em"}}>Added to Calendar</p>
-                                <Button style={{margin:"0.5em", marginLeft:"11em"}} onClick={()=> handleShowSecond()}>Delete from Calendar</Button>
-                            </Card>
-
-                        </Col> : null}
+                            : <Col>
+                                <p style={{marginTop:"0.5em", marginBottom:"-0.3em"}}>You signed up for the following courses</p>
+                                <Card style={{backgroundColor:"orange", margin:"0.5em"}}>
+                                    <CardHeader style={{height:"3em"}}><Card.Title className="course-title">Dance Lesson</Card.Title></CardHeader>
+                                    <p style={{paddingTop:"0.3em", marginBottom:"-0.1em"}}>Monday 7PM - 8PM</p>
+                                    <Button style={{margin:"0.5em", marginLeft:"13em"}} onClick={() => {handleShow(); setControlloPale('true')}}>Copy to Calendar</Button>
+                                </Card>
+                            </Col>
+                        }
                     </Row>
 
                 </CardGroup>
