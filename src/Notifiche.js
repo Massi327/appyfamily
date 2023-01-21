@@ -44,7 +44,7 @@ export default function Notifiche(){
                     <Card.Body>
                         <Card.Text className="name-people" style={{textAlign: 'left'}}>Gina_Martin</Card.Text>
                         <Card.Text className="subtitle-random" style={{textAlign: 'left'}}>
-                            will partecipate in your event.                        </Card.Text>
+                            will partecipate in your event                 </Card.Text>
                     </Card.Body>
                 </Card>
 
@@ -54,7 +54,7 @@ export default function Notifiche(){
                     <Card.Body>
                         <Card.Text className="name-people" style={{textAlign: 'left'}}>Clara_May_92</Card.Text>
                         <Card.Text className="subtitle-random" style={{textAlign: 'left'}}>
-                            is interested in your event.
+                            will partecipate in your event
                         </Card.Text>
                     </Card.Body>
                 </Card>
@@ -64,7 +64,7 @@ export default function Notifiche(){
                     <Card.Body>
                         <Card.Text className="name-people" style={{textAlign: 'left'}}>Jane_Austen</Card.Text>
                         <Card.Text className="subtitle-random" style={{textAlign: 'left'}}>
-                            invited you to her event.
+                            started following you
                         </Card.Text>
                     </Card.Body>
                 </Card>
@@ -74,7 +74,7 @@ export default function Notifiche(){
                     <Card.Body>
                         <Card.Text className="name-people" style={{textAlign: 'left'}}>Santy_Chanty_Maybe</Card.Text>
                         <Card.Text className="subtitle-random" style={{textAlign: 'left'}}>
-                            replied to your question.
+                            replied to your question
                         </Card.Text>
                     </Card.Body>
                 </Card>
@@ -84,7 +84,7 @@ export default function Notifiche(){
                     <Card.Body>
                         <Card.Text className="name-people" style={{textAlign: 'left'}}>Gina_Martin</Card.Text>
                         <Card.Text className="subtitle-random" style={{textAlign: 'left'}}>
-                                started following you.
+                                started following you
                         </Card.Text>
 
 
@@ -97,7 +97,7 @@ export default function Notifiche(){
                     <Card.Body>
                         <Card.Text className="name-people" style={{textAlign: 'left'}}>Doctor_Sally</Card.Text>
                         <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
-                            replied to your question.
+                            replied to your question
                         </Card.Text>
                     </Card.Body>
                 </Card>
