@@ -146,6 +146,7 @@ export default function Home(){
     const [prenotazione, setPrenotazione] = useLocalStorage('prenotazioni', state.prenotazioni)
     const [forum, setForum] = useLocalStorage('forums', state.forums)
     const [partecipazioni, setPartecipazioni] = useLocalStorage('partecipazioni', state.partecipazioni)
+    const [tutorial, setTutorial] = useLocalStorage('tutorial', 'false')
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);

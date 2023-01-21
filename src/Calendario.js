@@ -52,6 +52,8 @@ import sport from "./images/sport.svg";
 import longjumpbig from "./images/longjump-big.svg";
 import dancebig from "./images/dance_big.svg";
 import fencingbig from "./images/fencing-big.svg";
+import backarrow from "./images/backarrow.svg";
+import forwardarrow from "./images/forwardarrow.svg";
 
 
 const localizer = momentLocalizer(moment)
@@ -116,6 +118,19 @@ export default function Calendario(){
     const [show_fifth, setShowFifth] = useState(false);
     const handleCloseFifth = () => setShowFifth(false);
     const handleShowFifth = () => setShowFifth(true);
+
+    const [show_sith, setShowSith] = useState(true);
+    const handleCloseSith = () => setShowSith(false);
+    const handleShowSith = () => setShowSith(true);
+
+    const [show_seventh, setShowSeventh] = useState(false);
+    const handleCloseSeventh = () => setShowSeventh(false);
+    const handleShowSeventh = () => setShowSeventh(true);
+
+    const [tutorial, setTutorial] = useState(()=> {
+        const tutorial = JSON.parse(localStorage.getItem('tutorial'))
+        return tutorial
+    })
 
     const navigate = useNavigate();
 
@@ -638,6 +653,50 @@ export default function Calendario(){
                     </Modal.Dialog>
                 </Modal> */}
 
+            {tutorial == true ?
+            <Modal show={show_sith} onHide={handleCloseSith} backdrop={"static"} centered>
+                <Modal.Dialog>
+                    <Modal.Header closeButton onClick={()=> navigate('/home', {replace: true})}/>
+                    <Modal.Body className="modal-subtitle-1">
+                        <Row>
+                            <p style={{textAlign:'center', fontSize:'1.5em'}}>This is the <span style={{fontWeight: 'bold', color:'#842DF2'}}>Calendar</span>!</p>
+                            <div style={{textAlign:'center', fontSize:'1.5em'}}>From here you can check your planned activities,</div>
+                            <div style={{textAlign:'center', fontSize:'1.5em'}}><span style={{fontWeight: 'bold', color:'#EB506C'}}>events</span> in which you participate and add new ones.</div>
+                        </Row>
+                        <br/>
+                        <Row>
+                            <Col xs={6} style={{textAlign:'left'}}>
+                                <img src={backarrow} style={{width:'2.5em', height:'2.5em'}} onClick={() => navigate('/tutorial', {replace: true})}/>
+                            </Col>
+                            <Col xs={6} style={{textAlign:'right'}}>
+                                <img src={forwardarrow} style={{width:'2.5em', height:'2.5em'}} onClick={() => {handleCloseSith(); handleShowSeventh()}}/>
+                            </Col>
+                        </Row>
+                    </Modal.Body>
+                </Modal.Dialog>
+            </Modal>
+            : null}
+
+            <Modal show={show_seventh} onHide={handleCloseSeventh} backdrop={"static"} centered>
+                <Modal.Dialog>
+                    <Modal.Header closeButton onClick={()=> navigate('/home', {replace: true})}/>
+                    <Modal.Body className="modal-subtitle-1">
+                        <Row>
+                            <div style={{textAlign:'center', fontSize:'1.5em'}}>Calendar can be visualized by day, by week or by month</div>
+
+                        </Row>
+                        <br/>
+                        <Row>
+                            <Col xs={6} style={{textAlign:'left'}}>
+                                <img src={backarrow} style={{width:'2.5em', height:'2.5em'}} onClick={() => handleShowSith()}/>
+                            </Col>
+                            <Col xs={6} style={{textAlign:'right'}}>
+                                <img src={forwardarrow} style={{width:'2.5em', height:'2.5em'}} onClick={() => navigate('/profile', {replace: true})}/>
+                            </Col>
+                        </Row>
+                    </Modal.Body>
+                </Modal.Dialog>
+            </Modal>
         </Container>
 
     )
