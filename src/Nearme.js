@@ -45,8 +45,8 @@ export default function Nearme(){
 
     const [state,dispatch] = useContext(StateContext)
 
-    const cardnear = [
-        {   key: 300,
+    const cardnea = [
+        {   key: 5000,
             titolo:'Princess party',
             data: 'NOW',
             distance: '2.5 km',
@@ -60,7 +60,7 @@ export default function Nearme(){
             partecipo: 'false',
             property: 'Esterno'
         },
-        {   key: 301,
+        {   key: 5001,
             titolo:'Sports day',
             data: 'SOON',
             distance: '1.5km',
@@ -69,12 +69,12 @@ export default function Nearme(){
             address:'173 Balmore Street, NR3 3TX, UK',
             host:'Hosted by BabyGym',
             about:'boh',
-            categoria: 'Sports',
+            categoria: 'Sport',
             img: 'imgcard4',
             partecipo: 'false',
             property: 'Esterno'
         },
-        {   key: 302,
+        {   key: 5002,
             titolo:'Picnic',
             data:'SOON',
             distance: '3.4km',
@@ -88,7 +88,7 @@ export default function Nearme(){
             partecipo: 'false',
             property: 'Esterno'
         },
-        {   key: 303,
+        {   key: 5003,
             titolo:'Lalaland',
             data: 'TODAY',
             distance: '300m',
@@ -106,12 +106,7 @@ export default function Nearme(){
 
     const img = [{key:'imgcard1', img: imgcard1}, {key:'imgcard2', img: imgcard2}, {key:'imgcard5', img: imgcard5}, {key:'imgcard4', img: imgcard4}]
     const imgBig = [{key:'Other', img: other}, {key:'Music', img: music}, {key:'Party', img: party}, {key:'Sport', img: sport}]
-    const [cardhome, setCardhome] = useLocalStorage('cardhome', cardnear)
-
-
-    const [prenotazione, setPrenotazione] = useLocalStorage('prenotazioni', state.prenotazioni)
-    const [forum, setForum] = useLocalStorage('forums', state.forums)
-    const [partecipazioni, setPartecipazioni] = useLocalStorage('partecipazioni', state.partecipazioni)
+    const [cardnear, setCardNear] = useLocalStorage('cardnear', cardnea)
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -133,8 +128,20 @@ export default function Nearme(){
     const handleCloseFifth = () => setShowFifth(false);
     const handleShowFifth = () => setShowFifth(true);
 
+    const [show_sith, setShowSith] = useState(false);
+    const handleCloseSith = () => setShowSith(false);
+    const handleShowSith = () => setShowSith(true);
+
+    const [show_seventh, setShowSeventh] = useState(false);
+    const handleCloseSeventh = () => setShowSeventh(false);
+    const handleShowSeventh = () => setShowSeventh(true);
+
+    const [show_eighth, setShowEighth] = useState(false);
+    const handleCloseEighth = () => setShowEighth(false);
+    const handleShowEighth = () => setShowEighth(true);
+
     return(
-        <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh'}}>
+        <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', paddingBottom:"8em"}}>
             <Navigbar vevents={eventsselected}
                       vforum={forums}
                       vpeople={people}
@@ -161,7 +168,7 @@ export default function Nearme(){
                                     </Col>
                                     <Col style={{backgroundColor:"#19bf97", marginTop:"-0.5em", marginBottom:"0.7em", color:"white"}}>{p.distance}</Col>
                                     <Col xs={2}>
-                                        <img src={threedots} style={{textAlign:"right"}}/>
+                                        <img src={threedots} onClick={()=> {handleShowSith(); dispatch(selected(p.key))}} style={{textAlign:"right"}}/>
                                     </Col>
                                 </Row>
                             </Card.Text>
@@ -178,6 +185,8 @@ export default function Nearme(){
                         </Card.Body>
                     </Card>
                 )}
+
+                {show_sith == false ?
                 <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
                     <Modal.Dialog>
                         <Modal.Header closeButton>
@@ -236,6 +245,7 @@ export default function Nearme(){
                         </Modal.Footer>
                     </Modal.Dialog>
                 </Modal>
+                    : null}
 
                 <Modal show={show_second} onHide={handleCloseSecond} backdrop={"static"} centered>
                     <Modal.Dialog>
@@ -271,7 +281,7 @@ export default function Nearme(){
                         <Modal.Footer>
                             <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
                                     onClick={()=> {localStorage.setItem('partecipazioni', JSON.stringify(state.partecipazioni));
-                                        localStorage.setItem('cardhome', JSON.stringify(cardhome)); handleCloseThird()}}>
+                                        localStorage.setItem('cardnear', JSON.stringify(cardnear)); handleCloseThird()}}>
                                 Ok
                             </Button>
                         </Modal.Footer>
@@ -309,16 +319,76 @@ export default function Nearme(){
                         <Modal.Footer>
                             <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
                                     onClick={()=> {localStorage.setItem('partecipazioni', JSON.stringify(state.partecipazioni));
-                                        localStorage.setItem('cardhome', JSON.stringify(cardhome)); handleCloseFifth()}}>
+                                        localStorage.setItem('cardnear', JSON.stringify(cardnear)); handleCloseFifth()}}>
                                 Ok
                             </Button>
                         </Modal.Footer>
                     </Modal.Dialog>
                 </Modal>
 
+                <Modal show={show_sith} onHide={handleCloseSith} backdrop={"static"} centered>
+                    <Modal.Dialog>
 
+                        <Modal.Footer className="modal-subtitle-1">
+                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                    onClick={()=> {handleCloseSith(); handleClose(); handleShowSeventh()}}>
+                                Why you're seeing this event
+                            </Button>
+                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                    onClick={()=> {handleCloseSith(); handleClose(); handleShowEighth()}}>
+                                Not intrested
+                            </Button>
+                        </Modal.Footer>
 
+                    </Modal.Dialog>
+                </Modal>
 
+                <Modal show={show_seventh} onHide={handleCloseSeventh} backdrop={"static"} centered>
+                    <Modal.Dialog>
+                        <Modal.Header>
+                            Why you're seeing this event?
+                        </Modal.Header>
+
+                        <Modal.Body className="modal-subtitle-1">
+                            You have participated in similar events and it is close to you
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                    onClick={()=> {handleCloseSeventh()}}>
+                                Ok
+                            </Button>
+                        </Modal.Footer>
+                    </Modal.Dialog>
+                </Modal>
+
+                <Modal show={show_eighth} onHide={handleCloseEighth} backdrop={"static"} centered>
+                    <Modal.Dialog>
+
+                        <Modal.Header>
+                            Event hidden
+                        </Modal.Header>
+
+                        <Modal.Body className="modal-subtitle-1">
+                            <p>We'll suggest fewer events like this</p>
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                    onClick={()=> {
+                                        let arrayCard
+                                        arrayCard= cardnear.filter(f=> f.key != state.id);
+                                        setCardNear(arrayCard);
+                                        handleCloseEighth();}}>
+                                Ok
+                            </Button>
+                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
+                                    onClick={()=> handleCloseEighth()}>
+                                Undo
+                            </Button>
+                        </Modal.Footer>
+                    </Modal.Dialog>
+                </Modal>
 
             </Container>
 

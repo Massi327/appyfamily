@@ -181,7 +181,7 @@ export default function Home(){
 
 
     return(
-        <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', width:"100vw", paddingBottom:"10em"}}>
+        <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', width:"100vw", paddingBottom:"8em"}}>
 
             <Navigbar vevents={eventsselected}
                       vforum={forums}
