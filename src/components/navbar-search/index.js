@@ -17,10 +17,15 @@ import centersselected from "../../images/centers-selected.svg";
 import "./index.css"
 import {useLocalStorage} from "../../useLocalStorage";
 import {useState} from "react";
+import backarrow from "../../images/backarrow.svg";
 
 
 const Navigbar = ({ vevents, vforum, vpeople, vcenters, vrec, vnearme,value }) => {
 
+    const [cerca, setCerca] = useState(()=>{
+        const cerca = JSON.parse(localStorage.getItem('cerca'))
+        return cerca
+    })
 
 return  <Row className="cont">
     <Container style={{width:"101vw", marginRight:"0em"}}>
@@ -38,11 +43,25 @@ return  <Row className="cont">
             </Container>
         </Navbar>
 
-        
         <Form className="d-flex">
-            <Form.Control type="search" placeholder="Search" aria-label="Search"/>
-            <Button className="search-button" variant="outline-success" >Search</Button>
+            {localStorage.getItem('freccia') == 'true' ?
+                <img src={backarrow} style={{left:"3em", height:'2em', width:'2em'}} onClick={()=> {localStorage.setItem('cs', 'false'); localStorage.setItem('freccia','false'); localStorage.setItem('cerca', null); window.location.reload(true)}}/>
+            : null}
+            <Form.Control type="search" value={cerca} placeholder="Search" aria-label="Search" onChange={e=> localStorage.setItem('cerca', JSON.stringify(e.target.value))}/>
+            <Button className="search-button" variant="outline-light" disabled={bottoneDisabilitato(localStorage.getItem('cerca'))}
+            onClick={()=>{
+
+                let cardhome =  JSON.parse(localStorage.getItem('cardhome'))
+                let arrayS
+                arrayS = cardhome.filter(f=> f.titolo.includes(JSON.parse(localStorage.getItem('cerca'))))
+                localStorage.setItem('cs', 'true')
+                localStorage.setItem('search', JSON.stringify(arrayS))
+                localStorage.setItem('freccia', 'true')
+                window.location.reload(true)
+            }
+            }>Search</Button>
         </Form>
+
 
         <Container className="search-icons">
             <Row className="justify-content-sm-center">
@@ -92,3 +111,16 @@ return  <Row className="cont">
 }
 
 export default Navigbar
+
+function bottoneDisabilitato(cerca) {
+    let disabilitato;
+
+        if (cerca!='')
+        {
+            disabilitato= false;
+        }else {
+            disabilitato= true;
+        }
+
+    return(disabilitato)
+}
