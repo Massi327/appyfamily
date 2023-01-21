@@ -118,8 +118,15 @@ export default function MuseCalendar(){
                     </Container>
                 </CardHeader>
 
-
-
+                <CardGroup>
+                    <Row>
+                        <Col>
+                            <Card style={{backgroundColor:"#f5f5f5", margin:"0.5em"}}>
+                                <p style={{paddingTop:"0.3em", marginBottom:"0.5em"}}>Sorry, but you do not appear in our databases</p>
+                            </Card>
+                        </Col>
+                    </Row>
+                </CardGroup>
             </Card>
             <NavigbarBottom home={homeunselected} calendar={calendar} profile={profile} settings={settings}/>
 

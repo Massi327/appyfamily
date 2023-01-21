@@ -70,71 +70,54 @@ export default function CenterEvents(){
 
     const [state,dispatch] = useContext(StateContext)
 
-    const [prenotazione, setPrenotazione] = useState(() => {
-        const prenotazione = JSON.parse(localStorage.getItem('prenotazioni'));
-        return prenotazione} )
+    const img = [{key:'longjump', img: longjump}, {key:'dance', img: dance}, {key:'fencing', img: fencing}]
+    const imgBig = [{key:'longjump', img: longjumpbig}, {key:'dance', img: dancebig}, {key:'fencing', img: fencingbig}]
 
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-
-
-
-
-
-    const cardcus = [
-        {   key: 300,
+    const cardcu = [
+        {   key: 823,
             titolo:'Long jump race',
             dataStart:moment('2023-04-03, 17:00','YYYY-MM-DD, hh:mm'),
             dataEnd:moment('2023-04-03, 19:00','YYYY-MM-DD, hh:mm'),
             address:'Regent Park, LN3 1TX, UK',
             host:'Hosted by CUS Torino',
-            categoria: 'Esterno',
             about:'Let us see who can jump more than 4 meters. You can win a pie!',
+            categoria: 'Sport',
             img: 'longjump',
-            partecipo: 'false'
+            partecipo: 'false',
+            property: 'EsternoCus'
         },
-        {   key: 301,
+        {   key: 824,
             titolo:'Dance with us',
             dataStart:moment('2022-03-20, 10:00','YYYY-MM-DD, hh:mm'),
             dataEnd:moment('2022-03-20, 11:00','YYYY-MM-DD, hh:mm'),
             address:'12 Blue Street, BN4 2TY, UK',
             host:'Hosted by CUS Torino',
-            categoria: 'Esterno',
             about:'Join us for a fun morning with music',
+            categoria: 'Sport',
             img: 'dance',
-            partecipo: 'false'
+            partecipo: 'false',
+            property: 'EsternoCus'
         },
-        {   key: 302,
+        {   key: 825,
             titolo:'Feeencing',
             dataStart:moment('2022-03-03, 17:00','YYYY-MM-DD, hh:mm'),
             dataEnd:moment('2022-03-03, 18:00','YYYY-MM-DD, hh:mm'),
             address:'14 Blue Street, NS5 1TX, UK',
             host:'Hosted by CUS Torino',
-            categoria: 'Esterno',
             about: 'Feeling like a Musketeer? Come join us in this fun fencing lesson',
+            categoria: 'Sport',
             img: 'fencing',
-            partecipo: 'false'
+            partecipo: 'false',
+            property: 'EsternoCus'
         },
 
     ]
 
-    let events = [];
-    prenotazione.map(p => {
-        let event={
-            key: p.key,
-            titolo: p.titolo,
-            dataStart: moment(p.dataStart,'YYYY-MM-DD, hh:mm').add(1, 'hour').toDate(),
-            dataEnd: moment(p.dataEnd,'YYYY-MM-DD, hh:mm').add(1, 'hour').toDate(),
-            address: p.address,
-            about: p.about,
-            categoria: p.categoria,
-            property: p.property
-        }
-        events.push(event)
-    })
+    const [cardcus, setCardCus] = useLocalStorage('cardcus', cardcu)
 
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const [show_second, setShowSecond] = useState(false);
     const handleCloseSecond = () => setShowSecond(false);
@@ -151,15 +134,6 @@ export default function CenterEvents(){
     const [show_fifth, setShowFifth] = useState(false);
     const handleCloseFifth = () => setShowFifth(false);
     const handleShowFifth = () => setShowFifth(true);
-
-    const [cardhome, setCardhome] = useLocalStorage('cardhome', cardcus)
-
-
-
-    const img = [{key:'longjump', img: longjump}, {key:'dance', img: dance}, {key:'fencing', img: fencing}, {key:'imgcard4', img: imgcard4}]
-    const imgBig = [{key:'longjump', img: longjumpbig}, {key:'dance', img: dancebig}, {key:'fencing', img: fencingbig}, {key:'Sport', img: sport}]
-
-
 
     return(
         <Container style={{backgroundColor:"#f5f5f5", paddingBottom:"10em", zIndex:'-1000', minHeight:'100vh', top:'5em'}}>
@@ -217,7 +191,7 @@ export default function CenterEvents(){
                                         <h6 style={{textAlign:"left"}}>{moment(p.dataStart).locale('en').format('MMM D').toUpperCase()} • {moment(p.dataStart).locale('en').format('h:mm a').toUpperCase()}</h6>
                                     </Col>
                                     <Col xs={2}>
-                                        <img src={threedots} style={{textAlign:"right"}}/>
+
                                     </Col>
                                 </Row>
                             </Card.Text>
@@ -260,7 +234,7 @@ export default function CenterEvents(){
 
                         <Modal.Body className="modal-subtitle-1">
 
-                            <img src={imgBig.filter(f => f.key == cardcus.filter(g=> g.key == state.id).map(m=> m.categoria)).map(c => c.img)} style={{marginBottom:"0.5em", width:"22em"}}/>
+                            <img src={imgBig.filter(f => f.key == cardcus.filter(g=> g.key == state.id).map(m=> m.img)).map(c => c.img)} style={{marginBottom:"0.5em", width:"22em"}}/>
 
 
                             <p className="event-subsubtitle-3"> <img src={clock} className="icon"/> {cardcus.filter(p => p.key===state.id).map(m=>m.address)}</p>
@@ -329,7 +303,7 @@ export default function CenterEvents(){
                         <Modal.Footer>
                             <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
                                     onClick={()=> {localStorage.setItem('partecipazioni', JSON.stringify(state.partecipazioni));
-                                        localStorage.setItem('cardhome', JSON.stringify(cardhome)); handleCloseThird()}}>
+                                        localStorage.setItem('cardcus', JSON.stringify(cardcus)); handleCloseThird()}}>
                                 Ok
                             </Button>
                         </Modal.Footer>
@@ -367,7 +341,7 @@ export default function CenterEvents(){
                         <Modal.Footer>
                             <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
                                     onClick={()=> {localStorage.setItem('partecipazioni', JSON.stringify(state.partecipazioni));
-                                        localStorage.setItem('cardhome', JSON.stringify(cardhome)); handleCloseFifth()}}>
+                                        localStorage.setItem('cardcus', JSON.stringify(cardcus)); handleCloseFifth()}}>
                                 Ok
                             </Button>
                         </Modal.Footer>

@@ -49,6 +49,9 @@ import dance_big from "./images/dance_big.svg";
 import music from "./images/music.svg";
 import party from "./images/party.svg";
 import sport from "./images/sport.svg";
+import longjumpbig from "./images/longjump-big.svg";
+import dancebig from "./images/dance_big.svg";
+import fencingbig from "./images/fencing-big.svg";
 
 
 const localizer = momentLocalizer(moment)
@@ -58,6 +61,7 @@ export default function Calendario(){
     const [state,dispatch] = useContext(StateContext)
 
     const img = [{key:'Other', img: other}, {key:'', img: other}, {key:'Music', img: music}, {key:'Party', img: party}, {key:'Sport', img: sport}]
+    const imgCus = [{key:'longjump', img: longjumpbig}, {key:'dance', img: dancebig}, {key:'fencing', img: fencingbig}]
 
     const [address,setAddress] = useState('')
     const [titolo,setTitolo] = useState('')
@@ -368,6 +372,64 @@ export default function Calendario(){
                             <Modal.Body className="modal-subtitle-1">
 
                                 <img src={img.filter(f => f.key == partecipazioniC.filter(g=> g.key == state.id).map(m=> m.categoria)).map(c => c.img)} style={{marginBottom:"0.5em", width:"22em"}}/>
+
+                                <p className="event-subsubtitle-3"> <img src={clock} className="icon"/> {partecipazioniC.filter(p => p.key===state.id).map(m=>m.address)}</p>
+                                <p className="event-subsubtitle-3"> <img src={map} className="icon"/> {partecipazioniC.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D MMM YYYY'))}, {partecipazioniC.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('h:mm a'))} - {partecipazioniC.filter(p => p.key===state.id).map(m=>moment(m.dataEnd).locale('en').format('h:mm a'))}</p>
+                                <p className="about">About</p>
+                                <p>{partecipazioniC.filter(p => p.key===state.id).map(m=>m.about)}</p>
+                            </Modal.Body>
+
+                            <Modal.Footer>
+                                <Button style={{fontSize:"15px", borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
+                                        onClick={()=>{handleClose(); handleShowFourth()}}><img src={participate}/> Don't participate</Button>
+
+                                <Dropdown>
+                                    <Dropdown.Toggle id="dropdown-basic"  style={{borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0em"}}>
+                                        <img src={whosgoing}/>  Who's Going
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item href="/miajohnson">
+                                            <img  src={profile1} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
+                                            Mia Johnson</Dropdown.Item>
+                                        <Dropdown.Item href="/claramay">
+                                            <img  src={profile4} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />Clara May</Dropdown.Item>
+                                        <Dropdown.Item href="/sullivanjayden">
+                                            <img  src={profile3} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
+                                            Sullivan Jayden</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            </Modal.Footer>
+                        </Modal.Dialog>
+                    </Modal> : null}
+
+                {propriet == 'EsternoCus' ?
+                    <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
+                        <Modal.Dialog>
+                            <Modal.Header closeButton>
+                                <Card style={{backgroundColor:"#4b7bf8", color:"white"}}>
+                                    <Card.Body>
+                                        <Card.Text className="event-month-popup" style={{textAlign: 'center'}}>
+                                            {partecipazioniC.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('MMM').toUpperCase())}
+                                        </Card.Text>
+                                        <Card.Text className="event-day-popup" style={{textAlign: 'center'}}>
+                                            {partecipazioniC.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D').toUpperCase())}
+                                        </Card.Text>
+                                    </Card.Body>
+                                </Card>
+                                <Col>
+                                    <Row>
+                                        <Modal.Title className="modal-title-1" style={{fontSize:"25px", marginLeft:"1em"}}>{partecipazioniC.filter(p => p.key===state.id).map(m=>m.titolo)}</Modal.Title>
+                                    </Row>
+                                    <Row className="event-subtitle-1" style={{textAlign: 'left', marginLeft:"0.1em", fontSize:"15px"}}>
+                                        <p style={{textAlign: 'left'}}>{partecipazioniC.filter(p => p.key===state.id).map(m=>m.host)}</p>
+                                    </Row>
+                                </Col>
+                            </Modal.Header>
+
+                            <Modal.Body className="modal-subtitle-1">
+
+                                <img src={imgCus.filter(f => f.key == partecipazioniC.filter(g=> g.key == state.id).map(m=> m.img)).map(c => c.img)} style={{marginBottom:"0.5em", width:"22em"}}/>
 
                                 <p className="event-subsubtitle-3"> <img src={clock} className="icon"/> {partecipazioniC.filter(p => p.key===state.id).map(m=>m.address)}</p>
                                 <p className="event-subsubtitle-3"> <img src={map} className="icon"/> {partecipazioniC.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D MMM YYYY'))}, {partecipazioniC.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('h:mm a'))} - {partecipazioniC.filter(p => p.key===state.id).map(m=>moment(m.dataEnd).locale('en').format('h:mm a'))}</p>
