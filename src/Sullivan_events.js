@@ -70,7 +70,7 @@ export default function SullivanEvents() {
     const [state, dispatch] = useContext(StateContext)
 
     const cardh = [
-        {   key: Math.random(),
+        {   key: 500,
             titolo:'Open air rehabilitation',
             dataStart:moment('2023-05-02, 10:00','YYYY-MM-DD, hh:mm'),
             dataEnd:moment('2023-05-02, 11:00','YYYY-MM-DD, hh:mm'),
@@ -82,7 +82,7 @@ export default function SullivanEvents() {
             partecipo: 'false',
             property: 'Esterno'
         },
-        {   key: Math.random(),
+        {   key: 501,
             titolo:'Sound of silence',
             dataStart:moment('2023-02-27, 17:00','YYYY-MM-DD, hh:mm'),
             dataEnd:moment('2023-02-27, 18:00','YYYY-MM-DD, hh:mm'),

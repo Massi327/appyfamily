@@ -36,7 +36,7 @@ export default function Hashtags(){
                       value={"none"}
             />
 
-            <AddButton/>
+
             <NavigbarBottom home={home} calendar={calendar} profile={profile} settings={settings}/>
 
             <Container style={{paddingTop:'16em'}}>
@@ -65,26 +65,6 @@ export default function Hashtags(){
                     </Card.Body>
                 </Card>
                 </Link>
-
-                <Card className="people" style={{height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                    <Card.Img  src={artattic} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
-                    <Card.Body>
-                        <Card.Text className="name-people" style={{textAlign: 'left'}}>Art attic!</Card.Text>
-                        <Card.Text className="subtitle-name" style={{textAlign: 'left'}}>
-                            Art center
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-
-                <Card className="people" style={{height: '5rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                    <Card.Img  src={bounce} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
-                    <Card.Body>
-                        <Card.Text className="name-people" style={{textAlign: 'left'}}>Bounce</Card.Text>
-                        <Card.Text className="subtitle-name" style={{textAlign: 'left'}}>
-                            Gym
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
 
 
             </Container>

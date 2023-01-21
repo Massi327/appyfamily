@@ -73,7 +73,7 @@ export default function MuseEvents(){
 
 
     const cardh = [
-        {   key: Math.random,
+        {   key: 600,
             titolo:'Music therapy',
             dataStart:moment('2023-02-02, 17:00','YYYY-MM-DD, hh:mm'),
             dataEnd:moment('2023-02-02, 18:00','YYYY-MM-DD, hh:mm'),

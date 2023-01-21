@@ -66,25 +66,23 @@ import sullivan from "./images/sullivan.svg"
 import centerevents from "./images/Profile_events.svg";
 
 
-const forums =[
-    {
-        key: Math.random,
-        titolo: 'Activity ideas for my 6 months old child during long car trips?',
-        about: '4 weeks ago • Mia Johnson'
-    },
-
-    {
-        key: Math.random,
-        titolo: 'My baby will not sleep, what should I do?',
-        about: '5 weeks ago • Chandler Santoro'
-    },
-]
-
 export default function SullivanForum() {
 
     const [state, dispatch] = useContext(StateContext)
 
+    const forums =[
+        {
+            key: Math.random,
+            titolo: 'Activity ideas for my 6 months old child during long car trips?',
+            about: '4 weeks ago • Mia Johnson'
+        },
 
+        {
+            key: Math.random,
+            titolo: 'My baby will not sleep, what should I do?',
+            about: '5 weeks ago • Chandler Santoro'
+        },
+    ]
 
 
 

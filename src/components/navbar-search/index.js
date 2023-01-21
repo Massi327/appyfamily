@@ -22,9 +22,6 @@ import {useState} from "react";
 const Navigbar = ({ vevents, vforum, vpeople, vcenters, vrec, vnearme,value }) => {
 
 
-
-    const [search, setSearch] = useState('')
-
 return  <Row className="cont">
     <Container style={{width:"101vw", marginRight:"0em"}}>
 
@@ -43,7 +40,7 @@ return  <Row className="cont">
 
         
         <Form className="d-flex">
-            <Form.Control type="search" value={search} placeholder="Search" aria-label="Search" onChange={e=> setSearch(e.target.value)}/>
+            <Form.Control type="search" value={'search'} placeholder="Search" aria-label="Search"/>
             <Button className="search-button" variant="outline-success" >Search</Button>
         </Form>
 

@@ -78,7 +78,6 @@ export default function CenterCalendar(){
     const handleCloseFourth = () => setShowFourth(false);
     const handleShowFourth = () => setShowFourth(true);
 
-    const [controlloLogin, setControlloLogin] = useLocalStorage('login', "true")
     const [controlloCorsi, setControlloCorsi] = useLocalStorage('corsi', "false")
     const [controlloCorsiCancella, setControlloCorsiCancella] = useLocalStorage('corsiCancella', "false")
     const [controlloPale, setControlloPale] = useLocalStorage('pale', "false")
@@ -128,31 +127,19 @@ export default function CenterCalendar(){
                     </Container>
                 </CardHeader>
 
-                {controlloLogin == "true" ?
-                    <CardGroup>
-                    <p style={{paddingTop:"5em"}}>To visualise the schedule, you have to login first</p>
-                    <Button onClick={() => {
-                        setControlloLogin("false")
-                        handleShowFourth()
-                    }}
-                            style={{backgroundColor:"#eb506c", color:"white", borderWidth:"2px", borderColor:"#eb506c", borderRadius:"10px", marginBottom:"5em"}}>
-                        Log in</Button>
-                    </CardGroup> : null}
+
 
                 <CardGroup>
                     <Row>
-                    {controlloCorsi == "true" ? <Col>
-                    <p style={{marginTop:"0.5em", marginBottom:"-0.3em"}}>You signed up for the following courses</p>
-
-                    <Card style={{backgroundColor:"orange", margin:"0.5em"}}>
-                        <CardHeader style={{height:"3em"}}><Card.Title className="course-title">Dance Lesson</Card.Title></CardHeader>
-                        <p style={{paddingTop:"0.3em", marginBottom:"-0.1em"}}>Monday 7PM - 8PM</p>
-                        <Button style={{margin:"0.5em", marginLeft:"13em"}} onClick={() => {handleShow(); setControlloPale('true')}}>Copy to Calendar</Button>
-                    </Card>
-
-                    </Col> : null}
+                        <Col>
+                            <p style={{marginTop:"0.5em", marginBottom:"-0.3em"}}>You signed up for the following courses</p>
+                            <Card style={{backgroundColor:"orange", margin:"0.5em"}}>
+                                <CardHeader style={{height:"3em"}}><Card.Title className="course-title">Dance Lesson</Card.Title></CardHeader>
+                                <p style={{paddingTop:"0.3em", marginBottom:"-0.1em"}}>Monday 7PM - 8PM</p>
+                                <Button style={{margin:"0.5em", marginLeft:"13em"}} onClick={() => {handleShow(); setControlloPale('true')}}>Copy to Calendar</Button>
+                            </Card>
+                        </Col>
                     </Row>
-
                 </CardGroup>
 
                 <CardGroup>
@@ -173,23 +160,6 @@ export default function CenterCalendar(){
                 </CardGroup>
 
             </Card>
-
-            <Modal show={show_fourth} onHide={handleCloseFourth} backdrop={"static"} centered>
-                <Modal.Dialog>
-
-                    <Modal.Body className="modal-subtitle-1">
-                        <p>You have sent a request to view the classes</p>
-                        <p>Soon you will receive a feedback</p>
-                    </Modal.Body>
-
-                    <Modal.Footer>
-                        <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
-                                onClick={()=> { setControlloCorsi("true"); handleCloseFourth()}}>
-                            Ok
-                        </Button>
-                    </Modal.Footer>
-                </Modal.Dialog>
-            </Modal>
 
             <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
                 <Modal.Dialog>
