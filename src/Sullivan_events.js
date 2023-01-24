@@ -103,27 +103,15 @@ export default function SullivanEvents() {
 
     const [cardsully, setCardSully] = useLocalStorage('cardsully', cardsull)
 
+    const connectionSully = 256
+    const [consully, setConSully] = useLocalStorage('consully', connectionSully)
+    const conprof = JSON.parse(localStorage.getItem('conprofile'))
+
     const navigate = useNavigate();
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
-    const [show_second, setShowSecond] = useState(false);
-    const handleCloseSecond = () => setShowSecond(false);
-    const handleShowSecond = () => setShowSecond(true);
-
-    const [show_third, setShowThird] = useState(false);
-    const handleCloseThird = () => setShowThird(false);
-    const handleShowThird = () => setShowThird(true);
-
-    const [show_fourth, setShowFourth] = useState(false);
-    const handleCloseFourth = () => setShowFourth(false);
-    const handleShowFourth = () => setShowFourth(true);
-
-    const [show_fifth, setShowFifth] = useState(false);
-    const handleCloseFifth = () => setShowFifth(false);
-    const handleShowFifth = () => setShowFifth(true);
 
     return (
         <Container style={{backgroundColor: "#f5f5f5", zIndex: '-1000', minHeight: '100vh', top: '5em'}}>
@@ -157,11 +145,12 @@ export default function SullivanEvents() {
                         <Card.Title className="name" style={{textAlign: 'left'}}>Doctor_Sally</Card.Title>
                         <Card.Text style={{textAlign: 'left'}}>Sullivan Jayden</Card.Text>
                         <Card.Text className="connections" style={{textAlign: 'left', marginTop: "-1em"}}>
-                            Silver, 256 connections
+                            Silver, {consully} connections
                         </Card.Text>
                         <Row>
                             <Col xs={4}>
-                                <Button style={{
+                                {consully == 256 ?
+                                    <Button style={{
                                     fontSize: "15px",
                                     marginTop: "-1em",
                                     borderColor: "#eb506c",
@@ -170,9 +159,24 @@ export default function SullivanEvents() {
                                     borderWidth: "2px",
                                     borderRadius: "10px",
                                     marginRight: "0.5em"
-                                }}>
+                                }}
+                                onClick={()=> {setConSully(257); localStorage.setItem('conprofile', conprof+1)}}>
                                     Follow
-                                </Button>
+                                </Button> :
+                                    <Button style={{
+                                        fontSize: "15px",
+                                        marginTop: "-1em",
+                                        borderColor: "#eb506c",
+                                        color: "#eb506c",
+                                        backgroundColor: "white",
+                                        borderWidth: "2px",
+                                        borderRadius: "10px",
+                                        marginRight: "0.5em"
+                                    }}
+                                            onClick={()=> {setConSully(256); localStorage.setItem('conprofile', conprof-1)}}>
+                                        Unfollow
+                                    </Button>
+                                }
                             </Col>
                             <Col xs={4}>
                                 <Button style={{
@@ -183,7 +187,7 @@ export default function SullivanEvents() {
                                     backgroundColor: "#eb506c",
                                     borderWidth: "2px",
                                     borderRadius: "10px",
-                                    marginRight: "0em"
+                                    marginLeft: "1em"
                                 }}>
                                     Message
                                 </Button>

@@ -53,6 +53,7 @@ import sport from "./images/sport.svg";
 import AddButton from "./components/add-button";
 import backarrow from "./images/backarrow.svg";
 import forwardarrow from "./images/forwardarrow.svg";
+import {useLocalStorage} from "./useLocalStorage";
 
 
 export default function Profile(){
@@ -110,6 +111,9 @@ export default function Profile(){
     const handleCloseSeventh = () => setShowSeventh(false);
     const handleShowSeventh = () => setShowSeventh(true);
 
+    const connectionProfile = 356
+    const [conprofile, setProfile] = useLocalStorage('conprofile', connectionProfile)
+
     return(
         <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', top:'5em'}}>
 
@@ -127,7 +131,7 @@ export default function Profile(){
                     <Card.Body>
                         <Card.Title className="name" style={{textAlign: 'left'}}>Sophia_Wilkinson</Card.Title>
                         <Card.Text className="connections" style={{textAlign: 'left'}}>
-                            Silver, 356 connections
+                            Silver, {conprofile} connections
                         </Card.Text>
                     </Card.Body>
                 </Card>

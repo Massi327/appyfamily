@@ -189,6 +189,9 @@ export default function Home(){
     const [freccia, setFreccia] = useLocalStorage('freccia', 'false')
     const [cerca, setCerca] = useLocalStorage('cerca', null)
 
+    const connectionProfile = 356
+    const [conprofile, setProfile] = useLocalStorage('conprofile', connectionProfile)
+
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);

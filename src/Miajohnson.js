@@ -126,6 +126,10 @@ export default function MiaJohnson(){
 
     const [cardmia, setCardMia] = useLocalStorage('cardmia', cardm)
 
+    const connectionMia = 126
+    const [conmia, setConMia] = useLocalStorage('conmia', connectionMia)
+    const conprof = JSON.parse(localStorage.getItem('conprofile'))
+
     const navigate = useNavigate();
 
     const [show, setShow] = useState(false);
@@ -173,16 +177,23 @@ export default function MiaJohnson(){
                         <Card.Title className="name" style={{textAlign: 'left'}}>Jane_Austen</Card.Title>
                         <Card.Text style={{textAlign: 'left'}}>Mia Johnson</Card.Text>
                         <Card.Text className="connections" style={{textAlign: 'left', marginTop:"-1em"}}>
-                             126 connections
+                            {conmia} connections
                         </Card.Text>
                         <Row>
                             <Col xs={4}>
-                                <Button style={{fontSize:"15px", marginTop: "-1em", borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0.5em"}}>
+                                {conmia == 126 ?
+                                <Button style={{fontSize:"15px", marginTop: "-1em", borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0.5em"}}
+                                        onClick={()=> {setConMia(127); localStorage.setItem('conprofile', conprof+1)}}
+                                >
                                     Follow
-                                </Button>
+                                </Button> :
+                                    <Button style={{fontSize: "15px", marginTop: "-1em", borderColor: "#eb506c", color: "#eb506c", backgroundColor: "white", borderWidth: "2px", borderRadius: "10px", marginRight: "0.5em"}}
+                                            onClick={()=> {setConMia(126); localStorage.setItem('conprofile', conprof-1)}}>
+                                        Unfollow
+                                    </Button>}
                             </Col>
                             <Col xs={4}>
-                                <Button style={{fontSize:"15px", marginTop: "-1em", borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0em"}}>
+                                <Button style={{fontSize:"15px", marginTop: "-1em", borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px",  marginLeft: "1em"}}>
                                     <Link to={"/chat"} style={{textDecoration: 'none', color:'white'}}>Message</Link>
                                 </Button>
                             </Col>
