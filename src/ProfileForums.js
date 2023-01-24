@@ -175,88 +175,87 @@ export default function ProfileForums(){
                         </Row>
                     </Container>
                 </CardHeader>
-            </Card>
+                <Container style={{paddingTop:'0.1em', paddingBottom:'6em'}}>
+                    {forum.slice(0).reverse().map( f =>
 
-            <Container style={{paddingTop:'0.1em', paddingBottom:'6em'}}>
-            {forum.slice(0).reverse().map( f =>
+                        <Card style={{paddingBottom:"0.5em", paddingTop:"0.5em", backgroundColor: "#f5f5f5", borderStyle: "hidden"}}>
+                            <Accordion>
+                                <Card>
+                                    <Card.Header style={{minHeight:"4.5em"}}>
+                                        <Card.Text className="blog-title" style={{textAlign: 'left'}}>{f.titolo}</Card.Text>
 
-                <Card style={{paddingBottom:"0.5em", paddingTop:"0.5em", backgroundColor: "#f5f5f5", borderStyle: "hidden"}}>
-                <Accordion>
-                    <Card>
-                        <Card.Header style={{minHeight:"4.5em"}}>
-                            <Card.Text className="blog-title" style={{textAlign: 'left'}}>{f.titolo}</Card.Text>
+                                        <Card.Text>
+                                            <Row style={{height:"1em"}}>
+                                                <Col  className="subtitle-connections" style={{textAlign:"left"}}>{f.about}
+                                                </Col>
+                                            </Row >
+                                            <Row style={{height:"1em"}}>
+                                                <Col xs={4}>
 
-                            <Card.Text>
-                                <Row style={{height:"1em"}}>
-                                    <Col  className="subtitle-connections" style={{textAlign:"left"}}>{f.about}
-                                    </Col>
-                                </Row >
-                                <Row style={{height:"1em"}}>
-                                    <Col xs={4}>
+                                                </Col>
+                                                <Col xs={3}>
 
-                                    </Col>
-                                    <Col xs={3}>
-
-                                    </Col>
-                                    <Col xs={5}>
-                                        <CustomToggle eventKey="1">View Replies</CustomToggle>
-                                    </Col>
-                                </Row>
-                            </Card.Text>
-                        </Card.Header>
-                        <Accordion.Collapse eventKey="1">
-                            <Card.Body>
-                                {risposte.filter(g=> g.kf == f.key).map(r=>
-                                    <Card className="people" key={r.key} style={{marginBottom: '0.4em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"-0.5em", flexDirection: 'row'}}>
-                                        <Card.Img  src={r.img} style={{height: '3em', width: '3rem', marginLeft:'1em', marginTop:'0.2em'}} />
-
+                                                </Col>
+                                                <Col xs={5}>
+                                                    <CustomToggle eventKey="1">View Replies</CustomToggle>
+                                                </Col>
+                                            </Row>
+                                        </Card.Text>
+                                    </Card.Header>
+                                    <Accordion.Collapse eventKey="1">
                                         <Card.Body>
-                                            <Card.Text className="blog-title" style={{textAlign: 'left'}}>{r.testo}</Card.Text>
+                                            {risposte.filter(g=> g.kf == f.key).map(r=>
+                                                <Card className="people" key={r.key} style={{marginBottom: '0.4em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"-0.5em", flexDirection: 'row'}}>
+                                                    <Card.Img  src={r.img} style={{height: '3em', width: '3rem', marginLeft:'1em', marginTop:'0.2em'}} />
 
-                                            <Card.Text>
-                                                <Row style={{height:"1em"}}>
-                                                    <Col  className="subtitle-connections" style={{textAlign:"left"}}>
-                                                        {r.about}
+                                                    <Card.Body>
+                                                        <Card.Text className="blog-title" style={{textAlign: 'left'}}>{r.testo}</Card.Text>
+
+                                                        <Card.Text>
+                                                            <Row style={{height:"1em"}}>
+                                                                <Col  className="subtitle-connections" style={{textAlign:"left"}}>
+                                                                    {r.about}
+                                                                </Col>
+                                                            </Row>
+                                                            <Row style={{height:"1em", marginTop:"-0.1em"}}>
+                                                                <Col xs={7}>
+
+                                                                </Col>
+                                                                <Col xs={3}>
+
+                                                                </Col>
+                                                            </Row>
+                                                        </Card.Text>
+                                                    </Card.Body>
+                                                </Card>
+                                            )}
+                                            <FormGroup style={{marginBottom: "10px", marginTop: "10px", textAlign: "left"}}>
+                                                <Row>
+                                                    <Col xs={10}>
+                                                        <FormControl type='text' value={reply} style={{textAlign:"left", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"5px"}} placeholder='Add a reply as Mia Johnson' onChange={e=> setReply(e.target.value)}/>
+                                                    </Col>
+                                                    <Col xs={2}>
+                                                        <img src={send3}  onClick={()=>{
+                                                            let scan = JSON.parse(localStorage.getItem('risposte'))
+                                                            let tutto = {key: Math.random(), testo: reply, about: "Now • Sophia Wilkinson", img: sophia_piccola, kf: f.key}
+                                                            let arrayN = [...scan, tutto]
+                                                            setRisposte(arrayN)
+                                                            setReply('')
+                                                        }
+                                                        }/>
                                                     </Col>
                                                 </Row>
-                                                <Row style={{height:"1em", marginTop:"-0.1em"}}>
-                                                    <Col xs={7}>
+                                            </FormGroup>
 
-                                                    </Col>
-                                                    <Col xs={3}>
-
-                                                    </Col>
-                                                </Row>
-                                            </Card.Text>
                                         </Card.Body>
-                                    </Card>
-                                )}
-                                <FormGroup style={{marginBottom: "10px", marginTop: "10px", textAlign: "left"}}>
-                                    <Row>
-                                        <Col xs={10}>
-                                            <FormControl type='text' value={reply} style={{textAlign:"left", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"5px"}} placeholder='Add a reply as Mia Johnson' onChange={e=> setReply(e.target.value)}/>
-                                        </Col>
-                                        <Col xs={2}>
-                                            <img src={send3}  onClick={()=>{
-                                                let scan = JSON.parse(localStorage.getItem('risposte'))
-                                                let tutto = {key: Math.random(), testo: reply, about: "Now • Sophia Wilkinson", img: sophia_piccola, kf: f.key}
-                                                let arrayN = [...scan, tutto]
-                                                setRisposte(arrayN)
-                                                setReply('')
-                                            }
-                                            }/>
-                                        </Col>
-                                    </Row>
-                                </FormGroup>
+                                    </Accordion.Collapse>
+                                </Card>
 
-                            </Card.Body>
-                        </Accordion.Collapse>
-                    </Card>
-
-                </Accordion>
-                </Card>
-            )}
-            </Container>
+                            </Accordion>
+                        </Card>
+                    )}
+                </Container>
+            </Card>
 
         </Container>
     )
