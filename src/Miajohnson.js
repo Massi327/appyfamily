@@ -83,16 +83,16 @@ export default function MiaJohnson(){
             img: 'imgcard1',
             property: 'Esterno'
         },
-        {   key: 401,
+        {   key: 302,
             titolo:'Joe\'s Party',
-            dataStart:moment('2023-01-13, 17:00','YYYY-MM-DD, hh:mm'),
-            dataEnd:moment('2023-01-13, 20:00','YYYY-MM-DD, hh:mm'),
+            dataStart:moment('2023-02-03, 17:00','YYYY-MM-DD, hh:mm'),
+            dataEnd:moment('2023-02-03, 20:00','YYYY-MM-DD, hh:mm'),
             address:'113 Flams Close, CB4 2TY, UK',
-            host:'Hosted by Mia Johnson',
-            about:'Join us with your kids for a fun morning at the park' ,
+            host:'Hosted by the Mia Johnson',
+            about:'Joe is having a fun Peter Pan theme party',
             categoria: 'Party',
-            partecipo: 'false',
             img: 'imgcard5',
+            partecipo: 'false',
             property: 'Esterno'
         },
         {   key: 402,
@@ -173,7 +173,7 @@ export default function MiaJohnson(){
                         <Card.Title className="name" style={{textAlign: 'left'}}>Jane_Austen</Card.Title>
                         <Card.Text style={{textAlign: 'left'}}>Mia Johnson</Card.Text>
                         <Card.Text className="connections" style={{textAlign: 'left', marginTop:"-1em"}}>
-                            126 connections
+                             126 connections
                         </Card.Text>
                         <Row>
                             <Col xs={4}>

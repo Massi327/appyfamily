@@ -1,7 +1,20 @@
 import {useContext, useEffect, useState} from "react";
 import {StateContext} from "./App";
-import {Link} from "react-router-dom";
-import {Button, Col, Container, Nav, Navbar, Row, Card, Modal, CardGroup, Accordion} from "react-bootstrap";
+import {Link, useNavigate} from "react-router-dom";
+import {
+    Button,
+    Col,
+    Container,
+    Nav,
+    Navbar,
+    Row,
+    Card,
+    Modal,
+    CardGroup,
+    Accordion,
+    FormGroup,
+    FormControl
+} from "react-bootstrap";
 import NavigbarBottom from "./components/navbar-bottom";
 import NavigbarP from "./components/navbar-profile";
 import eventsselected from "./images/Events-selezionato.svg";
@@ -54,37 +67,47 @@ import profile2 from "./images/profile2.svg";
 import profile1 from "./images/profile1.svg";
 import profile4 from "./images/profile4.svg";
 import {useAccordionButton} from "react-bootstrap/AccordionButton";
+import sophia_piccola from "./images/sophia_piccola.svg";
+import send3 from "./images/send3.svg";
+import {useLocalStorage} from "./useLocalStorage";
 
 export default function MiaJohnsonForums(){
 
     const [state,dispatch] = useContext(StateContext)
 
-    const [prenotazione, setPrenotazione] = useState(() => {
-        const prenotazione = JSON.parse(localStorage.getItem('prenotazioni'));
-        return prenotazione} )
+    const [forum, setForum] = useState(() => {
+        const forum = JSON.parse(localStorage.getItem('forums'));
+        return forum || state.forums; } )
 
-    let forum = [ {
-        key: 100,
-        titolo: 'What is an orthodontic pacifier?',
-        about: '4 weeks ago • Mia Johnson'
-    },
+    let rispo = [
+        {
+            key: Math.random(),
+            testo: "It's used to prevent your baby's teeth from getting damaged",
+            about: "3 weeks ago • Sullivan Jayden",
+            img: profile2,
+            kf: 102
+        },
+        {
+            key: Math.random(),
+            testo: "You should absolutely use it!",
+            about: "2 weeks ago • Sophia Wilkinson",
+            img: sophia_piccola,
+            kf: 102
+        },
+        {
+            key: Math.random(),
+            testo: "My baby hates it",
+            about: "4 days ago • Clara May",
+            img: profile4,
+            kf: 102
+        },
+
     ];
 
+    const [risposte, setRisposte] = useLocalStorage('risposte', rispo)
+    const [reply, setReply] = useState('')
 
-    let events = [];
-    prenotazione.map(p => {
-        let event={
-            key: p.key,
-            titolo: p.titolo,
-            dataStart: moment(p.dataStart,'YYYY-MM-DD, hh:mm').add(1, 'hour').toDate(),
-            dataEnd: moment(p.dataEnd,'YYYY-MM-DD, hh:mm').add(1, 'hour').toDate(),
-            address: p.address,
-            about: p.about,
-            categoria: p.categoria,
-            property: p.property
-        }
-        events.push(event)
-    })
+    const navigate = useNavigate();
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -109,7 +132,7 @@ export default function MiaJohnsonForums(){
             <Container className="bg2" style={{paddingTop:"6.5em"}}>
                 <Row>
                     <Col xs={1}>
-                        <Link to={"/people"}><img src={backarrow} style={{left:"2em"}}/></Link>
+                        <img src={backarrow} style={{left:"3em", height:'2em', width:'2em'}} onClick={()=> navigate(-2)}/>
                     </Col>
                     <Col></Col>
                 </Row>
@@ -137,7 +160,7 @@ export default function MiaJohnsonForums(){
                             </Col>
                             <Col xs={4}>
                                 <Button style={{fontSize:"15px", marginTop: "-1em", borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0em"}}>
-                                    Message
+                                    <Link to={"/chat"} style={{textDecoration: 'none', color:'white'}}>Message</Link>
                                 </Button>
                             </Col>
                             <Col>
@@ -168,109 +191,87 @@ export default function MiaJohnsonForums(){
                 </CardHeader>
             </Card>
 
-            {forum.slice(0).reverse().map( f =>
+            <Container style={{paddingTop:'0.1em', paddingBottom:'6em'}}>
+                {forum.filter(u => u.key == 102).slice(0).reverse().map( f =>
 
-                <Accordion>
-                    <Card>
-                        <Card.Header style={{minHeight:"4.5em"}}>
-                            <Card.Text className="blog-title" style={{textAlign: 'left'}}>{f.titolo}</Card.Text>
-
-                            <Card.Text>
-                                <Row style={{height:"1em"}}>
-                                    <Col  className="subtitle-connections" style={{textAlign:"left"}}>{f.about}
-                                    </Col>
-                                </Row >
-                                <Row style={{height:"1em"}}>
-                                    <Col xs={4}>
-
-                                    </Col>
-                                    <Col xs={3}>
-                                        <Link className="reply" style={{textDecoration:"none"}}>Reply</Link>
-                                    </Col>
-                                    <Col xs={5}>
-                                        <CustomToggle eventKey="0">View Replies</CustomToggle>
-                                    </Col>
-                                </Row>
-                            </Card.Text>
-                        </Card.Header>
-                        <Accordion.Collapse eventKey="0">
-                            <Card.Body><Card className="people" style={{marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"-1em", flexDirection: 'row'}}>
-                                <Card.Img  src={profile2} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
-
-                                <Card.Body>
-                                    <Card.Text className="blog-title" style={{textAlign: 'left'}}>It's used to prevent your baby's teeth from getting damaged</Card.Text>
+                    <Card style={{paddingBottom:"0.5em", paddingTop:"0.5em", backgroundColor: "#f5f5f5", borderStyle: "hidden"}}>
+                        <Accordion>
+                            <Card>
+                                <Card.Header style={{minHeight:"4.5em"}}>
+                                    <Card.Text className="blog-title" style={{textAlign: 'left'}}>{f.titolo}</Card.Text>
 
                                     <Card.Text>
                                         <Row style={{height:"1em"}}>
-                                            <Col  className="subtitle-connections" style={{textAlign:"left"}}>
-                                                3 weeks ago • Sullivan Jayden
+                                            <Col  className="subtitle-connections" style={{textAlign:"left"}}>{f.about}
                                             </Col>
-                                        </Row>
-                                        <Row style={{height:"1em", marginTop:"-0.1em"}}>
-                                            <Col xs={7}>
+                                        </Row >
+                                        <Row style={{height:"1em"}}>
+                                            <Col xs={4}>
 
                                             </Col>
                                             <Col xs={3}>
 
                                             </Col>
+                                            <Col xs={5}>
+                                                <CustomToggle eventKey="1">View Replies</CustomToggle>
+                                            </Col>
                                         </Row>
                                     </Card.Text>
-                                </Card.Body>
+                                </Card.Header>
+                                <Accordion.Collapse eventKey="1">
+                                    <Card.Body>
+                                        {risposte.filter(g=> g.kf == f.key).map(r=>
+                                            <Card className="people" key={r.key} style={{marginBottom: '0.4em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"-0.5em", flexDirection: 'row'}}>
+                                                <Card.Img  src={r.img} style={{height: '3em', width: '3rem', marginLeft:'1em', marginTop:'0.2em'}} />
+
+                                                <Card.Body>
+                                                    <Card.Text className="blog-title" style={{textAlign: 'left'}}>{r.testo}</Card.Text>
+
+                                                    <Card.Text>
+                                                        <Row style={{height:"1em"}}>
+                                                            <Col  className="subtitle-connections" style={{textAlign:"left"}}>
+                                                                {r.about}
+                                                            </Col>
+                                                        </Row>
+                                                        <Row style={{height:"1em", marginTop:"-0.1em"}}>
+                                                            <Col xs={7}>
+
+                                                            </Col>
+                                                            <Col xs={3}>
+
+                                                            </Col>
+                                                        </Row>
+                                                    </Card.Text>
+                                                </Card.Body>
+                                            </Card>
+                                        )}
+                                        <FormGroup style={{marginBottom: "10px", marginTop: "10px", textAlign: "left"}}>
+                                            <Row>
+                                                <Col xs={10}>
+                                                    <FormControl type='text' value={reply} style={{textAlign:"left", backgroundColor:"#f5f5f5", borderTop:"0px", borderRight:"0px", borderLeft:"0px", borderColor:"#a7a7a7", borderRadius:"5px"}} placeholder='Add a reply as Mia Johnson' onChange={e=> setReply(e.target.value)}/>
+                                                </Col>
+                                                <Col xs={2}>
+                                                    <img src={send3}  onClick={()=>{
+                                                        let scan = JSON.parse(localStorage.getItem('risposte'))
+                                                        let tutto = {key: Math.random(), testo: reply, about: "Now • Sophia Wilkinson", img: sophia_piccola, kf: f.key}
+                                                        let arrayN = [...scan, tutto]
+                                                        setRisposte(arrayN)
+                                                        setReply('')
+                                                    }
+                                                    }/>
+                                                </Col>
+                                            </Row>
+                                        </FormGroup>
+
+                                    </Card.Body>
+                                </Accordion.Collapse>
                             </Card>
 
-                                <Card className="people" style={{marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"0.5em", flexDirection: 'row'}}>
-                                    <Card.Img  src={profile1} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
-                                    <Card.Body>
-                                        <Card.Text className="blog-title" style={{textAlign: 'left'}}>You should absolutely use it!</Card.Text>
-                                        <Card.Text>
-                                            <Row style={{height:"1em"}}>
-                                                <Col  className="subtitle-connections" style={{textAlign:"left"}}>
-                                                    2 weeks ago • Mia Johnson
-                                                </Col>
-                                            </Row>
-                                            <Row style={{height:"1em", marginTop:"-0.1em"}}>
-                                                <Col xs={7}>
-
-                                                </Col>
-                                                <Col xs={3}>
-
-                                                </Col>
-                                            </Row>
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Card>
-
-
-
-                                <Card className="people" style={{marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"0.5em", flexDirection: 'row'}}>
-                                    <Card.Img  src={profile4} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
-                                    <Card.Body>
-                                        <Card.Text className="blog-title" style={{textAlign: 'left'}}>My baby hates it</Card.Text>
-                                        <Card.Text>
-                                            <Row style={{height:"1em"}}>
-                                                <Col  className="subtitle-connections" style={{textAlign:"left"}}>
-                                                    4 days ago • Clara May
-                                                </Col>
-                                            </Row>
-                                            <Row style={{height:"1em", marginTop:"-0.1em"}}>
-                                                <Col xs={7}>
-
-                                                </Col>
-                                                <Col xs={3}>
-
-                                                </Col>
-                                            </Row>
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Card>
-
-                            </Card.Body>
-                        </Accordion.Collapse>
+                        </Accordion>
                     </Card>
+                )}
+            </Container>
 
-                </Accordion>
-
-            )}
             <NavigbarBottom home={homeunselected} calendar={calendarunselected} profile={profileunselected} settings={settingsunselected}/>
 
 

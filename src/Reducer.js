@@ -38,13 +38,18 @@ export const initialState = {
         {
             key: 100,
             titolo: 'Activity ideas for my 6 months old child during long car trips?',
-            about: '4 weeks ago • Mia Johnson'
+            about: '4 weeks ago • Clara May'
         },
 
         {
             key: 101,
             titolo: 'My baby will not sleep, what should I do?',
             about: '5 weeks ago • Chandler Santoro'
+        },
+        {
+            key: 102,
+            titolo: 'What is an orthodontic pacifier?',
+            about: '4 weeks ago • Mia Johnson'
         },
     ],
 

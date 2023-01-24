@@ -96,6 +96,41 @@ export default function ProfileForums(){
             img: profile4,
             kf: 101
         },
+        {
+            key: Math.random(),
+            testo: "Shut the blinds. Darkness helps the baby rest",
+            about: "4 days ago • Sophia Wilkinson",
+            img: sophia_piccola,
+            kf: 101
+        },
+        {
+            key: Math.random(),
+            testo: "Give him a pacifier and/or put some music on",
+            about: "4 days ago • Sophia Wilkinson",
+            img: sophia_piccola,
+            kf: 100
+        },
+        {
+            key: Math.random(),
+            testo: "It's used to prevent your baby's teeth from getting damaged",
+            about: "3 weeks ago • Sullivan Jayden",
+            img: profile2,
+            kf: 102
+        },
+        {
+            key: Math.random(),
+            testo: "You should absolutely use it!",
+            about: "2 weeks ago • Sophia Wilkinson",
+            img: sophia_piccola,
+            kf: 102
+        },
+        {
+            key: Math.random(),
+            testo: "My baby hates it",
+            about: "4 days ago • Clara May",
+            img: profile4,
+            kf: 102
+        },
     ]
 
     const [risposte, setRisposte] = useLocalStorage('risposte', rispo)
