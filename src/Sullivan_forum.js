@@ -155,6 +155,10 @@ export default function SullivanForum() {
     const [reply, setReply] = useState('')
     const navigate = useNavigate();
 
+    const connectionSully = 256
+    const [consully, setConSully] = useLocalStorage('consully', connectionSully)
+    const conprof = JSON.parse(localStorage.getItem('conprofile'))
+
     return (
         <Container style={{backgroundColor: "#f5f5f5", zIndex: '-1000', minHeight: '100vh', top: '5em'}}>
 
@@ -187,22 +191,38 @@ export default function SullivanForum() {
                         <Card.Title className="name" style={{textAlign: 'left'}}>Doctor_Sally</Card.Title>
                         <Card.Text style={{textAlign: 'left'}}>Sullivan Jayden</Card.Text>
                         <Card.Text className="connections" style={{textAlign: 'left', marginTop: "-1em"}}>
-                            Bronze, 256 connections
+                            Silver, {consully} connections
                         </Card.Text>
                         <Row>
                             <Col xs={4}>
-                                <Button style={{
-                                    fontSize: "15px",
-                                    marginTop: "-1em",
-                                    borderColor: "#eb506c",
-                                    color: "white",
-                                    backgroundColor: "#eb506c",
-                                    borderWidth: "2px",
-                                    borderRadius: "10px",
-                                    marginRight: "0.5em"
-                                }}>
-                                    Follow
-                                </Button>
+                                {consully == 256 ?
+                                    <Button style={{
+                                        fontSize: "15px",
+                                        marginTop: "-1em",
+                                        borderColor: "#eb506c",
+                                        color: "white",
+                                        backgroundColor: "#eb506c",
+                                        borderWidth: "2px",
+                                        borderRadius: "10px",
+                                        marginRight: "0.5em"
+                                    }}
+                                            onClick={()=> {setConSully(257); localStorage.setItem('conprofile', conprof+1)}}>
+                                        Follow
+                                    </Button> :
+                                    <Button style={{
+                                        fontSize: "15px",
+                                        marginTop: "-1em",
+                                        borderColor: "#eb506c",
+                                        color: "#eb506c",
+                                        backgroundColor: "white",
+                                        borderWidth: "2px",
+                                        borderRadius: "10px",
+                                        marginRight: "0.5em"
+                                    }}
+                                            onClick={()=> {setConSully(256); localStorage.setItem('conprofile', conprof-1)}}>
+                                        Unfollow
+                                    </Button>
+                                }
                             </Col>
                             <Col xs={4}>
                                 <Button style={{
@@ -213,7 +233,7 @@ export default function SullivanForum() {
                                     backgroundColor: "#eb506c",
                                     borderWidth: "2px",
                                     borderRadius: "10px",
-                                    marginRight: "0em"
+                                    marginLeft: "1em"
                                 }}>
                                     Message
                                 </Button>
