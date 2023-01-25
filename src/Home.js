@@ -355,8 +355,8 @@ export default function Home(){
 
                             <img src={imgBig.filter(f => f.key == cardhome.filter(g=> g.key == state.id).map(m=> m.categoria)).map(c => c.img)} style={{marginBottom:"0.5em", width:"22em"}}/>
 
-                            <p className="event-subsubtitle-3"> <img src={clock} className="icon"/> {cardhome.filter(p => p.key===state.id).map(m=>m.address)}</p>
-                            <p className="event-subsubtitle-3"> <img src={map} className="icon"/> {cardhome.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D MMM YYYY'))}, {cardhome.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('h:mm a'))} - {cardhome.filter(p => p.key===state.id).map(m=>moment(m.dataEnd).locale('en').format('h:mm a'))}</p>
+                            <p className="event-subsubtitle-3"> <img src={clock} className="icon"/> {cardhome.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D MMM YYYY'))}, {cardhome.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('h:mm a'))} - {cardhome.filter(p => p.key===state.id).map(m=>moment(m.dataEnd).locale('en').format('h:mm a'))}</p>
+                            <p className="event-subsubtitle-3"> <img src={map} className="icon"/> {cardhome.filter(p => p.key===state.id).map(m=>m.address)}</p>
                             <p className="about">About</p>
                             <p>{cardhome.filter(p => p.key===state.id).map(m=>m.about)}</p>
                         </Modal.Body>

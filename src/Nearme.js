@@ -81,7 +81,7 @@ export default function Nearme(){
             dataStart:moment('2023-01-30, 17:00','YYYY-MM-DD, hh:mm'),
             dataEnd:moment('2023-01-30, 20:00','YYYY-MM-DD, hh:mm'),
             address:'113 Flams Close, CB4 2TY, UK',
-            host:'Hosted by Mia Johnson',
+            host:'Hosted by Gina Martin',
             about:'boh',
             categoria: 'Other',
             img: 'imgcard1',
@@ -214,8 +214,8 @@ export default function Nearme(){
 
                             <img src={imgBig.filter(f => f.key == cardnear.filter(g=> g.key == state.id).map(m=> m.categoria)).map(c => c.img)} style={{marginBottom:"0.5em", width:"22em"}}/>
 
-                            <p className="event-subsubtitle-3"> <img src={clock} className="icon"/> {cardnear.filter(p => p.key===state.id).map(m=>m.address)}</p>
-                            <p className="event-subsubtitle-3"> <img src={map} className="icon"/> {cardnear.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D MMM YYYY'))}, {cardnear.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('h:mm a'))} - {cardnear.filter(p => p.key===state.id).map(m=>moment(m.dataEnd).locale('en').format('h:mm a'))}</p>
+                            <p className="event-subsubtitle-3"> <img src={clock} className="icon"/> {cardnear.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D MMM YYYY'))}, {cardnear.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('h:mm a'))} - {cardnear.filter(p => p.key===state.id).map(m=>moment(m.dataEnd).locale('en').format('h:mm a'))}</p>
+                            <p className="event-subsubtitle-3"> <img src={map} className="icon"/> {cardnear.filter(p => p.key===state.id).map(m=>m.address)}</p>
                             <p className="about">About</p>
                             <p>{cardnear.filter(p => p.key===state.id).map(m=>m.about)}</p>
                         </Modal.Body>
@@ -227,21 +227,36 @@ export default function Nearme(){
                                 <Button style={{fontSize:"15px", borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
                                         onClick={()=>{handleClose(); handleShowFourth()}}><img src={participate}/> Don't participate</Button> }
 
-                            <Dropdown>
-                                <Dropdown.Toggle id="dropdown-basic"  style={{borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0em"}}>
-                                    <img src={whosgoing}/>  Who's Going
-                                </Dropdown.Toggle>
+                            {state.id == '5000' ?
+                                <Dropdown>
+                                    <Dropdown.Toggle id="dropdown-basic"  style={{borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0em"}}>
+                                        <img src={whosgoing}/>  Who's Going
+                                    </Dropdown.Toggle>
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item href="/sullivanevents">
+                                            <img  src={profile2} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
+                                            Sullivan Jayden</Dropdown.Item>
+                                        <Dropdown.Item href="/miajohnson">
+                                            <img  src={profile1} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
+                                            Mia Johnson</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown> :
+                                <Dropdown>
+                                    <Dropdown.Toggle id="dropdown-basic"  style={{borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0em"}}>
+                                        <img src={whosgoing}/>  Who's Going
+                                    </Dropdown.Toggle>
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item href="/miajohnson">
+                                            <img  src={profile1} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
+                                            Mia Johnson</Dropdown.Item>
+                                        <Dropdown.Item href="/sullivanevents">
+                                            <img  src={profile2} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
+                                            Sullivan Jayden</Dropdown.Item>
+                                        <Dropdown.Item>
+                                            <img  src={profile4} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />Clara May</Dropdown.Item>
+                                    </Dropdown.Menu>
 
-                                <Dropdown.Menu>
-                                    <Dropdown.Item href="/miajohnson">                    <img  src={profile1} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
-                                        Mia Johnson</Dropdown.Item>
-                                    <Dropdown.Item href="/claramay">
-                                        <img  src={profile4} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />Clara May</Dropdown.Item>
-                                    <Dropdown.Item href="/sullivanevents">
-                                        <img  src={profile2} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
-                                        Sullivan Jayden</Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown>
+                                </Dropdown>}
                         </Modal.Footer>
                     </Modal.Dialog>
                 </Modal>
