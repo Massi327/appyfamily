@@ -31,6 +31,7 @@ import NavigbarP from "./components/navbar-profile";
 import other from "./images/other.svg";
 import clock from "./images/Clock.svg";
 import map from "./images/Map.svg";
+import categoriesicon from "./images/categories-icon.svg";
 import homeunselected from "./images/home-unselected.svg";
 import calendarselected from "./images/Calendar-selected.svg";
 import profile from "./images/Profile-unselected.svg";
@@ -129,6 +130,10 @@ export default function Calendario(){
     const handleCloseSeventh = () => setShowSeventh(false);
     const handleShowSeventh = () => setShowSeventh(true);
 
+    const [show_eighth, setShowEighth] = useState(false);
+    const handleCloseEighth = () => setShowEighth(false);
+    const handleShowEighth = () => setShowEighth(true);
+
     const [tutorial, setTutorial] = useState(()=> {
         const tutorial = JSON.parse(localStorage.getItem('tutorial'))
         return tutorial
@@ -219,11 +224,20 @@ export default function Calendario(){
         [])
 
     return(
-        <Container>
+        <Container style={{backgroundColor:"#f5f5f5", }}>
             <NavigbarP vnotifications={notif} vmessages={message} vtutorial={help}/>
             <NavigbarBottom home={homeunselected} calendar={calendarselected} profile={profile} settings={settings}/>
 
-            <Container style={{marginTop:"7em", marginBottom:"5em"}}>
+            <Container className="bg2" style={{paddingTop:"6.5em", borderRadius:'1em'}}>
+                <Row>
+                    <Col xs={1}>
+                        <img src={categoriesicon} style={{width:'2.5em', height:'2.5em'}} onClick={() => handleShowEighth()}/>
+                    </Col>
+                    <Col></Col>
+                </Row>
+            </Container>
+
+            <Container style={{marginTop:"1em", marginBottom:"5em", backgroundColor:"#f5f5f5"}}>
             <Row style={{zIndex:'-5'}}>
                 <Col sm={12} xs={12}>
 
@@ -316,33 +330,6 @@ export default function Calendario(){
 
                         </Modal.Footer>
                     </Modal.Dialog>
-                    {/*
-                    <Modal.Dialog>
-
-                        <Modal.Header closeButton>
-                            <Card style={{backgroundColor:"#4b7bf8", color:"white"}}>
-                                <Card.Body>
-                                    <Card.Text className="event-month-popup" style={{textAlign: 'center'}}>
-                                        {state.palestra.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('MMM').toUpperCase())}
-                                    </Card.Text>
-                                    <Card.Text className="event-day-popup" style={{textAlign: 'center'}}>
-                                        {state.palestra.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D').toUpperCase())}
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                            <Modal.Title className="modal-title-1">{state.palestra.filter(p => p.key===state.id).map(m=>m.titolo)}</Modal.Title>
-                        </Modal.Header>
-
-                        <Modal.Body className="modal-subtitle-1">
-
-                            <img src={popupsport} style={{marginBottom:"0.5em", width:"22em"}}/>
-
-                            <p className="event-subsubtitle-3"> <img src={clock} className="icon"/> {state.palestra.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D MMM YYYY'))}, {state.palestra.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('h:mm a'))} - {state.palestra.filter(p => p.key===state.id).map(m=>moment(m.dataEnd).locale('en').format('h:mm a'))}</p>
-                            <p className="event-subsubtitle-3"> <img src={map} className="icon"/> {state.palestra.filter(p => p.key===state.id).map(m=>m.address)} </p>
-                            <p className="about">About</p>
-                            <p>{state.palestra.filter(p => p.key===state.id).map(m=>m.about)}</p>
-                        </Modal.Body>
-                    </Modal.Dialog> */}
                 </Modal> : null}
 
                 {tipo == 'Palestra' ?
@@ -628,46 +615,6 @@ export default function Calendario(){
             </Row>
             </Container>
 
-            {/*  <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
-                    <Modal.Dialog>
-
-
-                        <Modal.Header closeButton>
-                            <Card style={{backgroundColor:"#4b7bf8", color:"white"}}>
-                                <Card.Body>
-                                    <Card.Text className="event-month-popup" style={{textAlign: 'center'}}>                      {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('MMM').toUpperCase())}
-                                    </Card.Text>
-                                    <Card.Text className="event-day-popup" style={{textAlign: 'center'}}>                      {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D').toUpperCase())}
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                            <Modal.Title className="modal-title-1">{prenotazione.filter(p => p.key===state.id).map(m=>m.titolo)}</Modal.Title>
-                        </Modal.Header>
-
-                        <Modal.Body className="modal-subtitle-1">
-
-                            <img src={popupsport} style={{marginBottom:"0.5em", width:"22em"}}/>
-
-                            <p className="event-subsubtitle-3"> <img src={clock} className="icon"/> {prenotazione.filter(p => p.key===state.id).map(m=>m.address)}</p>
-                            <p className="event-subsubtitle-3"> <img src={map} className="icon"/> {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D MMM YYYY'))}, {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('h:mm a'))} - {prenotazione.filter(p => p.key===state.id).map(m=>moment(m.dataEnd).locale('en').format('h:mm a'))}</p>
-                            <p className="about">About</p>
-                            <p>{prenotazione.filter(p => p.key===state.id).map(m=>m.about)}</p>
-                        </Modal.Body>
-
-                        <Modal.Footer>
-                            <Button style={{fontSize:"13px",borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
-                                    onClick={handleClose}
-                            ><img src={interested}/> Interested</Button>
-                            <Button style={{fontSize:"13px", borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
-                                    onClick={handleClose}
-                            ><img src={participate}/> Participate</Button>
-                            <Button style={{fontSize:"13px",borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
-                                    onClick={handleClose}
-                            ><img src={whosgoing}/> Who's going<img src={dropdown} style={{marginRight:"-10px"}}/></Button>
-                        </Modal.Footer>
-                    </Modal.Dialog>
-                </Modal> */}
-
             {tutorial == true ?
             <Modal show={show_sith} onHide={handleCloseSith} backdrop={"static"} centered>
                 <Modal.Dialog>
@@ -712,6 +659,37 @@ export default function Calendario(){
                     </Modal.Body>
                 </Modal.Dialog>
             </Modal>
+
+
+            <Modal show={show_eighth} onHide={handleCloseEighth} backdrop={"static"} centered>
+                <Modal.Dialog>
+                    <Modal.Header closeButton onClick={()=> handleCloseEighth()}>
+                        <h2>Categories</h2>
+                    </Modal.Header>
+                    <Modal.Body className="modal-subtitle-1">
+                        <Row>
+                            <Col xs={6} style={{fontSize: "20px"}}>Sport</Col>
+                            <Col xs={6} style={{backgroundColor: "#4B7BF8", borderRadius:"10px"}}></Col>
+                        </Row>
+                        <br/>
+                        <Row>
+                            <Col xs={6} style={{fontSize: "20px"}}>Party</Col>
+                            <Col xs={6} style={{backgroundColor: "#EB506C", borderRadius:"10px"}}></Col>
+                        </Row>
+                        <br/>
+                        <Row>
+                            <Col xs={6} style={{fontSize: "20px"}}>Music</Col>
+                            <Col xs={6} style={{backgroundColor: "#19BF97", borderRadius:"10px"}}></Col>
+                        </Row>
+                        <br/>
+                        <Row>
+                            <Col xs={6} style={{fontSize: "20px"}}>Other</Col>
+                            <Col xs={6} style={{backgroundColor: "#842DF2", borderRadius:"10px"}}></Col>
+                        </Row>
+                    </Modal.Body>
+                </Modal.Dialog>
+            </Modal>
+
         </Container>
 
     )
