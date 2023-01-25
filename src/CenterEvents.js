@@ -76,8 +76,8 @@ export default function CenterEvents(){
     const cardcu = [
         {   key: 823,
             titolo:'Long jump race',
-            dataStart:moment('2023-04-03, 17:00','YYYY-MM-DD, hh:mm'),
-            dataEnd:moment('2023-04-03, 19:00','YYYY-MM-DD, hh:mm'),
+            dataStart:moment('2022-04-03, 17:00','YYYY-MM-DD, hh:mm'),
+            dataEnd:moment('2022-04-03, 19:00','YYYY-MM-DD, hh:mm'),
             address:'Regent Park, LN3 1TX, UK',
             host:'Hosted by CUS Torino',
             about:'Let us see who can jump more than 4 meters. You can win a pie!',
@@ -244,27 +244,7 @@ export default function CenterEvents(){
                         </Modal.Body>
 
                         <Modal.Footer>
-                            {cardcus.filter(f=> f.key == state.id).map(m=> m.partecipo) == 'false'?
-                                <Button style={{fontSize:"15px", borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0em"}}
-                                        onClick={()=>{handleClose(); handleShowSecond()}}><img src={going}/> Participate</Button> :
-                                <Button style={{fontSize:"15px", borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
-                                        onClick={()=>{handleClose(); handleShowFourth()}}><img src={participate}/> Don't participate</Button> }
-
-                            <Dropdown>
-                                <Dropdown.Toggle id="dropdown-basic"  style={{borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0em"}}>
-                                    <img src={whosgoing}/>  Who's Going
-                                </Dropdown.Toggle>
-
-                                <Dropdown.Menu>
-                                    <Dropdown.Item href="/miajohnson">                    <img  src={profile1} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
-                                        Mia Johnson</Dropdown.Item>
-                                    <Dropdown.Item href="/claramay">
-                                        <img  src={profile4} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />Clara May</Dropdown.Item>
-                                    <Dropdown.Item href="/sullivanevents">
-                                        <img  src={profile2} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
-                                        Sullivan Jayden</Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown>
+                            This is an old event
                         </Modal.Footer>
                     </Modal.Dialog>
                 </Modal>

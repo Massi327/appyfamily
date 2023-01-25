@@ -686,6 +686,11 @@ export default function Calendario(){
                             <Col xs={6} style={{fontSize: "20px"}}>Other</Col>
                             <Col xs={6} style={{backgroundColor: "#842DF2", borderRadius:"10px"}}></Col>
                         </Row>
+                        <br/>
+                        <Row>
+                            <Col xs={6} style={{fontSize: "20px"}}>Centers</Col>
+                            <Col xs={6} style={{backgroundColor: "#FF8C2E", borderRadius:"10px"}}></Col>
+                        </Row>
                     </Modal.Body>
                 </Modal.Dialog>
             </Modal>
