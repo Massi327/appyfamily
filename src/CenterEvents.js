@@ -1,6 +1,6 @@
 import {useContext, useEffect, useState} from "react";
 import {StateContext} from "./App";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {Button, Col, Container, Nav, Navbar, Row, Card, Modal, CardGroup, CloseButton, Dropdown} from "react-bootstrap";
 import NavigbarBottom from "./components/navbar-bottom";
 import NavigbarP from "./components/navbar-profile";
@@ -70,6 +70,8 @@ export default function CenterEvents(){
 
     const [state,dispatch] = useContext(StateContext)
 
+    const navigate = useNavigate();
+
     const img = [{key:'longjump', img: longjump}, {key:'dance', img: dance}, {key:'fencing', img: fencing}]
     const imgBig = [{key:'longjump', img: longjumpbig}, {key:'dance', img: dancebig}, {key:'fencing', img: fencingbig}]
 
@@ -119,21 +121,6 @@ export default function CenterEvents(){
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const [show_second, setShowSecond] = useState(false);
-    const handleCloseSecond = () => setShowSecond(false);
-    const handleShowSecond = () => setShowSecond(true);
-
-    const [show_third, setShowThird] = useState(false);
-    const handleCloseThird = () => setShowThird(false);
-    const handleShowThird = () => setShowThird(true);
-
-    const [show_fourth, setShowFourth] = useState(false);
-    const handleCloseFourth = () => setShowFourth(false);
-    const handleShowFourth = () => setShowFourth(true);
-
-    const [show_fifth, setShowFifth] = useState(false);
-    const handleCloseFifth = () => setShowFifth(false);
-    const handleShowFifth = () => setShowFifth(true);
 
     return(
         <Container style={{backgroundColor:"#f5f5f5", paddingBottom:"10em", zIndex:'-1000', minHeight:'100vh', top:'5em'}}>
@@ -245,85 +232,6 @@ export default function CenterEvents(){
 
                         <Modal.Footer>
                             This is an old event
-                        </Modal.Footer>
-                    </Modal.Dialog>
-                </Modal>
-
-                <Modal show={show_second} onHide={handleCloseSecond} backdrop={"static"} centered>
-                    <Modal.Dialog>
-
-                        <Modal.Body className="modal-subtitle-1">
-                            <p>Do you wish to participate?</p>
-                        </Modal.Body>
-
-                        <Modal.Footer>
-                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
-                                    onClick={()=> {cardcus.filter(f=> f.key == state.id).map(q=> q.partecipo='true');
-                                        cardcus.filter(f=> f.key == state.id).map(m=>{
-                                            dispatch(partecipo(m.key, m.dataStart, m.dataEnd, m.address, m.titolo, m.about, m.categoria, m.property, m.host, m.img))
-                                        });
-                                        handleCloseSecond(); handleShowThird()}}>
-                                Yes
-                            </Button>
-                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
-                                    onClick={()=> handleCloseSecond()}>
-                                No
-                            </Button>
-                        </Modal.Footer>
-                    </Modal.Dialog>
-                </Modal>
-
-                <Modal show={show_third} onHide={handleCloseThird} backdrop={"static"} centered>
-                    <Modal.Dialog>
-
-                        <Modal.Body className="modal-subtitle-1">
-                            <p>The event has been added to your Calendar</p>
-                        </Modal.Body>
-
-                        <Modal.Footer>
-                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
-                                    onClick={()=> {localStorage.setItem('partecipazioni', JSON.stringify(state.partecipazioni));
-                                        localStorage.setItem('cardcus', JSON.stringify(cardcus)); handleCloseThird()}}>
-                                Ok
-                            </Button>
-                        </Modal.Footer>
-                    </Modal.Dialog>
-                </Modal>
-
-                <Modal show={show_fourth} onHide={handleCloseFourth} backdrop={"static"} centered>
-                    <Modal.Dialog>
-
-                        <Modal.Body className="modal-subtitle-1">
-                            <p>Are you sure that you don't want to participate anymore?</p>
-                        </Modal.Body>
-
-                        <Modal.Footer>
-                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
-                                    onClick={()=> {cardcus.filter(f=> f.key == state.id).map(q => q.partecipo='false');
-                                        dispatch(nonPartecipo(state.id));handleCloseFourth(); handleShowFifth()}}>
-                                Don't participate
-                            </Button>
-                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
-                                    onClick={()=> handleCloseFourth()}>
-                                Participate
-                            </Button>
-                        </Modal.Footer>
-                    </Modal.Dialog>
-                </Modal>
-
-                <Modal show={show_fifth} onHide={handleCloseFifth} backdrop={"static"} centered>
-                    <Modal.Dialog>
-
-                        <Modal.Body className="modal-subtitle-1">
-                            <p>The event has been removed from your Calendar</p>
-                        </Modal.Body>
-
-                        <Modal.Footer>
-                            <Button style={{borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0.5em"}}
-                                    onClick={()=> {localStorage.setItem('partecipazioni', JSON.stringify(state.partecipazioni));
-                                        localStorage.setItem('cardcus', JSON.stringify(cardcus)); handleCloseFifth()}}>
-                                Ok
-                            </Button>
                         </Modal.Footer>
                     </Modal.Dialog>
                 </Modal>

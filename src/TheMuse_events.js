@@ -1,6 +1,6 @@
 import {useContext, useEffect, useState} from "react";
 import {StateContext} from "./App";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {Button, Col, Container, Nav, Navbar, Row, Card, Modal, CardGroup, CloseButton, Dropdown} from "react-bootstrap";
 import NavigbarBottom from "./components/navbar-bottom";
 import NavigbarP from "./components/navbar-profile";
@@ -72,11 +72,11 @@ export default function MuseEvents(){
     const [state,dispatch] = useContext(StateContext)
 
 
-    const cardh = [
+    const cardmus = [
         {   key: 600,
             titolo:'Music therapy',
-            dataStart:moment('2023-02-02, 17:00','YYYY-MM-DD, hh:mm'),
-            dataEnd:moment('2023-02-02, 18:00','YYYY-MM-DD, hh:mm'),
+            dataStart:moment('2022-02-02, 17:00','YYYY-MM-DD, hh:mm'),
+            dataEnd:moment('2022-02-02, 18:00','YYYY-MM-DD, hh:mm'),
             address:'112 Barrack Street, NR3 1TX, UK',
             host:'Hosted by Color Notes',
             about:'Music can be a great therapy for kids with disabilities. Come try it out',
@@ -86,6 +86,16 @@ export default function MuseEvents(){
             property: 'Esterno'
         },]
 
+    const img = [{key:'imgcard2', img: imgcard2}]
+    const imgBig = [{key:'Music', img: music}]
+
+    const [cardmuse, setCardCus] = useLocalStorage('cardmuse', cardmus)
+
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const navigate = useNavigate();
 
     return(
         <Container style={{backgroundColor:"#f5f5f5", paddingBottom:"10em", zIndex:'-1000', minHeight:'100vh', top:'5em'}}>
@@ -94,7 +104,7 @@ export default function MuseEvents(){
             <Container className="bg2" style={{paddingTop:"6.5em"}}>
                 <Row>
                     <Col xs={1}>
-                        <Link to={"/hashtags"}><img src={backarrow} style={{left:"2em"}}/></Link>
+                        <img src={backarrow} style={{left:"3em", height:'2em', width:'2em'}} onClick={()=> navigate(-1)}/>
                     </Col>
                     <Col></Col>
                 </Row>
@@ -131,7 +141,73 @@ export default function MuseEvents(){
                     </Container>
                 </CardHeader>
 
+                {cardmuse.map( p =>
+                    <Card className="post" key={p.key} style={{ minHeight: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}} onClick={()=> {handleShow(); dispatch(selected(p.key))}}>
+                        <Card.Img className="cardimg" src={img.filter(f => f.key == p.img).map(c => c.img)} style={{minHeight: '5em', maxWidth: "9em", marginLeft:"0.5em", width: '10rem', verticalAlign:'center'}} />
+                        <Card.Body>
+                            <Card.Text className="event-time-1">
+                                <Row>
+                                    <Col>
+                                        <h6 style={{textAlign:"left"}}>{moment(p.dataStart).locale('en').format('MMM D').toUpperCase()} • {moment(p.dataStart).locale('en').format('h:mm a').toUpperCase()}</h6>
+                                    </Col>
+                                    <Col xs={2}>
 
+                                    </Col>
+                                </Row>
+                            </Card.Text>
+                            <Card.Title className="event-title-1" style={{textAlign: 'left'}}>{p.titolo}</Card.Title>
+                            <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
+                                {p.host}
+                            </Card.Text>
+                            <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                                <img src={clock} alt="Near me" className="icon"/> {moment(p.dataStart).locale('en').format('D MMM YYYY')}, {moment(p.dataStart).locale('en').format('h:mm a').toUpperCase()} - {moment(p.dataEnd).locale('en').format('h:mm a').toUpperCase()}
+                            </Card.Text>
+                            <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                                <img src={map} alt="Near me" className="icon"/> {p.address}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                )}
+
+                <Modal show={show} onHide={handleClose} backdrop={"static"} centered>
+                    <Modal.Dialog>
+                        <Modal.Header closeButton>
+                            <Card style={{backgroundColor:"#4b7bf8", color:"white"}}>
+                                <Card.Body>
+                                    <Card.Text className="event-month-popup" style={{textAlign: 'center'}}>
+                                        {cardmuse.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('MMM').toUpperCase())}
+                                    </Card.Text>
+                                    <Card.Text className="event-day-popup" style={{textAlign: 'center'}}>
+                                        {cardmuse.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D').toUpperCase())}
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                            <Col>
+                                <Row>
+                                    <Modal.Title className="modal-title-1" style={{fontSize:"25px", marginLeft:"1em"}}>{cardmuse.filter(p => p.key===state.id).map(m=>m.titolo)}</Modal.Title>
+                                </Row>
+                                <Row className="event-subtitle-1" style={{textAlign: 'left', marginLeft:"0.1em", fontSize:"15px"}}>
+                                    <p style={{textAlign: 'left'}}>{cardmuse.filter(p => p.key===state.id).map(m=>m.host)}</p>
+                                </Row>
+                            </Col>
+                        </Modal.Header>
+
+                        <Modal.Body className="modal-subtitle-1">
+
+                            <img src={imgBig.filter(f => f.key == cardmuse.filter(g=> g.key == state.id).map(m=> m.categoria)).map(c => c.img)} style={{marginBottom:"0.5em", width:"22em"}}/>
+
+
+                            <p className="event-subsubtitle-3"> <img src={clock} className="icon"/> {cardmuse.filter(p => p.key===state.id).map(m=>m.address)}</p>
+                            <p className="event-subsubtitle-3"> <img src={map} className="icon"/> {cardmuse.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D MMM YYYY'))}, {cardmuse.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('h:mm a'))} - {cardmuse.filter(p => p.key===state.id).map(m=>moment(m.dataEnd).locale('en').format('h:mm a'))}</p>
+                            <p className="about">About</p>
+                            <p>{cardmuse.filter(p => p.key===state.id).map(m=>m.about)}</p>
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            This is an old event
+                        </Modal.Footer>
+                    </Modal.Dialog>
+                </Modal>
 
             </Card>
             <NavigbarBottom home={homeunselected} calendar={calendar} profile={profile} settings={settings}/>
