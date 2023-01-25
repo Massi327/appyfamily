@@ -15,20 +15,20 @@ export const initialState = {
     prenotazioni:[
         {   key: 789,
             titolo:'Park Hamill',
-            dataStart:moment('2023-01-03, 10:00','YYYY-MM-DD, hh:mm'),
-            dataEnd:moment('2023-01-03, 11:30','YYYY-MM-DD, hh:mm'),
-            address:'Via giordani 78',
-            about:'Gita al parco',
+            dataStart:moment('2023-02-03, 10:00','YYYY-MM-DD, hh:mm'),
+            dataEnd:moment('2023-02-03, 11:30','YYYY-MM-DD, hh:mm'),
+            address:'Force street 7',
+            about:'Trust only in the 4',
             categoria: 'Other',
             property: 'public'
         },
         {
             key:788,
-            titolo:'Sportone',
-            dataStart:moment('2023-01-04, 20:00','YYYY-MM-DD, hh:mm'),
-            dataEnd:moment('2023-01-04, 21:30','YYYY-MM-DD, hh:mm'),
+            titolo:'Big Sport',
+            dataStart:moment('2023-02-04, 20:00','YYYY-MM-DD, hh:mm'),
+            dataEnd:moment('2023-02-04, 21:30','YYYY-MM-DD, hh:mm'),
             address:'112 Barrack Street, NR3 1TX, UK',
-            about:'Sport al parco',
+            about:'Sport in the park',
             categoria: 'Sport',
             property: 'private'
         },

@@ -209,7 +209,7 @@ export default function Profile(){
                     <Modal.Footer>
                         <Button style={{fontSize:"13px",borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
                                 onClick={()=>dispatch(cancelBooking(state.id))}>
-                            <Link to={"/editaddevent"}>Edit</Link>
+                            <Link to={"/editaddevent"} style={{ textDecoration:"none",  color:"#eb506c"}}>Edit</Link>
                         </Button>
                         <Button style={{fontSize:"13px", borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
                                 onClick={()=>{dispatch(cancelBooking(state.id)); handleClose(); handleShowSecond()}}
