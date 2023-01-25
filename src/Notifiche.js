@@ -29,12 +29,11 @@ export default function Notifiche(){
             <NavigbarP vnotifications={notifselected} vmessages={message} vtutorial={help}/>
             <Container >
                 <Card className="notif" style={{ width: '22.8rem', height: '5rem', marginBottom: '1em' ,marginTop: '7em',  borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                    <Card.Img  src={profile6} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                    <Card.Img  src={profile2} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
-                        <Card.Text className="name-people" style={{textAlign: 'left'}}>Jeremy_Clarks</Card.Text>
-
-                        <Card.Text className="subtitle-random" style={{textAlign: 'left'}}>
-                            started following you
+                        <Card.Text className="name-people" style={{textAlign: 'left'}}>Doctor_Sally</Card.Text>
+                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
+                            replied to your question
                         </Card.Text>
                     </Card.Body>
                 </Card>
@@ -93,11 +92,12 @@ export default function Notifiche(){
 
 
                 <Card className="notif" style={{ width: '22.8rem', height: '5rem', marginBottom: '5em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}>
-                    <Card.Img  src={profile2} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                    <Card.Img  src={profile6} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                     <Card.Body>
-                        <Card.Text className="name-people" style={{textAlign: 'left'}}>Doctor_Sally</Card.Text>
-                        <Card.Text className="subtitle-connections" style={{textAlign: 'left'}}>
-                            replied to your question
+                        <Card.Text className="name-people" style={{textAlign: 'left'}}>Jeremy_Clarks</Card.Text>
+
+                        <Card.Text className="subtitle-random" style={{textAlign: 'left'}}>
+                            started following you
                         </Card.Text>
                     </Card.Body>
                 </Card>
