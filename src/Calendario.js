@@ -228,7 +228,7 @@ export default function Calendario(){
             <NavigbarP vnotifications={notif} vmessages={message} vtutorial={help}/>
             <NavigbarBottom home={homeunselected} calendar={calendarselected} profile={profile} settings={settings}/>
 
-            <Container className="bg2" style={{paddingTop:"6.5em", borderRadius:'1em'}}>
+            <Container className="bg2" style={{paddingTop:"6.5em", paddingBottom:"0.5em", borderRadius:'1em'}}>
                 <Row>
                     <Col xs={1}>
                         <img src={categoriesicon} style={{width:'2.5em', height:'2.5em'}} onClick={() => handleShowEighth()}/>
