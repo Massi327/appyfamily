@@ -1,7 +1,7 @@
 import {useContext, useState} from "react";
 import {StateContext} from "./App";
-import {Link} from "react-router-dom";
-import {Button, Card, Col, Container, Form, Nav, Navbar, Row} from "react-bootstrap";
+import {Link, useNavigate} from "react-router-dom";
+import {Button, Card, Col, Container, Form, Modal, Nav, Navbar, Row} from "react-bootstrap";
 import Navigbar from "./components/navbar-search";
 import AddButton from "./components/add-button";
 import NavigbarBottom from "./components/navbar-bottom";
@@ -22,10 +22,23 @@ import cusimage from "./images/CUS.svg"
 import artattic from "./images/artattic.svg"
 import musetheatre from "./images/musetheatre.svg"
 import bounce from "./images/bounce.svg"
+import backarrow from "./images/backarrow.svg";
+import forwardarrow from "./images/forwardarrow.svg";
 
 export default function Hashtags(){
 
     const [state,dispatch] = useContext(StateContext)
+
+    const [tutorial, setTutorial] = useState(()=> {
+        const tutorial = JSON.parse(localStorage.getItem('tutorial'))
+        return tutorial
+    })
+
+    const [show_sith, setShowSith] = useState(true);
+    const handleCloseSith = () => setShowSith(false);
+    const handleShowSith = () => setShowSith(true);
+
+    const navigate = useNavigate();
 
     return(
         <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh'}}>
@@ -68,6 +81,31 @@ export default function Hashtags(){
 
 
             </Container>
+
+            {tutorial == true ?
+                <Modal show={show_sith} onHide={handleCloseSith} backdrop={"static"} centered>
+                    <Modal.Dialog>
+                        <Modal.Header closeButton onClick={()=> {navigate('/home', {replace: true}); localStorage.setItem('tutorial', 'false');}}/>
+                        <Modal.Body className="modal-subtitle-1">
+                            <Row>
+                                <p style={{textAlign:'center', fontSize:'1.5em'}}>This is the <span style={{fontWeight: 'bold', color:'#FF8C2E'}}>Centers</span>!</p>
+                                <div style={{textAlign:'center', fontSize:'1.5em'}}>This section enables you to find various kinds of centers</div>
+                                <div style={{textAlign:'center', fontSize:'1.5em'}}>(i.e. sports centers, child care centers, music centers).</div>
+                                <div style={{textAlign:'center', fontSize:'1.5em'}}>Through this page you can access the activities of centers you are already registered to.</div>
+                            </Row>
+                            <br/>
+                            <Row>
+                                <Col xs={6} style={{textAlign:'left'}}>
+                                    <img src={backarrow} style={{width:'2.5em', height:'2.5em'}} onClick={() => navigate('/tutorial', {replace: true})}/>
+                                </Col>
+                                <Col xs={6} style={{textAlign:'right'}}>
+                                    <img src={forwardarrow} style={{width:'2.5em', height:'2.5em'}} onClick={() => navigate('/calendar', {replace: true})}/>
+                                </Col>
+                            </Row>
+                        </Modal.Body>
+                    </Modal.Dialog>
+                </Modal>
+                : null}
 
 
         </Container>

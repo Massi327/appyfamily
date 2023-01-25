@@ -148,7 +148,7 @@ export default function Tutorial(){
                                 <img src={backarrow} style={{width:'2.5em', height:'2.5em'}} onClick={() => {handleShowEighth(); handleCloseSeventh()}}/>
                             </Col>
                             <Col xs={6} style={{textAlign:'right'}}>
-                                <img src={forwardarrow} style={{width:'2.5em', height:'2.5em'}} onClick={() => {localStorage.setItem('tutorial', 'true'); navigate('/calendar', {replace: true})}}/>
+                                <img src={forwardarrow} style={{width:'2.5em', height:'2.5em'}} onClick={() => {localStorage.setItem('tutorial', 'true'); navigate('/hashtags', {replace: true})}}/>
                             </Col>
                         </Row>
                     </Modal.Body>

@@ -259,7 +259,7 @@ export default function Profile(){
             {tutorial == true ?
                 <Modal show={show_sith} onHide={handleCloseSith} backdrop={"static"} centered>
                     <Modal.Dialog>
-                        <Modal.Header closeButton onClick={()=> navigate('/home', {replace: true})}/>
+                        <Modal.Header closeButton onClick={()=> {navigate('/home', {replace: true}); localStorage.setItem('tutorial', 'false');}}/>
                         <Modal.Body className="modal-subtitle-1">
                             <Row>
                                 <p style={{textAlign:'center', fontSize:'1.5em'}}>This is your <span style={{fontWeight: 'bold', color:'#4B7BF8'}}>Profile</span>!</p>
@@ -282,7 +282,7 @@ export default function Profile(){
 
             <Modal show={show_seventh} onHide={handleCloseSeventh} backdrop={"static"} centered>
                 <Modal.Dialog>
-                    <Modal.Header closeButton onClick={()=> navigate('/home', {replace: true})}/>
+                    <Modal.Header closeButton onClick={()=> {navigate('/home', {replace: true}); localStorage.setItem('tutorial', 'false');}}/>
                     <Modal.Body className="modal-subtitle-1">
                         <Row>
                             <div style={{textAlign:'center', fontSize:'1.5em'}}>Your <span style={{fontWeight: 'bold', color:'#686FA7'}}>rank</span> is assigned according</div>
@@ -294,7 +294,7 @@ export default function Profile(){
                                 <img src={backarrow} style={{width:'2.5em', height:'2.5em'}} onClick={() => handleShowSith()}/>
                             </Col>
                             <Col xs={6} style={{textAlign:'right'}}>
-                                <img src={forwardarrow} style={{width:'2.5em', height:'2.5em'}} onClick={() => {localStorage.setItem('tutorial', 'false'); navigate('/home', {replace: true})}}/>
+
                             </Col>
                         </Row>
                     </Modal.Body>

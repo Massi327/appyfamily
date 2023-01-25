@@ -58,6 +58,8 @@ import forwardarrow from "./images/forwardarrow.svg";
 
 const localizer = momentLocalizer(moment)
 
+
+
 export default function Calendario(){
 
     const [state,dispatch] = useContext(StateContext)
@@ -260,6 +262,7 @@ export default function Calendario(){
                                 };
                             }}
                         onSelectSlot={ slotInfo => selectSlot(slotInfo)}
+
                     />
                 </Col>
 
@@ -656,7 +659,7 @@ export default function Calendario(){
             {tutorial == true ?
             <Modal show={show_sith} onHide={handleCloseSith} backdrop={"static"} centered>
                 <Modal.Dialog>
-                    <Modal.Header closeButton onClick={()=> navigate('/home', {replace: true})}/>
+                    <Modal.Header closeButton onClick={()=> {navigate('/home', {replace: true}); localStorage.setItem('tutorial', 'false');}}/>
                     <Modal.Body className="modal-subtitle-1">
                         <Row>
                             <p style={{textAlign:'center', fontSize:'1.5em'}}>This is the <span style={{fontWeight: 'bold', color:'#842DF2'}}>Calendar</span>!</p>
@@ -679,7 +682,7 @@ export default function Calendario(){
 
             <Modal show={show_seventh} onHide={handleCloseSeventh} backdrop={"static"} centered>
                 <Modal.Dialog>
-                    <Modal.Header closeButton onClick={()=> navigate('/home', {replace: true})}/>
+                    <Modal.Header closeButton onClick={()=> {navigate('/home', {replace: true}); localStorage.setItem('tutorial', 'false');}}/>
                     <Modal.Body className="modal-subtitle-1">
                         <Row>
                             <div style={{textAlign:'center', fontSize:'1.5em'}}>Calendar can be visualized by day, by week or by month</div>
