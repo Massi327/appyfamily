@@ -1,7 +1,7 @@
 import {Calendar, momentLocalizer} from "react-big-calendar";
 import moment from 'moment'
 import 'moment/locale/it';
-import {useCallback, useContext, useEffect, useState} from "react";
+import {useCallback, useContext, useEffect, useMemo, useState} from "react";
 import {StateContext} from "./App";
 import "./Calendario.css"
 import {
@@ -206,6 +206,18 @@ export default function Calendario(){
         navigate('/add', {replace: true})
     }
 
+    const { defaultDate, messages } = useMemo(
+        () => ({
+            defaultDate: new Date(),
+            messages: {
+
+                previous: '<',
+                next: '>',
+
+            },
+        }),
+        [])
+
     return(
         <Container>
             <NavigbarP vnotifications={notif} vmessages={message} vtutorial={help}/>
@@ -220,7 +232,7 @@ export default function Calendario(){
                         startAccessor='start'
                         endAccessor='end'
                         localizer={localizer}
-                        defaultDate={new Date()}
+                        defaultDate={defaultDate}
                         defaultView={'month'}
                         views={['month','week','day']}
                         events={events}
@@ -262,7 +274,7 @@ export default function Calendario(){
                                 };
                             }}
                         onSelectSlot={ slotInfo => selectSlot(slotInfo)}
-
+                        messages={messages}
                     />
                 </Col>
 
