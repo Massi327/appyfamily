@@ -83,18 +83,6 @@ export default function MiaJohnson(){
             img: 'imgcard1',
             property: 'Esterno'
         },
-        {   key: 302,
-            titolo:'Joe\'s Party',
-            dataStart:moment('2023-02-03, 17:00','YYYY-MM-DD, hh:mm'),
-            dataEnd:moment('2023-02-03, 20:00','YYYY-MM-DD, hh:mm'),
-            address:'113 Flams Close, CB4 2TY, UK',
-            host:'Hosted by the Mia Johnson',
-            about:'Joe is having a fun Peter Pan theme party',
-            categoria: 'Party',
-            img: 'imgcard5',
-            partecipo: 'false',
-            property: 'Esterno'
-        },
         {   key: 402,
             titolo:'Music games',
             dataStart:moment('2023-01-02, 17:00','YYYY-MM-DD, hh:mm'),
@@ -129,6 +117,7 @@ export default function MiaJohnson(){
     const connectionMia = 126
     const [conmia, setConMia] = useLocalStorage('conmia', connectionMia)
     const conprof = JSON.parse(localStorage.getItem('conprofile'))
+    const cardh = JSON.parse(localStorage.getItem('cardhome'))
 
     const navigate = useNavigate();
 
@@ -152,7 +141,9 @@ export default function MiaJohnson(){
     const handleCloseFifth = () => setShowFifth(false);
     const handleShowFifth = () => setShowFifth(true);
 
-
+    const [show_sith, setShowSith] = useState(false);
+    const handleCloseSith = () => setShowSith(false);
+    const handleShowSith = () => setShowSith(true);
 
     return(
         <Container style={{backgroundColor:"#f5f5f5", zIndex:'-1000', minHeight:'100vh', top:'5em'}}>
@@ -224,6 +215,38 @@ export default function MiaJohnson(){
                 </CardHeader>
 
                 <Container style={{paddingTop:'0.1em', paddingBottom:'4em'}}>
+
+                    {
+                        cardh.filter(f => f.key == 302).map(p =>
+                            <Card className="post" key={p.key} style={{ minHeight: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}
+                                  onClick={()=> {handleShowSith(); dispatch(selected(p.key))}}>
+                                <Card.Img className="cardimg" src={img.filter(f => f.key == p.img).map(c => c.img)} style={{minHeight: '5em', maxWidth: "9em", marginLeft:"0.5em", width: '10rem', verticalAlign:'center'}} />
+                                <Card.Body>
+                                    <Card.Text className="event-time-1">
+                                        <Row>
+                                            <Col>
+                                                <h6 style={{textAlign:"left"}}>{moment(p.dataStart).locale('en').format('MMM D').toUpperCase()} • {moment(p.dataStart).locale('en').format('h:mm a').toUpperCase()}</h6>
+                                            </Col>
+                                            <Col xs={2}>
+
+                                            </Col>
+                                        </Row>
+                                    </Card.Text>
+                                    <Card.Title className="event-title-1" style={{textAlign: 'left'}}>{p.titolo}</Card.Title>
+                                    <Card.Text className="event-subtitle-1" style={{textAlign: 'left'}}>
+                                        {p.host}
+                                    </Card.Text>
+                                    <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                                        <img src={clock} alt="Near me" className="icon"/> {moment(p.dataStart).locale('en').format('D MMM YYYY')}, {moment(p.dataStart).locale('en').format('h:mm a').toUpperCase()} - {moment(p.dataEnd).locale('en').format('h:mm a').toUpperCase()}
+                                    </Card.Text>
+                                    <Card.Text className="event-subsubtitle-2" style={{textAlign: 'left'}}>
+                                        <img src={map} alt="Near me" className="icon"/> {p.address}
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        )
+                    }
+
                 {  cardmia.map( p =>
                     <Card className="post" key={p.key} style={{ minHeight: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}
                           onClick={()=> {handleShow(); dispatch(selected(p.key))}}>
@@ -289,6 +312,45 @@ export default function MiaJohnson(){
                     </Modal.Body>
 
                     <Modal.Footer>
+                        This is an old event
+                    </Modal.Footer>
+                </Modal.Dialog>
+            </Modal>
+
+            <Modal show={show_sith} onHide={handleCloseSith} backdrop={"static"} centered>
+                <Modal.Dialog>
+                    <Modal.Header closeButton>
+                        <Card style={{backgroundColor:"#4b7bf8", color:"white"}}>
+                            <Card.Body>
+                                <Card.Text className="event-month-popup" style={{textAlign: 'center'}}>
+                                    {cardh.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('MMM').toUpperCase())}
+                                </Card.Text>
+                                <Card.Text className="event-day-popup" style={{textAlign: 'center'}}>
+                                    {cardh.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D').toUpperCase())}
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                        <Col>
+                            <Row>
+                                <Modal.Title className="modal-title-1" style={{fontSize:"25px", marginLeft:"1em"}}>{cardh.filter(p => p.key===state.id).map(m=>m.titolo)}</Modal.Title>
+                            </Row>
+                            <Row className="event-subtitle-1" style={{textAlign: 'left', marginLeft:"0.1em", fontSize:"15px"}}>
+                                <p style={{textAlign: 'left'}}>{cardh.filter(p => p.key===state.id).map(m=>m.host)}</p>
+                            </Row>
+                        </Col>
+                    </Modal.Header>
+
+                    <Modal.Body className="modal-subtitle-1">
+
+                        <img src={imgBig.filter(f => f.key == cardh.filter(g=> g.key == state.id).map(m=> m.categoria)).map(c => c.img)} style={{marginBottom:"0.5em", width:"22em"}}/>
+
+                        <p className="event-subsubtitle-3"> <img src={clock} className="icon"/> {cardh.filter(p => p.key===state.id).map(m=>m.address)}</p>
+                        <p className="event-subsubtitle-3"> <img src={map} className="icon"/> {cardh.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('D MMM YYYY'))}, {cardh.filter(p => p.key===state.id).map(m=>moment(m.dataStart).locale('en').format('h:mm a'))} - {cardh.filter(p => p.key===state.id).map(m=>moment(m.dataEnd).locale('en').format('h:mm a'))}</p>
+                        <p className="about">About</p>
+                        <p>{cardh.filter(p => p.key===state.id).map(m=>m.about)}</p>
+                    </Modal.Body>
+
+                    <Modal.Footer>
                         {cardmia.filter(f=> f.key == state.id).map(m=> m.partecipo) == 'false'?
                             <Button style={{fontSize:"15px", borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0em"}}
                                     onClick={()=>{handleClose(); handleShowSecond()}}><img src={going}/> Participate</Button> :
@@ -301,14 +363,11 @@ export default function MiaJohnson(){
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu>
-                                <Dropdown.Item href="/miajohnson">
-                                    <img  src={profile1} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
-                                    Mia Johnson</Dropdown.Item>
-                                <Dropdown.Item href="/claramay">
-                                    <img  src={profile4} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />Clara May</Dropdown.Item>
                                 <Dropdown.Item href="/sullivanevents">
                                     <img  src={profile2} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
                                     Sullivan Jayden</Dropdown.Item>
+                                <Dropdown.Item>
+                                    <img  src={profile4} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />Clara May</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </Modal.Footer>

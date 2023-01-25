@@ -69,7 +69,7 @@ export default function Home(){
             dataStart:moment('2023-02-02, 10:00','YYYY-MM-DD, hh:mm'),
             dataEnd:moment('2023-02-02, 11:00','YYYY-MM-DD, hh:mm'),
             address:'112 Barrack Street, NR3 1TX, UK',
-            host:'Hosted by the Muse Th.',
+            host:'Hosted by the Gina Martin',
             about:'Join us with your kids for a fun morning at the park' ,
             categoria: 'Other',
             img: 'imgcard1',
@@ -298,8 +298,6 @@ export default function Home(){
                             </Card.Body>
                         </Card>)}
 
-
-
                 { /* search.map( s =>
                     <Card className="post" key={s.key} style={{ minHeight: '8rem', marginBottom: '1em' , borderRadius: '10px',borderWidth: '0', flexDirection: 'row'}}
                           onClick={()=> {handleShow(); dispatch(selected(s.key))}}>
@@ -370,21 +368,35 @@ export default function Home(){
                             <Button style={{fontSize:"15px", borderColor:"#eb506c", color:"#eb506c", borderWidth:"2px", backgroundColor:"#f5f5f5", borderRadius:"10px", marginRight:"0em"}}
                                     onClick={()=>{handleClose(); handleShowFourth()}}><img src={participate}/> Don't participate</Button> }
 
+                            {state.id == '302' ?
                             <Dropdown>
                                 <Dropdown.Toggle id="dropdown-basic"  style={{borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0em"}}>
                                     <img src={whosgoing}/>  Who's Going
                                 </Dropdown.Toggle>
-
                                 <Dropdown.Menu>
-                                    <Dropdown.Item href="/miajohnson">                    <img  src={profile1} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
-                                          Mia Johnson</Dropdown.Item>
-                                    <Dropdown.Item href="/claramay">
-                                        <img  src={profile4} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />Clara May</Dropdown.Item>
                                     <Dropdown.Item href="/sullivanevents">
                                         <img  src={profile2} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
                                         Sullivan Jayden</Dropdown.Item>
+                                    <Dropdown.Item>
+                                        <img  src={profile4} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />Clara May</Dropdown.Item>
                                 </Dropdown.Menu>
-                            </Dropdown>
+                            </Dropdown> :
+                                <Dropdown>
+                                    <Dropdown.Toggle id="dropdown-basic"  style={{borderColor:"#eb506c", color:"white", backgroundColor:"#eb506c", borderWidth:"2px", borderRadius:"10px", marginRight:"0em"}}>
+                                        <img src={whosgoing}/>  Who's Going
+                                    </Dropdown.Toggle>
+                                    <Dropdown.Menu>
+                                    <Dropdown.Item href="/miajohnson">
+                                        <img  src={profile1} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
+                                        Mia Johnson</Dropdown.Item>
+                                    <Dropdown.Item href="/sullivanevents">
+                                        <img  src={profile2} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />
+                                        Sullivan Jayden</Dropdown.Item>
+                                    <Dropdown.Item>
+                                        <img  src={profile4} style={{height: '2em', width: '2rem', marginRight:"0.5em"}} />Clara May</Dropdown.Item>
+                                </Dropdown.Menu>
+
+                                </Dropdown>}
                         </Modal.Footer>
                     </Modal.Dialog>
                 </Modal> : null}
