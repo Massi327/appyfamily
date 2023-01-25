@@ -91,7 +91,7 @@ export default function CenterCalendar(){
             <Container className="bg2" style={{paddingTop:"6.5em"}}>
                 <Row>
                     <Col xs={1}>
-                        <Link to={"/hashtags"}><img src={backarrow} style={{left:"2em"}}/></Link>
+                        <Link to={"/hashtags"}><img src={backarrow} style={{left:"3em", height:'2em', width:'2em'}}/></Link>
                     </Col>
                     <Col></Col>
                 </Row>
