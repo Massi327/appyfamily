@@ -189,7 +189,7 @@ export default function SullivanEvents() {
                                     borderRadius: "10px",
                                     marginLeft: "1em"
                                 }}>
-                                    Message
+                                    <Link to={"/chatsully"} style={{textDecoration: 'none', color:'white'}}>Message</Link>
                                 </Button>
                             </Col>
                             <Col>

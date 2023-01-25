@@ -31,6 +31,7 @@ import SullivanForum from "./Sullivan_forum";
 import MuseEvents from "./TheMuse_events";
 import MuseForum from "./TheMuse_forum";
 import MuseCalendar from "./TheMuse_calendar";
+import Chat_Sullivan from "./Chat_Sullivan";
 
 export const StateContext = createContext()
 
@@ -61,6 +62,7 @@ function App() {
 
                 <Route path={"/follower"} element={<Follower/>}/>
                 <Route path={"/chat"} element={<Chat/>}/>
+                <Route path={"/chatsully"} element={<Chat_Sullivan/>}/>
                 <Route path={"/gym"} element={<Gym/>}/>
 
                 <Route path={"/centercalendar"} element={<CenterCalendar/>}/>
