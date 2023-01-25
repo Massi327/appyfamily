@@ -48,6 +48,7 @@ import profile4 from "./images/profile4.svg";
 import {useAccordionButton} from "react-bootstrap/AccordionButton";
 import cusimage from "./images/CUS.svg"
 import backarrow from "./images/backarrow.svg";
+import profile5 from "./images/profile5.svg";
 
 
 function CustomToggle({ children, eventKey }) {
@@ -70,24 +71,6 @@ function CustomToggle({ children, eventKey }) {
 export default function CenterBlogs(){
 
     const [state,dispatch] = useContext(StateContext)
-
-    const [prenotazione, setPrenotazione] = useState(() => {
-        const prenotazione = JSON.parse(localStorage.getItem('prenotazioni'));
-        return prenotazione} )
-
-    let events = [];
-    prenotazione.map(p => {
-        let event={
-            key: p.key,
-            titolo: p.titolo,
-            dataStart: moment(p.dataStart,'YYYY-MM-DD, hh:mm').toDate(),
-            dataEnd: moment(p.dataEnd,'YYYY-MM-DD, hh:mm').toDate(),
-            address: p.address,
-            about: p.about,
-            categoria: p.categoria
-        }
-        events.push(event)
-    })
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -139,7 +122,7 @@ export default function CenterBlogs(){
 
 
             <CardGroup style={{textAlign:"left"}}>
-                <Card.Text style={{ paddingLeft:"1em", marginBottom:"-0em", marginTop:"1em", color:"white", backgroundColor:"#4b7bf8"}}>Cus Torino replied to this forum</Card.Text>
+                <Card.Text style={{ paddingLeft:"1em", marginBottom:"-0em", marginTop:"1em", color:"white", backgroundColor:"#4b7bf8"}}>Cus Torino replied to this closed forum</Card.Text>
                 <Accordion>
                     <Card>
                         <Card.Header style={{minHeight:"4.5em"}}>
@@ -147,7 +130,7 @@ export default function CenterBlogs(){
 
                             <Card.Text>
                                 <Row style={{height:"1em"}}>
-                                    <Col  className="subtitle-connections" style={{textAlign:"left"}}>2 weeks ago • Mia Johnson
+                                    <Col  className="subtitle-connections" style={{textAlign:"left"}}>2 weeks ago • Gina Martin
                                     </Col>
                                 </Row >
                                 <Row style={{height:"1em"}}>
@@ -155,7 +138,7 @@ export default function CenterBlogs(){
 
                                     </Col>
                                     <Col xs={3}>
-                                        <Link className="reply">Reply</Link>
+
                                     </Col>
                                     <Col xs={5}>
                                         <CustomToggle eventKey="0">View Replies</CustomToggle>
@@ -191,13 +174,13 @@ export default function CenterBlogs(){
                             </Card>
 
                                 <Card className="people" style={{marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"0.5em", flexDirection: 'row'}}>
-                                    <Card.Img  src={profile1} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                                    <Card.Img  src={profile5} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                                     <Card.Body>
                                         <Card.Text className="blog-title" style={{textAlign: 'left'}}>try Decathlon</Card.Text>
                                         <Card.Text>
                                             <Row style={{height:"1em"}}>
                                                 <Col  className="subtitle-connections" style={{textAlign:"left"}}>
-                                                    2 weeks ago • Mia Johnson
+                                                    2 weeks ago • Chandler Santoro
                                                 </Col>
                                             </Row>
                                             <Row style={{height:"1em", marginTop:"-0.1em"}}>
@@ -242,7 +225,7 @@ export default function CenterBlogs(){
                 </Accordion>
 
 
-                <Card.Text style={{ paddingLeft:"1em", marginBottom:"-0em", marginTop:"1em", color:"white", backgroundColor:"#4b7bf8"}}>Cus Torino replied to this forum</Card.Text>
+                <Card.Text style={{ paddingLeft:"1em", marginBottom:"-0em", marginTop:"1em", color:"white", backgroundColor:"#4b7bf8"}}>Cus Torino replied to this closed forum</Card.Text>
                 <Accordion>
                     <Card>
                         <Card.Header style={{minHeight:"4.5em"}}>
@@ -258,7 +241,7 @@ export default function CenterBlogs(){
 
                                     </Col>
                                     <Col xs={3}>
-                                        <Link className="reply">Reply</Link>
+
                                     </Col>
                                     <Col xs={5}>
                                         <CustomToggle eventKey="0">View Replies</CustomToggle>
@@ -294,13 +277,13 @@ export default function CenterBlogs(){
                             </Card>
 
                                 <Card className="people" style={{marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"0.5em", flexDirection: 'row'}}>
-                                    <Card.Img  src={profile1} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                                    <Card.Img  src={profile5} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
                                     <Card.Body>
                                         <Card.Text className="blog-title" style={{textAlign: 'left'}}>8 March</Card.Text>
                                         <Card.Text>
                                             <Row style={{height:"1em"}}>
                                                 <Col  className="subtitle-connections" style={{textAlign:"left"}}>
-                                                    2 weeks ago • Mia Johnson
+                                                    2 weeks ago • Chandler Santoro
                                                 </Col>
                                             </Row>
                                             <Row style={{height:"1em", marginTop:"-0.1em"}}>
@@ -340,7 +323,7 @@ export default function CenterBlogs(){
 
                                     </Col>
                                     <Col xs={3}>
-                                        <Link className="reply">Reply</Link>
+
                                     </Col>
                                     <Col xs={5}>
                                         <CustomToggle eventKey="0">View Replies</CustomToggle>
