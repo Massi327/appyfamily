@@ -1,7 +1,20 @@
 import {useContext, useEffect, useState} from "react";
 import {StateContext} from "./App";
 import {Link} from "react-router-dom";
-import {Button, Col, Container, Nav, Navbar, Row, Card, Modal, CardGroup, CloseButton, Dropdown} from "react-bootstrap";
+import {
+    Button,
+    Col,
+    Container,
+    Nav,
+    Navbar,
+    Row,
+    Card,
+    Modal,
+    CardGroup,
+    CloseButton,
+    Dropdown,
+    Accordion
+} from "react-bootstrap";
 import NavigbarBottom from "./components/navbar-bottom";
 import NavigbarP from "./components/navbar-profile";
 import eventsselected from "./images/Events-selezionato.svg";
@@ -67,19 +80,31 @@ import whosgoing from "./images/whosgoing-white.svg";
 import profile2 from "./images/profile2.svg";
 import centerforumsselected from "./images/Profile_Forums.svg";
 import muse from "./images/muse.svg"
+import {useAccordionButton} from "react-bootstrap/AccordionButton";
+import cusimage from "./images/CUS.svg";
+import profile5 from "./images/profile5.svg";
+import musetheatre from "./images/musetheatre.svg";
+
+function CustomToggle({ children, eventKey }) {
+    const decoratedOnClick = useAccordionButton(eventKey, () =>
+        console.log('totally custom!'),
+    );
+
+    return (
+        <button
+            type="button"
+            className="reply"
+            style={{borderWidth:"0px", backgroundColor: "#f7f7f7"}}
+            onClick={decoratedOnClick}
+        >
+            {children}
+        </button>
+    );
+}
 
 export default function MuseForum(){
 
     const [state,dispatch] = useContext(StateContext)
-
-    const forums =[
-        {
-            key: Math.random,
-            titolo: 'Would anyone be interested in a music class for shy children?',
-            about: '6 weeks ago • The Muse Th.'
-        },
-    ]
-
 
     return(
         <Container style={{backgroundColor:"#f5f5f5", paddingBottom:"10em", zIndex:'-1000', minHeight:'100vh', top:'5em'}}>
@@ -125,7 +150,109 @@ export default function MuseForum(){
                     </Container>
                 </CardHeader>
 
+                <CardGroup style={{textAlign:"left"}}>
+                    <Card.Text style={{ paddingLeft:"1em", marginBottom:"-0em", marginTop:"1em", color:"white", backgroundColor:"#4b7bf8"}}>The Muse Th. replied to this closed forum</Card.Text>
+                    <Accordion>
+                        <Card>
+                            <Card.Header style={{minHeight:"4.5em"}}>
+                                <Card.Text className="blog-title" style={{textAlign: 'left'}}>Would anyone be interested in a music class for shy children?</Card.Text>
 
+                                <Card.Text>
+                                    <Row style={{height:"1em"}}>
+                                        <Col  className="subtitle-connections" style={{textAlign:"left"}}>2 weeks ago • Gina Martin
+                                        </Col>
+                                    </Row >
+                                    <Row style={{height:"1em"}}>
+                                        <Col xs={4}>
+
+                                        </Col>
+                                        <Col xs={3}>
+
+                                        </Col>
+                                        <Col xs={5}>
+                                            <CustomToggle eventKey="0">View Replies</CustomToggle>
+                                        </Col>
+                                    </Row>
+                                </Card.Text>
+                            </Card.Header>
+
+
+                            <Accordion.Collapse eventKey="0">
+                                <Card.Body><Card className="people" style={{marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"-1em", flexDirection: 'row'}}>
+                                    <Card.Img  src={musetheatre} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+
+                                    <Card.Body>
+                                        <Card.Text className="blog-title" style={{textAlign: 'left'}}>Yes</Card.Text>
+
+                                        <Card.Text>
+                                            <Row style={{height:"1em"}}>
+                                                <Col  className="subtitle-connections" style={{textAlign:"left"}}>
+                                                    2 weeks ago • The Muse Th.
+                                                </Col>
+                                            </Row>
+                                            <Row style={{height:"1em", marginTop:"-0.1em"}}>
+                                                <Col xs={7}>
+
+                                                </Col>
+                                                <Col xs={3}>
+
+                                                </Col>
+                                            </Row>
+                                        </Card.Text>
+                                    </Card.Body>
+                                </Card>
+
+                                    <Card className="people" style={{marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"0.5em", flexDirection: 'row'}}>
+                                        <Card.Img  src={profile5} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                                        <Card.Body>
+                                            <Card.Text className="blog-title" style={{textAlign: 'left'}}>yeaaaaaah</Card.Text>
+                                            <Card.Text>
+                                                <Row style={{height:"1em"}}>
+                                                    <Col  className="subtitle-connections" style={{textAlign:"left"}}>
+                                                        2 weeks ago • Chandler Santoro
+                                                    </Col>
+                                                </Row>
+                                                <Row style={{height:"1em", marginTop:"-0.1em"}}>
+                                                    <Col xs={7}>
+
+                                                    </Col>
+                                                    <Col xs={3}>
+
+                                                    </Col>
+                                                </Row>
+                                            </Card.Text>
+                                        </Card.Body>
+                                    </Card>
+
+
+                                    <Card className="people" style={{marginBottom: '0.3em' , borderRadius: '10px',borderWidth: '0px', margin:"-0.5em", marginTop:"0.5em", flexDirection: 'row'}}>
+                                        <Card.Img  src={profile4} style={{height: '4em', width: '4rem', marginLeft:'1em', marginTop:'0.5em'}} />
+                                        <Card.Body>
+                                            <Card.Text className="blog-title" style={{textAlign: 'left'}}>Of course</Card.Text>
+                                            <Card.Text>
+                                                <Row style={{height:"1em"}}>
+                                                    <Col  className="subtitle-connections" style={{textAlign:"left"}}>
+                                                        4 days ago • Clara May
+                                                    </Col>
+                                                </Row>
+                                                <Row style={{height:"1em", marginTop:"-0.1em"}}>
+                                                    <Col xs={7}>
+
+                                                    </Col>
+                                                    <Col xs={3}>
+
+                                                    </Col>
+                                                </Row>
+                                            </Card.Text>
+                                        </Card.Body>
+                                    </Card>
+
+                                </Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+
+                    </Accordion>
+                </CardGroup>
 
             </Card>
             <NavigbarBottom home={homeunselected} calendar={calendar} profile={profile} settings={settings}/>

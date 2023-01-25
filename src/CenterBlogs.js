@@ -72,10 +72,6 @@ export default function CenterBlogs(){
 
     const [state,dispatch] = useContext(StateContext)
 
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
     return(
         <Container style={{backgroundColor:"#f5f5f5", paddingBottom:"10em", zIndex:'-1000', minHeight:'100vh', top:'5em'}}>
 
